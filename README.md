@@ -1,5 +1,5 @@
 # Timetable Generator
-Веб-приложение, созданное в ходе учебной практики в 5 семестре
+Веб-приложение, создающееся в ходе учебной практики в 5 семестре
 
 # Материалы
 * Наш макет в Figma: [ссылочка](https://www.figma.com/file/UgR6tjDqQkIDdLAMwZjquv/Timetable-Generator?node-id=0%3A1)
