@@ -14,6 +14,9 @@ const GlobalCss = withStyles({
     ".MuiButton-root": {
       color: "white",
     },
+    ".MuiIconButton-root": {
+      color: "white",
+    },
   },
 })(() => null);
 
