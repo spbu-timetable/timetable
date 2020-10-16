@@ -3,28 +3,21 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App/App";
 import * as serviceWorker from "./utils/serviceWorker";
-import LightTheme from "./assets/Themes/LightTheme";
-import { ThemeProvider } from "@material-ui/core/styles";
-import withStyles from "@material-ui/core/styles/withStyles";
 
-const GlobalCss = withStyles({
-  // @global is handled by jss-plugin-global.
-  "@global": {
-    // You should target [class*="MuiButton-root"] instead if you nest themes.
-    ".MuiButton-root": {
-      color: "white",
-    },
-    ".MuiIconButton-root": {
-      color: "white",
-    },
-  },
-})(() => null);
+import { ThemeProvider } from "@material-ui/core/styles";
+
+import LightTheme from "./assets/Themes/LightTheme";
+import GlobalCss from "./assets/styles/GlobalCss";
+import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={LightTheme}>
-      <GlobalCss />
-      <App />
+      <Provider store={store}>
+        <GlobalCss />
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

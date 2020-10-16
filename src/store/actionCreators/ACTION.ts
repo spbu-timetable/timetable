@@ -1,0 +1,6 @@
+enum ACTION {
+  SET_HEADER_BUTTON_TITLE = "SET_HEADER_BUTTON_TITLE",
+  SET_WEEK = "SET_WEEK",
+}
+
+export default ACTION;
