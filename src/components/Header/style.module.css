@@ -1,3 +1,4 @@
-.search {
-    margin-left: var(--inset2);
+.search, .switcher, .week {
+    margin-left: var(--inset2) !important; 
 }
+
