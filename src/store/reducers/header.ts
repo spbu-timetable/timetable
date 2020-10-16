@@ -1,4 +1,3 @@
-import { NewReleases } from "@material-ui/icons";
 import Action from "../../types/Action";
 import Header from "../../types/Header";
 import ACTION from "../actionCreators/ACTION";
