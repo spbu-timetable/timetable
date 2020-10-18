@@ -10,6 +10,12 @@ const GlobalCss = withStyles({
     ".MuiIconButton-root": {
       color: "white",
     },
+    ".MuiToggleButton-root": {
+      color: "white",
+      border: "none",
+    },
+
+    ".MuiToggleButtonGroup-root": {},
   },
 })(() => null);
 

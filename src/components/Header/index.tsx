@@ -9,6 +9,7 @@ import Search from "../Reusable/Search";
 import CategoryBtnContainer from "./CategoryBtn/container";
 import WeekSwitcher from "./WeekSwitcher";
 import Typography from "@material-ui/core/Typography";
+import LangSwitcher from "./LangSwitcher";
 
 type Props = {
   week: string;
@@ -28,6 +29,7 @@ const Header = (props: Props) => {
           setNextWeek={() => props.setWeek(2)}
         />
         <Typography className={style.week}>{props.week}</Typography>
+        <LangSwitcher className={style.lang} />
       </Toolbar>
     </AppBar>
   );
