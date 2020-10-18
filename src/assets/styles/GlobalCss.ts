@@ -13,9 +13,13 @@ const GlobalCss = withStyles({
     ".MuiToggleButton-root": {
       color: "white",
       border: "none",
+      height: "23px",
+      width: "25px",
     },
 
-    ".MuiToggleButtonGroup-root": {},
+    ".MuiToggleButtonGroup-root": {
+      margin: "0px 0px 0px auto"
+    },
   },
 })(() => null);
 

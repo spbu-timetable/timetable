@@ -15,7 +15,6 @@ const LangSwitcher = (props: Props) => {
   };
 
   return (
-    <div>
       <ToggleButtonGroup
         className={props.className}
         value={alignment}
@@ -29,7 +28,6 @@ const LangSwitcher = (props: Props) => {
           Ru
         </ToggleButton>
       </ToggleButtonGroup>
-    </div>
   );
 };
 
