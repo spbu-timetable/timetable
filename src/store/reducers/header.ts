@@ -21,6 +21,21 @@ function header(state = initialState, action: Action): Header {
         week: newWeek,
       };
 
+    case ACTION.SET_LANG:
+      let lang: boolean;
+      if (
+        (action.payload === false && state.isRussian === false) ||
+        (action.payload === true && state.isRussian === true)
+      ) {
+        lang = state.isRussian;
+      } else {
+        lang = !state.isRussian;
+      }
+      return {
+        ...state,
+        isRussian: lang,
+      };
+
     default:
       break;
   }

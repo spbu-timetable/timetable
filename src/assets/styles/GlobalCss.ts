@@ -11,14 +11,24 @@ const GlobalCss = withStyles({
       color: "white",
     },
     ".MuiToggleButton-root": {
+      // color: "white",
+      // border: "none",
+      // height: "36px",
+      // width: "36px",
+      // lineHeight: "18px",
+    },
+
+    ".MuiToggleButton-root .Mui-selected": {
+      backgroundColor: "red !important",
       color: "white",
-      border: "none",
-      height: "23px",
-      width: "25px",
+    },
+
+    ".Mui-disabled": {
+      color: "red",
     },
 
     ".MuiToggleButtonGroup-root": {
-      margin: "0px 0px 0px auto"
+      margin: "0px 0px 0px auto",
     },
   },
 })(() => null);

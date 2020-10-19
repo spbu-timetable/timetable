@@ -15,9 +15,17 @@ function setWeek(index: number): Action {
   };
 }
 
+function setLang(isRussian: boolean): Action {
+  return {
+    type: ACTION.SET_LANG,
+    payloaf: isRussian,
+  };
+}
+
 const headerAC = {
   setButtonTitle: setButtonTitle,
   setWeek: setWeek,
+  setLang: setLang,
 };
 
 export default headerAC;

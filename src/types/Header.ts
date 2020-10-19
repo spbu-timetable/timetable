@@ -3,6 +3,8 @@ type Header = {
   menu_titles: string[];
 
   week: Date;
+
+  isRussian: boolean;
 };
 
 export default Header;

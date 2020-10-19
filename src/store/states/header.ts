@@ -1,10 +1,12 @@
 import Header from "../../types/Header";
 
-const state: Header = {
+const header: Header = {
   button_title: "Кабинеты",
   menu_titles: ["Кабинеты", "Преподаватели", "Группы"],
 
   week: new Date(Date.now()),
+
+  isRussian: true,
 };
 
-export default state;
+export default header;

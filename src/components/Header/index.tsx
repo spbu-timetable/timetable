@@ -13,8 +13,10 @@ import LangSwitcher from "./LangSwitcher";
 
 type Props = {
   week: string;
+  isRussian: boolean;
 
   setWeek: (index: number) => void;
+  setLang: (isRussian: boolean) => void;
 };
 
 const Header = (props: Props) => {
@@ -29,7 +31,7 @@ const Header = (props: Props) => {
           setNextWeek={() => props.setWeek(2)}
         />
         <Typography className={style.week}>{props.week}</Typography>
-        <LangSwitcher className={style.lang} />
+        <LangSwitcher className={style.lang} isRussian={props.isRussian} setLang={props.setLang} />
       </Toolbar>
     </AppBar>
   );

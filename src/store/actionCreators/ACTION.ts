@@ -1,6 +1,7 @@
 enum ACTION {
   SET_HEADER_BUTTON_TITLE = "SET_HEADER_BUTTON_TITLE",
   SET_WEEK = "SET_WEEK",
+  SET_LANG = "SET_LANG",
 }
 
 export default ACTION;
