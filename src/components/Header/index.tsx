@@ -22,7 +22,7 @@ const Header = (props: Props) => {
   return (
     <AppBar position="static" className={style.header}>
       <Toolbar>
-        <Search className={style.search} />
+        <Typography>Расписание СПбГУ</Typography>
         <WeekSwitcher
           className={style.switcher}
           setPrevWeek={() => props.setWeek(1)}

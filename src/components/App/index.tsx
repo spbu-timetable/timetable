@@ -6,7 +6,7 @@ import HeaderContainer from "../Header/container";
 
 function App() {
   return (
-    <div>
+    <div className={style.app}>
       <HeaderContainer />
       <Content />
     </div>

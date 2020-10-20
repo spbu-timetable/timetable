@@ -1,7 +1,9 @@
 import Button from "@material-ui/core/Button";
+import { Route, Link, Switch } from "react-router-dom";
 
 import React from "react";
 import style from "./style.module.css";
+import Addresses from "../Addresses";
 
 type Props = {};
 
@@ -10,13 +12,19 @@ const Main = (props: Props) => {
     <div className={style.main}>
       <h1>Расписание СПбГУ</h1>
       <Button variant="outlined" className={style.btn}>
-        Кабинеты
+        <Link className={style.link} to="/address">
+          Кабинеты
+        </Link>
       </Button>
       <Button variant="outlined" className={style.btn}>
-        Преподаватели
+        <Link className={style.link} to="/teachers">
+          Преподаватели
+        </Link>
       </Button>
       <Button variant="outlined" className={style.btn}>
-        Группы
+        <Link className={style.link} to="/groups">
+          Группы
+        </Link>
       </Button>
     </div>
   );

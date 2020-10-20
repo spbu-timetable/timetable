@@ -3,7 +3,7 @@ import Header from "../../types/Header";
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/header";
 
-function header(state = initialState, action: Action): Header {
+function header(state: Header = initialState, action: Action): Header {
   switch (action.type) {
     case ACTION.SET_HEADER_BUTTON_TITLE:
       return {

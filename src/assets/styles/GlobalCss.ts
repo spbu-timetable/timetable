@@ -7,9 +7,7 @@ const GlobalCss = withStyles({
     ".MuiButton-root": {
       color: "white",
     },
-    ".MuiIconButton-root": {
-      color: "white",
-    },
+
     ".MuiToggleButton-root": {
       // color: "white",
       // border: "none",
@@ -21,14 +19,6 @@ const GlobalCss = withStyles({
     ".MuiToggleButton-root .Mui-selected": {
       backgroundColor: "red !important",
       color: "white",
-    },
-
-    ".Mui-disabled": {
-      color: "red",
-    },
-
-    ".MuiToggleButtonGroup-root": {
-      margin: "0px 0px 0px auto",
     },
   },
 })(() => null);

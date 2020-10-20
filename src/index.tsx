@@ -6,6 +6,7 @@ import * as serviceWorker from "./utils/serviceWorker";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 
+import { BrowserRouter as Router } from "react-router-dom";
 import LightTheme from "./assets/Themes/LightTheme";
 import GlobalCss from "./assets/styles/GlobalCss";
 import { Provider } from "react-redux";
@@ -13,12 +14,14 @@ import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={LightTheme}>
-      <Provider store={store}>
-        <GlobalCss />
-        <App />
-      </Provider>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={LightTheme}>
+        <Provider store={store}>
+          <GlobalCss />
+          <App />
+        </Provider>
+      </ThemeProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

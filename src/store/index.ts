@@ -5,14 +5,19 @@ import createSagaMiddleware from "redux-saga";
 
 import Action from "../types/Action";
 import Header from "../types/Header";
-import Content from "../types/Content";
+import AddressesPage from "../types/AddressesPage";
 
 import header from "./reducers/header";
-import content from "./reducers/content";
+import addresses from "./reducers/addresses";
+import watchGetAddresses from "./sagas/getAdresses";
+import cabinets from "./reducers/cabinets";
+import CabinetsPage from "../types/CabinetsPage";
+import watchGetCabinets from "./sagas/getCabinets";
 
 const reducers = combineReducers({
   header: header,
-  content: content,
+  addresses: addresses,
+  cabinets: cabinets,
 });
 
 const saga = createSagaMiddleware();
@@ -20,9 +25,13 @@ const saga = createSagaMiddleware();
 let store: Store<
   CombinedState<{
     header: Header;
-    content: Content;
+    addresses: AddressesPage;
+    cabinets: CabinetsPage;
   }>,
   Action
 > = createStore(reducers, applyMiddleware(logger, saga));
+
+saga.run(watchGetAddresses);
+saga.run(watchGetCabinets);
 
 export default store;
