@@ -1,13 +1,14 @@
 import React from "react";
+import style from "./style.module.css";
 
+import Content from "../Content";
 import HeaderContainer from "../Header/container";
-
-import "./App.css";
 
 function App() {
   return (
     <div>
       <HeaderContainer />
+      <Content />
     </div>
   );
 }

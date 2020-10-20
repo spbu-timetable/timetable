@@ -1,7 +1,13 @@
 import React from "react";
+import Main from "./Main";
+import style from "./style.module.css";
 
-const Header = () => {
-  return <div></div>;
+const Content = () => {
+  return (
+    <div className={style.content}>
+      <Main />
+    </div>
+  );
 };
 
-export default Header;
+export default Content;

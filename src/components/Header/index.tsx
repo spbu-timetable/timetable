@@ -6,7 +6,6 @@ import React from "react";
 import style from "./style.module.css";
 import Search from "../Reusable/Search";
 
-import CategoryBtnContainer from "./CategoryBtn/container";
 import WeekSwitcher from "./WeekSwitcher";
 import Typography from "@material-ui/core/Typography";
 import LangSwitcher from "./LangSwitcher";
@@ -21,9 +20,8 @@ type Props = {
 
 const Header = (props: Props) => {
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={style.header}>
       <Toolbar>
-        <CategoryBtnContainer />
         <Search className={style.search} />
         <WeekSwitcher
           className={style.switcher}
