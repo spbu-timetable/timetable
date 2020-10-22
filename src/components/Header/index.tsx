@@ -4,17 +4,17 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 import React from "react";
 import style from "./style.module.css";
-import Search from "../Reusable/Search";
 
-import WeekSwitcher from "./WeekSwitcher";
 import Typography from "@material-ui/core/Typography";
-import LangSwitcher from "./LangSwitcher";
+import Picker from "./DatePicker";
 
 type Props = {
   week: string;
   isRussian: boolean;
+  fromDateStr: string;
+  toDateStr: string;
 
-  setWeek: (index: number) => void;
+  setWeek: (date: Date) => void;
   setLang: (isRussian: boolean) => void;
 };
 
@@ -22,14 +22,13 @@ const Header = (props: Props) => {
   return (
     <AppBar position="static" className={style.header}>
       <Toolbar>
-        <Typography>Расписание СПбГУ</Typography>
-        <WeekSwitcher
-          className={style.switcher}
-          setPrevWeek={() => props.setWeek(1)}
-          setNextWeek={() => props.setWeek(2)}
+        <Typography className={style.title}>Расписание СПбГУ</Typography>
+        <Picker
+          className={style.date_picker}
+          fromDateStr={props.fromDateStr}
+          toDateStr={props.toDateStr}
+          setWeek={props.setWeek}
         />
-        <Typography className={style.week}>{props.week}</Typography>
-        <LangSwitcher className={style.lang} isRussian={props.isRussian} setLang={props.setLang} />
       </Toolbar>
     </AppBar>
   );

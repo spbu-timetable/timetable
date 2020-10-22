@@ -15,13 +15,16 @@ function mapStateToProps(
     week: state.header.week.toDateString(),
 
     isRussian: state.header.isRussian,
+
+    fromDateStr: state.header.fromDateStr,
+    toDateStr: state.header.toDateStr,
   };
 }
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {
-    setWeek: (index: number) => {
-      dispatch(headerAC.setWeek(index));
+    setWeek: (date: Date) => {
+      dispatch(headerAC.setWeek(date));
     },
     setLang: (isRussian: boolean) => {
       dispatch(headerAC.setLang(isRussian));

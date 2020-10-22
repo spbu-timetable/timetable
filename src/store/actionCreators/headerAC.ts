@@ -8,10 +8,10 @@ function setButtonTitle(title: string): Action {
   };
 }
 
-function setWeek(index: number): Action {
+function setWeek(date: Date): Action {
   return {
     type: ACTION.SET_WEEK,
-    payload: index,
+    payload: date,
   };
 }
 

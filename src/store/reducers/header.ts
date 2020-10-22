@@ -1,3 +1,5 @@
+import formatHeaderDateToStr from "../../helpers/formatHeaderDateToStr";
+import getMonday from "../../helpers/getMonday";
 import Action from "../../types/Action";
 import Header from "../../types/Header";
 import ACTION from "../actionCreators/ACTION";
@@ -11,14 +13,18 @@ function header(state: Header = initialState, action: Action): Header {
         button_title: action.payload,
       };
     case ACTION.SET_WEEK:
-      let newWeek = new Date();
-      action.payload === 1
-        ? newWeek.setDate(state.week.getDate() - 7)
-        : newWeek.setDate(state.week.getDate() + 7);
+      const monday = new Date(getMonday(action.payload));
+      const sunday = new Date(monday.getTime());
+      sunday.setDate(sunday.getDate() + 6);
 
       return {
         ...state,
-        week: newWeek,
+
+        fromDate: monday,
+        toDate: sunday,
+
+        fromDateStr: formatHeaderDateToStr(monday, 1),
+        toDateStr: formatHeaderDateToStr(sunday, 2),
       };
 
     case ACTION.SET_LANG:

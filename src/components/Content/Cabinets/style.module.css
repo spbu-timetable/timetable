@@ -9,6 +9,10 @@
     margin-top: 200px;
 }
 
+.date_picker {
+    margin-top: 10px;
+}
+
 .list {
     width: calc(100% - var(--inset3));
 }

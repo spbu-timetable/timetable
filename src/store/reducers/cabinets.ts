@@ -19,6 +19,7 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
           selected_cabinets: [...state.selected_cabinets, action.payload],
         };
       }
+      break;
 
     case ACTION.DESELECT_CABINET:
       for (let i = 0; i < state.selected_cabinets.length; i++) {

@@ -1,4 +1,17 @@
-.search, .switcher, .week {
-    margin-left: var(--inset2) !important; 
+.title {
+    flex-grow: 1;
 }
 
+.outer { 
+    position: relative !important;
+  }
+.inner {
+    position: absolute !important;
+    width: auto;
+    height: 36px;
+    right: 0; 
+   }
+
+.date_picker {
+    width: 0px !important;
+}

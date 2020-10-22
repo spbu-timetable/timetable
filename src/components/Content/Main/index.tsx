@@ -1,9 +1,8 @@
 import Button from "@material-ui/core/Button";
-import { Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import React from "react";
 import style from "./style.module.css";
-import Addresses from "../Addresses";
 
 type Props = {};
 

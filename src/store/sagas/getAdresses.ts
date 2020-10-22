@@ -1,6 +1,5 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
 import addressAC from "../actionCreators/addressAC";
 
