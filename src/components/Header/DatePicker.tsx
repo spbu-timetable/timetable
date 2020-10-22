@@ -44,7 +44,6 @@ const Picker = (props: Props) => {
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
     props.setWeek(date!);
-    console.log(date);
   };
 
   return (
