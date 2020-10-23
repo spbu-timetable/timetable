@@ -1,4 +1,5 @@
 import Action from "../../types/Action";
+import Cabinet from "../../types/Cabinet";
 import CabinetsPage from "../../types/CabinetsPage";
 
 import ACTION from "../actionCreators/ACTION";
@@ -10,7 +11,16 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       return {
         ...state,
         didGet: true,
-        cabinets: [...action.payload],
+        cabinets: [...action.payload].sort((a: Cabinet, b: Cabinet) => {
+          let name1 = a.DisplayName1.toLowerCase();
+          let name2 = b.DisplayName1.toLowerCase();
+          if (name1 < name2) {
+            return -1;
+          } else if (name1 > name2) {
+            return 1;
+          }
+          return 0;
+        }),
       };
     case ACTION.SELECT_CABINET:
       if (!state.selected_cabinets.includes(action.payload) && state.selected_cabinets.length < 4) {

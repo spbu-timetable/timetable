@@ -1,5 +1,6 @@
 import AddressLocalStorage from "../../localStorage/address";
 import Action from "../../types/Action";
+import Address from "../../types/Address";
 import AddressesPage from "../../types/AddressesPage";
 
 import ACTION from "../actionCreators/ACTION";
@@ -10,7 +11,16 @@ function addresses(state: AddressesPage = initialState, action: Action): Address
     case ACTION.SET_ADDRESSES:
       return {
         didGet: true,
-        addresses: [...action.payload],
+        addresses: [...action.payload].sort((a: Address, b: Address) => {
+          let name1 = a.DisplayName1.toLowerCase();
+          let name2 = b.DisplayName1.toLowerCase();
+          if (name1 < name2) {
+            return -1;
+          } else if (name1 > name2) {
+            return 1;
+          }
+          return 0;
+        }),
       };
     case ACTION.SET_ADDRESS:
       AddressLocalStorage.save(action.payload);
