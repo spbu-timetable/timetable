@@ -1,5 +1,6 @@
 import Action from "../../types/Action";
 import Cabinet from "../../types/Cabinet";
+import ClassroomEventsDays from "../../types/ClassroomEventsDays";
 import ACTION from "./ACTION";
 
 function getCabinets(oid: string): Action {
@@ -30,11 +31,39 @@ function deselectCabinet(id: string): Action {
   };
 }
 
+function getCabinetTimetable(
+  cabinetIndex: number,
+  cabinetOid: string,
+  startDate: Date,
+  endDate: Date
+): Action {
+  return {
+    type: ACTION.GET_CABINET_TIMETABLE,
+    payload: {
+      cabinetIndex: cabinetIndex,
+      cabinetOid: cabinetOid,
+      startDate: startDate,
+      endDate: endDate,
+    },
+  };
+}
+
+function setCabinetTimetable(classroomEventsDays: ClassroomEventsDays): Action {
+  return {
+    type: ACTION.SET_CABINET_TIMETABLE,
+    payload: classroomEventsDays,
+  };
+}
+
 const cabinetAC = {
   getCabinets: getCabinets,
   setCabinets: setCabinets,
+
   selectCabinet: selectCabinet,
   deselectCabinet: deselectCabinet,
+
+  getCabinetTimetable: getCabinetTimetable,
+  setCabinetTimetable: setCabinetTimetable,
 };
 
 export default cabinetAC;

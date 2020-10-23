@@ -13,6 +13,7 @@ import watchGetAddresses from "./sagas/getAdresses";
 import cabinets from "./reducers/cabinets";
 import CabinetsPage from "../types/CabinetsPage";
 import watchGetCabinets from "./sagas/getCabinets";
+import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
 
 const reducers = combineReducers({
   header: header,
@@ -33,5 +34,6 @@ let store: Store<
 
 saga.run(watchGetAddresses);
 saga.run(watchGetCabinets);
+saga.run(watchGetClassroomEventsDays);
 
 export default store;

@@ -30,6 +30,9 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       return {
         ...state,
       };
+    case ACTION.SET_CABINET_TIMETABLE:
+      console.log(action.payload);
+      return state;
   }
 
   return state;
