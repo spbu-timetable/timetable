@@ -23,7 +23,7 @@ const Addresses = (props: Props) => {
 
   function setAddress(address: Address): void {
     props.setAddress(address);
-    history.push("/cabinets");
+    history.push("/addresses/cabinets");
   }
 
   if (props.didGet) {

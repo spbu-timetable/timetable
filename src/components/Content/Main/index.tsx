@@ -11,7 +11,7 @@ const Main = (props: Props) => {
     <div className={style.main}>
       <h1>Расписание СПбГУ</h1>
       <Button variant="outlined" className={style.btn}>
-        <Link className={style.link} to="/address">
+        <Link className={style.link} to="/addresses">
           Кабинеты
         </Link>
       </Button>
@@ -21,7 +21,7 @@ const Main = (props: Props) => {
         </Link>
       </Button>
       <Button variant="outlined" className={style.btn}>
-        <Link className={style.link} to="/groups">
+        <Link className={style.link} to="/addresses/cabinets">
           Группы
         </Link>
       </Button>

@@ -27,3 +27,10 @@
 .chip {
     margin: 0 var(--inset1) !important;
 }
+
+.link {
+    width: inherit;
+    height: inherit;
+    text-decoration: none;
+    color: inherit;
+}

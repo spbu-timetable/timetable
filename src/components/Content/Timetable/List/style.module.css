@@ -1,0 +1,30 @@
+.wrapper {
+    display: flex;
+}
+
+.day_list {
+    width: 300px;
+    max-width: 90vw;
+
+    /* border: 1px solid var(--level2); */
+
+    margin: 0;
+    padding: -10px;
+}
+
+.cabinet {
+    padding: var(--inset2);
+    text-align: center;
+    background-color: var(--level2);
+
+    border-radius: var(--inset0) var(--inset0) 0px 0px ;
+}
+
+.weekday {
+    font-size: 1.5em;
+    margin: var(--inset2) 0px;
+}
+
+.date {
+    margin: var(--inset2);
+}

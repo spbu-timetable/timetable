@@ -5,7 +5,7 @@ import Action from "../../../types/Action";
 import AddressesPage from "../../../types/AddressesPage";
 
 import { connect } from "react-redux";
-import cabinetAC from "../../../store/actionCreators/cabinet";
+import cabinetAC from "../../../store/actionCreators/cabinetAC";
 import Cabinet from "../../../types/Cabinet";
 import CabinetsPage from "../../../types/CabinetsPage";
 

@@ -6,14 +6,16 @@ import Groups from "./Groups";
 import Main from "./Main";
 import style from "./style.module.css";
 import Teachers from "./Teachers";
+import Timetable from "./Timetable";
 
 const Content = () => {
   return (
     <div className={style.content}>
       <Switch>
-        <Route path="/cabinets" component={() => <Cabinets />} />
+        <Route path="/addresses/cabinets/timetable" component={() => <Timetable />} />
+        <Route path="/addresses/cabinets" component={() => <Cabinets />} />
         <Route path="/teachers" component={() => <Teachers />} />
-        <Route path="/address" component={() => <Addresses />} />
+        <Route path="/addresses" component={() => <Addresses />} />
         <Route path="/groups" component={() => <Groups />} />
         <Route path="/" component={() => <Main />} />
       </Switch>
