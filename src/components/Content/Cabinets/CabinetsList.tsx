@@ -13,6 +13,7 @@ type Props = {
   didGet: boolean;
   oid: string;
   cabinets: Cabinet[];
+  selected_cabinets: Cabinet[];
 
   getCabinets: (oid: string) => void;
   selectCabinet: (cabinet: Cabinet) => void;
@@ -21,9 +22,27 @@ type Props = {
 const CabinetsList = (props: Props) => {
   let cabinets_component;
 
+  function checkSelection(cabinet: Cabinet): boolean {
+    if (props.selected_cabinets.length === 4) {
+      return true;
+    }
+
+    for (let i = 0; i < props.selected_cabinets.length; i++) {
+      if (props.selected_cabinets.includes(cabinet)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   if (props.didGet) {
     cabinets_component = props.cabinets.map((cabinet: Cabinet) => (
-      <ListItem button onClick={() => props.selectCabinet(cabinet)}>
+      <ListItem
+        button
+        divider={true}
+        disabled={checkSelection(cabinet)}
+        onClick={() => props.selectCabinet(cabinet)}
+      >
         <ListItemText primary={cabinet.DisplayName1} />
         <ListItemSecondaryAction>
           <IconButton edge="end" onClick={() => props.selectCabinet(cabinet)}>
@@ -38,7 +57,6 @@ const CabinetsList = (props: Props) => {
 
   return (
     <>
-      {" "}
       {props.didGet ? (
         <List className={style.list}>{cabinets_component}</List>
       ) : (

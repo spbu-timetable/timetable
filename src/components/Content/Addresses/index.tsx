@@ -28,7 +28,7 @@ const Addresses = (props: Props) => {
 
   if (props.didGet) {
     addresses_component = props.addresses.map((address: Address) => (
-      <ListItem button onClick={() => setAddress(address)}>
+      <ListItem button divider={true} onClick={() => setAddress(address)}>
         <ListItemText primary={address.DisplayName1} />
       </ListItem>
     ));

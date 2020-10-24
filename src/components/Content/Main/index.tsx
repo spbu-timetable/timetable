@@ -9,7 +9,7 @@ type Props = {};
 const Main = (props: Props) => {
   return (
     <div className={style.main}>
-      <h1>Расписание СПбГУ</h1>
+      <h1 className={style.title}>Расписание СПбГУ</h1>
       <Button variant="outlined" className={style.btn}>
         <Link className={style.link} to="/addresses">
           Кабинеты
@@ -21,7 +21,7 @@ const Main = (props: Props) => {
         </Link>
       </Button>
       <Button variant="outlined" className={style.btn}>
-        <Link className={style.link} to="/addresses/cabinets">
+        <Link className={style.link} to="/groups">
           Группы
         </Link>
       </Button>

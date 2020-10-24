@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom";
 import React from "react";
 import style from "./style.module.css";
 
-import Typography from "@material-ui/core/Typography";
 import Picker from "./DatePicker";
+import Link from "@material-ui/core/Link";
 
 type Props = {
   week: string;
@@ -21,11 +21,20 @@ type Props = {
 };
 
 const Header = (props: Props) => {
-const history = useHistory();
+  const history = useHistory();
   return (
     <AppBar position="static" className={style.header}>
       <Toolbar>
-        <Button className={style.title} disableRipple={true} onClick={() => {history.push("/")}}>Расписание СПбГУ</Button>
+        <Link
+          color="initial"
+          underline="none"
+          className={style.title}
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          Расписание СПбГУ
+        </Link>
         <Picker
           className={style.date_picker}
           fromDateStr={props.fromDateStr}

@@ -29,6 +29,7 @@ const Cabinets = (props: Props) => {
         didGet={props.didGet}
         oid={props.oid}
         cabinets={props.cabinets}
+        selected_cabinets={props.selected_cabinets}
         getCabinets={props.getCabinets}
         selectCabinet={props.selectCabinet}
       />

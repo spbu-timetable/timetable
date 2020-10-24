@@ -28,3 +28,24 @@
 .date {
     margin: var(--inset2);
 }
+
+.cell {
+    border: 1px solid var(--level3) !important;
+}
+
+.head {
+    border: 1px solid var(--level3) !important;
+
+    font-size: 1em !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
+.weekday_head {
+    border: 1px solid var(--level3) !important;
+    background-color: var(--level2);
+
+    font-size: 1em !important;
+    font-weight: bold !important;
+    
+}
