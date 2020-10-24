@@ -1,32 +1,26 @@
 .search_wrapper {
-  height: 36px;
-  width: 268px;
-  max-width: calc(100% - 24px);
-
-  padding-left: var(--inset2);
-
-  border-radius: 4px;
+  height: 40px;
+  max-width: 90vw;
 
   display: flex;
   flex-direction: row;
 
-  align-self: center;
-  justify-self: center;
-
-  justify-items: center;
   align-items: center;
-
-  background-color: var(--level2);
 }
 
 .icon {
   color: var(--icon-fill);
 
+  margin-left: var(--inset2);
+
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .search {
-  padding-left: 8px;
+  padding-left: var(--inset1);
+  width: inherit;
+
+  font-size: 1em;
 }
 
 .search::-webkit-search-cancel-button {

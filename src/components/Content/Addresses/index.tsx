@@ -8,6 +8,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useHistory } from "react-router-dom";
+import Search from "../../Reusable/Search";
+import Paper from "@material-ui/core/Paper";
 
 type Props = {
   didGet: boolean;
@@ -39,8 +41,11 @@ const Addresses = (props: Props) => {
   return (
     <div className={style.address}>
       <h1>Выберите адрес</h1>
+      <Search className={style.search} />
       {props.didGet ? (
-        <List>{addresses_component}</List>
+        <Paper className={style.list}>
+          <List>{addresses_component}</List>
+        </Paper>
       ) : (
         <CircularProgress className={style.progress} />
       )}

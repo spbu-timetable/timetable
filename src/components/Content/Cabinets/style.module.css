@@ -4,35 +4,42 @@
 
     align-items: center;
 
-    width: 1000px;
+    width: 700px;
     max-width: 90vw;
+}
+
+.search {
+    width: inherit;
+    max-width: inherit;
 }
 
 .progress {
     margin-top: 200px;
 }
 
-.date_picker {
-    margin-top: 10px;
-}
-
 .list {
-    width: calc(100% - var(--inset3));
+    margin-top: var(--inset1);
+    width: inherit;
+    max-width: inherit;
 }
 
 .chips {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 
-    justify-content: center;
+    justify-content: left !important;
 
     width: inherit;
-    max-width: inherit; 
+    max-width: inherit;
 }
 
 .chip {
-    margin: 0 var(--inset1) !important;
+    margin: var(--inset1);
+    margin-left: 0px;
+}
+
+.btn {
+    margin-top: var(--inset1) !important;
 }
 
 .link {

@@ -5,6 +5,7 @@ import Cabinet from "../../../types/Cabinet";
 
 import SelectedCabinets from "./SelectedCabinets";
 import CabinetsList from "./CabinetsList";
+import Search from "../../Reusable/Search";
 
 type Props = {
   oid: string;
@@ -21,10 +22,12 @@ const Cabinets = (props: Props) => {
   return (
     <div className={style.cabinets}>
       <h1>Выберите кабинет</h1>
+      <Search className={style.search} />
       <SelectedCabinets
         selected_cabinets={props.selected_cabinets}
         deselectCabinet={props.deselectCabinet}
       />
+
       <CabinetsList
         didGet={props.didGet}
         oid={props.oid}

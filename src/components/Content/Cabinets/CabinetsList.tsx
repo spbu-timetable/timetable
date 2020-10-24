@@ -4,6 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
+import Paper from "@material-ui/core/Paper";
 import { Add } from "@material-ui/icons";
 import React from "react";
 import Cabinet from "../../../types/Cabinet";
@@ -40,7 +41,7 @@ const CabinetsList = (props: Props) => {
       <ListItem
         button
         divider={true}
-        disabled={checkSelection(cabinet)}
+        // disabled={checkSelection(cabinet)}
         onClick={() => props.selectCabinet(cabinet)}
       >
         <ListItemText primary={cabinet.DisplayName1} />
@@ -58,7 +59,9 @@ const CabinetsList = (props: Props) => {
   return (
     <>
       {props.didGet ? (
-        <List className={style.list}>{cabinets_component}</List>
+        <Paper className={style.list}>
+          <List>{cabinets_component}</List>
+        </Paper>
       ) : (
         <CircularProgress className={style.progress} />
       )}

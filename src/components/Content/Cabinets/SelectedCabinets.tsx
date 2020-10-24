@@ -38,18 +38,23 @@ const SelectedCabinets = (props: Props) => {
   }
 
   return (
-    <div className={style.chips + " " + props.className}>
-      {selected_cabinets_component}
+    <>
+      <div className={style.chips + " " + props.className}>{selected_cabinets_component}</div>
       {props.selected_cabinets.length ? (
-        <Button variant="contained" color="primary" onClick={() => setAddress()}>
+        <Button
+          variant="contained"
+          className={style.btn}
+          color="primary"
+          onClick={() => setAddress()}
+        >
           Показать
         </Button>
       ) : (
-        <Button disabled variant="contained" color="primary">
+        <Button disabled variant="contained" className={style.btn}>
           Показать
         </Button>
       )}
-    </div>
+    </>
   );
 };
 

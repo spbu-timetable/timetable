@@ -5,17 +5,6 @@
     align-items: center;
 }
 
-.btn {
-    color: black !important;
-    margin-top: 16px !important;
-
-    width: 500px;
-    max-width: 90vw;
-    height: 80px;
-
-    font-size: 1.2em !important;
-}
-
 .link {
     width: inherit;
     height: inherit;

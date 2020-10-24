@@ -4,10 +4,20 @@
 
     align-items: center;
 
-    width: 1000px;
+    width: 700px;
     max-width: 90vw;
+
 }
 
 .progress {
     margin-top: 200px;
+}
+
+.list {
+    margin: var(--inset2) 0;
+}
+
+.search {
+    width: inherit;
+    margin: 0;
 }
