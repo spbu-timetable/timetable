@@ -1,6 +1,8 @@
 import AppBar from "@material-ui/core/AppBar/AppBar";
 
 import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 import React from "react";
 import style from "./style.module.css";
@@ -19,10 +21,11 @@ type Props = {
 };
 
 const Header = (props: Props) => {
+const history = useHistory();
   return (
     <AppBar position="static" className={style.header}>
       <Toolbar>
-        <Typography className={style.title}>Расписание СПбГУ</Typography>
+        <Button className={style.title} onClick={() => {history.push("/")}}>Расписание СПбГУ</Button>
         <Picker
           className={style.date_picker}
           fromDateStr={props.fromDateStr}
