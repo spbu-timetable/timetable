@@ -25,7 +25,7 @@ const history = useHistory();
   return (
     <AppBar position="static" className={style.header}>
       <Toolbar>
-        <Button className={style.title} onClick={() => {history.push("/")}}>Расписание СПбГУ</Button>
+        <Button className={style.title} disableRipple={true} onClick={() => {history.push("/")}}>Расписание СПбГУ</Button>
         <Picker
           className={style.date_picker}
           fromDateStr={props.fromDateStr}
