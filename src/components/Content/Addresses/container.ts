@@ -13,8 +13,10 @@ function mapStateToProps(
 ) {
   return {
     didGet: state.addresses.didGet,
+    filter_value: state.addresses.filter_value,
 
     addresses: state.addresses.addresses,
+    filtered_addresses: state.addresses.filtered_addresses,
   };
 }
 
@@ -25,6 +27,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     },
     setAddress: (address: AddressT) => {
       dispatch(addressAC.setAddress(address));
+    },
+    updFilter: (filterStr: string) => {
+      dispatch(addressAC.updFilter(filterStr));
     },
   };
 }

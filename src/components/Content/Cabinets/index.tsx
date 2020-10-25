@@ -19,12 +19,16 @@ import Button from "@material-ui/core/Button";
 type Props = {
   oid: string;
   didGet: boolean;
+  filter_value: string;
+
   cabinets: Cabinet[];
+  filtered_cabinets: Cabinet[];
   selected_cabinets: Cabinet[];
 
   getCabinets: (oid: string) => void;
   selectCabinet: (cabinet: Cabinet) => void;
   deselectCabinet: (oid: string) => void;
+  updFilter: (filterStr: string) => void;
 };
 
 const Cabinets = (props: Props) => {
@@ -66,8 +70,8 @@ const Cabinets = (props: Props) => {
     return false;
   }
 
-  function createCabinetsComponent(): JSX.Element[] {
-    return (cabinets_component = props.cabinets.map((cabinet: Cabinet) => (
+  function createCabinetsComponent(cabinets: Cabinet[]): JSX.Element[] {
+    return (cabinets_component = cabinets.map((cabinet: Cabinet) => (
       <ListItem
         button
         divider={true}
@@ -76,7 +80,11 @@ const Cabinets = (props: Props) => {
       >
         <ListItemText primary={cabinet.DisplayName1} />
         <ListItemSecondaryAction>
-          <IconButton edge="end" onClick={() => props.selectCabinet(cabinet)}>
+          <IconButton
+            edge="end"
+            disabled={checkSelection(cabinet)}
+            onClick={() => props.selectCabinet(cabinet)}
+          >
             <Add />
           </IconButton>
         </ListItemSecondaryAction>
@@ -85,20 +93,22 @@ const Cabinets = (props: Props) => {
   }
 
   if (props.didGet) {
-    cabinets_component = createCabinetsComponent();
+    props.filter_value !== ""
+      ? (cabinets_component = createCabinetsComponent(props.filtered_cabinets))
+      : (cabinets_component = createCabinetsComponent(props.cabinets));
   } else {
     props.getCabinets(props.oid);
   }
 
-  React.useEffect(() => {
-    console.log("useEffect", props.selected_cabinets);
-    cabinets_component = createCabinetsComponent();
-  });
-
   return (
     <div className={style.cabinets}>
       <h1>Выберите кабинет</h1>
-      <Search className={style.search} />
+      <Search
+        className={style.search}
+        items={props.cabinets}
+        value={props.filter_value}
+        updFilter={props.updFilter}
+      />
 
       <div className={style.chips}>{selected_cabinets_component}</div>
       {props.selected_cabinets.length ? (

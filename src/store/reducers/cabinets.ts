@@ -41,8 +41,24 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
         ...state,
       };
     case ACTION.SET_CABINET_TIMETABLE:
-      console.log(action.payload);
-      return state;
+      return {
+        ...state,
+        timetable: [...state.timetable, ...action.payload],
+      };
+
+    case ACTION.FILTER_CABINETS:
+      const filtered_cabinets: Cabinet[] = [];
+      for (let i = 0; i < state.cabinets.length; i++) {
+        const name: string = state.cabinets[i].DisplayName1.toLowerCase();
+        if (name.search(action.payload) !== -1) {
+          filtered_cabinets.push(state.cabinets[i]);
+        }
+      }
+      return {
+        ...state,
+        filter_value: action.payload,
+        filtered_cabinets: [...filtered_cabinets],
+      };
   }
 
   return state;

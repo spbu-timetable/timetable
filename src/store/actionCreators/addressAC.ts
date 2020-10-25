@@ -20,10 +20,18 @@ function setAddress(address: Address): Action {
   };
 }
 
+function updFilter(filterStr: string): Action {
+  return {
+    type: ACTION.FILTER_ADDRESSES,
+    payload: filterStr,
+  };
+}
+
 const addressAC = {
   getAddresses: getAddresses,
   setAddresses: setAddresses,
   setAddress: setAddress,
+  updFilter: updFilter,
 };
 
 export default addressAC;

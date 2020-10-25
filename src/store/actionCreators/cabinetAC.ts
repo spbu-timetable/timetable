@@ -51,7 +51,16 @@ function getCabinetTimetable(
 function setCabinetTimetable(classroomEventsDays: ClassroomEventsDays): Action {
   return {
     type: ACTION.SET_CABINET_TIMETABLE,
-    payload: classroomEventsDays,
+    payload: {
+      classroomEventsDays: classroomEventsDays,
+    },
+  };
+}
+
+function updFilter(filterStr: string): Action {
+  return {
+    type: ACTION.FILTER_CABINETS,
+    payload: filterStr,
   };
 }
 
@@ -64,6 +73,8 @@ const cabinetAC = {
 
   getCabinetTimetable: getCabinetTimetable,
   setCabinetTimetable: setCabinetTimetable,
+
+  updFilter: updFilter,
 };
 
 export default cabinetAC;

@@ -14,13 +14,15 @@ import Paper from "@material-ui/core/Paper";
 type Props = {
   didGet: boolean;
   addresses: Address[];
+  filtered_addresses: Address[];
+  filter_value: string;
 
   getAddresses: () => void;
   setAddress: (address: Address) => void;
+  updFilter: (filterStr: string) => void;
 };
 
 const Addresses = (props: Props) => {
-  let addresses_component;
   const history = useHistory();
 
   function setAddress(address: Address): void {
@@ -28,12 +30,19 @@ const Addresses = (props: Props) => {
     history.push("/addresses/cabinets");
   }
 
-  if (props.didGet) {
-    addresses_component = props.addresses.map((address: Address) => (
+  function createListItems(cabinets: Address[]) {
+    return cabinets.map((address: Address) => (
       <ListItem button divider={true} onClick={() => setAddress(address)}>
         <ListItemText primary={address.DisplayName1} />
       </ListItem>
     ));
+  }
+
+  let addresses_component;
+  if (props.didGet) {
+    props.filter_value !== ""
+      ? (addresses_component = createListItems(props.filtered_addresses))
+      : (addresses_component = createListItems(props.addresses));
   } else {
     props.getAddresses();
   }
@@ -41,7 +50,12 @@ const Addresses = (props: Props) => {
   return (
     <div className={style.address}>
       <h1>Выберите адрес</h1>
-      <Search className={style.search} />
+      <Search
+        className={style.search}
+        items={props.addresses}
+        value={props.filter_value}
+        updFilter={props.updFilter}
+      />
       {props.didGet ? (
         <Paper className={style.list}>
           <List>{addresses_component}</List>

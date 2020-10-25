@@ -10,6 +10,7 @@ function addresses(state: AddressesPage = initialState, action: Action): Address
   switch (action.type) {
     case ACTION.SET_ADDRESSES:
       return {
+        ...state,
         didGet: true,
         addresses: [...action.payload].sort((a: Address, b: Address) => {
           let name1 = a.DisplayName1.toLowerCase();
@@ -29,8 +30,19 @@ function addresses(state: AddressesPage = initialState, action: Action): Address
         selected_address: action.payload,
       };
 
-    default:
-      break;
+    case ACTION.FILTER_ADDRESSES:
+      const filtered_addresses: Address[] = [];
+      for (let i = 0; i < state.addresses.length; i++) {
+        const name: string = state.addresses[i].DisplayName1.toLowerCase();
+        if (name.search(action.payload) !== -1) {
+          filtered_addresses.push(state.addresses[i]);
+        }
+      }
+      return {
+        ...state,
+        filter_value: action.payload,
+        filtered_addresses: [...filtered_addresses],
+      };
   }
 
   return state;

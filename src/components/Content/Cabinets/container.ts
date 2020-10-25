@@ -17,8 +17,11 @@ function mapStateToProps(
 ) {
   return {
     oid: state.addresses.selected_address!.Oid,
+    filter_value: state.cabinets.filter_value,
+
     didGet: state.cabinets.didGet,
     cabinets: state.cabinets.cabinets,
+    filtered_cabinets: state.cabinets.filtered_cabinets,
     selected_cabinets: state.cabinets.selected_cabinets,
   };
 }
@@ -33,6 +36,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     },
     deselectCabinet: (oid: string) => {
       dispatch(cabinetAC.deselectCabinet(oid));
+    },
+    updFilter: (filterStr: string) => {
+      dispatch(cabinetAC.updFilter(filterStr));
     },
   };
 }

@@ -6,10 +6,6 @@ import cabinetAC from "../actionCreators/cabinetAC";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
 
 async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
-  console.log(
-    `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
-  );
-
   return await Axios.get(
     `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
   )

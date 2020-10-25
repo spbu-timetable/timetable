@@ -1,5 +1,5 @@
 .search_wrapper {
-  height: 40px;
+  width: 700px;
   max-width: 90vw;
 
   display: flex;
@@ -10,8 +10,7 @@
 
 .icon {
   color: var(--icon-fill);
-
-  margin-left: var(--inset2);
+  margin-left: var(--inset1);
 
   background-color: rgba(0, 0, 0, 0) !important;
 }
