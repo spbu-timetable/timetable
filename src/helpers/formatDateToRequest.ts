@@ -1,8 +1,7 @@
 /**
- *
  * @param {Date} date date to parse
- * @param {boolean} isStart true if start, false if end. returns parsed date with 0700 at the end if true and 2000
- *
+ * @param {boolean} isStart true if start, false if end
+ * @returns returns parsed date with 0700 at the end if true and 2000
  */
 
 function formatDateToRequest(date: Date, isStart: boolean): string {
