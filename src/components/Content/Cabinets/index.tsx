@@ -15,6 +15,7 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 import { useHistory } from "react-router-dom";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
+import Banner from "../../Reusable/Banner";
 
 type Props = {
   oid: string;
@@ -125,9 +126,15 @@ const Cabinets = (props: Props) => {
       )}
 
       {props.didGet ? (
-        <Paper className={style.list}>
-          <List>{cabinets_component}</List>
-        </Paper>
+        <>
+          {props.filter_value !== "" && props.filtered_cabinets.length === 0 ? (
+            <Banner mainText="Кабинет не найден" secondaryText="Попробуйте ввести иначе или найти в списке" />
+          ) : (
+            <Paper className={style.list}>
+              <List>{cabinets_component}</List>
+            </Paper>
+          )}
+        </>
       ) : (
         <CircularProgress className={style.progress} />
       )}

@@ -10,6 +10,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { useHistory } from "react-router-dom";
 import Search from "../../Reusable/Search";
 import Paper from "@material-ui/core/Paper";
+import Banner from "../../Reusable/Banner";
 
 type Props = {
   didGet: boolean;
@@ -57,9 +58,18 @@ const Addresses = (props: Props) => {
         updFilter={props.updFilter}
       />
       {props.didGet ? (
-        <Paper className={style.list}>
-          <List>{addresses_component}</List>
-        </Paper>
+        <>
+          {props.filter_value !== "" && props.filtered_addresses.length === 0 ? (
+            <Banner
+              mainText="Адрес не найден"
+              secondaryText="Попробуйте ввести иначе или найти в списке"
+            />
+          ) : (
+            <Paper className={style.list}>
+              <List>{addresses_component}</List>
+            </Paper>
+          )}
+        </>
       ) : (
         <CircularProgress className={style.progress} />
       )}

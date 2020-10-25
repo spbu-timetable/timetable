@@ -48,3 +48,10 @@
     text-decoration: none;
     color: inherit;
 }
+
+.banner {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: var(--inset5);
+    margin-bottom: var(--inset1);
+}
