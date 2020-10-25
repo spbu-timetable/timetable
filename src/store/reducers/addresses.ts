@@ -34,7 +34,7 @@ function addresses(state: AddressesPage = initialState, action: Action): Address
       const filtered_addresses: Address[] = [];
       for (let i = 0; i < state.addresses.length; i++) {
         const name: string = state.addresses[i].DisplayName1.toLowerCase();
-        if (name.search(action.payload.toLowerCase()) !== -1) {
+        if (name.search(action.payload.toLowerCase().trim()) !== -1) {
           filtered_addresses.push(state.addresses[i]);
         }
       }
