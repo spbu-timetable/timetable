@@ -47,7 +47,7 @@ const Search = (props: Props) => {
       <MyTextField
         inputRef={search_ref}
         className={style.shadow}
-        placeholder="Search..."
+        placeholder="Поиск..."
         value={props.value}
         margin="normal"
         variant="outlined"
