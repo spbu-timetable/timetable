@@ -50,7 +50,7 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       const filtered_cabinets: Cabinet[] = [];
       for (let i = 0; i < state.cabinets.length; i++) {
         const name: string = state.cabinets[i].DisplayName1.toLowerCase();
-        if (name.search(action.payload) !== -1) {
+        if (name.search(action.payload.toLowerCase()) !== -1) {
           filtered_cabinets.push(state.cabinets[i]);
         }
       }
