@@ -16,9 +16,5 @@
 .list {
     margin: var(--inset2) 0;
     width: inherit;
-}
-
-.search {
-    width: inherit;
-    margin: 0;
+    max-width: inherit;
 }
