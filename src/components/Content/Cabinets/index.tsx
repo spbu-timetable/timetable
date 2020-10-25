@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import style from "./style.module.css";
 
 import Cabinet from "../../../types/Cabinet";
@@ -99,33 +99,28 @@ const Cabinets = (props: Props) => {
     <div className={style.cabinets}>
       <h1>Выберите кабинет</h1>
       <Search className={style.search} />
-      <>
-        <div className={style.chips}>{selected_cabinets_component}</div>
-        {props.selected_cabinets.length ? (
-          <Button
-            variant="contained"
-            className={style.btn}
-            color="primary"
-            onClick={() => setAddress()}
-          >
-            Показать
-          </Button>
-        ) : (
-          <Button disabled variant="contained" className={style.btn}>
-            Показать
-          </Button>
-        )}
-      </>
 
-      <>
-        {props.didGet ? (
-          <Paper className={style.list}>
-            <List>{cabinets_component}</List>
-          </Paper>
-        ) : (
-          <CircularProgress className={style.progress} />
-        )}
-      </>
+      <div className={style.chips}>{selected_cabinets_component}</div>
+      {props.selected_cabinets.length ? (
+        <Button
+          variant="contained"
+          className={style.btn}
+          color="primary"
+          onClick={() => setAddress()}
+        >
+          Показать
+        </Button>
+      ) : (
+        <></>
+      )}
+
+      {props.didGet ? (
+        <Paper className={style.list}>
+          <List>{cabinets_component}</List>
+        </Paper>
+      ) : (
+        <CircularProgress className={style.progress} />
+      )}
     </div>
   );
 };
