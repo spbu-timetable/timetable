@@ -22,7 +22,7 @@ type Props = {
 const Header = (props: Props) => {
   const history = useHistory();
   return (
-    <AppBar position="static" className={style.header}>
+    <AppBar position="fixed">
       <Toolbar>
         <Link
           color="initial"
