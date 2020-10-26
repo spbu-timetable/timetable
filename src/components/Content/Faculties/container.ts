@@ -3,7 +3,7 @@ import { CombinedState } from "redux";
 import Faculty from ".";
 import FacultyT from "../../../types/Faculty";
 import Action from "../../../types/Action";
-import FacultiesPage from "../../../types/FacultiesPage";
+import FacultiesPage from "../../../types/pages/FacultiesPage";
 import facultyAC from "../../../store/actionCreators/facultyAC";
 
 function mapStateToProps(

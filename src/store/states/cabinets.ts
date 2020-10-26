@@ -1,4 +1,4 @@
-import CabinetsPage from "../../types/CabinetsPage";
+import CabinetsPage from "../../types/pages/CabinetsPage";
 
 const cabinets: CabinetsPage = {
   didGet: false,

@@ -2,7 +2,7 @@ import filterSearch from "../../helpers/searchFilter";
 import sortList from "../../helpers/sortList";
 import Action from "../../types/Action";
 import Cabinet from "../../types/Cabinet";
-import CabinetsPage from "../../types/CabinetsPage";
+import CabinetsPage from "../../types/pages/CabinetsPage";
 
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/cabinets";

@@ -1,7 +1,7 @@
 import FacultyLocalStorage from "../../localStorage/faculty";
 import Action from "../../types/Action";
 import Faculty from "../../types/Faculty";
-import FacultiesPage from "../../types/FacultiesPage";
+import FacultiesPage from "../../types/pages/FacultiesPage";
 
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/faculties";

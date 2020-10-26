@@ -2,12 +2,12 @@ import { CombinedState } from "redux";
 import Cabinets from ".";
 
 import Action from "../../../types/Action";
-import AddressesPage from "../../../types/AddressesPage";
+import AddressesPage from "../../../types/pages/AddressesPage";
 
 import { connect } from "react-redux";
 import cabinetAC from "../../../store/actionCreators/cabinetAC";
 import Cabinet from "../../../types/Cabinet";
-import CabinetsPage from "../../../types/CabinetsPage";
+import CabinetsPage from "../../../types/pages/CabinetsPage";
 
 function mapStateToProps(
   state: CombinedState<{

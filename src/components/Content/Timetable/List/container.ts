@@ -3,7 +3,7 @@ import { CombinedState } from "redux";
 import TimetableList from ".";
 import cabinetAC from "../../../../store/actionCreators/cabinetAC";
 import Action from "../../../../types/Action";
-import CabinetsPage from "../../../../types/CabinetsPage";
+import CabinetsPage from "../../../../types/pages/CabinetsPage";
 import Header from "../../../../types/Header";
 
 function mapStateToProps(

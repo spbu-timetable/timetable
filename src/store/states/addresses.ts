@@ -1,5 +1,5 @@
 import AddressLocalStorage from "../../localStorage/address";
-import AddressesPage from "../../types/AddressesPage";
+import AddressesPage from "../../types/pages/AddressesPage";
 
 const addresses: AddressesPage = {
   didGet: false,

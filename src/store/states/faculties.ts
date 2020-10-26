@@ -1,5 +1,5 @@
 import FacultyLocalStorage from "../../localStorage/faculty";
-import FacultiesPage from "../../types/FacultiesPage";
+import FacultiesPage from "../../types/pages/FacultiesPage";
 
 const faculties: FacultiesPage = {
   didGet: false,

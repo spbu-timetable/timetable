@@ -1,4 +1,4 @@
-import Faculty from "./Faculty";
+import Faculty from "../Faculty";
 
 type FacultiesPage = {
   didGet: boolean;

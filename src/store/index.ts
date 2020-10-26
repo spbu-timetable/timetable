@@ -5,17 +5,17 @@ import createSagaMiddleware from "redux-saga";
 
 import Action from "../types/Action";
 import Header from "../types/Header";
-import AddressesPage from "../types/AddressesPage";
+import AddressesPage from "../types/pages/AddressesPage";
 
 import header from "./reducers/header";
 import addresses from "./reducers/addresses";
 import watchGetAddresses from "./sagas/getAdresses";
 import cabinets from "./reducers/cabinets";
-import CabinetsPage from "../types/CabinetsPage";
+import CabinetsPage from "../types/pages/CabinetsPage";
 import watchGetCabinets from "./sagas/getCabinets";
 import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
 import faculties from "./reducers/faculties";
-import FacultiesPage from "../types/FacultiesPage";
+import FacultiesPage from "../types/pages/FacultiesPage";
 import watchGetFaculties from "./sagas/getFaculties";
 
 const reducers = combineReducers({

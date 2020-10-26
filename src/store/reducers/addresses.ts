@@ -3,7 +3,7 @@ import sortList from "../../helpers/sortList";
 import AddressLocalStorage from "../../localStorage/address";
 import Action from "../../types/Action";
 import Address from "../../types/Address";
-import AddressesPage from "../../types/AddressesPage";
+import AddressesPage from "../../types/pages/AddressesPage";
 
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/addresses";

@@ -1,4 +1,4 @@
-import Cabinet from "./Cabinet";
+import Cabinet from "../Cabinet";
 
 type CabinetsPage = {
   didGet: boolean;

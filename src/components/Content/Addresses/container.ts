@@ -3,7 +3,7 @@ import { CombinedState } from "redux";
 import Address from ".";
 import AddressT from "../../../types/Address";
 import Action from "../../../types/Action";
-import AddressesPage from "../../../types/AddressesPage";
+import AddressesPage from "../../../types/pages/AddressesPage";
 import addressAC from "../../../store/actionCreators/addressAC";
 
 function mapStateToProps(
