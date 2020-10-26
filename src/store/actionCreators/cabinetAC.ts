@@ -64,9 +64,16 @@ function updFilter(filterStr: string): Action {
   };
 }
 
+function cleanCabinets(): Action {
+  return {
+    type: ACTION.CLEAN_CABINETS,
+  };
+}
+
 const cabinetAC = {
   getCabinets: getCabinets,
   setCabinets: setCabinets,
+  cleanCabinets: cleanCabinets,
 
   selectCabinet: selectCabinet,
   deselectCabinet: deselectCabinet,

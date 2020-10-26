@@ -22,6 +22,14 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
           return 0;
         }),
       };
+    case ACTION.CLEAN_CABINETS:
+      return {
+        ...state,
+        didGet: false,
+        cabinets: [],
+        selected_cabinets: [],
+      };
+
     case ACTION.SELECT_CABINET:
       if (!state.selected_cabinets.includes(action.payload) && state.selected_cabinets.length < 4) {
         return {

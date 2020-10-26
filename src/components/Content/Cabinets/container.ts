@@ -40,6 +40,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilter: (filterStr: string) => {
       dispatch(cabinetAC.updFilter(filterStr));
     },
+    cleanCabinets: () => {
+      dispatch(cabinetAC.cleanCabinets());
+    },
   };
 }
 

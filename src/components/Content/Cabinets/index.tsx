@@ -30,10 +30,13 @@ type Props = {
   selectCabinet: (cabinet: Cabinet) => void;
   deselectCabinet: (oid: string) => void;
   updFilter: (filterStr: string) => void;
+
+  cleanCabinets: () => void;
 };
 
 const Cabinets = (props: Props) => {
   const [, setChipData] = React.useState<Cabinet[]>(props.selected_cabinets);
+
   const handleDelete = (cabinetToDelete: Cabinet) => () => {
     setChipData((cabinets) => cabinets.filter((cabinet) => cabinet.Oid !== cabinetToDelete.Oid));
     props.deselectCabinet(cabinetToDelete.Oid);
@@ -43,6 +46,11 @@ const Cabinets = (props: Props) => {
   function setAddress(): void {
     history.push("/addresses/cabinets/timetable");
   }
+
+  React.useEffect(() => {
+    props.cleanCabinets();
+    props.getCabinets(props.oid);
+  }, [props.oid]);
 
   let selected_cabinets_component;
   if (props.selected_cabinets) {
@@ -57,7 +65,6 @@ const Cabinets = (props: Props) => {
   }
 
   let cabinets_component;
-
   function checkSelection(cabinet: Cabinet): boolean {
     if (props.selected_cabinets.length === 4) {
       return true;
@@ -70,10 +77,14 @@ const Cabinets = (props: Props) => {
     }
     return false;
   }
+  props.filter_value !== ""
+    ? (cabinets_component = createCabinetsComponent(props.filtered_cabinets))
+    : (cabinets_component = createCabinetsComponent(props.cabinets));
 
   function createCabinetsComponent(cabinets: Cabinet[]): JSX.Element[] {
-    return (cabinets_component = cabinets.map((cabinet: Cabinet) => (
+    return cabinets.map((cabinet: Cabinet) => (
       <ListItem
+        key={cabinet.Oid}
         button
         divider={true}
         disabled={checkSelection(cabinet)}
@@ -90,15 +101,7 @@ const Cabinets = (props: Props) => {
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
-    )));
-  }
-
-  if (props.didGet) {
-    props.filter_value !== ""
-      ? (cabinets_component = createCabinetsComponent(props.filtered_cabinets))
-      : (cabinets_component = createCabinetsComponent(props.cabinets));
-  } else {
-    props.getCabinets(props.oid);
+    ));
   }
 
   return (
@@ -128,7 +131,10 @@ const Cabinets = (props: Props) => {
       {props.didGet ? (
         <>
           {props.filter_value !== "" && props.filtered_cabinets.length === 0 ? (
-            <Banner mainText="Кабинет не найден" secondaryText="Попробуйте ввести иначе или найти в списке" />
+            <Banner
+              mainText="Кабинет не найден"
+              secondaryText="Попробуйте ввести иначе или найти в списке"
+            />
           ) : (
             <Paper className={style.list}>
               <List>{cabinets_component}</List>

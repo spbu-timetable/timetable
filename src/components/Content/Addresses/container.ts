@@ -31,6 +31,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilter: (filterStr: string) => {
       dispatch(addressAC.updFilter(filterStr));
     },
+    // cleanState: () => {
+    //   dispatch(addressAC.setAddress)
+    // }
   };
 }
 

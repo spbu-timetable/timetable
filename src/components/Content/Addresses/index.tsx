@@ -31,9 +31,9 @@ const Addresses = (props: Props) => {
     history.push("/addresses/cabinets");
   }
 
-  function createListItems(cabinets: Address[]) {
-    return cabinets.map((address: Address) => (
-      <ListItem button divider={true} onClick={() => setAddress(address)}>
+  function createListItems(addresses: Address[]) {
+    return addresses.map((address: Address) => (
+      <ListItem key={address.Oid} button divider={true} onClick={() => setAddress(address)}>
         <ListItemText primary={address.DisplayName1} />
       </ListItem>
     ));
