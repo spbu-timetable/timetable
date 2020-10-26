@@ -6,6 +6,7 @@ import FacultiesPage from "../../types/FacultiesPage";
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/faculties";
 import sortList from "../../helpers/sortList";
+import filterSearch from "../../helpers/searchFilter";
 
 function faculties(state: FacultiesPage = initialState, action: Action): FacultiesPage {
   switch (action.type) {
@@ -23,17 +24,10 @@ function faculties(state: FacultiesPage = initialState, action: Action): Faculti
       };
 
     case ACTION.FILTER_FACULTIES:
-      const filtered_faculties: Faculty[] = [];
-      for (let i = 0; i < state.faculties.length; i++) {
-        const name: string = state.faculties[i].Name.toLowerCase();
-        if (name.search(action.payload.toLowerCase().trim()) !== -1) {
-          filtered_faculties.push(state.faculties[i]);
-        }
-      }
       return {
         ...state,
         filter_value: action.payload,
-        filtered_faculties: [...filtered_faculties],
+        filtered_faculties: filterSearch(state.faculties, action.payload),
       };
   }
 

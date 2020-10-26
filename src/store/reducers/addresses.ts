@@ -1,3 +1,4 @@
+import filterSearch from "../../helpers/searchFilter";
 import sortList from "../../helpers/sortList";
 import AddressLocalStorage from "../../localStorage/address";
 import Action from "../../types/Action";
@@ -25,17 +26,10 @@ function addresses(state: AddressesPage = initialState, action: Action): Address
       };
 
     case ACTION.FILTER_ADDRESSES:
-      const filtered_addresses: Address[] = [];
-      for (let i = 0; i < state.addresses.length; i++) {
-        const name: string = state.addresses[i].DisplayName1.toLowerCase();
-        if (name.search(action.payload.toLowerCase().trim()) !== -1) {
-          filtered_addresses.push(state.addresses[i]);
-        }
-      }
       return {
         ...state,
         filter_value: action.payload,
-        filtered_addresses: [...filtered_addresses],
+        filtered_addresses: filterSearch(state.addresses, action.payload),
       };
   }
 
