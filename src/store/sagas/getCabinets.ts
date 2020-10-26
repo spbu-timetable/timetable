@@ -21,8 +21,6 @@ async function getCabinets(oid: string) {
 function* workerGetCabinets(action: Action) {
   const data = yield call(getCabinets, action.payload);
 
-  console.log(data);
-
   if (data !== undefined) {
     yield put(cabinetAC.setCabinets(data));
   }

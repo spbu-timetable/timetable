@@ -6,7 +6,7 @@
 
 function formatDateToRequest(date: Date, isStart: boolean): string {
   const parsedString: string =
-    `${date.getFullYear()}` + `${date.getMonth() + 1}` + `${date.getDate()}`;
+    `${date.getFullYear()} ${date.getMonth() + 1} ${date.getDate()}`;
   return isStart ? parsedString + `0700` : parsedString + `2000`;
 }
 
