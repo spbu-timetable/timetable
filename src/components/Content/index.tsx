@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Addresses from "./Addresses/container";
 import Cabinets from "./Cabinets/container";
+import Faculties from "./Faculties/container";
 import Groups from "./Groups";
 import Main from "./Main";
 import style from "./style.module.css";
@@ -16,7 +17,8 @@ const Content = () => {
         <Route path="/addresses/cabinets" component={() => <Cabinets />} />
         <Route path="/teachers" component={() => <Teachers />} />
         <Route path="/addresses" component={() => <Addresses />} />
-        <Route path="/groups" component={() => <Groups />} />
+        <Route path="/faculties/groups" component={() => <Groups />} />
+        <Route path="/faculties" component={() => <Faculties />} />
         <Route path="/" component={() => <Main />} />
       </Switch>
     </div>
