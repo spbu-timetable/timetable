@@ -35,7 +35,7 @@ const Main = (props: Props) => {
         </Link>
       </MyButton>
       <MyButton variant="contained">
-        <Link className={style.link} to="/groups">
+        <Link className={style.link} to="/faculties">
           Группы
         </Link>
       </MyButton>
