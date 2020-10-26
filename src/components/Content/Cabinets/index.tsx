@@ -36,7 +36,6 @@ type Props = {
 
 const Cabinets = (props: Props) => {
   const [, setChipData] = React.useState<Cabinet[]>(props.selected_cabinets);
-
   const handleDelete = (cabinetToDelete: Cabinet) => () => {
     setChipData((cabinets) => cabinets.filter((cabinet) => cabinet.Oid !== cabinetToDelete.Oid));
     props.deselectCabinet(cabinetToDelete.Oid);
