@@ -1,3 +1,4 @@
+import sortList from "../../helpers/sortList";
 import Action from "../../types/Action";
 import Cabinet from "../../types/Cabinet";
 import CabinetsPage from "../../types/CabinetsPage";
@@ -11,16 +12,9 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       return {
         ...state,
         didGet: true,
-        cabinets: [...action.payload].sort((a: Cabinet, b: Cabinet) => {
-          let name1 = a.DisplayName1.toLowerCase();
-          let name2 = b.DisplayName1.toLowerCase();
-          if (name1 < name2) {
-            return -1;
-          } else if (name1 > name2) {
-            return 1;
-          }
-          return 0;
-        }),
+        cabinets: [...action.payload].sort((a: Cabinet, b: Cabinet) =>
+          sortList(a.DisplayName1, b.DisplayName1)
+        ),
       };
     case ACTION.CLEAN_CABINETS:
       return {

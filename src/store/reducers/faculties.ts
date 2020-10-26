@@ -5,6 +5,7 @@ import FacultiesPage from "../../types/FacultiesPage";
 
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/faculties";
+import sortList from "../../helpers/sortList";
 
 function faculties(state: FacultiesPage = initialState, action: Action): FacultiesPage {
   switch (action.type) {
@@ -12,16 +13,7 @@ function faculties(state: FacultiesPage = initialState, action: Action): Faculti
       return {
         ...state,
         didGet: true,
-        faculties: [...action.payload].sort((a: Faculty, b: Faculty) => {
-          let name1 = a.Name.toLowerCase();
-          let name2 = b.Name.toLowerCase();
-          if (name1 < name2) {
-            return -1;
-          } else if (name1 > name2) {
-            return 1;
-          }
-          return 0;
-        }),
+        faculties: [...action.payload].sort((a: Faculty, b: Faculty) => sortList(a.Name, b.Name)),
       };
     case ACTION.SET_FACULTY:
       FacultyLocalStorage.save(action.payload);
