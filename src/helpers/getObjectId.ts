@@ -4,12 +4,12 @@
  * */
 
 function getObjectName(object: any): string {
-  if (object.DisplayName !== undefined) {
-    return object.DisplayName;
-  } else if (object.DisplayName1 !== undefined) {
-    return object.DisplayName1;
+  if (object.Oid !== undefined) {
+    return object.Oid;
+  } else if (object.Id !== undefined) {
+    return object.Id;
   } else {
-    return object.Name;
+    return object.oid;
   }
 }
 

@@ -20,6 +20,7 @@ import watchGetAddresses from "./sagas/getAdresses";
 import watchGetCabinets from "./sagas/getCabinets";
 import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
 import watchGetFaculties from "./sagas/getFaculties";
+import watchGetEducators from "./sagas/getEducators";
 
 const reducers = combineReducers({
   header: header,
@@ -46,5 +47,6 @@ saga.run(watchGetAddresses);
 saga.run(watchGetCabinets);
 saga.run(watchGetClassroomEventsDays);
 saga.run(watchGetFaculties);
+saga.run(watchGetEducators);
 
 export default store;

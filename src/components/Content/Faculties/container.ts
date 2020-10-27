@@ -11,7 +11,6 @@ function mapStateToProps(
     faculties: FacultiesPage;
   }>
 ) {
-  console.log('container' + state.faculties)
   return {
     didGet: state.faculties.didGet,
     filter_value: state.faculties.filter_value,
@@ -24,7 +23,6 @@ function mapStateToProps(
 function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {
     getFaculties: () => {
-      console.log('container')
       dispatch(facultyAC.getFaculties());
     },
     setFaculty: (faculty: FacultyT) => {

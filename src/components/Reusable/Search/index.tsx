@@ -11,6 +11,7 @@ type Props = {
   value: string;
 
   updFilter: (filterStr: string) => void;
+  updFilterValue?: (filterStr: string) => void;
 };
 
 const MyTextField = withStyles({
@@ -59,7 +60,12 @@ const Search = (props: Props) => {
         InputProps={{
           startAdornment: <SearchIcon className={style.icon} />,
         }}
-        onChange={() => props.updFilter(search_ref.current!.value)}
+        onChange={() => {
+          props.updFilter(search_ref.current!.value);
+          if (props.updFilterValue !== undefined) {
+            props.updFilterValue!(search_ref.current!.value);
+          }
+        }}
       />
     </Paper>
   );

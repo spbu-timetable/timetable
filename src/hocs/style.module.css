@@ -6,7 +6,6 @@
 
     width: 700px;
     max-width: 90vw;
-
 }
 
 .search {
@@ -19,7 +18,41 @@
 }
 
 .list {
-    margin: var(--inset2) 0;
+    margin-top: var(--inset1);
     width: inherit;
     max-width: inherit;
 }
+
+.chips {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: left !important;
+
+    width: inherit;
+    max-width: inherit;
+}
+
+.chip {
+    margin: var(--inset1) !important;
+    margin-left: 0px;
+}
+
+.btn {
+    margin-top: var(--inset1) !important;
+}
+
+.link {
+    width: inherit;
+    height: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+
+.banner {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: var(--inset5);
+    margin-bottom: var(--inset1);
+}
+

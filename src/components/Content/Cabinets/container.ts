@@ -28,8 +28,8 @@ function mapStateToProps(
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {
-    getCabinets: (oid: string) => {
-      dispatch(cabinetAC.getCabinets(oid));
+    getCabinets: (oid: string | undefined) => {
+      dispatch(cabinetAC.getCabinets(oid!));
     },
     selectCabinet: (cabinet: Cabinet) => {
       dispatch(cabinetAC.selectCabinet(cabinet));

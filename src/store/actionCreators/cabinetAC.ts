@@ -57,10 +57,10 @@ function setCabinetTimetable(classroomEventsDays: ClassroomEventsDays): Action {
   };
 }
 
-function updFilter(filterStr: string): Action {
+function updFilter(filterStr: string | undefined): Action {
   return {
     type: ACTION.FILTER_CABINETS,
-    payload: filterStr,
+    payload: filterStr!,
   };
 }
 
