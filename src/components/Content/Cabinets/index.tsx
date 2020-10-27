@@ -106,12 +106,7 @@ const Cabinets = (props: Props) => {
   return (
     <div className={style.cabinets}>
       <h1>Выберите кабинет</h1>
-      <Search
-        className={style.search}
-        items={props.cabinets}
-        value={props.filter_value}
-        updFilter={props.updFilter}
-      />
+      <Search className={style.search} value={props.filter_value} updFilter={props.updFilter} />
 
       <div className={style.chips}>{selected_cabinets_component}</div>
       {props.selected_cabinets.length ? (

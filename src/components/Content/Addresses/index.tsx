@@ -51,12 +51,7 @@ const Addresses = (props: Props) => {
   return (
     <div className={style.address}>
       <h1>Выберите адрес</h1>
-      <Search
-        className={style.search}
-        items={props.addresses}
-        value={props.filter_value}
-        updFilter={props.updFilter}
-      />
+      <Search className={style.search} value={props.filter_value} updFilter={props.updFilter} />
       {props.didGet ? (
         <>
           {props.filter_value !== "" && props.filtered_addresses.length === 0 ? (

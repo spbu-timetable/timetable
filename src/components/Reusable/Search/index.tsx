@@ -9,7 +9,6 @@ import style from "./style.module.css";
 type Props = {
   className?: string;
   value: string;
-  items: any[];
 
   updFilter: (filterStr: string) => void;
 };

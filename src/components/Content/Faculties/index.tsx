@@ -51,12 +51,7 @@ const Faculties = (props: Props) => {
   return (
     <div className={style.faculty}>
       <h1>Выберите Факультет</h1>
-      <Search
-        className={style.search}
-        items={props.faculties}
-        value={props.filter_value}
-        updFilter={props.updFilter}
-      />
+      <Search className={style.search} value={props.filter_value} updFilter={props.updFilter} />
       {props.didGet ? (
         <>
           {props.filter_value !== "" && props.filtered_faculties.length === 0 ? (
