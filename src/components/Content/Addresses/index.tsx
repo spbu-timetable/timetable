@@ -1,16 +1,7 @@
 import React from "react";
-import style from "./style.module.css";
 
 import Address from "../../../types/Address";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { useHistory } from "react-router-dom";
-import Search from "../../Reusable/Search";
-import Paper from "@material-ui/core/Paper";
-import Banner from "../../Reusable/Banner";
+import SearchListPage from "../../../hocs/SearchListPage";
 
 type Props = {
   didGet: boolean;
@@ -24,51 +15,20 @@ type Props = {
 };
 
 const Addresses = (props: Props) => {
-  const history = useHistory();
-
-  function setAddress(address: Address): void {
-    props.setAddress(address);
-    history.push("/addresses/cabinets");
-  }
-
-  function createListItems(addresses: Address[]) {
-    return addresses.map((address: Address) => (
-      <ListItem key={address.Oid} button divider={true} onClick={() => setAddress(address)}>
-        <ListItemText primary={address.DisplayName1} />
-      </ListItem>
-    ));
-  }
-
-  let addresses_component;
-  if (props.didGet) {
-    props.filter_value !== ""
-      ? (addresses_component = createListItems(props.filtered_addresses))
-      : (addresses_component = createListItems(props.addresses));
-  } else {
-    props.getAddresses();
-  }
-
   return (
-    <div className={style.address}>
-      <h1>Выберите адрес</h1>
-      <Search className={style.search} value={props.filter_value} updFilter={props.updFilter} />
-      {props.didGet ? (
-        <>
-          {props.filter_value !== "" && props.filtered_addresses.length === 0 ? (
-            <Banner
-              mainText="Адрес не найден"
-              secondaryText="Попробуйте ввести иначе или найти в списке"
-            />
-          ) : (
-            <Paper className={style.list}>
-              <List>{addresses_component}</List>
-            </Paper>
-          )}
-        </>
-      ) : (
-        <CircularProgress className={style.progress} />
-      )}
-    </div>
+    <SearchListPage
+      didGet={props.didGet}
+      url_to_push={"/addresses/cabinets"}
+      items={props.addresses}
+      filtered_items={props.filtered_addresses}
+      filter_value={props.filter_value}
+      header_text={"Выберите Адрес"}
+      banner_main_text={"Адрес не найден"}
+      banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
+      getItems={props.getAddresses}
+      setItem={props.setAddress}
+      updFilter={props.updFilter}
+    />
   );
 };
 
