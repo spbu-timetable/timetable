@@ -1,7 +1,7 @@
 import React from "react";
+import SearchListPage from "../../../hocs/SearchListPage";
 
 import Faculty from "../../../types/Faculty";
-import SearchListPage from "../../../hocs/SearchListPage";
 
 type Props = {
   didGet: boolean;
