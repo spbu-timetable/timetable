@@ -14,7 +14,7 @@ type Props = {
 
   getCabinets: (oid: string | undefined) => void;
   selectCabinet: (cabinet: Cabinet) => void;
-  deselectCabinet: (oid: string) => void;
+  deselectCabinet: (cabinet: Cabinet) => void;
   updFilter: (filterStr: string) => void;
 
   cleanCabinets: () => void;

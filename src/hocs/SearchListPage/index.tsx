@@ -1,20 +1,17 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 
 import React from "react";
 import style from "./style.module.css";
 import { useHistory } from "react-router-dom";
-import Banner from "../components/Reusable/Banner";
-import Search from "../components/Reusable/Search";
-import getObjectName from "../helpers/getObjectName";
-import Chip from "@material-ui/core/Chip";
+import Banner from "../../components/Reusable/Banner";
+import Search from "../../components/Reusable/Search";
+import getObjectName from "../../helpers/getObjectName";
+
 import Button from "@material-ui/core/Button";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import IconButton from "@material-ui/core/IconButton";
-import { Add } from "@material-ui/icons";
+import Chip from "@material-ui/core/Chip";
+import createListItems from "./createListItems";
 
 type Props = {
   items?: any;
@@ -43,12 +40,10 @@ type Props = {
 
 function SearchListPage(props: Props) {
   const [, setChipData] = React.useState<any>(props.selected_items);
-  const handleDelete = (itemToDelete: any) => () => {
-    alert("tapped");
-    setChipData((items: any) => items.filter((item: any) => item.Oid !== itemToDelete.Oid));
-    props.deselectItem!(itemToDelete);
+  const handleDelete = (chipToDelete: any) => () => {
+    setChipData((chips: any) => chips.filter((chip: any) => chip.key !== chipToDelete.key));
+    props.deselectItem!(chipToDelete);
   };
-
   React.useEffect(() => {
     if (props.oid !== undefined) {
       props.cleanItems!();
@@ -57,7 +52,7 @@ function SearchListPage(props: Props) {
   }, [props.oid, props.cleanItems, props.getItems]);
 
   let selected_items_component;
-  if (props.selected_items) {
+  if (props.selected_items !== undefined) {
     selected_items_component = props.selected_items.map((item: any) => (
       <Chip
         key={item.Oid}
@@ -72,76 +67,29 @@ function SearchListPage(props: Props) {
   function setAddress(): void {
     history.push(props.url_to_push!);
   }
-  function setItem(item: any) {
-    props.setItem!(item);
-  }
-  function checkSelection(cabinet: any): boolean {
-    if (props.selected_items.length === 4) {
-      return true;
-    }
-
-    for (let i = 0; i < props.selected_items.length; i++) {
-      if (props.selected_items.includes(cabinet)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  function createListItems(items: any) {
-    const list_items = [];
-
-    for (let i = 0; i < items.length; i++) {
-      list_items.push(
-        <ListItem
-          key={i}
-          button
-          disabled={props.selected_items === undefined ? false : checkSelection(items[i])}
-          divider={i === items.length - 1 ? false : true}
-          onClick={() => {
-            if (props.selected_items === undefined) {
-              setItem(items[i]);
-              setAddress();
-            } else {
-              setItem(items[i]);
-            }
-          }}
-        >
-          <ListItemText primary={getObjectName(items[i])} />
-          {props.selected_items !== undefined ? (
-            <ListItemSecondaryAction>
-              <IconButton
-                edge="end"
-                disabled={checkSelection(items[i])}
-                onClick={() => props.setItem!(items[i])}
-              >
-                <Add />
-              </IconButton>
-            </ListItemSecondaryAction>
-          ) : (
-            <></>
-          )}
-        </ListItem>
-      );
-    }
-    return list_items;
-  }
 
   let items_component;
   if (props.didGet) {
     if (props.filter_value !== "") {
-      items_component = createListItems(props.filtered_items);
-    } else {
-      if (props.items !== undefined) {
-        items_component = createListItems(props.items);
-      }
+      items_component = createListItems(
+        props.filtered_items,
+        props.selected_items,
+        props.url_to_push!,
+        props.setItem!,
+        setAddress
+      );
+    } else if (props.items !== undefined) {
+      items_component = createListItems(
+        props.items,
+        props.selected_items,
+        props.url_to_push!,
+        props.setItem!,
+        setAddress
+      );
     }
   } else {
     if (props.getItems !== undefined) {
-      if (props.oid !== undefined) {
-        props.getItems!(props.oid);
-      } else {
-        props.getItems!();
-      }
+      props.oid === undefined ? props.getItems!() : props.getItems!(props.oid);
     }
   }
 

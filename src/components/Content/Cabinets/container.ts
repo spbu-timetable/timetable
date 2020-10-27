@@ -34,8 +34,8 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     selectCabinet: (cabinet: Cabinet) => {
       dispatch(cabinetAC.selectCabinet(cabinet));
     },
-    deselectCabinet: (oid: string) => {
-      dispatch(cabinetAC.deselectCabinet(oid));
+    deselectCabinet: (cabinet: Cabinet) => {
+      dispatch(cabinetAC.deselectCabinet(cabinet));
     },
     updFilter: (filterStr: string) => {
       dispatch(cabinetAC.updFilter(filterStr));

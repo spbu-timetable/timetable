@@ -24,10 +24,10 @@ function selectCabinet(cabinet: Cabinet): Action {
   };
 }
 
-function deselectCabinet(id: string): Action {
+function deselectCabinet(cabinet: Cabinet): Action {
   return {
     type: ACTION.DESELECT_CABINET,
-    payload: id,
+    payload: cabinet,
   };
 }
 

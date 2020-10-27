@@ -36,7 +36,7 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
 
     case ACTION.DESELECT_CABINET:
       for (let i = 0; i < state.selected_cabinets.length; i++) {
-        if (action.payload === state.selected_cabinets[i].Oid) {
+        if (action.payload === state.selected_cabinets[i]) {
           state.selected_cabinets.splice(i, 1);
         }
       }

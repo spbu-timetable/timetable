@@ -3,7 +3,7 @@
  * @returns DisplayName1 or Name of the object
  * */
 
-function getObjectName(object: any): string {
+function getObjectId(object: any): string {
   if (object.Oid !== undefined) {
     return object.Oid;
   } else if (object.Id !== undefined) {
@@ -13,4 +13,4 @@ function getObjectName(object: any): string {
   }
 }
 
-export default getObjectName;
+export default getObjectId;
