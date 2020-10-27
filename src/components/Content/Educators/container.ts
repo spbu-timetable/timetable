@@ -15,13 +15,18 @@ function mapStateToProps(
     didGet: state.educators.didGet,
     filter_value: state.educators.filter_value,
     filtered_educators: state.educators.filtered_educators,
+    selected_educators: state.educators.selected_educators,
   };
 }
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {
-    setEducator: (educator: Educator) => {
-      dispatch(educatorAC.setEducator(educator));
+    selectEducator: (educator: Educator) => {
+      dispatch(educatorAC.selectEducator(educator));
+    },
+
+    deselectEducator: (educator: Educator) => {
+      dispatch(educatorAC.deselectEducator(educator));
     },
 
     updFilter: (filter_value: string) => {

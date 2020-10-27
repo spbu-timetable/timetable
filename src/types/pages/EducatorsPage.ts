@@ -5,7 +5,7 @@ type EducatorsPage = {
   filter_value: string;
 
   filtered_educators: any;
-  selected_educator?: Educator;
+  selected_educators: Educator[];
 };
 
 export default EducatorsPage;

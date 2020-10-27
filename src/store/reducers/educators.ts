@@ -11,10 +11,25 @@ function educators(state: EducatorsPage = initialState, action: Action): Educato
         didGet: true,
         filtered_educators: action.payload,
       };
-    case ACTION.SET_EDUCATOR:
+    case ACTION.SELECT_EDUCATOR:
+      if (
+        !state.selected_educators.includes(action.payload) &&
+        state.selected_educators.length < 4
+      ) {
+        return {
+          ...state,
+          selected_educators: [...state.selected_educators, action.payload],
+        };
+      }
+      break;
+    case ACTION.DESELECT_EDUCATOR:
+      for (let i = 0; i < state.selected_educators.length; i++) {
+        if (action.payload === state.selected_educators[i]) {
+          state.selected_educators.splice(i, 1);
+        }
+      }
       return {
         ...state,
-        selected_educator: action.payload,
       };
 
     case ACTION.UPD_FILTER_VALUE: {

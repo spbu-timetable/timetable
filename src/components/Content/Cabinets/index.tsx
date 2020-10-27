@@ -24,6 +24,7 @@ const Cabinets = (props: Props) => {
   return (
     <SearchListPage
       url_to_push="/addresses/cabinets/timetable"
+      header_text="Выберите кабинеты"
       oid={props.oid}
       didGet={props.didGet}
       filter_value={props.filter_value}
