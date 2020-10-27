@@ -32,7 +32,7 @@ const Header = (props: Props) => {
             history.push("/");
           }}
         >
-          Расписание <br /> СПбГУ
+          Расписание СПбГУ
         </Link>
         <Picker
           className={style.date_picker}

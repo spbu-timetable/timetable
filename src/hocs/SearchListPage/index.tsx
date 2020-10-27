@@ -96,7 +96,7 @@ function SearchListPage(props: Props) {
 
   return (
     <div className={style.wrapper}>
-      <h1>{props.header_text}</h1>
+      <h1 className={style.header}>{props.header_text}</h1>
       <Search
         className={style.search}
         value={props.filter_value}

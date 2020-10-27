@@ -8,6 +8,10 @@
     max-width: 90vw;
 }
 
+.header {
+    text-align: center;
+}
+
 .search {
     width: inherit;
     max-width: inherit;
