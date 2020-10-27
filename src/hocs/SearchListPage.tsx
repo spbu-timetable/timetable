@@ -5,6 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 
 import React from "react";
+import style from "./style.module.css";
 import { useHistory } from "react-router-dom";
 import Banner from "../components/Reusable/Banner";
 import Search from "../components/Reusable/Search";
@@ -16,10 +17,6 @@ type Props = {
   filter_value: string;
 
   didGet: boolean;
-
-  search_style?: string;
-  list_style?: string;
-  progress_style?: string;
 
   header_text?: string;
   banner_main_text?: string;
@@ -59,27 +56,23 @@ function SearchListPage(props: Props) {
   }
 
   return (
-    <>
+    <div className={style.wrapper}>
       <h1>{props.header_text}</h1>
-      <Search
-        className={props.search_style}
-        value={props.filter_value}
-        updFilter={props.updFilter}
-      />
+      <Search className={style.search} value={props.filter_value} updFilter={props.updFilter} />
       {props.didGet ? (
         <>
           {props.filter_value !== "" && props.filtered_items.length === 0 ? (
             <Banner mainText={props.banner_main_text} secondaryText={props.banner_secondary_text} />
           ) : (
-            <Paper className={props.list_style}>
+            <Paper className={style.list}>
               <List>{items_component}</List>
             </Paper>
           )}
         </>
       ) : (
-        <CircularProgress className={props.progress_style} />
+        <CircularProgress className={style.progress} />
       )}
-    </>
+    </div>
   );
 }
 
