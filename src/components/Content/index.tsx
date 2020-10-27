@@ -6,7 +6,7 @@ import Faculties from "./Faculties/container";
 import Groups from "./Groups";
 import Main from "./Main";
 import style from "./style.module.css";
-import Teachers from "./Teachers";
+import Educators from "./Educators/container";
 import Timetable from "./Timetable";
 
 const Content = () => {
@@ -15,7 +15,7 @@ const Content = () => {
       <Switch>
         <Route path="/addresses/cabinets/timetable" component={() => <Timetable />} />
         <Route path="/addresses/cabinets" component={() => <Cabinets />} />
-        <Route path="/teachers" component={() => <Teachers />} />
+        <Route path="/teachers" component={() => <Educators />} />
         <Route path="/addresses" component={() => <Addresses />} />
         <Route path="/faculties/groups" component={() => <Groups />} />
         <Route path="/faculties" component={() => <Faculties />} />
