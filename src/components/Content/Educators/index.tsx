@@ -18,17 +18,15 @@ type Props = {
 const Educators = (props: Props) => {
   return (
     <SearchListPage
-      url_to_push="/addresses/cabinets/timetable"
+      url_to_push="/timetable"
       header_text="Выберите преподавателей"
       didGet={props.didGet}
       filter_value={props.filter_value}
       filtered_items={props.filtered_educators}
       selected_items={props.selected_educators}
-      // getItems={props.getCabinets}
       setItem={props.selectEducator}
       deselectItem={props.deselectEducator}
       updFilter={props.updFilter}
-      // cleanItems={props.cleanCabinets}
       updFilterValue={props.updFilterValue}
     />
   );

@@ -13,7 +13,7 @@ const Content = () => {
   return (
     <div className={style.content}>
       <Switch>
-        <Route path="/addresses/cabinets/timetable" component={() => <Timetable />} />
+        <Route path="/timetable" component={() => <Timetable />} />
         <Route path="/addresses/cabinets" component={() => <Cabinets />} />
         <Route path="/teachers" component={() => <Educators />} />
         <Route path="/addresses" component={() => <Addresses />} />
