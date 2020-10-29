@@ -47,7 +47,9 @@ function SearchListPage(props: Props) {
   };
   React.useEffect(() => {
     if (props.oid !== undefined) {
+      if (props.cleanItems !== undefined){
       props.cleanItems!();
+      }
       props.getItems!(props.oid!);
     }
   }, [props.oid, props.cleanItems, props.getItems]);
