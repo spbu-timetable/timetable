@@ -9,6 +9,7 @@ import style from "./style.module.css";
 import Educators from "./Educators/container";
 import Timetable from "./Timetable";
 import StudyLevel from "./StudyLevels/container";
+import EducationalProgram from "./EducationProgram/container"
 
 const Content = () => {
   return (
@@ -19,6 +20,7 @@ const Content = () => {
         <Route path="/teachers" component={() => <Educators />} />
         <Route path="/addresses" component={() => <Addresses />} />
         <Route path="/faculties/groups" component={() => <Groups />} />
+        <Route path="/faculties/studyLevels/educationalPrograms" component={() => <EducationalProgram />} />
         <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
         <Route path="/faculties" component={() => <Faculties />} />
         <Route path="/" component={() => <Main />} />

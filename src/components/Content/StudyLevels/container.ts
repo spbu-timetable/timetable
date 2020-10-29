@@ -25,7 +25,6 @@ function mapStateToProps(
 function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {
     getStudyLevels: (oid: string | undefined) => {
-      console.log("запрос: " + oid);
       dispatch(StudyLevelAC.getStudyLevels(oid!));
     },
     setStudyLevel: (studyLevel: StudyLevelT) => {

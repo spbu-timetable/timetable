@@ -20,7 +20,7 @@ const StudyLevels = (props: Props) => {
     <SearchListPage
       didGet={props.didGet}
       oid={props.oid}
-      url_to_push={"/faculties/groups"}
+      url_to_push={"/faculties/studyLevels/educationalPrograms"}
       items={props.studyLevels}
       filtered_items={props.filtered_studyLevels}
       filter_value={props.filter_value}

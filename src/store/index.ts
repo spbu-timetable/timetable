@@ -24,6 +24,8 @@ import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
 import watchGetFaculties from "./sagas/getFaculties";
 import watchGetEducators from "./sagas/getEducators";
 import watchGetStudyLevels from "./sagas/getStudyLevels";
+import educationalPrograms from "./reducers/educationalPrograms";
+import EducationalProgramPage from "../types/pages/EducationalProgramPage";
 
 const reducers = combineReducers({
   header: header,
@@ -32,6 +34,7 @@ const reducers = combineReducers({
   educators: educators,
   faculties: faculties,
   studyLevels: studyLevels,
+  educationalPrograms: educationalPrograms,
 });
 
 const saga = createSagaMiddleware();
@@ -44,6 +47,7 @@ let store: Store<
     educators: EducatorsPage;
     faculties: FacultiesPage;
     studyLevels: StudyLevelPage;
+    educationalPrograms: EducationalProgramPage;
   }>,
   Action
 > = createStore(reducers, applyMiddleware(logger, saga));
