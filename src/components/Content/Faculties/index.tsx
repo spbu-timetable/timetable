@@ -18,7 +18,7 @@ const Faculties = (props: Props) => {
   return (
     <SearchListPage
       didGet={props.didGet}
-      url_to_push={"/faculties/groups"}
+      url_to_push={"/faculties/studyLevels"}
       items={props.faculties}
       filtered_items={props.filtered_faculties}
       filter_value={props.filter_value}
