@@ -1,7 +1,7 @@
 import React from "react";
-import SearchListPage from "../../../hocs/SearchListPage";
+import SearchListPage from "../../../../hocs/SearchListPage";
 
-import StudyLevel from "../../../types/StudyLevel";
+import StudyLevel from "../../../../types/StudyLevel";
 
 type Props = {
   oid: string | undefined;

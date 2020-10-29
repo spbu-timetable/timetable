@@ -1,8 +1,8 @@
 import React from "react";
-import SearchListPage from "../../../hocs/SearchListPage";
-import EducationalProgram from "../../../types/EducationalProgram";
+import SearchListPage from "../../../../../hocs/SearchListPage";
+import EducationalProgram from "../../../../../types/EducationalProgram";
 
-import StudyLevel from "../../../types/StudyLevel";
+import StudyLevel from "../../../../../types/StudyLevel";
 
 type Props = {
   didGet: boolean;

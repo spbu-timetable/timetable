@@ -8,8 +8,8 @@ import Main from "./Main";
 import style from "./style.module.css";
 import Educators from "./Educators/container";
 import Timetable from "./Timetable";
-import StudyLevel from "./StudyLevels/container";
-import EducationalProgram from "./EducationProgram/container"
+import StudyLevel from "./Faculties/StudyLevels/container";
+import EducationalProgram from "./Faculties/StudyLevels/EducationProgram/container"
 
 const Content = () => {
   return (

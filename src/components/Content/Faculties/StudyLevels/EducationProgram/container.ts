@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { CombinedState } from "redux";
 import EducationalPrograms from ".";
-import StudyLevelT from "../../../types/StudyLevel";
-import Action from "../../../types/Action";
-import StudyLevelPage from "../../../types/pages/StudyLevelPage";
-import EducationalProgramPage from "../../../types/pages/EducationalProgramPage";
-import educationalProgramAC from "../../../store/actionCreators/educatyionalProgramAC";
-import EducationalProgram from "../../../types/EducationalProgram";
+import StudyLevelT from "../../../../../types/StudyLevel";
+import Action from "../../../../../types/Action";
+import StudyLevelPage from "../../../../../types/pages/StudyLevelPage";
+import EducationalProgramPage from "../../../../../types/pages/EducationalProgramPage";
+import educationalProgramAC from "../../../../../store/actionCreators/educatyionalProgramAC";
+import EducationalProgram from "../../../../../types/EducationalProgram";
 
 function mapStateToProps(
   state: CombinedState<{
