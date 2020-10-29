@@ -33,5 +33,5 @@ const StudyLevels = (props: Props) => {
     />
   );
 };
-
 export default StudyLevels;
+

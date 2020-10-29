@@ -33,12 +33,10 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilter: (filterStr: string) => {
       dispatch(StudyLevelAC.updFilter(filterStr));
     },
-    // cleanState: () => {
-    //   dispatch(facultyAC.setFaculty)
-    // }
   };
 }
 
 const StudyLevelContainer = connect(mapStateToProps, mapDispatchToProps)(StudyLevel);
 
 export default StudyLevelContainer;
+
