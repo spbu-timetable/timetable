@@ -13,13 +13,14 @@ import Button from "@material-ui/core/Button";
 import Chip from "@material-ui/core/Chip";
 import createListItems from "./createListItems";
 import getObjectId from "../../helpers/getObjectId";
+import StudyLevel from "../../types/StudyLevel";
 
 type Props = {
   items?: any;
   filtered_items: any;
   selected_items?: any;
   filter_value: string;
-
+  selected_item?: StudyLevel;
   didGet?: boolean;
 
   header_text?: string;
@@ -34,6 +35,7 @@ type Props = {
   deselectItem?: (item: any) => void;
   updFilter: (filterStr: string) => void;
   updFilterValue?: (filterStr: string) => void;
+  getSelectedItems?: (selected_item: StudyLevel) => void;
 
   oid?: string;
   cleanItems?: () => void;
@@ -52,7 +54,10 @@ function SearchListPage(props: Props) {
       }
       props.getItems!(props.oid!);
     }
-  }, [props.oid, props.cleanItems, props.getItems]);
+    if (props.getSelectedItems !== undefined){
+      props.getSelectedItems(props.selected_item!);
+    }
+  }, [props.oid, props.cleanItems, props.getItems, props.getSelectedItems, props.selected_item]);
 
   let selected_items_component;
   if (props.selected_items !== undefined) {
@@ -93,6 +98,9 @@ function SearchListPage(props: Props) {
   } else {
     if (props.getItems !== undefined) {
       props.oid === undefined ? props.getItems!() : props.getItems!(props.oid);
+    }
+    if (props.getSelectedItems !== undefined){
+      props.getSelectedItems(props.selected_item!);
     }
   }
 
@@ -144,7 +152,7 @@ function SearchListPage(props: Props) {
         </>
       ) : (
         <>
-          {props.getItems !== undefined ? <CircularProgress className={style.progress} /> : <></>}
+          {props.getItems !== undefined || props.getSelectedItems !== undefined ? <CircularProgress className={style.progress} /> : <></>}
         </>
       )}
     </div>
