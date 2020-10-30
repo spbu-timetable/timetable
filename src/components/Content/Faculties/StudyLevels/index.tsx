@@ -13,6 +13,8 @@ type Props = {
   getStudyLevels: (oid: string | undefined) => void;
   setStudyLevel: (studyLevel: StudyLevel) => void;
   updFilter: (filterStr: string) => void;
+
+  cleanStudyLevels: () => void;
 };
 
 const StudyLevels = (props: Props) => {
@@ -30,6 +32,7 @@ const StudyLevels = (props: Props) => {
       getItems={props.getStudyLevels}
       setItem={props.setStudyLevel}
       updFilter={props.updFilter}
+      cleanItems={props.cleanStudyLevels}
     />
   );
 };

@@ -33,6 +33,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilter: (filterStr: string) => {
       dispatch(StudyLevelAC.updFilter(filterStr));
     },
+    cleanStudyLevels: () => {
+      dispatch(StudyLevelAC.cleanStudyLevels());
+    },
   };
 }
 
