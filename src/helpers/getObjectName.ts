@@ -11,6 +11,9 @@ function getObjectName(object: any): string {
   } else if (object.StudyLevelName !== undefined){
     return object.StudyLevelName;
   }
+  else if (object.YearName !== undefined){
+    return object.YearName;
+  }
     else{
       return object.Name;
     }

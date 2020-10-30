@@ -13,14 +13,13 @@ import Button from "@material-ui/core/Button";
 import Chip from "@material-ui/core/Chip";
 import createListItems from "./createListItems";
 import getObjectId from "../../helpers/getObjectId";
-import StudyLevel from "../../types/StudyLevel";
 
 type Props = {
   items?: any;
   filtered_items: any;
   selected_items?: any;
   filter_value: string;
-  selected_item?: StudyLevel;
+  selected_item?: any;
   didGet?: boolean;
 
   header_text?: string;
@@ -35,7 +34,7 @@ type Props = {
   deselectItem?: (item: any) => void;
   updFilter: (filterStr: string) => void;
   updFilterValue?: (filterStr: string) => void;
-  getSelectedItems?: (selected_item: StudyLevel) => void;
+  getSelectedItems?: (selected_item: any) => void;
 
   oid?: string;
   cleanItems?: () => void;

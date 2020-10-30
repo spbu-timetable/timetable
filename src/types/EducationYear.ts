@@ -1,6 +1,6 @@
 type EducationYear = {
     StudyProgramId: number;
-    YearName: number;
+    YearName: string;
     YearNumber: number;
     IsEmpty: false;
     PublicDivisionAlias: string;

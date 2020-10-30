@@ -10,6 +10,7 @@ import Educators from "./Educators/container";
 import Timetable from "./Timetable";
 import StudyLevel from "./Faculties/StudyLevels/container";
 import EducationalProgram from "./Faculties/StudyLevels/EducationProgram/container"
+import EducationYears from "./Faculties/StudyLevels/EducationProgram/EducationYears/container"
 
 const Content = () => {
   return (
@@ -20,6 +21,7 @@ const Content = () => {
         <Route path="/teachers" component={() => <Educators />} />
         <Route path="/addresses" component={() => <Addresses />} />
         <Route path="/faculties/groups" component={() => <Groups />} />
+        <Route path="/faculties/studyLevels/educationalPrograms/educationYears" component={() => <EducationYears />} />
         <Route path="/faculties/studyLevels/educationalPrograms" component={() => <EducationalProgram />} />
         <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
         <Route path="/faculties" component={() => <Faculties />} />

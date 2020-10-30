@@ -10,13 +10,17 @@ import CabinetsPage from "../types/pages/CabinetsPage";
 import EducatorsPage from "../types/pages/EducatorsPage";
 import FacultiesPage from "../types/pages/FacultiesPage";
 import StudyLevelPage from "../types/pages/StudyLevelPage";
+import EducationalProgramPage from "../types/pages/EducationalProgramPage";
+import EducationYearsPage from "../types/pages/EducationYearsPage";
 
 import header from "./reducers/header";
 import addresses from "./reducers/addresses";
 import cabinets from "./reducers/cabinets";
 import educators from "./reducers/educators";
 import faculties from "./reducers/faculties";
+import educationYears from "./reducers/educationYears";
 import studyLevels from "./reducers/studyLevels";
+import educationalPrograms from "./reducers/educationalPrograms";
 
 import watchGetAddresses from "./sagas/getAdresses";
 import watchGetCabinets from "./sagas/getCabinets";
@@ -24,8 +28,6 @@ import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
 import watchGetFaculties from "./sagas/getFaculties";
 import watchGetEducators from "./sagas/getEducators";
 import watchGetStudyLevels from "./sagas/getStudyLevels";
-import educationalPrograms from "./reducers/educationalPrograms";
-import EducationalProgramPage from "../types/pages/EducationalProgramPage";
 
 const reducers = combineReducers({
   header: header,
@@ -35,6 +37,7 @@ const reducers = combineReducers({
   faculties: faculties,
   studyLevels: studyLevels,
   educationalPrograms: educationalPrograms,
+  educationYears: educationYears,
 });
 
 const saga = createSagaMiddleware();
@@ -48,6 +51,7 @@ let store: Store<
     faculties: FacultiesPage;
     studyLevels: StudyLevelPage;
     educationalPrograms: EducationalProgramPage;
+    educationYears: EducationYearsPage;
   }>,
   Action
 > = createStore(reducers, applyMiddleware(logger, saga));

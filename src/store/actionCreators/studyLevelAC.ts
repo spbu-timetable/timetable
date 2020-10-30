@@ -29,10 +29,17 @@ function updFilter(filterStr: string): Action {
   };
 }
 
+function cleanStudyLevels(): Action {
+  return {
+    type: ACTION.CLEAN_STUDYLEVELS,
+  };
+}
+
 const studyLevelAC = {
   getStudyLevels: getStudyLevels,
   setStudyLevels: setStudyLevels,
   setStudyLevel: setStudyLevel,
+  cleanStudyLevels: cleanStudyLevels,
   updFilter: updFilter,
 };
 
