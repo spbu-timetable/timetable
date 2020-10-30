@@ -35,9 +35,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilter: (filterStr: string) => {
       dispatch(educationalProgramAC.updFilter(filterStr));
     },
-    // cleanState: () => {
-    //   dispatch(facultyAC.setFaculty)
-    // }
+    cleanEducationalPrograms: () => {
+      dispatch(educationalProgramAC.cleanEducationalPrograms());
+    },
   };
 }
 

@@ -15,6 +15,8 @@ type Props = {
   getEducationalPrograms: (selected_studyLevel: StudyLevel | undefined) => void;
   setEducationalProgram: (educationalProgram: EducationalProgram) => void;
   updFilter: (filterStr: string) => void;
+
+  cleanEducationalPrograms: () => void;
 };
 
 const EducationalPrograms = (props: Props) => {
@@ -32,6 +34,7 @@ const EducationalPrograms = (props: Props) => {
       getSelectedItems={props.getEducationalPrograms}
       setItem={props.setEducationalProgram}
       updFilter={props.updFilter}
+      cleanItems={props.cleanEducationalPrograms}
     />
   );
 };
