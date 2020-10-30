@@ -23,6 +23,13 @@ function educationalPrograms(state: EducationalProgramPage = initialState, actio
         didGet: true,
         ed_programs: [...action.payload].sort((a: EducationalProgram, b: EducationalProgram) => sortList(a.Name, b.Name)),
       };
+      case ACTION.CLEAN_EDUCATIONALPROGRAMS:
+        return {
+          ...state,
+          didGet: false,
+          ed_programs: [],
+          selected_ed_program: undefined,
+      };
     case ACTION.SET_EDUCTIONALPROGRAM:
       EducationalProgramLocalStorage.save(action.payload);
       return {

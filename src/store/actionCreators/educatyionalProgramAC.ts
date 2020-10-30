@@ -31,10 +31,17 @@ function updFilter(filterStr: string): Action {
   };
 }
 
+function cleanEducationalPrograms(): Action {
+  return {
+    type: ACTION.CLEAN_EDUCATIONALPROGRAMS,
+  };
+}
+
 const educationalProgramAC = {
   getEducationalPrograms: getEducationalPrograms,
   setEducationalPrograms: setEducationalPrograms,
   setEducationalProgram: setEducationalProgram,
+  cleanEducationalPrograms: cleanEducationalPrograms,
   updFilter: updFilter,
 };
 

@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Addresses from "./Addresses/container";
 import Cabinets from "./Cabinets/container";
 import Faculties from "./Faculties/container";
-import Groups from "./Groups";
+import Groups from "./Faculties/StudyLevels/EducationProgram/EducationYears/Groups/container";
 import Main from "./Main";
 import style from "./style.module.css";
 import Educators from "./Educators/container";
@@ -20,7 +20,7 @@ const Content = () => {
         <Route path="/addresses/cabinets" component={() => <Cabinets />} />
         <Route path="/teachers" component={() => <Educators />} />
         <Route path="/addresses" component={() => <Addresses />} />
-        <Route path="/faculties/groups" component={() => <Groups />} />
+        <Route path="/faculties/studyLevels/educationalPrograms/educationYears/Groups" component={() => <Groups />} />
         <Route path="/faculties/studyLevels/educationalPrograms/educationYears" component={() => <EducationYears />} />
         <Route path="/faculties/studyLevels/educationalPrograms" component={() => <EducationalProgram />} />
         <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
