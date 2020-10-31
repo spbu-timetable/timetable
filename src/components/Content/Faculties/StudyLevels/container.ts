@@ -25,7 +25,6 @@ function mapStateToProps(
 function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {
     getStudyLevels: (oid: string | undefined) => {
-      console.log("запрос: " + oid);
       dispatch(StudyLevelAC.getStudyLevels(oid!));
     },
     setStudyLevel: (studyLevel: StudyLevelT) => {
@@ -34,12 +33,13 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilter: (filterStr: string) => {
       dispatch(StudyLevelAC.updFilter(filterStr));
     },
-    // cleanState: () => {
-    //   dispatch(facultyAC.setFaculty)
-    // }
+    cleanStudyLevels: () => {
+      dispatch(StudyLevelAC.cleanStudyLevels());
+    },
   };
 }
 
 const StudyLevelContainer = connect(mapStateToProps, mapDispatchToProps)(StudyLevel);
 
 export default StudyLevelContainer;
+

@@ -22,7 +22,13 @@ function studyLevels(state: StudyLevelPage = initialState, action: Action): Stud
         ...state,
         selected_studyLevel: action.payload,
       };
-
+      case ACTION.CLEAN_STUDYLEVELS:
+        return {
+          ...state,
+          didGet: false,
+          studyLevels: [],
+          selected_studyLevel: undefined,
+      };
     case ACTION.FILTER_STUDYLEVELS:
       return {
         ...state,

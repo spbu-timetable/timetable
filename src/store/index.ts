@@ -10,13 +10,18 @@ import CabinetsPage from "../types/pages/CabinetsPage";
 import EducatorsPage from "../types/pages/EducatorsPage";
 import FacultiesPage from "../types/pages/FacultiesPage";
 import StudyLevelPage from "../types/pages/StudyLevelPage";
+import EducationalProgramPage from "../types/pages/EducationalProgramPage";
+import EducationYearsPage from "../types/pages/EducationYearsPage";
 
 import header from "./reducers/header";
 import addresses from "./reducers/addresses";
 import cabinets from "./reducers/cabinets";
 import educators from "./reducers/educators";
 import faculties from "./reducers/faculties";
+import educationYears from "./reducers/educationYears";
 import studyLevels from "./reducers/studyLevels";
+import educationalPrograms from "./reducers/educationalPrograms";
+import groups from "./reducers/groups";
 
 import watchGetAddresses from "./sagas/getAdresses";
 import watchGetCabinets from "./sagas/getCabinets";
@@ -24,6 +29,8 @@ import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
 import watchGetFaculties from "./sagas/getFaculties";
 import watchGetEducators from "./sagas/getEducators";
 import watchGetStudyLevels from "./sagas/getStudyLevels";
+import GroupsPage from "../types/pages/GroupsPage";
+import watchGetGroups from "./sagas/getGroups";
 
 const reducers = combineReducers({
   header: header,
@@ -32,6 +39,9 @@ const reducers = combineReducers({
   educators: educators,
   faculties: faculties,
   studyLevels: studyLevels,
+  educationalPrograms: educationalPrograms,
+  educationYears: educationYears,
+  groups: groups
 });
 
 const saga = createSagaMiddleware();
@@ -44,6 +54,9 @@ let store: Store<
     educators: EducatorsPage;
     faculties: FacultiesPage;
     studyLevels: StudyLevelPage;
+    educationalPrograms: EducationalProgramPage;
+    educationYears: EducationYearsPage;
+    groups: GroupsPage;
   }>,
   Action
 > = createStore(reducers, applyMiddleware(logger, saga));
@@ -54,5 +67,6 @@ saga.run(watchGetClassroomEventsDays);
 saga.run(watchGetFaculties);
 saga.run(watchGetEducators);
 saga.run(watchGetStudyLevels);
+saga.run(watchGetGroups);
 
 export default store;

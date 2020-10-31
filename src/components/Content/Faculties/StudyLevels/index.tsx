@@ -13,6 +13,8 @@ type Props = {
   getStudyLevels: (oid: string | undefined) => void;
   setStudyLevel: (studyLevel: StudyLevel) => void;
   updFilter: (filterStr: string) => void;
+
+  cleanStudyLevels: () => void;
 };
 
 const StudyLevels = (props: Props) => {
@@ -20,7 +22,7 @@ const StudyLevels = (props: Props) => {
     <SearchListPage
       didGet={props.didGet}
       oid={props.oid}
-      url_to_push={"/faculties/groups"}
+      url_to_push={"/faculties/studyLevels/educationalPrograms"}
       items={props.studyLevels}
       filtered_items={props.filtered_studyLevels}
       filter_value={props.filter_value}
@@ -30,8 +32,9 @@ const StudyLevels = (props: Props) => {
       getItems={props.getStudyLevels}
       setItem={props.setStudyLevel}
       updFilter={props.updFilter}
+      cleanItems={props.cleanStudyLevels}
     />
   );
 };
-
 export default StudyLevels;
+
