@@ -7,8 +7,6 @@ const cabinets: CabinetsPage = {
   cabinets: [],
   filtered_cabinets: [],
   selected_cabinets: [],
-
-  timetable: [],
 };
 
 export default cabinets;

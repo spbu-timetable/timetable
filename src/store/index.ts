@@ -31,6 +31,8 @@ import watchGetEducators from "./sagas/getEducators";
 import watchGetStudyLevels from "./sagas/getStudyLevels";
 import GroupsPage from "../types/pages/GroupsPage";
 import watchGetGroups from "./sagas/getGroups";
+import timetable from "./reducers/timetable";
+import TimetablePage from "../types/pages/TimetablePage";
 
 const reducers = combineReducers({
   header: header,
@@ -41,7 +43,8 @@ const reducers = combineReducers({
   studyLevels: studyLevels,
   educationalPrograms: educationalPrograms,
   educationYears: educationYears,
-  groups: groups
+  groups: groups,
+  timetable: timetable,
 });
 
 const saga = createSagaMiddleware();
@@ -57,6 +60,7 @@ let store: Store<
     educationalPrograms: EducationalProgramPage;
     educationYears: EducationYearsPage;
     groups: GroupsPage;
+    timetable: TimetablePage;
   }>,
   Action
 > = createStore(reducers, applyMiddleware(logger, saga));

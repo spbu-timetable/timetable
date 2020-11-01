@@ -7,8 +7,6 @@ type CabinetsPage = {
   cabinets: Cabinet[];
   filtered_cabinets: Cabinet[];
   selected_cabinets: Cabinet[];
-
-  timetable: String[][];
 };
 
 export default CabinetsPage;

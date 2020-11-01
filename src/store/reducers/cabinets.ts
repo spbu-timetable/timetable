@@ -43,11 +43,6 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       return {
         ...state,
       };
-    case ACTION.SET_CABINET_TIMETABLE:
-      return {
-        ...state,
-        timetable: [...state.timetable, ...action.payload],
-      };
 
     case ACTION.FILTER_CABINETS:
       return {

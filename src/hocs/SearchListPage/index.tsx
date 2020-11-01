@@ -38,7 +38,17 @@ type Props = {
 
   oid?: string;
   cleanItems?: () => void;
+
+  fromDateStr?: string;
+  toDateStr?: string;
+  getTimetable?: (selected_ids: string[], fromDateStr?: string, toDateStr?: string) => void;
 };
+
+/**
+ * @param items объекты, формирующие список
+ * @param filtered_items объекты items, полученные с помощью фильтрации полем для поиска
+ * @param
+ */
 
 function SearchListPage(props: Props) {
   const [, setChipData] = React.useState<any>(props.selected_items);
@@ -48,12 +58,12 @@ function SearchListPage(props: Props) {
   };
   React.useEffect(() => {
     if (props.oid !== undefined) {
-      if (props.cleanItems !== undefined){
-      props.cleanItems!();
+      if (props.cleanItems !== undefined) {
+        props.cleanItems!();
       }
       props.getItems!(props.oid!);
     }
-    if (props.getSelectedItems !== undefined){
+    if (props.getSelectedItems !== undefined) {
       props.getSelectedItems(props.selected_item!);
     }
   }, [props.oid, props.cleanItems, props.getItems, props.getSelectedItems, props.selected_item]);
@@ -98,7 +108,7 @@ function SearchListPage(props: Props) {
     if (props.getItems !== undefined) {
       props.oid === undefined ? props.getItems!() : props.getItems!(props.oid);
     }
-    if (props.getSelectedItems !== undefined){
+    if (props.getSelectedItems !== undefined) {
       props.getSelectedItems(props.selected_item!);
     }
   }
@@ -151,7 +161,11 @@ function SearchListPage(props: Props) {
         </>
       ) : (
         <>
-          {props.getItems !== undefined || props.getSelectedItems !== undefined ? <CircularProgress className={style.progress} /> : <></>}
+          {props.getItems !== undefined || props.getSelectedItems !== undefined ? (
+            <CircularProgress className={style.progress} />
+          ) : (
+            <></>
+          )}
         </>
       )}
     </div>
