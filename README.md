@@ -54,4 +54,4 @@
 ## Материалы
 * master-ветка на [heroku](https://timetable--generator.herokuapp.com)
 * макет в [figma](https://www.figma.com/file/UgR6tjDqQkIDdLAMwZjquv/Timetable-Generator?node-id=0%3A1)
-* почта: inctnce@icloud.com
+* писать можно на почту inctnce@icloud.com
