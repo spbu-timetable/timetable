@@ -1,5 +1,5 @@
 import React from "react";
-import SearchListPage from "../../../hocs/SearchListPage";
+import SearchListPage from "../../Reusable/SearchListPage";
 import Educator from "../../../types/Educator";
 
 type Props = {

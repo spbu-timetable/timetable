@@ -38,7 +38,7 @@ function getCabinetTimetable(
   endDate: Date
 ): Action {
   return {
-    type: ACTION.GET_CABINET_TIMETABLE,
+    type: ACTION.GET_TIMETABLE,
     payload: {
       cabinetIndex: cabinetIndex,
       cabinetOid: cabinetOid,
@@ -50,7 +50,7 @@ function getCabinetTimetable(
 
 function setCabinetTimetable(classroomEventsDays: ClassroomEventsDays): Action {
   return {
-    type: ACTION.SET_CABINET_TIMETABLE,
+    type: ACTION.SET_TIMETABLE,
     payload: {
       classroomEventsDays: classroomEventsDays,
     },

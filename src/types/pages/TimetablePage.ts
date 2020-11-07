@@ -1,6 +1,6 @@
 type TimetablePage = {
   didGet: boolean;
-  selected_items: string[];
+  selected_ids: string[];
   timetable: string[];
 };
 

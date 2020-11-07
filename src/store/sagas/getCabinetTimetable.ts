@@ -38,7 +38,7 @@ function* workerGetClassroomEventsDays(action: Action) {
 }
 
 function* watchGetClassroomEventsDays() {
-  yield takeEvery(ACTION.GET_CABINET_TIMETABLE, workerGetClassroomEventsDays);
+  yield takeEvery(ACTION.GET_TIMETABLE, workerGetClassroomEventsDays);
 }
 
 export default watchGetClassroomEventsDays;

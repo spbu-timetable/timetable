@@ -25,7 +25,7 @@ import groups from "./reducers/groups";
 
 import watchGetAddresses from "./sagas/getAdresses";
 import watchGetCabinets from "./sagas/getCabinets";
-import watchGetClassroomEventsDays from "./sagas/getClassroomEventsDays";
+import watchGetClassroomEventsDays from "./sagas/getCabinetTimetable";
 import watchGetFaculties from "./sagas/getFaculties";
 import watchGetEducators from "./sagas/getEducators";
 import watchGetStudyLevels from "./sagas/getStudyLevels";

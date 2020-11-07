@@ -1,7 +1,7 @@
 import React from "react";
 
 import Cabinet from "../../../types/Cabinet";
-import SearchListPage from "../../../hocs/SearchListPage";
+import SearchListPage from "../../Reusable/SearchListPage";
 
 type Props = {
   oid: string;

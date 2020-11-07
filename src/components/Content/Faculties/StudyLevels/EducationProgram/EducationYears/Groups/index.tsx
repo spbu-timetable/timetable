@@ -1,6 +1,6 @@
 import React from "react";
 
-import SearchListPage from "../../../../../../../hocs/SearchListPage";
+import SearchListPage from "../../../../../../Reusable/SearchListPage";
 import Group from "../../../../../../../types/Group";
 
 type Props = {

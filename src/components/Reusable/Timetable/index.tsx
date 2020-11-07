@@ -1,7 +1,13 @@
 import React from "react";
 import List from "./List/container";
 
-const Timetable = () => {
+type Props = {
+  didGet: boolean;
+  selected_ids: string[];
+  timetable: string[];
+};
+
+const Timetable = (props: Props) => {
   return (
     <div>
       <List />

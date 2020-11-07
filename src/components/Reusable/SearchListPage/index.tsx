@@ -1,18 +1,15 @@
-import CircularProgress from "@material-ui/core/CircularProgress";
-import List from "@material-ui/core/List";
-import Paper from "@material-ui/core/Paper";
-
 import React from "react";
 import style from "./style.module.css";
 import { useHistory } from "react-router-dom";
-import Banner from "../../components/Reusable/Banner";
-import Search from "../../components/Reusable/Search";
-import getObjectName from "../../helpers/getObjectName";
 
-import Button from "@material-ui/core/Button";
+import Search from "../Search";
+import ItemsList from "./ItemsList";
+
+import getObjectName from "../../../helpers/getObjectName";
+import getObjectId from "../../../helpers/getObjectId";
+
 import Chip from "@material-ui/core/Chip";
-import createListItems from "./createListItems";
-import getObjectId from "../../helpers/getObjectId";
+import setListItems from "./setListItems";
 
 type Props = {
   items?: any;
@@ -85,33 +82,20 @@ function SearchListPage(props: Props) {
     history.push(props.url_to_push!);
   }
 
-  let items_component;
-  if (props.didGet) {
-    if (props.filter_value !== "") {
-      items_component = createListItems(
-        props.filtered_items,
-        props.selected_items,
-        props.url_to_push!,
-        props.setItem!,
-        setAddress
-      );
-    } else if (props.items !== undefined) {
-      items_component = createListItems(
-        props.items,
-        props.selected_items,
-        props.url_to_push!,
-        props.setItem!,
-        setAddress
-      );
-    }
-  } else {
-    if (props.getItems !== undefined) {
-      props.oid === undefined ? props.getItems!() : props.getItems!(props.oid);
-    }
-    if (props.getSelectedItems !== undefined) {
-      props.getSelectedItems(props.selected_item!);
-    }
-  }
+  let items_component: JSX.Element[] | undefined = setListItems(
+    props.oid!,
+    props.didGet!,
+    props.filter_value,
+    props.items!,
+    props.filtered_items,
+    props.selected_items!,
+    props.selected_item,
+    props.url_to_push!,
+    props.setItem!,
+    setAddress,
+    props.getItems!,
+    props.getSelectedItems!
+  );
 
   return (
     <div className={style.wrapper}>
@@ -123,51 +107,19 @@ function SearchListPage(props: Props) {
         updFilterValue={props.updFilterValue}
       />
 
-      {props.selected_items !== undefined ? (
-        <>
-          <div className={style.chips}>{selected_items_component}</div>
-          {props.selected_items.length ? (
-            <Button
-              variant="contained"
-              className={style.btn}
-              color="primary"
-              onClick={() => setAddress()}
-            >
-              Показать
-            </Button>
-          ) : (
-            <></>
-          )}
-        </>
-      ) : (
-        <></>
-      )}
-
-      {props.didGet ? (
-        <>
-          {props.filter_value !== "" && props.filtered_items.length === 0 ? (
-            <Banner mainText={props.banner_main_text} secondaryText={props.banner_secondary_text} />
-          ) : (
-            <>
-              {items_component === undefined ? (
-                <></>
-              ) : (
-                <Paper className={style.list}>
-                  <List>{items_component}</List>
-                </Paper>
-              )}
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          {props.getItems !== undefined || props.getSelectedItems !== undefined ? (
-            <CircularProgress className={style.progress} />
-          ) : (
-            <></>
-          )}
-        </>
-      )}
+      <ItemsList
+        filtered_items={props.filtered_items}
+        selected_items={props.selected_items}
+        filter_value={props.filter_value}
+        didGet={props.didGet!}
+        banner_main_text={props.banner_main_text!}
+        banner_secondary_text={props.banner_secondary_text!}
+        getItems={props.getItems!}
+        getSelectedItems={props.getSelectedItems!}
+        setAddress={setAddress}
+        items_component={items_component}
+        selected_items_component={selected_items_component}
+      />
     </div>
   );
 }
