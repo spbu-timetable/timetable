@@ -2,7 +2,6 @@ import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
-import cabinetAC from "../actionCreators/cabinetAC";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
 import timetableAC from "../actionCreators/timetable";
 

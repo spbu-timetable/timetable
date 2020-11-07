@@ -1,6 +1,5 @@
 import Action from "../../types/Action";
 import Cabinet from "../../types/Cabinet";
-import ClassroomEventsDays from "../../types/ClassroomEventsDays";
 import ACTION from "./ACTION";
 
 function getCabinets(oid: string): Action {

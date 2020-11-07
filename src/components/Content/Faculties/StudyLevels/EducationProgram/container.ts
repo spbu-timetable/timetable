@@ -7,7 +7,6 @@ import StudyLevelPage from "../../../../../types/pages/StudyLevelPage";
 import EducationalProgramPage from "../../../../../types/pages/EducationalProgramPage";
 import educationalProgramAC from "../../../../../store/actionCreators/educatyionalProgramAC";
 import EducationalProgram from "../../../../../types/EducationalProgram";
-import Header from "../../../../../types/Header";
 
 function mapStateToProps(
   state: CombinedState<{
