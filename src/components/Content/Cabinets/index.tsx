@@ -18,6 +18,10 @@ type Props = {
   updFilter: (filterStr: string) => void;
 
   cleanCabinets: () => void;
+
+  fromDate: Date;
+  toDate: Date;
+  getCabinetsTimetable?: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
 };
 
 const Cabinets = (props: Props) => {
@@ -36,6 +40,9 @@ const Cabinets = (props: Props) => {
       deselectItem={props.deselectCabinet}
       updFilter={props.updFilter}
       cleanItems={props.cleanCabinets}
+      fromDate={props.fromDate}
+      toDate={props.toDate}
+      getTimetable={props.getCabinetsTimetable}
     />
   );
 };

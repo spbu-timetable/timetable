@@ -14,22 +14,13 @@ function mapStateToProps(
 ) {
   return {
     selected_cabinets: state.cabinets.selected_cabinets,
-    startDate: state.header.fromDate,
-    endDate: state.header.toDate,
+    fromDate: state.header.fromDate,
+    toDate: state.header.toDate,
   };
 }
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
-  return {
-    getCabinetTimetable: (
-      cabinetIndex: number,
-      cabinetOid: string,
-      startDate: Date,
-      endDate: Date
-    ) => {
-      dispatch(cabinetAC.getCabinetTimetable(cabinetIndex, cabinetOid, startDate, endDate));
-    },
-  };
+  return {};
 }
 
 const CabinetsContainer = connect(mapStateToProps, mapDispatchToProps)(TimetableList);

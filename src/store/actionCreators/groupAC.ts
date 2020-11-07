@@ -43,6 +43,17 @@ function cleanGroups(): Action {
   };
 }
 
+function getGroupsTimetable(selected_ids: string[], fromDate: Date, toDate: Date): Action {
+  return {
+    type: ACTION.GET_GROUPS_TIMETABLE,
+    payload: {
+      selected_ids: selected_ids,
+      fromDate: fromDate,
+      toDate: toDate,
+    },
+  };
+}
+
 const groupAC = {
   getGroups: getGroups,
   setGroups: setGroups,
@@ -51,8 +62,9 @@ const groupAC = {
   selectGroup: selectGroup,
   deselectGroup: deselectGroup,
 
-
   updFilter: updFilter,
+
+  getGroupsTimetable: getGroupsTimetable,
 };
 
 export default groupAC;

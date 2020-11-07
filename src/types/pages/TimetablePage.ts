@@ -1,7 +1,8 @@
+import ClassroomEventsDays from "../ClassroomEventsDays";
+
 type TimetablePage = {
   didGet: boolean;
-  selected_ids: string[];
-  timetable: string[];
+  timetable: ClassroomEventsDays[];
 };
 
 export default TimetablePage;

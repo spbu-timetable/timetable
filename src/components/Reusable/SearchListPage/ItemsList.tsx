@@ -3,6 +3,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
 import React from "react";
+import getObjectId from "../../../helpers/getObjectId";
 import Banner from "../Banner";
 import style from "./style.module.css";
 
@@ -22,9 +23,18 @@ type Props = {
   setAddress: () => void;
   items_component: JSX.Element[] | undefined;
   selected_items_component: JSX.Element[] | undefined;
+
+  fromDate?: Date;
+  toDate?: Date;
+  getTimetable?: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
 };
 
 const ItemsList = (props: Props) => {
+  let selected_ids: string[] = [];
+  if (props.selected_items) {
+    selected_ids = props.selected_items.map((item: any) => getObjectId(item));
+  }
+
   return (
     <>
       {props.selected_items !== undefined ? (
@@ -35,7 +45,14 @@ const ItemsList = (props: Props) => {
               variant="contained"
               className={style.btn}
               color="primary"
-              onClick={() => props.setAddress()}
+              onClick={() => {
+                props.setAddress();
+                if (props.fromDate && props.toDate) {
+                  props.getTimetable!(selected_ids, props.fromDate, props.toDate);
+                } else {
+                  props.getTimetable!(selected_ids);
+                }
+              }}
             >
               Показать
             </Button>

@@ -1,16 +1,17 @@
 import { CombinedState } from "redux";
 import Groups from ".";
 
-
 import { connect } from "react-redux";
 import Action from "../../../../../../../types/Action";
 import GroupsPage from "../../../../../../../types/pages/GroupsPage";
 import EducationYearsPage from "../../../../../../../types/pages/EducationYearsPage";
 import groupAC from "../../../../../../../store/actionCreators/groupAC";
 import Group from "../../../../../../../types/Group";
+import Header from "../../../../../../../types/Header";
 
 function mapStateToProps(
   state: CombinedState<{
+    header: Header;
     educationYears: EducationYearsPage;
     groups: GroupsPage;
   }>
@@ -23,6 +24,9 @@ function mapStateToProps(
     groups: state.groups.groups,
     filtered_groups: state.groups.filtered_groups,
     selected_groups: state.groups.selected_groups,
+
+    fromDate: state.header.fromDate,
+    toDate: state.header.toDate,
   };
 }
 
@@ -42,6 +46,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     },
     cleanGroups: () => {
       dispatch(groupAC.cleanGroups());
+    },
+    getGroupsTimetable: (selected_ids: string[], fromDate?: Date, toDate?: Date) => {
+      dispatch(groupAC.getGroupsTimetable(selected_ids, fromDate!, toDate!));
     },
   };
 }

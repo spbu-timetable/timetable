@@ -23,7 +23,7 @@ const EducationalPrograms = (props: Props) => {
   return (
     <SearchListPage
       didGet={props.didGet}
-      selected_item = {props.selected_studyLevel}
+      selected_item={props.selected_studyLevel}
       url_to_push={"/faculties/studyLevels/educationalPrograms/educationYears"}
       items={props.educational_programs}
       filtered_items={props.filtered_educational_programs}

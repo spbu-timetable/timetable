@@ -8,9 +8,11 @@ import { connect } from "react-redux";
 import cabinetAC from "../../../store/actionCreators/cabinetAC";
 import Cabinet from "../../../types/Cabinet";
 import CabinetsPage from "../../../types/pages/CabinetsPage";
+import Header from "../../../types/Header";
 
 function mapStateToProps(
   state: CombinedState<{
+    header: Header;
     addresses: AddressesPage;
     cabinets: CabinetsPage;
   }>
@@ -23,6 +25,9 @@ function mapStateToProps(
     cabinets: state.cabinets.cabinets,
     filtered_cabinets: state.cabinets.filtered_cabinets,
     selected_cabinets: state.cabinets.selected_cabinets,
+
+    fromDate: state.header.fromDate,
+    toDate: state.header.toDate,
   };
 }
 
@@ -42,6 +47,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     },
     cleanCabinets: () => {
       dispatch(cabinetAC.cleanCabinets());
+    },
+    getCabinetsTimetable: (selected_ids: string[], fromDate?: Date, toDate?: Date) => {
+      dispatch(cabinetAC.getCabinetTimetable(selected_ids, fromDate, toDate));
     },
   };
 }

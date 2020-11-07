@@ -2,16 +2,13 @@ import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
+import cabinetAC from "../actionCreators/cabinetAC";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
 import timetableAC from "../actionCreators/timetable";
 
 async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
-  console.log(
-    `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
-  );
-
   return await Axios.get(
-    `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
+    `https://timetable.spbu.ru/api/v1/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`
   )
     .then((response) => {
       if (response.status === 200) {
@@ -44,8 +41,8 @@ function* workerGetClassroomEventsDays(action: Action) {
   }
 }
 
-function* watchGetCabinetsTimetable() {
-  yield takeEvery(ACTION.GET_CABINETS_TIMETABLE, workerGetClassroomEventsDays);
+function* watchGetGroupsTimetable() {
+  yield takeEvery(ACTION.GET_GROUPS_TIMETABLE, workerGetClassroomEventsDays);
 }
 
-export default watchGetCabinetsTimetable;
+export default watchGetGroupsTimetable;

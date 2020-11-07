@@ -25,7 +25,7 @@ import groups from "./reducers/groups";
 
 import watchGetAddresses from "./sagas/getAdresses";
 import watchGetCabinets from "./sagas/getCabinets";
-import watchGetClassroomEventsDays from "./sagas/getCabinetTimetable";
+import watchGetCabinetsTimetable from "./sagas/getCabinetTimetable";
 import watchGetFaculties from "./sagas/getFaculties";
 import watchGetEducators from "./sagas/getEducators";
 import watchGetStudyLevels from "./sagas/getStudyLevels";
@@ -33,6 +33,7 @@ import GroupsPage from "../types/pages/GroupsPage";
 import watchGetGroups from "./sagas/getGroups";
 import timetable from "./reducers/timetable";
 import TimetablePage from "../types/pages/TimetablePage";
+import watchGetGroupsTimetable from "./sagas/getGroupsTimetable";
 
 const reducers = combineReducers({
   header: header,
@@ -67,10 +68,11 @@ let store: Store<
 
 saga.run(watchGetAddresses);
 saga.run(watchGetCabinets);
-saga.run(watchGetClassroomEventsDays);
+saga.run(watchGetCabinetsTimetable);
 saga.run(watchGetFaculties);
 saga.run(watchGetEducators);
 saga.run(watchGetStudyLevels);
 saga.run(watchGetGroups);
+saga.run(watchGetGroupsTimetable);
 
 export default store;

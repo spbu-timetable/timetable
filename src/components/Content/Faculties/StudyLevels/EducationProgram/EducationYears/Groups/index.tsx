@@ -18,6 +18,10 @@ type Props = {
   updFilter: (filterStr: string) => void;
 
   cleanGroups: () => void;
+
+  fromDate: Date;
+  toDate: Date;
+  getGroupsTimetable: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
 };
 
 const Groups = (props: Props) => {
@@ -36,6 +40,9 @@ const Groups = (props: Props) => {
       deselectItem={props.deselectGroup}
       updFilter={props.updFilter}
       cleanItems={props.cleanGroups}
+      fromDate={props.fromDate}
+      toDate={props.toDate}
+      getTimetable={props.getGroupsTimetable}
     />
   );
 };

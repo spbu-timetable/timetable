@@ -7,11 +7,12 @@ import StudyLevelPage from "../../../../../types/pages/StudyLevelPage";
 import EducationalProgramPage from "../../../../../types/pages/EducationalProgramPage";
 import educationalProgramAC from "../../../../../store/actionCreators/educatyionalProgramAC";
 import EducationalProgram from "../../../../../types/EducationalProgram";
+import Header from "../../../../../types/Header";
 
 function mapStateToProps(
   state: CombinedState<{
     studyLevels: StudyLevelPage;
-    educationalPrograms: EducationalProgramPage
+    educationalPrograms: EducationalProgramPage;
   }>
 ) {
   return {
@@ -41,6 +42,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
   };
 }
 
-const EducationalProgramContainer = connect(mapStateToProps, mapDispatchToProps)(EducationalPrograms);
+const EducationalProgramContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EducationalPrograms);
 
 export default EducationalProgramContainer;

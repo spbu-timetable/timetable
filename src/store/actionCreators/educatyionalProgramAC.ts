@@ -4,9 +4,9 @@ import StudyLevel from "../../types/StudyLevel";
 import ACTION from "./ACTION";
 
 function getEducationalPrograms(selected_study_level: StudyLevel): Action {
-  return { 
+  return {
     type: ACTION.GET_EDUCTIONALPROGRAMS,
-    payload:  selected_study_level,
+    payload: selected_study_level,
   };
 }
 

@@ -36,9 +36,9 @@ type Props = {
   oid?: string;
   cleanItems?: () => void;
 
-  fromDateStr?: string;
-  toDateStr?: string;
-  getTimetable?: (selected_ids: string[], fromDateStr?: string, toDateStr?: string) => void;
+  fromDate?: Date;
+  toDate?: Date;
+  getTimetable?: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
 };
 
 /**
@@ -119,6 +119,9 @@ function SearchListPage(props: Props) {
         setAddress={setAddress}
         items_component={items_component}
         selected_items_component={selected_items_component}
+        fromDate={props.fromDate}
+        toDate={props.toDate}
+        getTimetable={props.getTimetable}
       />
     </div>
   );

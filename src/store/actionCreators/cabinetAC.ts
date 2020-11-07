@@ -31,28 +31,13 @@ function deselectCabinet(cabinet: Cabinet): Action {
   };
 }
 
-function getCabinetTimetable(
-  cabinetIndex: number,
-  cabinetOid: string,
-  startDate: Date,
-  endDate: Date
-): Action {
+function getCabinetTimetable(selected_ids: string[], fromDate?: Date, toDate?: Date): Action {
   return {
-    type: ACTION.GET_TIMETABLE,
+    type: ACTION.GET_CABINETS_TIMETABLE,
     payload: {
-      cabinetIndex: cabinetIndex,
-      cabinetOid: cabinetOid,
-      startDate: startDate,
-      endDate: endDate,
-    },
-  };
-}
-
-function setCabinetTimetable(classroomEventsDays: ClassroomEventsDays): Action {
-  return {
-    type: ACTION.SET_TIMETABLE,
-    payload: {
-      classroomEventsDays: classroomEventsDays,
+      selected_ids: selected_ids,
+      fromDate: fromDate,
+      toDate: toDate,
     },
   };
 }
@@ -79,7 +64,6 @@ const cabinetAC = {
   deselectCabinet: deselectCabinet,
 
   getCabinetTimetable: getCabinetTimetable,
-  setCabinetTimetable: setCabinetTimetable,
 
   updFilter: updFilter,
 };
