@@ -3,10 +3,10 @@ type DayStudyEvent = {
   End: string;
   Subject: string;
   TimeIntervalString: string;
-  Dates: string;
+  Dates: string[];
 
   EducatorsDisplayText: string;
-  IsCanceled: false;
+  IsCanceled: boolean;
   StudyEventsTimeTableKindCode: number;
   EducatorIds: {
     Item1: number;
@@ -18,22 +18,11 @@ type DayStudyEvent = {
   };
 };
 
-type EventDay = {
+type ClassroomEventsDay = {
   Day: number;
   DayString: string;
   DayStudyEventsCount: number;
   DayStudyEvents: DayStudyEvent[];
 };
 
-type ClassroomEventsDays = {
-  Oid: string;
-  From: string;
-  To: string;
-
-  DisplayText: string;
-  HasEvents: boolean;
-
-  ClassroomEventsDays: EventDay[];
-};
-
-export default ClassroomEventsDays;
+export default ClassroomEventsDay;

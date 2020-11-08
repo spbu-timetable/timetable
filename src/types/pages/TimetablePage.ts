@@ -1,8 +1,10 @@
-import ClassroomEventsDays from "../ClassroomEventsDays";
+import ClassroomEventsDay from "../ClassroomEventsDays";
 
 type TimetablePage = {
   didGet: boolean;
-  timetable: ClassroomEventsDays[];
+
+  timeIntervals: string[];
+  timetable: ClassroomEventsDay[];
 };
 
 export default TimetablePage;

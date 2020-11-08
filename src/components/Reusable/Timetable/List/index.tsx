@@ -1,6 +1,5 @@
 import React from "react";
 
-
 type Props = {
   // items: any;
   // startDate: Date;
@@ -14,13 +13,7 @@ type Props = {
 };
 
 const TimetableList = (props: Props) => {
-  
-
-  return (
-    <div>
-    
-    </div>
-  );
+  return <div>list</div>;
 };
 
 export default TimetableList;

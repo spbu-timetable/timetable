@@ -10,6 +10,16 @@ function timetable(state: TimetablePage = initialState, action: Action): Timetab
         ...state,
         timetable: [...state.timetable, action.payload],
       };
+    case ACTION.FINISH_FETCHING_TIMETABLE:
+      return {
+        ...state,
+        didGet: true,
+      };
+    case ACTION.CREATE_TIME_INTERVALS:
+      return {
+        ...state,
+        timeIntervals: [...action.payload],
+      };
   }
 
   return state;

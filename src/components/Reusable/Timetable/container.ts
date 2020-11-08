@@ -9,7 +9,10 @@ function mapStateToProps(
     timetable: TimetablePage;
   }>
 ) {
-  return {};
+  return {
+    didGet: state.timetable.didGet,
+    timetable: state.timetable.timetable,
+  };
 }
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
