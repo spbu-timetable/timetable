@@ -48,8 +48,8 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     cleanCabinets: () => {
       dispatch(cabinetAC.cleanCabinets());
     },
-    getCabinetsTimetable: (selected_ids: string[], fromDate?: Date, toDate?: Date) => {
-      dispatch(cabinetAC.getCabinetTimetable(selected_ids, fromDate, toDate));
+    getCabinetsTimetable: (selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date) => {
+      dispatch(cabinetAC.getCabinetTimetable(selected_cabinets, fromDate, toDate));
     },
   };
 }

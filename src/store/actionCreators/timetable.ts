@@ -1,13 +1,11 @@
 import Action from "../../types/Action";
-import ClassroomEventsDay from "../../types/ClassroomEventsDays";
+import timetable from "../states/timetable";
 import ACTION from "./ACTION";
 
-function setTimetable(classroomEventsDays: ClassroomEventsDay): Action {
+function setTimetable(timetable: any): Action {
   return {
     type: ACTION.SET_TIMETABLE,
-    payload: {
-      classroomEventsDays: classroomEventsDays,
-    },
+    payload: timetable,
   };
 }
 
@@ -24,10 +22,18 @@ function createTimeIntervals(timeIntervals: string[]): Action {
   };
 }
 
+function setTimetableItems(items: string[]): Action {
+  return {
+    type: ACTION.SET_TIMETABLE_ITEMS,
+    payload: items,
+  };
+}
+
 const timetableAC = {
   setTimetable: setTimetable,
   finisFetchingData: finisFetchingData,
   createTimeIntervals: createTimeIntervals,
+  setTimetableItems: setTimetableItems,
 };
 
 export default timetableAC;

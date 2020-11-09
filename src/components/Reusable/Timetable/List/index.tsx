@@ -1,19 +1,20 @@
 import React from "react";
 
 type Props = {
-  // items: any;
-  // startDate: Date;
-  // endDate: Date;
-  // getCabinetTimetable: (
-  //   cabinetIndex: number,
-  //   cabinetOid: string,
-  //   startDate: Date,
-  //   endDate: Date
-  // ) => void;
+  items: string[];
+  timetable: any;
+  timeIntervals: string[];
 };
 
+const weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+
 const TimetableList = (props: Props) => {
-  return <div>list</div>;
+
+
+  
+  return <div>
+    
+  </div>;
 };
 
 export default TimetableList;

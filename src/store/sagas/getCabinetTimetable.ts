@@ -5,6 +5,9 @@ import ACTION from "../actionCreators/ACTION";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
 import timetableAC from "../actionCreators/timetable";
 import createTimeIntervals from "../../helpers/createTimeIntervals";
+import getObjectId from "../../helpers/getObjectId";
+import getObjectName from "../../helpers/getObjectName";
+import sortTimetableDays from "../../helpers/sortTimetableDays";
 
 async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
   console.log(
@@ -31,26 +34,28 @@ function* workerGetClassroomEventsDays(action: Action) {
   const endDateStr: string = formatDateToRequest(action.payload.toDate, false);
 
   const classRoomEventDays = [];
+  const cabinet_names = [];
 
-  for (let i = 0; i < action.payload.selected_ids.length; i++) {
-    const data = yield call(
+  let data: any;
+  for (let i = 0; i < action.payload.selected_cabinets.length; i++) {
+    cabinet_names.push(getObjectName(action.payload.selected_cabinets[i]));
+
+    data = yield call(
       getClassroomEventsDays,
-      action.payload.selected_ids[i],
+      getObjectId(action.payload.selected_cabinets[i]),
       startDateStr,
       endDateStr
     );
 
-    if (data !== undefined) {
-      classRoomEventDays.push(data);
-      yield put(timetableAC.setTimetable(data));
-    }
-
-    if (i === action.payload.selected_ids.length - 1) {
-      const timeIntervals = createTimeIntervals(classRoomEventDays);
-      yield put(timetableAC.createTimeIntervals(timeIntervals));
-      yield put(timetableAC.finisFetchingData());
-    }
+    if (data !== undefined) classRoomEventDays.push(data);
   }
+  console.log(classRoomEventDays);
+  const week = sortTimetableDays(classRoomEventDays);
+  yield put(timetableAC.setTimetable(classRoomEventDays));
+  const timeIntervals = createTimeIntervals(classRoomEventDays);
+  yield put(timetableAC.createTimeIntervals(timeIntervals));
+  yield put(timetableAC.setTimetableItems(cabinet_names));
+  yield put(timetableAC.finisFetchingData());
 }
 
 function* watchGetCabinetsTimetable() {

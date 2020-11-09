@@ -33,10 +33,10 @@ function* workerGetClassroomEventsDays(action: Action) {
       endDateStr
     );
 
-    if (data !== undefined) {
-      console.log(data);
-      yield put(timetableAC.setTimetable(data));
-    }
+    // if (data !== undefined) {
+    //   console.log(data);
+    //   yield put(timetableAC.setTimetable(data));
+    // }
   }
 }
 

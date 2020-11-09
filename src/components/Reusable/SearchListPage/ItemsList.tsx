@@ -26,15 +26,10 @@ type Props = {
 
   fromDate?: Date;
   toDate?: Date;
-  getTimetable?: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
+  getTimetable?: (selected_items: any, fromDate?: Date, toDate?: Date) => void;
 };
 
 const ItemsList = (props: Props) => {
-  let selected_ids: string[] = [];
-  if (props.selected_items) {
-    selected_ids = props.selected_items.map((item: any) => getObjectId(item));
-  }
-
   return (
     <>
       {props.selected_items !== undefined ? (
@@ -48,9 +43,9 @@ const ItemsList = (props: Props) => {
               onClick={() => {
                 props.setAddress();
                 if (props.fromDate && props.toDate) {
-                  props.getTimetable!(selected_ids, props.fromDate, props.toDate);
+                  props.getTimetable!(props.selected_items, props.fromDate, props.toDate);
                 } else {
-                  props.getTimetable!(selected_ids);
+                  props.getTimetable!(props.selected_items);
                 }
               }}
             >

@@ -4,17 +4,17 @@ import TimetableList from ".";
 import Action from "../../../../types/Action";
 import CabinetsPage from "../../../../types/pages/CabinetsPage";
 import Header from "../../../../types/Header";
+import TimetablePage from "../../../../types/pages/TimetablePage";
 
 function mapStateToProps(
   state: CombinedState<{
-    header: Header;
-    cabinets: CabinetsPage;
+    timetable: TimetablePage;
   }>
 ) {
   return {
-    selected_cabinets: state.cabinets.selected_cabinets,
-    fromDate: state.header.fromDate,
-    toDate: state.header.toDate,
+    items: state.timetable.items,
+    timetable: state.timetable.timetable,
+    timeIntervals: state.timetable.timeIntervals,
   };
 }
 

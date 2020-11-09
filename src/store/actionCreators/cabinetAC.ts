@@ -30,11 +30,11 @@ function deselectCabinet(cabinet: Cabinet): Action {
   };
 }
 
-function getCabinetTimetable(selected_ids: string[], fromDate?: Date, toDate?: Date): Action {
+function getCabinetTimetable(selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date): Action {
   return {
     type: ACTION.GET_CABINETS_TIMETABLE,
     payload: {
-      selected_ids: selected_ids,
+      selected_cabinets: selected_cabinets,
       fromDate: fromDate,
       toDate: toDate,
     },

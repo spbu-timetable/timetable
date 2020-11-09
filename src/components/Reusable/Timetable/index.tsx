@@ -5,7 +5,7 @@ import List from "./List/container";
 
 type Props = {
   didGet: boolean;
-  timetable: ClassroomEventsDay[];
+  timetable: ClassroomEventsDay[][];
 };
 
 const Timetable = (props: Props) => {

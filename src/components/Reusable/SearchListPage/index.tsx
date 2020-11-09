@@ -38,7 +38,7 @@ type Props = {
 
   fromDate?: Date;
   toDate?: Date;
-  getTimetable?: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
+  getTimetable?: (selected_items: any, fromDate?: Date, toDate?: Date) => void;
 };
 
 /**

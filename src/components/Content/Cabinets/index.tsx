@@ -21,7 +21,7 @@ type Props = {
 
   fromDate: Date;
   toDate: Date;
-  getCabinetsTimetable?: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
+  getCabinetsTimetable?: (selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date) => void;
 };
 
 const Cabinets = (props: Props) => {

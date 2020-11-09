@@ -8,7 +8,7 @@ function timetable(state: TimetablePage = initialState, action: Action): Timetab
     case ACTION.SET_TIMETABLE:
       return {
         ...state,
-        timetable: [...state.timetable, action.payload],
+        timetable: action.payload,
       };
     case ACTION.FINISH_FETCHING_TIMETABLE:
       return {
@@ -19,6 +19,11 @@ function timetable(state: TimetablePage = initialState, action: Action): Timetab
       return {
         ...state,
         timeIntervals: [...action.payload],
+      };
+    case ACTION.SET_TIMETABLE_ITEMS:
+      return {
+        ...state,
+        items: action.payload,
       };
   }
 

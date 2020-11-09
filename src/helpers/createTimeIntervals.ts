@@ -24,7 +24,7 @@ function sortIntervals(a: string, b: string): number {
   return 1;
 }
 
-function createTimeIntervals(days: any[]): string[] {
+function createTimeIntervals(days: any): string[] {
   const timeIntervalsSet: Set<string> = new Set();
 
   for (let i = 0; i < days.length; i++) {

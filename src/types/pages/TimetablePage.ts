@@ -4,7 +4,8 @@ type TimetablePage = {
   didGet: boolean;
 
   timeIntervals: string[];
-  timetable: ClassroomEventsDay[];
+  timetable: ClassroomEventsDay[][];
+  items: string[];
 };
 
 export default TimetablePage;
