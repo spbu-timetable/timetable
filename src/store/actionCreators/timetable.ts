@@ -1,5 +1,4 @@
 import Action from "../../types/Action";
-import timetable from "../states/timetable";
 import ACTION from "./ACTION";
 
 function setTimetable(timetable: any): Action {

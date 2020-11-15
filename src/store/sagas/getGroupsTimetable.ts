@@ -1,11 +1,14 @@
 import Axios from "axios";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, takeEvery } from "redux-saga/effects";
 import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
-import timetableAC from "../actionCreators/timetable";
 
-async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
+async function getClassroomEventsDays(
+  oid: string,
+  fromDateStr: string,
+  toDateDtr: string
+) {
   return await Axios.get(
     `https://timetable.spbu.ru/api/v1/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`
   )
@@ -22,7 +25,10 @@ async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDt
 }
 
 function* workerGetClassroomEventsDays(action: Action) {
-  const startDateStr: string = formatDateToRequest(action.payload.fromDate, true);
+  const startDateStr: string = formatDateToRequest(
+    action.payload.fromDate,
+    true
+  );
   const endDateStr: string = formatDateToRequest(action.payload.toDate, false);
 
   for (let i = 0; i < action.payload.selected_ids.length; i++) {

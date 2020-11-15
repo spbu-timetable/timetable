@@ -29,7 +29,11 @@ function sortIntervals(a: string, b: string): number {
 }
 
 function sortTimetableDays(cabinets: any) {
-  const filler = { value: "", TimeIntervalString: "" };
+  const filler = {
+    Subject: "",
+    EducatorsDisplayText: "",
+    TimeIntervalString: "",
+  };
   const weekdays: any = [];
 
   for (let i = 0; i < 6; i++) {
@@ -57,15 +61,33 @@ function sortTimetableDays(cabinets: any) {
     }
 
     for (let h = 0; h < weekdays[i].length; h++) {
-      if (weekdays[i][h].length === 0) {
-        weekdays[i][h] = [...fillers];
+      let didReachInterval = false;
+
+      console.log(weekdays[i][h]);
+      for (let v = 0; v < timeIntervals.length; v++) {
+        if (weekdays[i][h][v]) {
+          if (timeIntervals[v] === weekdays[i][h][v].TimeIntervalString) {
+            didReachInterval = true;
+          } else {
+            if (didReachInterval) {
+              weekdays[i][h].splice(v, 0, filler);
+            } else {
+              if (weekdays[i][h].length < timeIntervals.length) {
+                weekdays[i][h].splice(v - 1, 0, filler);
+              }
+            }
+          }
+        } else {
+          weekdays[i][h].push(filler);
+        }
       }
     }
 
-    console.log(timeIntervals);
+    weekdays[i] = [[...timeIntervals], weekdays[i]];
   }
 
   console.log(weekdays);
+  return weekdays;
 }
 
 export default sortTimetableDays;

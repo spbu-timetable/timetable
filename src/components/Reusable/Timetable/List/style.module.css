@@ -1,51 +1,17 @@
 .wrapper {
-    display: flex;
+  display: flex;
+  flex-direction: column;
 }
 
-.day_list {
-    width: 300px;
-    max-width: 90vw;
-
-    /* border: 1px solid var(--level2); */
-
-    margin: 0;
-    padding: -10px;
-}
-
-.cabinet {
-    padding: var(--inset2);
-    text-align: center;
-    background-color: var(--level2);
-
-    border-radius: var(--inset0) var(--inset0) 0px 0px ;
-}
-
-.weekday {
-    font-size: 1.5em;
-    margin: var(--inset2) 0px;
-}
-
-.date {
-    margin: var(--inset2);
-}
-
-.cell {
-    border: 1px solid var(--level3) !important;
+.list {
+  margin-bottom: 16px;
 }
 
 .head {
-    border: 1px solid var(--level3) !important;
-
-    font-size: 1em !important;
-    font-weight: bold !important;
-    text-align: center !important;
+  background-color: var(--level2);
 }
 
-.weekday_head {
-    border: 1px solid var(--level3) !important;
-    background-color: var(--level2);
-
-    font-size: 1em !important;
-    font-weight: bold !important;
-    
+tr {
+  background-color: aqua;
+  border: 1px solid black !important;
 }

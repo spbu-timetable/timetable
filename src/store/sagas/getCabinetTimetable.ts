@@ -9,7 +9,11 @@ import getObjectId from "../../helpers/getObjectId";
 import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
 
-async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
+async function getClassroomEventsDays(
+  oid: string,
+  fromDateStr: string,
+  toDateDtr: string
+) {
   console.log(
     `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
   );
@@ -30,7 +34,10 @@ async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDt
 }
 
 function* workerGetClassroomEventsDays(action: Action) {
-  const startDateStr: string = formatDateToRequest(action.payload.fromDate, true);
+  const startDateStr: string = formatDateToRequest(
+    action.payload.fromDate,
+    true
+  );
   const endDateStr: string = formatDateToRequest(action.payload.toDate, false);
 
   const classRoomEventDays = [];
@@ -49,11 +56,10 @@ function* workerGetClassroomEventsDays(action: Action) {
 
     if (data !== undefined) classRoomEventDays.push(data);
   }
-  console.log(classRoomEventDays);
+
   const week = sortTimetableDays(classRoomEventDays);
-  yield put(timetableAC.setTimetable(classRoomEventDays));
-  const timeIntervals = createTimeIntervals(classRoomEventDays);
-  yield put(timetableAC.createTimeIntervals(timeIntervals));
+  yield put(timetableAC.setTimetable(week));
+
   yield put(timetableAC.setTimetableItems(cabinet_names));
   yield put(timetableAC.finisFetchingData());
 }

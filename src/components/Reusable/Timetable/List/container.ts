@@ -14,7 +14,6 @@ function mapStateToProps(
   return {
     items: state.timetable.items,
     timetable: state.timetable.timetable,
-    timeIntervals: state.timetable.timeIntervals,
   };
 }
 
@@ -22,6 +21,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {};
 }
 
-const CabinetsContainer = connect(mapStateToProps, mapDispatchToProps)(TimetableList);
+const CabinetsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TimetableList);
 
 export default CabinetsContainer;
