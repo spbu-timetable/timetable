@@ -7,7 +7,10 @@ import CabinetsPage from "../../types/pages/CabinetsPage";
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/cabinets";
 
-function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsPage {
+function cabinets(
+  state: CabinetsPage = initialState,
+  action: Action
+): CabinetsPage {
   switch (action.type) {
     case ACTION.SET_CABINETS:
       return {
@@ -26,10 +29,18 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       };
 
     case ACTION.SELECT_CABINET:
-      if (!state.selected_cabinets.includes(action.payload) && state.selected_cabinets.length < 4) {
+      if (
+        !state.selected_cabinets.includes(action.payload) &&
+        state.selected_cabinets.length < 4
+      ) {
         return {
           ...state,
-          selected_cabinets: [...state.selected_cabinets, action.payload],
+          selected_cabinets: [
+            ...state.selected_cabinets,
+            action.payload,
+          ].sort((a: Cabinet, b: Cabinet) =>
+            sortList(a.DisplayName1, b.DisplayName1)
+          ),
         };
       }
       break;
