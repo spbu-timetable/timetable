@@ -5,14 +5,19 @@
  */
 
 function setMonthStr(date: Date): string {
-  return date.getMonth() < 10 ? "0" + String(date.getMonth() + 1) : String(date.getMonth());
+  return date.getMonth() + 1 < 10
+    ? "0" + String(date.getMonth() + 1)
+    : String(date.getMonth() + 1);
 }
 function setDayStr(date: Date): string {
-  return date.getDate() < 10 ? "0" + String(date.getDate()) : String(date.getDate());
+  return date.getDate() < 10
+    ? "0" + String(date.getDate())
+    : String(date.getDate());
 }
 
 function formatDateToRequest(date: Date, isStart: boolean): string {
-  const parsedString: string = String(date.getFullYear()) + setMonthStr(date) + setDayStr(date);
+  const parsedString: string =
+    String(date.getFullYear()) + setMonthStr(date) + setDayStr(date);
 
   return isStart ? parsedString + `0700` : parsedString + `2000`;
 }
