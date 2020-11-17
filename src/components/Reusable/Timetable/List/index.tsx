@@ -1,5 +1,6 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
+import transpose from "../../../../helpers/tranpose";
 import style from "./style.module.css";
 
 type Props = {
@@ -15,6 +16,8 @@ const weekdays = [
   "Пятница",
   "Суббота",
 ];
+
+
 
 const TimetableList = (props: Props) => {
   const tables = [];
@@ -41,6 +44,10 @@ const TimetableList = (props: Props) => {
   function createDayTimetable(matrix: any, item_names: string[]) {
     const timetable = [];
 
+    console.log(matrix);
+    matrix = transpose(matrix);
+    console.log(matrix);
+
     for (let i = 0; i < matrix.length; i++) {
       const row = [];
       row.push(
@@ -49,15 +56,19 @@ const TimetableList = (props: Props) => {
         </td>
       );
       for (let j = 0; j < matrix[i].length; j++) {
-        row.push(
-          <td className={style.td}>
-            <div className={style.cell}>
-              {matrix[i][j].Subject}
-              <br />
-              {matrix[i][j].EducatorsDisplayText}
-            </div>
-          </td>
-        );
+        if (matrix[i][j]) {
+          row.push(
+            <td className={style.td}>
+              <div className={style.cell}>
+                {matrix[i][j].Subject}
+                <br />
+                {matrix[i][j].EducatorsDisplayText}
+                <br />
+                {matrix[i][j].TimeIntervalString}
+              </div>
+            </td>
+          );
+        }
       }
       timetable.push(<tr>{row}</tr>);
     }
@@ -67,15 +78,18 @@ const TimetableList = (props: Props) => {
 
   for (let i = 0; i < props.timetable.length; i++) {
     const fullRow: number = props.timetable[i][0].length + 1;
-    const intervals = createIntervalsRow(props.timetable[i][0]);
-    const timetable = createDayTimetable(props.timetable[i][1], props.items);
+    const intervals = createIntervalsRow(props.items);
+    const timetable = createDayTimetable(
+      props.timetable[i][1],
+      props.timetable[i][0]
+    );
 
     tables.push(
       <table key={i} className={style.list}>
         <thead className={style.head}>
           <tr>
             <td className={style.head_td} colSpan={fullRow}>
-              <Typography variant="h6" >{weekdays[i]}</Typography>
+              <Typography variant="h6">{weekdays[i]}</Typography>
             </td>
           </tr>
         </thead>

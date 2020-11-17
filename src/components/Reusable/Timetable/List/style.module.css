@@ -15,6 +15,7 @@
 
 table {
   border-collapse: collapse;
+  width: 95vw;
 }
 
 .head_td {
@@ -23,9 +24,10 @@ table {
 }
 
 .td {
-  margin: 4px;
+  padding: 4px;
   border: 1px solid var(--level3) !important;
-  text-align: center;
+  white-space: wrap;
+  overflow: hidden;
 }
 .head_cell {
   margin: 4px;
