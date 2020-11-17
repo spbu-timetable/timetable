@@ -55,15 +55,9 @@ function sortTimetableDays(cabinets: any) {
       timeIntervalsSet
     ).sort((a: string, b: string) => sortIntervals(a, b));
 
-    const fillers = [];
-    for (let h = 0; h < timeIntervals.length; h++) {
-      fillers.push(filler);
-    }
-
     for (let h = 0; h < weekdays[i].length; h++) {
       let didReachInterval = false;
 
-      console.log(weekdays[i][h]);
       for (let v = 0; v < timeIntervals.length; v++) {
         if (weekdays[i][h][v]) {
           if (timeIntervals[v] === weekdays[i][h][v].TimeIntervalString) {
@@ -73,7 +67,9 @@ function sortTimetableDays(cabinets: any) {
               weekdays[i][h].splice(v, 0, filler);
             } else {
               if (weekdays[i][h].length < timeIntervals.length) {
-                weekdays[i][h].splice(v - 1, 0, filler);
+                if (v === 0) {
+                  weekdays[i][h] = [filler,...weekdays[i][h]]
+                } else weekdays[i][h].splice(v - 1, 0, filler);
               }
             }
           }
@@ -84,6 +80,7 @@ function sortTimetableDays(cabinets: any) {
     }
 
     weekdays[i] = [[...timeIntervals], weekdays[i]];
+    console.log(weekdays[i]);
   }
 
   console.log(weekdays);
