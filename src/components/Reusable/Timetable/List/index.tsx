@@ -1,3 +1,4 @@
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import style from "./style.module.css";
 
@@ -21,9 +22,17 @@ const TimetableList = (props: Props) => {
   function createIntervalsRow(intervalStrings: string[]): JSX.Element[] {
     const intervals: JSX.Element[] = [];
 
-    intervals.push(<td key={0}>{""}</td>);
+    intervals.push(
+      <td className={style.td} key={0}>
+        {""}
+      </td>
+    );
     intervalStrings.forEach((intervalString) => {
-      intervals.push(<td key={intervalString}>{intervalString}</td>);
+      intervals.push(
+        <td className={style.td} key={intervalString}>
+          {intervalString}
+        </td>
+      );
     });
 
     return intervals;
@@ -34,13 +43,20 @@ const TimetableList = (props: Props) => {
 
     for (let i = 0; i < matrix.length; i++) {
       const row = [];
-      row.push(<td>{item_names[i]}</td>);
+      row.push(
+        <td className={style.td}>
+          <div className={style.cell}>{item_names[i]}</div>
+        </td>
+      );
       for (let j = 0; j < matrix[i].length; j++) {
         row.push(
-          <td>{`
-          ${matrix[i][j].Subject}
-          ${matrix[i][j].EducatorsDisplayText}
-          `}</td>
+          <td className={style.td}>
+            <div className={style.cell}>
+              {matrix[i][j].Subject}
+              <br />
+              {matrix[i][j].EducatorsDisplayText}
+            </div>
+          </td>
         );
       }
       timetable.push(<tr>{row}</tr>);
@@ -58,13 +74,17 @@ const TimetableList = (props: Props) => {
       <table key={i} className={style.list}>
         <thead className={style.head}>
           <tr>
-            <td colSpan={fullRow}>{weekdays[i]}</td>
+            <td className={style.head_td} colSpan={fullRow}>
+              <Typography>{weekdays[i]}</Typography>
+            </td>
           </tr>
         </thead>
         <tbody>
           {props.timetable[i][0].length === 0 ? (
             <tr>
-              <td colSpan={fullRow}>День свободен</td>
+              <td className={style.td} colSpan={fullRow}>
+                <div className={style.free_cell}>День свободен</div>
+              </td>
             </tr>
           ) : (
             <tr>{intervals}</tr>

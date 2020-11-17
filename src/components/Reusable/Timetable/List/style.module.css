@@ -1,17 +1,43 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  width: 95vw;
 }
 
 .list {
   margin-bottom: 16px;
+  width: inherit;
 }
 
 .head {
   background-color: var(--level2);
 }
 
-tr {
-  background-color: aqua;
-  border: 1px solid black !important;
+table {
+  border-collapse: collapse;
+}
+
+.head_td {
+  padding: 8px;
+  border: 1px solid var(--level2) !important;
+}
+
+.td {
+  margin: 4px;
+  border: 1px solid var(--level3) !important;
+  text-align: center;
+}
+.head_cell {
+  margin: 4px;
+  height: inherit;
+  width: inherit;
+}
+
+.cell {
+  padding: 4px;
+}
+
+.free_cell {
+  margin: 4px;
+  width: inherit;
 }
