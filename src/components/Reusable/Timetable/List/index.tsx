@@ -75,7 +75,7 @@ const TimetableList = (props: Props) => {
         <thead className={style.head}>
           <tr>
             <td className={style.head_td} colSpan={fullRow}>
-              <Typography>{weekdays[i]}</Typography>
+              <Typography variant="h6" >{weekdays[i]}</Typography>
             </td>
           </tr>
         </thead>
@@ -83,7 +83,9 @@ const TimetableList = (props: Props) => {
           {props.timetable[i][0].length === 0 ? (
             <tr>
               <td className={style.td} colSpan={fullRow}>
-                <div className={style.free_cell}>День свободен</div>
+                <div className={style.free_cell}>
+                  <Typography variant="h5">День свободен</Typography>
+                </div>
               </td>
             </tr>
           ) : (

@@ -38,6 +38,6 @@ table {
 }
 
 .free_cell {
-  margin: 4px;
+  margin: var(--inset3);
   width: inherit;
 }
