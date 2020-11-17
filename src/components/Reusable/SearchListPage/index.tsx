@@ -50,7 +50,9 @@ type Props = {
 function SearchListPage(props: Props) {
   const [, setChipData] = React.useState<any>(props.selected_items);
   const handleDelete = (chipToDelete: any) => () => {
-    setChipData((chips: any) => chips.filter((chip: any) => chip.key !== chipToDelete.key));
+    setChipData((chips: any) =>
+      chips.filter((chip: any) => chip.key !== chipToDelete.key)
+    );
     props.deselectItem!(chipToDelete);
   };
   React.useEffect(() => {
@@ -63,7 +65,13 @@ function SearchListPage(props: Props) {
     if (props.getSelectedItems !== undefined) {
       props.getSelectedItems(props.selected_item!);
     }
-  }, [props.oid, props.cleanItems, props.getItems, props.getSelectedItems, props.selected_item]);
+  }, [
+    props.oid,
+    props.cleanItems,
+    props.getItems,
+    props.getSelectedItems,
+    props.selected_item,
+  ]);
 
   let selected_items_component;
   if (props.selected_items !== undefined) {
