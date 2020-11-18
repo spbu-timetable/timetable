@@ -1,21 +1,36 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 95vw;
 }
 
-.list {
-  margin-bottom: 16px;
+.tools {
+  display: flex;
+  flex-direction: row;
   width: inherit;
+
+  margin-bottom: var(--inset4);
+}
+
+.print {
+  align-self: center;
+}
+
+.header {
+  flex-grow: 1;
 }
 
 .head {
   background-color: var(--level2);
 }
 
-table {
+.table {
   border-collapse: collapse;
+  table-layout: auto;
   width: 95vw;
+
+  margin-bottom: var(--inset4);
 }
 
 .head_td {
