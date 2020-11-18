@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../style.module.css";
 import createDayTimetable from "./createDayTimetable";
-import createIntervalsRow from "./createIntervals";
+import createItemsRow from "./createItemsRow";
 import Typography from "@material-ui/core/Typography";
 
 export default function createTimetableComponent(
@@ -21,7 +21,7 @@ export default function createTimetableComponent(
 
   for (let i = 0; i < timetable.length; i++) {
     const fullRow: number = timetable[i][0].length + 1;
-    const intervals = createIntervalsRow(items);
+    const intervals = items.length > 1 ? createItemsRow(items) : [];
     const day_timetable = createDayTimetable(timetable[i][1], timetable[i][0]);
 
     tables.push(
@@ -29,7 +29,9 @@ export default function createTimetableComponent(
         <thead className={style.head}>
           <tr>
             <td className={style.head_td} colSpan={fullRow}>
-              <Typography variant="h6" component="h6">{weekdays[i]}</Typography>
+              <Typography variant="h6" component="h6">
+                {weekdays[i]}
+              </Typography>
             </td>
           </tr>
         </thead>

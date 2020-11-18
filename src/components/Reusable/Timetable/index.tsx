@@ -14,7 +14,6 @@ type Props = {
 };
 
 const TimetableList = (props: Props) => {
-
   const componentRef: React.RefObject<HTMLDivElement> = React.useRef<
     HTMLDivElement
   >(null);
@@ -28,14 +27,19 @@ const TimetableList = (props: Props) => {
       {props.didGet ? (
         <>
           <div className={style.tools}>
-            <h1 className={style.header}>Кабинет</h1>
+            {props.items.length > 1 ? (
+              <h1 className={style.header}>Кабинеты</h1>
+            ) : (
+              <h1 className={style.header}>Кабинет {props.items[0]}</h1>
+            )}
             <ReactToPrint
               copyStyles={false}
               fonts={[
                 {
                   family: "Roboto",
-                  source: "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
-                }
+                  source:
+                    "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
+                },
               ]}
               pageStyle="@page { 
                                 size: auto;  
