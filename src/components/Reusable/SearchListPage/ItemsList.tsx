@@ -3,7 +3,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
 import React from "react";
-import getObjectId from "../../../helpers/getObjectId";
 import Banner from "../Banner";
 import style from "./style.module.css";
 

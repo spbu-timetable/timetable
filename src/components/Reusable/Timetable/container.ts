@@ -2,8 +2,6 @@ import { connect } from "react-redux";
 import { CombinedState } from "redux";
 import TimetableList from ".";
 import Action from "../../../types/Action";
-import CabinetsPage from "../../../types/pages/CabinetsPage";
-import Header from "../../../types/Header";
 import TimetablePage from "../../../types/pages/TimetablePage";
 
 function mapStateToProps(

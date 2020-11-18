@@ -4,7 +4,6 @@ import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
 import timetableAC from "../actionCreators/timetable";
-import createTimeIntervals from "../../helpers/createTimeIntervals";
 import getObjectId from "../../helpers/getObjectId";
 import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
