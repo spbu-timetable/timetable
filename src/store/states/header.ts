@@ -7,12 +7,7 @@ const sunday = new Date(monday.getTime());
 sunday.setDate(sunday.getDate() + 6);
 
 const header: Header = {
-  button_title: "Кабинеты",
-  menu_titles: ["Кабинеты", "Преподаватели", "Группы"],
-
   week: new Date(Date.now()),
-
-  isRussian: true,
 
   fromDate: monday,
   toDate: sunday,

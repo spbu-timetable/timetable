@@ -14,8 +14,6 @@ function mapStateToProps(
   return {
     week: state.header.week.toDateString(),
 
-    isRussian: state.header.isRussian,
-
     fromDateStr: state.header.fromDateStr,
     toDateStr: state.header.toDateStr,
   };

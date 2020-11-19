@@ -11,7 +11,6 @@ import Link from "@material-ui/core/Link";
 
 type Props = {
   week: string;
-  isRussian: boolean;
   fromDateStr: string;
   toDateStr: string;
 
