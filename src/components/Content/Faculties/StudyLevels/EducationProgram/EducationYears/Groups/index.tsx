@@ -21,7 +21,7 @@ type Props = {
 
   fromDate: Date;
   toDate: Date;
-  getGroupsTimetable: (selected_ids: string[], fromDate?: Date, toDate?: Date) => void;
+  getGroupsTimetable: (selected_groups: Group[], fromDate?: Date, toDate?: Date) => void;
 };
 
 const Groups = (props: Props) => {
