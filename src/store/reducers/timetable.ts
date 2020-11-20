@@ -18,6 +18,7 @@ function timetable(
       return {
         ...state,
         items: action.payload,
+        headers: action.headers,
       };
 
     case ACTION.FINISH_FETCHING_TIMETABLE:
