@@ -35,20 +35,17 @@ function sortTimetableDays(cabinets: any) {
     TimeIntervalString: "",
   };
   const weekdays: any = [];
-
   for (let i = 0; i < 6; i++) {
     const timeIntervalsSet: Set<string> = new Set();
 
     weekdays.push([]);
-
     for (let j = 0; j < cabinets.length; j++) {
-      for (let h = 0; h < cabinets[j][i].DayStudyEvents.length; h++) {
-        timeIntervalsSet.add(
-          cabinets[j][i].DayStudyEvents[h].TimeIntervalString
-        );
-      }
-
-      weekdays[i].push(cabinets[j][i].DayStudyEvents);
+        for (let h = 0; h < cabinets[j][i].DayStudyEvents.length; h++) {
+          timeIntervalsSet.add(
+            cabinets[j][i].DayStudyEvents[h].TimeIntervalString
+          );
+        }
+        weekdays[i].push(cabinets[j][i].DayStudyEvents);
     }
 
     const timeIntervals: string[] = Array.from(
@@ -80,10 +77,8 @@ function sortTimetableDays(cabinets: any) {
     }
 
     weekdays[i] = [[...timeIntervals], weekdays[i]];
-    console.log(weekdays[i]);
   }
 
-  console.log(weekdays);
   return weekdays;
 }
 
