@@ -1,37 +1,62 @@
 import React from "react";
 import transpose from "../../../../helpers/transpose";
+import Event from "../../../../types/Event";
 import style from "../style.module.css";
 
-export default function createDayTimetable(matrix: any, intervals: string[]) {
-  const timetable = [];
+function createCell(event: Event): JSX.Element[] {
+  const items: JSX.Element[] = [];
 
-  console.log(matrix);
+  // items.push(
+  //   <div key={0} className={style.cell_item}>
+  //     {event.main[0]}
+  //     <br />
+  //     {event.extra[0]}
+  //     <br />
+  //     {event.interval}
+  //     <br />
+  //   </div>
+  // );
+  for (let i = 0; i < event.main.length; i++) {
+    items.push(
+      <div key={i} className={style.cell_item}>
+        {event.main[i]}
+        <br />
+        {event.extra[i]}
+        <br />
+      </div>
+    );
+  }
+  return items;
+}
+
+export default function createDayTimetable(
+  matrix: any,
+  intervals: string[]
+): JSX.Element[] {
+  const timetable: JSX.Element[] = [];
+
   matrix = transpose(matrix);
-  console.log(matrix);
 
   for (let i = 0; i < matrix.length; i++) {
     const row = [];
 
     row.push(
-      <td className={style.td}>
+      <td key={i} className={style.td}>
         <div className={style.cell}>{intervals[i]}</div>
       </td>
     );
 
     for (let j = 0; j < matrix[i].length; j++) {
       if (matrix[i][j]) {
+        const cell = createCell(matrix[i][j]);
         row.push(
-          <td className={style.td}>
-            <div className={style.cell}>
-              {matrix[i][j].Subject}
-              <br />
-              {matrix[i][j].EducatorsDisplayText}
-            </div>
+          <td key={Math.random()} className={style.td}>
+            <div className={style.cell}>{cell}</div>
           </td>
         );
       }
     }
-    timetable.push(<tr>{row}</tr>);
+    timetable.push(<tr key={i}>{row}</tr>);
   }
 
   return timetable;

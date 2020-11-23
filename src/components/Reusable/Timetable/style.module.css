@@ -51,7 +51,16 @@
 }
 
 .cell {
-  padding: 4px;
+  padding: 4px 0;
+}
+
+.cell_item {
+  padding: 4px ;
+  border-top: 1px solid var(--level3);
+}
+
+.cell_item:first-child {
+  border: none;
 }
 
 .free_cell {

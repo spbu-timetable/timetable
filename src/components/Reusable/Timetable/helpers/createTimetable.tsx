@@ -29,7 +29,7 @@ export default function createTimetableComponent(
         <thead className={style.head}>
           <tr>
             <td className={style.head_td} colSpan={fullRow}>
-              <Typography variant="h6" component="h6">
+              <Typography variant="h5" component="h5">
                 {weekdays[i]}
               </Typography>
             </td>

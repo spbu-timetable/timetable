@@ -1,3 +1,5 @@
+import Event from "../types/Event";
+
 function normalizeHour(timeInterval: string): string {
   if (
     timeInterval[0] === "0" ||
@@ -29,10 +31,10 @@ function sortIntervals(a: string, b: string): number {
 }
 
 function sortTimetableDays(cabinets: any) {
-  const filler = {
-    Subject: "",
-    EducatorsDisplayText: "",
-    TimeIntervalString: "",
+  const filler: Event = {
+    main: [],
+    extra: [],
+    interval: "",
   };
   const weekdays: any = [];
   for (let i = 0; i < 6; i++) {
@@ -40,12 +42,22 @@ function sortTimetableDays(cabinets: any) {
 
     weekdays.push([]);
     for (let j = 0; j < cabinets.length; j++) {
-        for (let h = 0; h < cabinets[j][i].DayStudyEvents.length; h++) {
-          timeIntervalsSet.add(
-            cabinets[j][i].DayStudyEvents[h].TimeIntervalString
-          );
-        }
-        weekdays[i].push(cabinets[j][i].DayStudyEvents);
+      for (let h = 0; h < cabinets[j][i].DayStudyEvents.length; h++) {
+        timeIntervalsSet.add(
+          cabinets[j][i].DayStudyEvents[h].TimeIntervalString
+        );
+      }
+
+      const events: Event[] = [];
+      for (let m = 0; m < cabinets[j][i].DayStudyEvents.length; m++) {
+        events.push({
+          main: [cabinets[j][i].DayStudyEvents[m].Subject],
+          extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
+          interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
+        });
+      }
+
+      weekdays[i].push(events);
     }
 
     const timeIntervals: string[] = Array.from(
@@ -57,15 +69,26 @@ function sortTimetableDays(cabinets: any) {
 
       for (let v = 0; v < timeIntervals.length; v++) {
         if (weekdays[i][h][v]) {
-          if (timeIntervals[v] === weekdays[i][h][v].TimeIntervalString) {
+          if (timeIntervals[v] === weekdays[i][h][v].interval) {
             didReachInterval = true;
+
+            for (let m = v + 1; m < weekdays[i][h].length; m++) {
+              if (weekdays[i][h][m]) {
+                if (timeIntervals[v] === weekdays[i][h][m].interval) {
+                  console.log(v);
+                  weekdays[i][h][v].main.push(weekdays[i][h][m].main[0]);
+                  weekdays[i][h][v].extra.push(weekdays[i][h][m].extra[0]);
+                  weekdays[i][h].splice(m, 1);
+                } else break;
+              }
+            }
           } else {
             if (didReachInterval) {
               weekdays[i][h].splice(v, 0, filler);
             } else {
               if (weekdays[i][h].length < timeIntervals.length) {
                 if (v === 0) {
-                  weekdays[i][h] = [filler,...weekdays[i][h]]
+                  weekdays[i][h] = [filler, ...weekdays[i][h]];
                 } else weekdays[i][h].splice(v - 1, 0, filler);
               }
             }
@@ -75,7 +98,6 @@ function sortTimetableDays(cabinets: any) {
         }
       }
     }
-
     weekdays[i] = [[...timeIntervals], weekdays[i]];
   }
 
