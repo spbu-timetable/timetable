@@ -15,6 +15,8 @@ type Props = {
   items: string[];
   timetable: any;
   headers: string[];
+
+  cleanTimetable: () => void;
 };
 
 const TimetableList = (props: Props) => {
@@ -24,7 +26,7 @@ const TimetableList = (props: Props) => {
     if (props.items.length === 0) {
       history.goBack();
     }
-  }, [props.items]);
+  }, [props.items, history]);
 
   const componentRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
 

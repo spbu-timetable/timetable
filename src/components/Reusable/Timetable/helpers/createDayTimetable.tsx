@@ -6,16 +6,6 @@ import style from "../style.module.css";
 function createCell(event: Event): JSX.Element[] {
   const items: JSX.Element[] = [];
 
-  // items.push(
-  //   <div key={0} className={style.cell_item}>
-  //     {event.main[0]}
-  //     <br />
-  //     {event.extra[0]}
-  //     <br />
-  //     {event.interval}
-  //     <br />
-  //   </div>
-  // );
   for (let i = 0; i < event.main.length; i++) {
     items.push(
       <div key={i} className={style.cell_item}>

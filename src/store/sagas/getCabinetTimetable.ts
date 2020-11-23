@@ -9,13 +9,9 @@ import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
 
 async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
-  console.log(
-    `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
-  );
+  console.log(`https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`);
 
-  return await Axios.get(
-    `https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`
-  )
+  return await Axios.get(`https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`)
     .then((response) => {
       if (response.status === 200) {
         return response.data.ClassroomEventsDays;
@@ -29,16 +25,21 @@ async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDt
 }
 
 function* workerGetClassroomEventsDays(action: Action) {
+  yield put(timetableAC.cleanTimetable());
+
   const startDateStr: string = formatDateToRequest(action.payload.fromDate, true);
   const endDateStr: string = formatDateToRequest(action.payload.toDate, false);
 
   const classRoomEventDays = [];
-  const cabinet_names = [];
+  const cabinet_names: string[] = [];
+  action.payload.selected_cabinets.forEach((element: any) => {
+    cabinet_names.push(getObjectName(element));
+  });
+
+  yield put(timetableAC.setTimetableItems(cabinet_names, ["Кабинет", "Кабинеты"]));
 
   let data: any;
-  for (let i = 0; i < action.payload.selected_cabinets.length; i++) {
-    cabinet_names.push(getObjectName(action.payload.selected_cabinets[i]));
-
+  for (let i = 0; i < cabinet_names.length; i++) {
     data = yield call(
       getClassroomEventsDays,
       getObjectId(action.payload.selected_cabinets[i]),
@@ -48,8 +49,6 @@ function* workerGetClassroomEventsDays(action: Action) {
 
     if (data !== undefined) classRoomEventDays.push(data);
   }
-
-  yield put(timetableAC.setTimetableItems(cabinet_names, ["Кабинет", "Кабинеты"]));
 
   const week = sortTimetableDays(classRoomEventDays);
   yield put(timetableAC.setTimetable(week));

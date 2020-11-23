@@ -1,7 +1,7 @@
 import AppBar from "@material-ui/core/AppBar/AppBar";
 
 import Toolbar from "@material-ui/core/Toolbar";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import React from "react";
 import style from "./style.module.css";
@@ -20,6 +20,13 @@ type Props = {
 
 const Header = (props: Props) => {
   const history = useHistory();
+  let location = useLocation();
+
+  React.useEffect(() => {
+    if (location.pathname === "/timetable") {
+    }
+  });
+
   return (
     <AppBar position="fixed" elevation={0}>
       <Toolbar>
@@ -34,6 +41,7 @@ const Header = (props: Props) => {
           Расписание СПбГУ
         </Link>
         <Picker
+          isDisabled={location.pathname === "/timetable" ? true : false}
           className={style.date_picker}
           fromDateStr={props.fromDateStr}
           toDateStr={props.toDateStr}

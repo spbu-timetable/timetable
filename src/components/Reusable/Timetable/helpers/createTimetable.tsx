@@ -10,7 +10,7 @@ export default function createTimetableComponent(timetable: any, items: string[]
   const tables = [];
 
   for (let i = 0; i < timetable.length; i++) {
-    const fullRow: number = timetable[i][0].length + 1;
+    const fullRow: number = items.length + 1;
     const intervals = items.length > 1 ? createItemsRow(items) : [];
     const day_timetable = createDayTimetable(timetable[i][1], timetable[i][0]);
 

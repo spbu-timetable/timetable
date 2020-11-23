@@ -15,6 +15,8 @@ type Props = {
   fromDateStr: string;
   toDateStr: string;
 
+  isDisabled: boolean;
+
   setWeek: (date: Date) => void;
 };
 
@@ -48,7 +50,15 @@ const Picker = (props: Props) => {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
-      <Button onClick={() => setOpen(!open)}>{props.fromDateStr + " - " + props.toDateStr}</Button>
+      <Button
+        onClick={() => {
+          if (!props.isDisabled) {
+            setOpen(!open);
+          }
+        }}
+      >
+        {props.fromDateStr + " - " + props.toDateStr}
+      </Button>
 
       <DatePicker
         autoOk={true}

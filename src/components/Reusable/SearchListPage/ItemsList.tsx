@@ -40,12 +40,13 @@ const ItemsList = (props: Props) => {
               className={style.btn}
               color="primary"
               onClick={() => {
-                props.setAddress();
                 if (props.fromDate && props.toDate) {
                   props.getTimetable!(props.selected_items, props.fromDate, props.toDate);
                 } else {
                   props.getTimetable!(props.selected_items);
                 }
+
+                props.setAddress();
               }}
             >
               Показать

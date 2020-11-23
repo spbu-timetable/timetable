@@ -19,7 +19,11 @@ function mapStateToProps(
 }
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
-  return {};
+  return {
+    cleanTimetable: () => {
+      dispatch(timetableAC.cleanTimetable());
+    },
+  };
 }
 
 const CabinetsContainer = connect(mapStateToProps, mapDispatchToProps)(TimetableList);
