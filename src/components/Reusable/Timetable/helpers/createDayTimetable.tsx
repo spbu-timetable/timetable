@@ -11,7 +11,6 @@ function createCell(event: Event): JSX.Element[] {
       <div key={i} className={style.cell_item}>
         {event.main[i]}
         <br />
-        <br />
         {event.extra[i]}
         <br />
       </div>

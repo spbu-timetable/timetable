@@ -31,6 +31,13 @@ const printStyle: string = `
                           margin: 0px;
                           padding: 0px;  
                         }
+                        div {
+                          border-top: 1px solid black;
+                          padding 2px;
+                        }
+                        div:first-child {
+                          border: none;
+                        }
 
                         }`;
 
