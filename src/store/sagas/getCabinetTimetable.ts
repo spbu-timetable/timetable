@@ -59,7 +59,7 @@ function* workerGetClassroomEventsDays(action: Action) {
   const week = sortTimetableDays(classRoomEventDays);
   yield put(timetableAC.setTimetable(week));
 
-  yield put(timetableAC.setTimetableItems(cabinet_names));
+  yield put(timetableAC.setTimetableItems(cabinet_names, ["Кабинет", "Кабинеты"]));
   yield put(timetableAC.finisFetchingData());
 }
 

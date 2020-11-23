@@ -21,10 +21,11 @@ function createTimeIntervals(timeIntervals: string[]): Action {
   };
 }
 
-function setTimetableItems(items: string[]): Action {
+function setTimetableItems(items: string[], headers: string[]): Action {
   return {
     type: ACTION.SET_TIMETABLE_ITEMS,
     payload: items,
+    headers: headers,
   };
 }
 

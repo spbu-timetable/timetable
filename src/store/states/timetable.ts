@@ -5,6 +5,7 @@ const timetable: TimetablePage = {
 
   timetable: [],
   items: [],
+  headers: []
 };
 
 export default timetable;

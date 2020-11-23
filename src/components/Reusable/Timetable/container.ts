@@ -13,6 +13,7 @@ function mapStateToProps(
     didGet: state.timetable.didGet,
     items: state.timetable.items,
     timetable: state.timetable.timetable,
+    headers: state.timetable.headers,
   };
 }
 

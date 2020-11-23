@@ -47,8 +47,8 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     cleanGroups: () => {
       dispatch(groupAC.cleanGroups());
     },
-    getGroupsTimetable: (selected_ids: string[], fromDate?: Date, toDate?: Date) => {
-      dispatch(groupAC.getGroupsTimetable(selected_ids, fromDate!, toDate!));
+    getGroupsTimetable: (selected_groups: Group[], fromDate?: Date, toDate?: Date) => {
+      dispatch(groupAC.getGroupsTimetable(selected_groups, fromDate!, toDate!));
     },
   };
 }

@@ -12,6 +12,7 @@ type Props = {
   didGet: boolean;
   items: string[];
   timetable: any;
+  headers: string[];
 };
 
 const TimetableList = (props: Props) => {
@@ -29,9 +30,9 @@ const TimetableList = (props: Props) => {
         <>
           <div className={style.tools}>
             {props.items.length > 1 ? (
-              <h1 className={style.header}>Кабинеты</h1>
+              <h1 className={style.header}>{props.headers[1]}</h1>
             ) : (
-              <h1 className={style.header}>Кабинет {props.items[0]}</h1>
+              <h1 className={style.header}>{props.headers[0] + " " + props.items[0]}</h1>
             )}
             <ReactToPrint
               copyStyles={false}

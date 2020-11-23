@@ -43,11 +43,11 @@ function cleanGroups(): Action {
   };
 }
 
-function getGroupsTimetable(selected_ids: string[], fromDate: Date, toDate: Date): Action {
+function getGroupsTimetable(selected_groups: Group[], fromDate: Date, toDate: Date): Action {
   return {
     type: ACTION.GET_GROUPS_TIMETABLE,
     payload: {
-      selected_ids: selected_ids,
+      selected_groups: selected_groups,
       fromDate: fromDate,
       toDate: toDate,
     },
