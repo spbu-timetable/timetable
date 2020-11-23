@@ -29,11 +29,18 @@ function setTimetableItems(items: string[], headers: string[]): Action {
   };
 }
 
+function cleanTimetable(): Action {
+  return {
+    type: ACTION.CLEAN_TIMETABLE,
+  };
+}
+
 const timetableAC = {
   setTimetable: setTimetable,
   finisFetchingData: finisFetchingData,
   createTimeIntervals: createTimeIntervals,
   setTimetableItems: setTimetableItems,
+  cleanTimetable: cleanTimetable,
 };
 
 export default timetableAC;

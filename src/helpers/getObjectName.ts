@@ -8,18 +8,15 @@ function getObjectName(object: any): string {
     return object.DisplayName;
   } else if (object.DisplayName1 !== undefined) {
     return object.DisplayName1;
-  } else if (object.StudyLevelName !== undefined){
+  } else if (object.StudyLevelName !== undefined) {
     return object.StudyLevelName;
-  }
-  else if (object.YearName !== undefined){
+  } else if (object.YearName !== undefined) {
     return object.YearName;
-  }
-  else if (object.StudentGroupName !== undefined){
+  } else if (object.StudentGroupName !== undefined) {
     return object.StudentGroupName;
+  } else {
+    return object.Name;
   }
-    else{
-      return object.Name;
-    }
 }
 
 export default getObjectName;

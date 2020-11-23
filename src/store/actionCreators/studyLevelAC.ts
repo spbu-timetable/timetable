@@ -3,9 +3,10 @@ import StudyLevel from "../../types/StudyLevel";
 import ACTION from "./ACTION";
 
 function getStudyLevels(Alias: string): Action {
-  return { 
+  return {
     type: ACTION.GET_STUDYLEVELS,
-    payload:  Alias};
+    payload: Alias,
+  };
 }
 
 function setStudyLevels(studyLevels: StudyLevel[]): Action {

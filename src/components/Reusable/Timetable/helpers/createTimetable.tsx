@@ -4,18 +4,8 @@ import createDayTimetable from "./createDayTimetable";
 import createItemsRow from "./createItemsRow";
 import Typography from "@material-ui/core/Typography";
 
-export default function createTimetableComponent(
-  timetable: any,
-  items: string[]
-) {
-  const weekdays = [
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-  ];
+export default function createTimetableComponent(timetable: any, items: string[]) {
+  const weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
 
   const tables = [];
 

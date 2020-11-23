@@ -1,9 +1,7 @@
 import React from "react";
 import style from "../style.module.css";
 
-export default function createIntervalsRow(
-  intervalStrings: string[]
-): JSX.Element[] {
+export default function createIntervalsRow(intervalStrings: string[]): JSX.Element[] {
   const intervals: JSX.Element[] = [];
 
   intervals.push(

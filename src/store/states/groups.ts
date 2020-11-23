@@ -7,7 +7,6 @@ const groups: GroupsPage = {
   groups: [],
   filtered_groups: [],
   selected_groups: [],
-
 };
 
 export default groups;

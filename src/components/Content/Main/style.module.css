@@ -1,17 +1,17 @@
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
+  align-items: center;
 }
 
 .link {
-    width: inherit;
-    height: inherit;
-    text-decoration: none;
-    color: inherit;
+  width: inherit;
+  height: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }

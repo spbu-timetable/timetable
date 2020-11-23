@@ -24,18 +24,9 @@ const Content = () => {
 
         <Route path="/addresses" component={() => <Addresses />} />
 
-        <Route
-          path="/faculties/studyLevels/educationalPrograms/educationYears/Groups"
-          component={() => <Groups />}
-        />
-        <Route
-          path="/faculties/studyLevels/educationalPrograms/educationYears"
-          component={() => <EducationYears />}
-        />
-        <Route
-          path="/faculties/studyLevels/educationalPrograms"
-          component={() => <EducationalProgram />}
-        />
+        <Route path="/faculties/studyLevels/educationalPrograms/educationYears/Groups" component={() => <Groups />} />
+        <Route path="/faculties/studyLevels/educationalPrograms/educationYears" component={() => <EducationYears />} />
+        <Route path="/faculties/studyLevels/educationalPrograms" component={() => <EducationalProgram />} />
         <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
         <Route path="/faculties" component={() => <Faculties />} />
 

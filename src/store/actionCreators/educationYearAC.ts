@@ -4,9 +4,9 @@ import EducationYear from "../../types/EducationYear";
 import ACTION from "./ACTION";
 
 function getEducationYears(selected_ed_program: EducationalProgram): Action {
-  return { 
+  return {
     type: ACTION.GET_EDUCATIONYEARS,
-    payload:  selected_ed_program,
+    payload: selected_ed_program,
   };
 }
 

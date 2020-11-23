@@ -42,7 +42,6 @@ const Groups = (props: Props) => {
       cleanItems={props.cleanGroups}
       fromDate={props.fromDate}
       toDate={props.toDate}
-      getTimetable={props.getGroupsTimetable}
     />
   );
 };

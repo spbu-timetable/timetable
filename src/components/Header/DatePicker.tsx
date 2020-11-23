@@ -60,9 +60,7 @@ const Picker = (props: Props) => {
         onClose={() => {
           setOpen(false);
         }}
-        TextFieldComponent={() => (
-          <StyledTextField className={style.date_picker} variant="outlined" value="" />
-        )}
+        TextFieldComponent={() => <StyledTextField className={style.date_picker} variant="outlined" value="" />}
       />
     </MuiPickersUtilsProvider>
   );

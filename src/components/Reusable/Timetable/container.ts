@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { CombinedState } from "redux";
 import TimetableList from ".";
+import timetableAC from "../../../store/actionCreators/timetable";
 import Action from "../../../types/Action";
 import TimetablePage from "../../../types/pages/TimetablePage";
 
@@ -21,9 +22,6 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
   return {};
 }
 
-const CabinetsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TimetableList);
+const CabinetsContainer = connect(mapStateToProps, mapDispatchToProps)(TimetableList);
 
 export default CabinetsContainer;

@@ -41,19 +41,19 @@ function* workerGetClassroomEventsDays(action: Action) {
       startDateStr,
       endDateStr
     );
-    
+
     if (data !== undefined) groupEventDays.push(data);
 
-  console.log("HEY !")
-  console.log(groupEventDays)
+    console.log("HEY !");
+    console.log(groupEventDays);
   }
 
-  const checkedGroupEventDays = checkDays(groupEventDays)
-  console.log("HEY 2!")
-  console.log(checkedGroupEventDays)
-  const week = sortTimetableDays(checkedGroupEventDays)
-  console.log("HEY 3!")
-  console.log(week)
+  const checkedGroupEventDays = checkDays(groupEventDays);
+  console.log("HEY 2!");
+  console.log(checkedGroupEventDays);
+  const week = sortTimetableDays(checkedGroupEventDays);
+  console.log("HEY 3!");
+  console.log(week);
   yield put(timetableAC.setTimetable(week));
 
   yield put(timetableAC.setTimetableItems(group_names, ["Группа", "Группы"]));

@@ -37,9 +37,7 @@ function createTimeIntervals(days: any): string[] {
     }
   }
   console.log(timeIntervalsSet);
-  const timeIntervals: string[] = Array.from(timeIntervalsSet).sort((a: string, b: string) =>
-    sortIntervals(a, b)
-  );
+  const timeIntervals: string[] = Array.from(timeIntervalsSet).sort((a: string, b: string) => sortIntervals(a, b));
   return timeIntervals;
 }
 

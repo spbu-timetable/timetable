@@ -3,10 +3,7 @@ import TimetablePage from "../../types/pages/TimetablePage";
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/timetable";
 
-function timetable(
-  state: TimetablePage = initialState,
-  action: Action
-): TimetablePage {
+function timetable(state: TimetablePage = initialState, action: Action): TimetablePage {
   switch (action.type) {
     case ACTION.SET_TIMETABLE:
       return {
@@ -25,6 +22,12 @@ function timetable(
       return {
         ...state,
         didGet: true,
+      };
+
+    case ACTION.CLEAN_TIMETABLE:
+      return {
+        ...state,
+        didGet: false,
       };
   }
 

@@ -26,7 +26,7 @@ function* workerGetAddresses() {
 }
 
 function* watchGetAddresses() {
-  yield takeEvery(ACTION.GET_ADRESSES, workerGetAddresses);
+  yield takeEvery(ACTION.GET_ADDRESSES, workerGetAddresses);
 }
 
 export default watchGetAddresses;

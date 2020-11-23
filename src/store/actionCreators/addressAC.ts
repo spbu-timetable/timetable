@@ -3,7 +3,7 @@ import Address from "../../types/Address";
 import ACTION from "./ACTION";
 
 function getAddresses(): Action {
-  return { type: ACTION.GET_ADRESSES };
+  return { type: ACTION.GET_ADDRESSES };
 }
 
 function setAddresses(addresses: Address[]): Action {

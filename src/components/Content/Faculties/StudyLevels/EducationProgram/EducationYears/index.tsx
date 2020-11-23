@@ -3,7 +3,6 @@ import SearchListPage from "../../../../../Reusable/SearchListPage";
 import EducationalProgram from "../../../../../../types/EducationalProgram";
 import EducationYear from "../../../../../../types/EducationYear";
 
-
 type Props = {
   didGet: boolean;
 
@@ -21,7 +20,7 @@ const EducationYears = (props: Props) => {
   return (
     <SearchListPage
       didGet={props.didGet}
-      selected_item = {props.selected_ed_program}
+      selected_item={props.selected_ed_program}
       url_to_push={"/faculties/studyLevels/educationalPrograms/educationYears/Groups"}
       items={props.ed_years}
       filtered_items={props.filtered_ed_years}

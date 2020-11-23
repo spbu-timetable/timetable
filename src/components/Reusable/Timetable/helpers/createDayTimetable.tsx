@@ -29,10 +29,7 @@ function createCell(event: Event): JSX.Element[] {
   return items;
 }
 
-export default function createDayTimetable(
-  matrix: any,
-  intervals: string[]
-): JSX.Element[] {
+export default function createDayTimetable(matrix: any, intervals: string[]): JSX.Element[] {
   const timetable: JSX.Element[] = [];
 
   matrix = transpose(matrix);

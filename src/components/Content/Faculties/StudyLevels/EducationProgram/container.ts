@@ -41,9 +41,6 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
   };
 }
 
-const EducationalProgramContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EducationalPrograms);
+const EducationalProgramContainer = connect(mapStateToProps, mapDispatchToProps)(EducationalPrograms);
 
 export default EducationalProgramContainer;

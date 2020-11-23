@@ -6,7 +6,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import ReactToPrint from "react-to-print";
 import Button from "@material-ui/core/Button/Button";
 import Print from "@material-ui/icons/Print";
-import printStyle from "./pagePrinStyle";
+import printStyle from "./pagePrintStyle";
+
+import { useHistory } from "react-router-dom";
 
 type Props = {
   didGet: boolean;
@@ -16,13 +18,17 @@ type Props = {
 };
 
 const TimetableList = (props: Props) => {
-  const componentRef: React.RefObject<HTMLDivElement> = React.useRef<
-    HTMLDivElement
-  >(null);
+  const history = useHistory();
 
-  const timetable = props.didGet
-    ? createTimetable(props.timetable, props.items)
-    : [];
+  React.useEffect(() => {
+    if (props.items.length === 0) {
+      history.goBack();
+    }
+  }, [props.items]);
+
+  const componentRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
+
+  const timetable = props.didGet ? createTimetable(props.timetable, props.items) : [];
 
   return (
     <div className={style.wrapper}>
@@ -39,18 +45,12 @@ const TimetableList = (props: Props) => {
               fonts={[
                 {
                   family: "Roboto",
-                  source:
-                    "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
+                  source: "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
                 },
               ]}
               pageStyle={printStyle}
               trigger={() => (
-                <Button
-                  className={style.print}
-                  variant="contained"
-                  color="primary"
-                  startIcon={<Print />}
-                >
+                <Button className={style.print} variant="contained" color="primary" startIcon={<Print />}>
                   Печать
                 </Button>
               )}

@@ -7,7 +7,6 @@ type GroupsPage = {
   groups: Group[];
   filtered_groups: Group[];
   selected_groups: Group[];
-
 };
 
 export default GroupsPage;

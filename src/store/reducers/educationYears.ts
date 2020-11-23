@@ -8,20 +8,26 @@ import EducationYearsPage from "../../types/pages/EducationYearsPage";
 import EducationYear from "../../types/EducationYear";
 import EducationYearLocalStorage from "../../localStorage/year";
 
-function educationYears(state: EducationYearsPage = initialState, action: Action): EducationYearsPage {
+function educationYears(
+  state: EducationYearsPage = initialState,
+  action: Action
+): EducationYearsPage {
   switch (action.type) {
-
     case ACTION.GET_EDUCATIONYEARS:
-        return{
-            ...state,
-            didGet: true,
-            ed_years: action.payload.AdmissionYears.sort((a: EducationYear, b: EducationYear) => sortList(a.YearName, b.YearName)),
-        };
+      return {
+        ...state,
+        didGet: true,
+        ed_years: action.payload.AdmissionYears.sort((a: EducationYear, b: EducationYear) =>
+          sortList(a.YearName, b.YearName)
+        ),
+      };
     case ACTION.SET_EDUCATIONYEARS:
       return {
         ...state,
         didGet: true,
-        ed_years: [...action.payload].sort((a: EducationYear, b: EducationYear) => sortList(a.YearName, b.YearName)),
+        ed_years: [...action.payload].sort((a: EducationYear, b: EducationYear) =>
+          sortList(a.YearName, b.YearName)
+        ),
       };
     case ACTION.SET_EDUCATIONYEAR:
       EducationYearLocalStorage.save(action.payload);

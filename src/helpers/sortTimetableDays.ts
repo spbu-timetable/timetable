@@ -1,11 +1,7 @@
 import Event from "../types/Event";
 
 function normalizeHour(timeInterval: string): string {
-  if (
-    timeInterval[0] === "0" ||
-    timeInterval[0] === "1" ||
-    timeInterval[0] === "2"
-  ) {
+  if (timeInterval[0] === "0" || timeInterval[0] === "1" || timeInterval[0] === "2") {
     return timeInterval;
   }
   return "0" + timeInterval;
@@ -43,9 +39,7 @@ function sortTimetableDays(cabinets: any) {
     weekdays.push([]);
     for (let j = 0; j < cabinets.length; j++) {
       for (let h = 0; h < cabinets[j][i].DayStudyEvents.length; h++) {
-        timeIntervalsSet.add(
-          cabinets[j][i].DayStudyEvents[h].TimeIntervalString
-        );
+        timeIntervalsSet.add(cabinets[j][i].DayStudyEvents[h].TimeIntervalString);
       }
 
       const events: Event[] = [];
@@ -60,9 +54,9 @@ function sortTimetableDays(cabinets: any) {
       weekdays[i].push(events);
     }
 
-    const timeIntervals: string[] = Array.from(
-      timeIntervalsSet
-    ).sort((a: string, b: string) => sortIntervals(a, b));
+    const timeIntervals: string[] = Array.from(timeIntervalsSet).sort((a: string, b: string) =>
+      sortIntervals(a, b)
+    );
 
     for (let h = 0; h < weekdays[i].length; h++) {
       let didReachInterval = false;

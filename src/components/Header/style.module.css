@@ -1,17 +1,17 @@
 .title {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
-.outer { 
-    position: relative !important;
-  }
+.outer {
+  position: relative !important;
+}
 .inner {
-    position: absolute !important;
-    width: auto;
-    height: 36px;
-    right: 0; 
-   }
+  position: absolute !important;
+  width: auto;
+  height: 36px;
+  right: 0;
+}
 
 .date_picker {
-    width: 0px !important;
+  width: 0px !important;
 }

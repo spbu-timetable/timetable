@@ -42,4 +42,3 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
 const StudyLevelContainer = connect(mapStateToProps, mapDispatchToProps)(StudyLevel);
 
 export default StudyLevelContainer;
-
