@@ -44,19 +44,25 @@ function sortTimetableDays(cabinets: any) {
 
       const events: Event[] = [];
       for (let m = 0; m < cabinets[j][i].DayStudyEvents.length; m++) {
-        events.push({
-          main: [cabinets[j][i].DayStudyEvents[m].Subject],
-          extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
-          interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
-        });
+        if (cabinets[j][i].DayStudyEvents[m].LocationsDisplayText != undefined) {
+          events.push({
+            main: [cabinets[j][i].DayStudyEvents[m].Subject],
+            extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
+            address: cabinets[j][i].DayStudyEvents[m].LocationsDisplayText,
+            interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
+          });
+        } else {
+          events.push({
+            main: [cabinets[j][i].DayStudyEvents[m].Subject],
+            extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
+            interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
+          });
+        }
       }
-
       weekdays[i].push(events);
     }
 
-    const timeIntervals: string[] = Array.from(timeIntervalsSet).sort((a: string, b: string) =>
-      sortIntervals(a, b)
-    );
+    const timeIntervals: string[] = Array.from(timeIntervalsSet).sort((a: string, b: string) => sortIntervals(a, b));
 
     for (let h = 0; h < weekdays[i].length; h++) {
       let didReachInterval = false;

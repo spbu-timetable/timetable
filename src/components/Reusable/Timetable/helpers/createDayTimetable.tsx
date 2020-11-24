@@ -13,6 +13,7 @@ function createCell(event: Event): JSX.Element[] {
         <br />
         {event.extra[i]}
         <br />
+        {event.address ? event.address! : ""}
       </div>
     );
   }
