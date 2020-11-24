@@ -28,29 +28,34 @@ function* workerGetClassroomEventsDays(action: Action) {
   const endDateStr: string = formatDateToGroupsRequest(action.payload.toDate);
 
   const groupEventDays = [];
-  const group_names = [];
+  const group_names: string[] = [];
+
+  action.payload.selected_groups.forEach((element: any) => {
+    group_names.push(getObjectName(element));
+  });
+
+  yield put(timetableAC.setTimetableItems(group_names, ["Группа", "Группы"]));
 
   let data: any;
   for (let i = 0; i < action.payload.selected_groups.length; i++) {
-    group_names.push(getObjectName(action.payload.selected_groups[i]));
-
-    data = yield call(getGroupEventsDays, action.payload.selected_groups[i].StudentGroupId, startDateStr, endDateStr);
+    data = yield call(
+      getGroupEventsDays,
+      action.payload.selected_groups[i].StudentGroupId,
+      startDateStr,
+      endDateStr)
+    ;
 
     if (data !== undefined) groupEventDays.push(data);
-
-    console.log("HEY !");
-    console.log(groupEventDays);
   }
 
   const checkedGroupEventDays = checkDays(groupEventDays);
-  console.log("HEY 2!");
+  console.log("HEY !");
   console.log(checkedGroupEventDays);
   const week = sortTimetableDays(checkedGroupEventDays);
   console.log("HEY 3!");
   console.log(week);
   yield put(timetableAC.setTimetable(week));
 
-  yield put(timetableAC.setTimetableItems(group_names, ["Группа", "Группы"]));
   yield put(timetableAC.finisFetchingData());
 }
 
