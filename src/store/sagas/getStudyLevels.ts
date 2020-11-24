@@ -3,11 +3,10 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
 import studyLevelAC from "../actionCreators/studyLevelAC";
+import api_address from "./apiAddress";
 
 async function getStudyLevels(Alias: string) {
-  return await Axios.get(
-    `https://timetable.spbu.ru/api/v1/study/divisions/${Alias}/programs/levels`
-  )
+  return await Axios.get(api_address + `/study/divisions/${Alias}/programs/levels`)
     .then((response) => {
       if (response.status === 200) {
         return response.data;

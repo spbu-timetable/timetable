@@ -7,11 +7,10 @@ import timetableAC from "../actionCreators/timetable";
 import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
 import checkDays from "../../helpers/checkDays";
+import api_address from "./apiAddress";
 
 async function getGroupEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
-  return await Axios.get(
-    `https://timetable.spbu.ru/api/v1/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`
-  )
+  return await Axios.get(api_address + `/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`)
     .then((response) => {
       if (response.status === 200) {
         return response.data.Days;
@@ -35,12 +34,7 @@ function* workerGetClassroomEventsDays(action: Action) {
   for (let i = 0; i < action.payload.selected_groups.length; i++) {
     group_names.push(getObjectName(action.payload.selected_groups[i]));
 
-    data = yield call(
-      getGroupEventsDays,
-      action.payload.selected_groups[i].StudentGroupId,
-      startDateStr,
-      endDateStr
-    );
+    data = yield call(getGroupEventsDays, action.payload.selected_groups[i].StudentGroupId, startDateStr, endDateStr);
 
     if (data !== undefined) groupEventDays.push(data);
 

@@ -7,11 +7,12 @@ import timetableAC from "../actionCreators/timetable";
 import getObjectId from "../../helpers/getObjectId";
 import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
+import api_address from "./apiAddress";
 
 async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
   console.log(`https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`);
 
-  return await Axios.get(`https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`)
+  return await Axios.get(api_address + `/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`)
     .then((response) => {
       if (response.status === 200) {
         return response.data.ClassroomEventsDays;

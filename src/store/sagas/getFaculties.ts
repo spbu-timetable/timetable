@@ -2,9 +2,10 @@ import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import ACTION from "../actionCreators/ACTION";
 import facultyAC from "../actionCreators/facultyAC";
+import api_address from "./apiAddress";
 
 async function getFaculties() {
-  return await Axios.get("https://timetable.spbu.ru/api/v1/study/divisions")
+  return await Axios.get(api_address + "/study/divisions")
     .then((response) => {
       if (response.status === 200) {
         return response.data;

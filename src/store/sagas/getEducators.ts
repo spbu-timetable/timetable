@@ -3,10 +3,11 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
 import educatorAC from "../actionCreators/educatorAC";
+import api_address from "./apiAddress";
 
 async function getEducators(filter: string) {
   if (filter.trim() !== "") {
-    return await Axios.get(`https://timetable.spbu.ru/api/v1/educators/search/${filter}`)
+    return await Axios.get(api_address + `/educators/search/${filter}`)
       .then((response) => {
         if (response.status === 200) {
           return response.data;
