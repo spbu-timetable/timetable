@@ -15,8 +15,6 @@ type Props = {
   items: string[];
   timetable: any;
   headers: string[];
-
-  cleanTimetable: () => void;
 };
 
 const TimetableList = (props: Props) => {

@@ -25,6 +25,8 @@ async function getGroupEventsDays(oid: string, fromDateStr: string, toDateDtr: s
 }
 
 function* workerGetClassroomEventsDays(action: Action) {
+  yield put(timetableAC.cleanTimetable());
+
   const startDateStr: string = formatDateToGroupsRequest(action.payload.fromDate);
   const endDateStr: string = formatDateToGroupsRequest(action.payload.toDate);
 

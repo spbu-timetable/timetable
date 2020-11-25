@@ -50,6 +50,7 @@
 
 .cell_item {
   border-top: 1px solid var(--level3);
+  margin: 4px;
 }
 
 .cell_item:first-child {
