@@ -10,6 +10,7 @@ import checkDays from "../../helpers/checkDays";
 import api_address from "./apiAddress";
 
 async function getGroupEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
+  console.log(api_address + `/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`);
   return await Axios.get(api_address + `/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`)
     .then((response) => {
       if (response.status === 200) {
@@ -27,28 +28,26 @@ function* workerGetClassroomEventsDays(action: Action) {
   const startDateStr: string = formatDateToGroupsRequest(action.payload.fromDate);
   const endDateStr: string = formatDateToGroupsRequest(action.payload.toDate);
 
-  const groupEventDays = [];
   const group_names: string[] = [];
-
   action.payload.selected_groups.forEach((element: any) => {
     group_names.push(getObjectName(element));
   });
-
   yield put(timetableAC.setTimetableItems(group_names, ["Группа", "Группы"]));
 
-  let data: any;
+  const groupEventDays = [];
   for (let i = 0; i < action.payload.selected_groups.length; i++) {
-    data = yield call(getGroupEventsDays, action.payload.selected_groups[i].StudentGroupId, startDateStr, endDateStr);
+    const data = yield call(
+      getGroupEventsDays,
+      action.payload.selected_groups[i].StudentGroupId,
+      startDateStr,
+      endDateStr
+    );
 
     if (data !== undefined) groupEventDays.push(data);
   }
 
-  // const checkedGroupEventDays = checkDays(groupEventDays);
-  console.log("HEY !");
-  // console.log(checkedGroupEventDays);
-  const week = sortTimetableDays(groupEventDays, "group");
-  console.log("HEY 3!");
-  console.log(week);
+  const checkedGroupEventDays = checkDays(groupEventDays);
+  const week = sortTimetableDays(checkedGroupEventDays, "group");
   yield put(timetableAC.setTimetable(week));
 
   yield put(timetableAC.finisFetchingData());

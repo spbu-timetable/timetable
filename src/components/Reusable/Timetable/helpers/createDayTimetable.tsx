@@ -14,8 +14,6 @@ function createCell(event: Event): JSX.Element[] {
         {event.extra[i]}
         <br />
         {event.address![i]}
-        {/* <br />
-        {event.interval} */}
       </div>
     );
   }

@@ -31,17 +31,15 @@ function* workerGetClassroomEventsDays(action: Action) {
   const startDateStr: string = formatDateToRequest(action.payload.fromDate, true);
   const endDateStr: string = formatDateToRequest(action.payload.toDate, false);
 
-  const classRoomEventDays = [];
   const cabinet_names: string[] = [];
   action.payload.selected_cabinets.forEach((element: any) => {
     cabinet_names.push(getObjectName(element));
   });
-
   yield put(timetableAC.setTimetableItems(cabinet_names, ["Кабинет", "Кабинеты"]));
 
-  let data: any;
+  const classRoomEventDays = [];
   for (let i = 0; i < cabinet_names.length; i++) {
-    data = yield call(
+    const data = yield call(
       getClassroomEventsDays,
       getObjectId(action.payload.selected_cabinets[i]),
       startDateStr,
