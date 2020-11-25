@@ -50,11 +50,16 @@
 
 .cell_item {
   border-top: 1px solid var(--level3);
-  margin: 4px;
+  padding: 12px 0;
 }
 
 .cell_item:first-child {
   border: none;
+  padding-top: 0;
+}
+
+.cell_item:last-child {
+  padding-bottom: 0;
 }
 
 .free_cell {

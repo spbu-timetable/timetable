@@ -1,6 +1,6 @@
 const printStyle: string = `
                         @page { 
-                            size: auto;  
+                            size: A4;
                             margin: 0mm;
                         } 
 
@@ -27,16 +27,22 @@ const printStyle: string = `
                           padding: 4px;
                           border: 1px solid black;
                         }
-                        h5,h6 {
+                        h5 {
+                          font-size: 12px;
                           margin: 0px;
                           padding: 0px;  
                         }
                         div {
+                          font-size: 10px;
                           border-top: 1px solid black;
-                          padding 2px;
+                          padding: 12px 0;
                         }
                         div:first-child {
                           border: none;
+                          padding-top: 0;
+                        }
+                        div:last-child {
+                          padding-bottom: 0;
                         }
 
                         }`;
