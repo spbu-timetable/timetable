@@ -1,16 +1,18 @@
 import EducationYear from "../types/EducationYear";
 
+const key: string = "educationYear";
+
 function save(educationYear: EducationYear) {
-  localStorage.setItem("educationYear", JSON.stringify(educationYear));
+  localStorage.setItem(key, JSON.stringify(educationYear));
 }
 
 function set(): EducationYear {
-  const educationYear = localStorage.getItem("steducationYearudyLevel");
+  const educationYear = localStorage.getItem(key);
   return JSON.parse(educationYear!);
 }
 
 function remove() {
-  localStorage.removeItem("educationYear");
+  localStorage.removeItem(key);
 }
 
 const EducationYearLocalStorage = {
