@@ -13,9 +13,7 @@ function groups(state: GroupsPage = initialState, action: Action): GroupsPage {
       return {
         ...state,
         didGet: true,
-        groups: action.payload.Groups.sort((a: Group, b: Group) =>
-          sortList(a.StudentGroupName, b.StudentGroupName)
-        ),
+        groups: action.payload.Groups.sort((a: Group, b: Group) => sortList(a.StudentGroupName, b.StudentGroupName)),
       };
     case ACTION.CLEAN_GROUPS:
       return {
@@ -29,7 +27,9 @@ function groups(state: GroupsPage = initialState, action: Action): GroupsPage {
       if (!state.selected_groups.includes(action.payload) && state.selected_groups.length < 4) {
         return {
           ...state,
-          selected_groups: [...state.selected_groups, action.payload],
+          selected_groups: [...state.selected_groups, action.payload].sort((a: Group, b: Group) =>
+            sortList(a.StudentGroupName, b.StudentGroupName)
+          ),
         };
       }
       break;
