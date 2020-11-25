@@ -30,6 +30,7 @@
 .chips {
   display: flex;
   flex-direction: row;
+  overflow-y: auto;
 
   width: inherit;
   max-width: inherit;
