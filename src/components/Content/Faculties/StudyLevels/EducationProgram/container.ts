@@ -20,7 +20,7 @@ function mapStateToProps(
     selected_studyLevel: state.studyLevels.selected_studyLevel!,
     filter_value: state.educationalPrograms.filter_value,
     educational_programs: state.educationalPrograms.ed_programs,
-    filtered_educational_programs: state.educationalPrograms.ed_programs,
+    filtered_educational_programs: state.educationalPrograms.filtered_ed_programs,
   };
 }
 
