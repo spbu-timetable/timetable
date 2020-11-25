@@ -9,13 +9,11 @@ import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
 import api_address from "./apiAddress";
 
-async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
-  console.log(`https://timetable.spbu.ru/api/v1/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`);
-
-  return await Axios.get(api_address + `/classrooms/${oid}/events/${fromDateStr}/${toDateDtr}`)
+async function getEducatorEventsDays(oid: string) {
+  return await Axios.get(api_address + `/educators/${1426}/events`)
     .then((response) => {
       if (response.status === 200) {
-        return response.data.ClassroomEventsDays;
+        return response.data.EducatorEventsDays;
       } else {
         return "error";
       }
@@ -25,13 +23,10 @@ async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDt
     });
 }
 
-function* workerGetClassroomEventsDays(action: Action) {
+function* workerGetEducatorEventsDays(action: Action) {
   yield put(timetableAC.cleanTimetable());
 
-  const startDateStr: string = formatDateToRequest(action.payload.fromDate, true);
-  const endDateStr: string = formatDateToRequest(action.payload.toDate, false);
-
-  const classRoomEventDays = [];
+  const educatorEventDays = [];
   const cabinet_names: string[] = [];
   action.payload.selected_cabinets.forEach((element: any) => {
     cabinet_names.push(getObjectName(element));
@@ -41,24 +36,19 @@ function* workerGetClassroomEventsDays(action: Action) {
 
   let data: any;
   for (let i = 0; i < cabinet_names.length; i++) {
-    data = yield call(
-      getClassroomEventsDays,
-      getObjectId(action.payload.selected_cabinets[i]),
-      startDateStr,
-      endDateStr
-    );
+    data = yield call(getEducatorEventsDays, getObjectId(action.payload.selected_cabinets[i]));
 
-    if (data !== undefined) classRoomEventDays.push(data);
+    if (data !== undefined) educatorEventDays.push(data);
   }
 
-  const week = sortTimetableDays(classRoomEventDays, "cabinet");
-  yield put(timetableAC.setTimetable(week));
+  // const week = sortTimetableDays(educatorEventDays);
+  // yield put(timetableAC.setTimetable(week));
 
   yield put(timetableAC.finisFetchingData());
 }
 
-function* watchGetCabinetsTimetable() {
-  yield takeEvery(ACTION.GET_CABINETS_TIMETABLE, workerGetClassroomEventsDays);
+function* watchGetEducatorsTimetable() {
+  yield takeEvery(ACTION.GET_EDUCATORS_TIMETABLE, workerGetEducatorEventsDays);
 }
 
-export default watchGetCabinetsTimetable;
+export default watchGetEducatorsTimetable;

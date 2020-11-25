@@ -39,10 +39,8 @@
 }
 
 .td {
-  padding: 4px;
+  padding: 8px;
   border: 1px solid var(--level3) !important;
-  white-space: wrap;
-  overflow: hidden;
 }
 .head_cell {
   margin: 4px;
@@ -50,12 +48,7 @@
   width: inherit;
 }
 
-.cell {
-  padding: 4px 0;
-}
-
 .cell_item {
-  padding: 4px;
   border-top: 1px solid var(--level3);
 }
 

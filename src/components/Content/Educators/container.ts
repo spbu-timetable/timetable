@@ -35,6 +35,10 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     updFilterValue: (filterStr: string) => {
       dispatch(educatorAC.updFilterValue(filterStr));
     },
+
+    getEducatorsTimetable: (selected_educators: Educator[]) => {
+      dispatch(educatorAC.getEducatorTimetable(selected_educators));
+    },
   };
 }
 

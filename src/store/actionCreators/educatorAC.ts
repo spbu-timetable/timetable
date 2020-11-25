@@ -37,6 +37,13 @@ function updFilterValue(filter_value: string): Action {
   };
 }
 
+function getEducatorTimetable(selected_educators: Educator[]): Action {
+  return {
+    type: ACTION.GET_EDUCATORS_TIMETABLE,
+    payload: selected_educators,
+  };
+}
+
 const educatorAC = {
   updFilter: updFilter,
   updFilterValue: updFilterValue,
@@ -45,6 +52,8 @@ const educatorAC = {
   deselectEducator: deselectEducator,
 
   setEducators: setEducators,
+
+  getEducatorTimetable: getEducatorTimetable,
 };
 
 export default educatorAC;

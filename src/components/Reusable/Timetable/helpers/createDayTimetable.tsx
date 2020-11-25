@@ -13,7 +13,9 @@ function createCell(event: Event): JSX.Element[] {
         <br />
         {event.extra[i]}
         <br />
-        {event.address ? event.address! : ""}
+        {event.address![i]}
+        {/* <br />
+        {event.interval} */}
       </div>
     );
   }
@@ -39,7 +41,7 @@ export default function createDayTimetable(matrix: any, intervals: string[]): JS
         const cell = createCell(matrix[i][j]);
         row.push(
           <td key={Math.random()} className={style.td}>
-            <div className={style.cell}>{cell}</div>
+            {cell}
           </td>
         );
       }

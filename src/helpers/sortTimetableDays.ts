@@ -26,7 +26,7 @@ function sortIntervals(a: string, b: string): number {
   return 1;
 }
 
-function sortTimetableDays(cabinets: any) {
+function sortTimetableDays(cabinets: any, type: "cabinet" | "group") {
   const filler: Event = {
     main: [],
     extra: [],
@@ -44,20 +44,15 @@ function sortTimetableDays(cabinets: any) {
 
       const events: Event[] = [];
       for (let m = 0; m < cabinets[j][i].DayStudyEvents.length; m++) {
-        if (cabinets[j][i].DayStudyEvents[m].LocationsDisplayText != undefined) {
-          events.push({
-            main: [cabinets[j][i].DayStudyEvents[m].Subject],
-            extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
-            address: cabinets[j][i].DayStudyEvents[m].LocationsDisplayText,
-            interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
-          });
-        } else {
-          events.push({
-            main: [cabinets[j][i].DayStudyEvents[m].Subject],
-            extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
-            interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
-          });
-        }
+        events.push({
+          main: [cabinets[j][i].DayStudyEvents[m].Subject],
+          extra: [cabinets[j][i].DayStudyEvents[m].EducatorsDisplayText],
+          address:
+            cabinets[j][i].DayStudyEvents[m].LocationsDisplayText === undefined
+              ? [""]
+              : [cabinets[j][i].DayStudyEvents[m].LocationsDisplayText],
+          interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
+        });
       }
       weekdays[i].push(events);
     }
@@ -72,15 +67,30 @@ function sortTimetableDays(cabinets: any) {
           if (timeIntervals[v] === weekdays[i][h][v].interval) {
             didReachInterval = true;
 
-            for (let m = v + 1; m < weekdays[i][h].length; m++) {
-              if (weekdays[i][h][m]) {
-                if (timeIntervals[v] === weekdays[i][h][m].interval) {
-                  console.log(v);
-                  weekdays[i][h][v].main.push(weekdays[i][h][m].main[0]);
-                  weekdays[i][h][v].extra.push(weekdays[i][h][m].extra[0]);
-                  weekdays[i][h].splice(m, 1);
-                } else break;
-              }
+            switch (type) {
+              case "group":
+                const m = v + 1;
+                while (weekdays[i][h].length > timeIntervals.length) {
+                  if (timeIntervals[v] === weekdays[i][h][m].interval) {
+                    weekdays[i][h][v].main.push(weekdays[i][h][m].main[0]);
+                    weekdays[i][h][v].extra.push(weekdays[i][h][m].extra[0]);
+                    weekdays[i][h][v].address.push(weekdays[i][h][m].address[0]);
+                    weekdays[i][h].splice(m, 1);
+                  } else {
+                    break;
+                  }
+                }
+                break;
+              case "cabinet":
+                for (let m = v + 1; m < weekdays[i][h].length; m++) {
+                  if (timeIntervals[v] === weekdays[i][h][m].interval) {
+                    weekdays[i][h][v].main.push(weekdays[i][h][m].main[0]);
+                    weekdays[i][h][v].extra.push(weekdays[i][h][m].extra[0]);
+                    weekdays[i][h][v].address.push(weekdays[i][h][m].address[0]);
+                    weekdays[i][h].splice(m, 1);
+                  } else break;
+                }
+                break;
             }
           } else {
             if (didReachInterval) {

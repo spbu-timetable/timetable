@@ -13,6 +13,8 @@ type Props = {
   deselectEducator: (educator: Educator) => void;
   updFilter: (filter_value: string) => void;
   updFilterValue: (filter_value: string) => void;
+
+  getEducatorsTimetable: (selected_educators: Educator[]) => void;
 };
 
 const Educators = (props: Props) => {
@@ -28,6 +30,7 @@ const Educators = (props: Props) => {
       deselectItem={props.deselectEducator}
       updFilter={props.updFilter}
       updFilterValue={props.updFilterValue}
+      getTimetable={props.getEducatorsTimetable}
     />
   );
 };

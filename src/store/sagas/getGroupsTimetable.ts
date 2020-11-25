@@ -38,20 +38,15 @@ function* workerGetClassroomEventsDays(action: Action) {
 
   let data: any;
   for (let i = 0; i < action.payload.selected_groups.length; i++) {
-    data = yield call(
-      getGroupEventsDays,
-      action.payload.selected_groups[i].StudentGroupId,
-      startDateStr,
-      endDateStr)
-    ;
+    data = yield call(getGroupEventsDays, action.payload.selected_groups[i].StudentGroupId, startDateStr, endDateStr);
 
     if (data !== undefined) groupEventDays.push(data);
   }
 
-  const checkedGroupEventDays = checkDays(groupEventDays);
+  // const checkedGroupEventDays = checkDays(groupEventDays);
   console.log("HEY !");
-  console.log(checkedGroupEventDays);
-  const week = sortTimetableDays(checkedGroupEventDays);
+  // console.log(checkedGroupEventDays);
+  const week = sortTimetableDays(groupEventDays, "group");
   console.log("HEY 3!");
   console.log(week);
   yield put(timetableAC.setTimetable(week));
