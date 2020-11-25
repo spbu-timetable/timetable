@@ -1,30 +1,6 @@
-import Event from "../types/Event";
-
-function normalizeHour(timeInterval: string): string {
-  if (timeInterval[0] === "0" || timeInterval[0] === "1" || timeInterval[0] === "2") {
-    return timeInterval;
-  }
-  return "0" + timeInterval;
-}
-
-function sortIntervals(a: string, b: string): number {
-  const normalized_a = normalizeHour(a);
-  const normalized_b = normalizeHour(b);
-
-  const hour_a: number = Number(normalized_a[0] + normalized_a[1]);
-  const minute_a: number = Number(normalized_a[3] + normalized_a[4]);
-
-  const hour_b: number = Number(normalized_b[0] + normalized_b[1]);
-  const minute_b: number = Number(normalized_b[3] + normalized_b[4]);
-
-  if (hour_a < hour_b) {
-    return -1;
-  }
-  if (hour_a === hour_b && minute_a < minute_b) {
-    return -1;
-  }
-  return 1;
-}
+import Event from "../../types/Event";
+import pushItemToEvent from "./pushItemToEvent";
+import sortIntervals from "./sortIntervals";
 
 function sortTimetableDays(cabinets: any, type: "cabinet" | "group") {
   const filler: Event = {
@@ -72,9 +48,11 @@ function sortTimetableDays(cabinets: any, type: "cabinet" | "group") {
                 const m = v + 1;
                 while (weekdays[i][h].length > timeIntervals.length) {
                   if (timeIntervals[v] === weekdays[i][h][m].interval) {
-                    weekdays[i][h][v].main.push(weekdays[i][h][m].main[0]);
-                    weekdays[i][h][v].extra.push(weekdays[i][h][m].extra[0]);
-                    weekdays[i][h][v].address.push(weekdays[i][h][m].address[0]);
+                    weekdays[i][h][v] = pushItemToEvent(weekdays[i][h][v], {
+                      main: weekdays[i][h][m].main[0],
+                      extra: weekdays[i][h][m].extra[0],
+                      address: weekdays[i][h][m].address[0],
+                    });
                     weekdays[i][h].splice(m, 1);
                   } else {
                     break;
@@ -84,9 +62,11 @@ function sortTimetableDays(cabinets: any, type: "cabinet" | "group") {
               case "cabinet":
                 for (let m = v + 1; m < weekdays[i][h].length; m++) {
                   if (timeIntervals[v] === weekdays[i][h][m].interval) {
-                    weekdays[i][h][v].main.push(weekdays[i][h][m].main[0]);
-                    weekdays[i][h][v].extra.push(weekdays[i][h][m].extra[0]);
-                    weekdays[i][h][v].address.push(weekdays[i][h][m].address[0]);
+                    weekdays[i][h][v] = pushItemToEvent(weekdays[i][h][v], {
+                      main: weekdays[i][h][m].main[0],
+                      extra: weekdays[i][h][m].extra[0],
+                      address: weekdays[i][h][m].address[0],
+                    });
                     weekdays[i][h].splice(m, 1);
                   } else break;
                 }
