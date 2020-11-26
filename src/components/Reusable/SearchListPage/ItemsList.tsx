@@ -36,6 +36,7 @@ const ItemsList = (props: Props) => {
           <div className={style.chips}>{props.selected_items_component}</div>
           {props.selected_items.length ? (
             <Button
+              disableElevation
               variant="contained"
               className={style.btn}
               color="primary"

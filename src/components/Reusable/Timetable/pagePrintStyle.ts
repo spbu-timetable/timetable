@@ -23,6 +23,7 @@ const printStyle: string = `
                           padding: 0px;
                         }
                         td {
+                          font-size: 10px;
                           margin: 0px; 
                           padding: 4px;
                           border: 1px solid black;

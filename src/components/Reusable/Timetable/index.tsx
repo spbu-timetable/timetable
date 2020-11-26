@@ -17,7 +17,7 @@ type Props = {
   headers: string[];
 };
 
-const TimetableList = (props: Props) => {
+const Timetable = (props: Props) => {
   const history = useHistory();
 
   React.useEffect(() => {
@@ -50,7 +50,13 @@ const TimetableList = (props: Props) => {
               ]}
               pageStyle={printStyle}
               trigger={() => (
-                <Button className={style.print} variant="contained" color="primary" startIcon={<Print />}>
+                <Button
+                  className={style.print}
+                  variant="contained"
+                  color="primary"
+                  startIcon={<Print />}
+                  disableElevation
+                >
                   Печать
                 </Button>
               )}
@@ -66,4 +72,4 @@ const TimetableList = (props: Props) => {
   );
 };
 
-export default TimetableList;
+export default Timetable;

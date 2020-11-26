@@ -30,7 +30,7 @@ export default function createDayTimetable(matrix: any, intervals: string[]): JS
 
     row.push(
       <td key={i} className={style.td}>
-        <div className={style.cell}>{intervals[i]}</div>
+        {intervals[i]}
       </td>
     );
 
