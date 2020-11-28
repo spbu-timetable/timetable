@@ -7,10 +7,12 @@
 
 ### Обзор
 
-Главный экран представляет собой три раздела: "кабинеты", "преподаватели" и "группы"
+<p align=center >Главный экран представляет собой три раздела: "кабинеты", "преподаватели" и "группы"</p>  
+  
 ![](https://github.com/inctnce/timetable-generator/blob/master/documents/README%20assets/main%20screen.png)
 
-Работа приложения на примере раздела "группы"  
+<p align=center>Работа приложения на примере раздела "группы"</p>  
+  
 ![](https://github.com/inctnce/timetable-generator/blob/master/documents/README%20assets/demo.gif)
 
 - Работа приложения на примере раздела "группы" доступна по [ссылке](https://www.youtube.com/watch?v=nEBqCyHp6pA)
