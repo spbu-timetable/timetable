@@ -10,6 +10,9 @@
 Главный экран представляет собой три раздела: "кабинеты", "преподаватели" и "группы"
 ![](https://github.com/inctnce/timetable-generator/blob/master/documents/README%20assets/main%20screen.png)
 
+Работа приложения на примере раздела "группы"  
+![](https://github.com/inctnce/timetable-generator/blob/master/documents/README%20assets/demo.gif)
+
 - Работа приложения на примере раздела "группы" доступна по [ссылке](https://www.youtube.com/watch?v=nEBqCyHp6pA)
 - Пример выходного документа доступен по [ссылке](https://github.com/inctnce/timetable-generator/blob/master/documents/README%20assets/demo%20document.pdf)
 - Более подробно вы можете ознакомитьчя с проектом по этой [ссылке](https://timetable--generator.herokuapp.com)
