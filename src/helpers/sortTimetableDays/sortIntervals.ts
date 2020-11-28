@@ -18,9 +18,7 @@ function sortIntervals(a: string, b: string): number {
   if (hour_a < hour_b) {
     return -1;
   }
-  if (hour_a === hour_b && minute_a < minute_b) {
-    return -1;
-  }
+  if (hour_a === hour_b) return minute_a < minute_b ? -1 : minute_b < minute_a ? 1 : 0;
   return 1;
 }
 
