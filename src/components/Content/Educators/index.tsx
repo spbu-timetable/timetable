@@ -14,7 +14,9 @@ type Props = {
   updFilter: (filter_value: string) => void;
   updFilterValue: (filter_value: string) => void;
 
-  getEducatorsTimetable: (selected_educators: Educator[]) => void;
+  fromDate: Date;
+  toDate: Date;
+  getEducatorsTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => void;
 };
 
 const Educators = (props: Props) => {
@@ -29,6 +31,8 @@ const Educators = (props: Props) => {
       setItem={props.selectEducator}
       deselectItem={props.deselectEducator}
       updFilter={props.updFilter}
+      fromDate={props.fromDate}
+      toDate={props.toDate}
       updFilterValue={props.updFilterValue}
       getTimetable={props.getEducatorsTimetable}
     />

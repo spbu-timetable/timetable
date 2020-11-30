@@ -4,10 +4,12 @@ import Educators from ".";
 import educatorAC from "../../../store/actionCreators/educatorAC";
 import Action from "../../../types/Action";
 import Educator from "../../../types/Educator";
+import Header from "../../../types/Header";
 import EducatorsPage from "../../../types/pages/EducatorsPage";
 
 function mapStateToProps(
   state: CombinedState<{
+    header: Header;
     educators: EducatorsPage;
   }>
 ) {
@@ -16,6 +18,9 @@ function mapStateToProps(
     filter_value: state.educators.filter_value,
     filtered_educators: state.educators.filtered_educators,
     selected_educators: state.educators.selected_educators,
+
+    fromDate: state.header.fromDate,
+    toDate: state.header.toDate,
   };
 }
 
@@ -36,8 +41,8 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
       dispatch(educatorAC.updFilterValue(filterStr));
     },
 
-    getEducatorsTimetable: (selected_educators: Educator[]) => {
-      dispatch(educatorAC.getEducatorTimetable(selected_educators));
+    getEducatorsTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => {
+      dispatch(educatorAC.getEducatorTimetable(selected_educators, fromDate!, toDate!));
     },
   };
 }

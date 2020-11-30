@@ -34,6 +34,7 @@ import watchGetGroups from "./sagas/getGroups";
 import timetable from "./reducers/timetable";
 import TimetablePage from "../types/pages/TimetablePage";
 import watchGetGroupsTimetable from "./sagas/getGroupsTimetable";
+import watchGetEducatorsTimetable from "./sagas/getEducatorTimetable";
 
 const reducers = combineReducers({
   header: header,
@@ -74,5 +75,5 @@ saga.run(watchGetEducators);
 saga.run(watchGetStudyLevels);
 saga.run(watchGetGroups);
 saga.run(watchGetGroupsTimetable);
-
+saga.run(watchGetEducatorsTimetable);
 export default store;

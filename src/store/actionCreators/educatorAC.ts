@@ -37,10 +37,14 @@ function updFilterValue(filter_value: string): Action {
   };
 }
 
-function getEducatorTimetable(selected_educators: Educator[]): Action {
+function getEducatorTimetable(selected_educators: Educator[], fromDate: Date, toDate: Date): Action {
   return {
     type: ACTION.GET_EDUCATORS_TIMETABLE,
-    payload: selected_educators,
+    payload: {
+      selected_educators: selected_educators,
+      fromDate: fromDate,
+      toDate: toDate,
+    },
   };
 }
 
