@@ -27,6 +27,10 @@ function sortTimetableDays(cabinets: any, type: "cabinet" | "group") {
             cabinets[j][i].DayStudyEvents[m].LocationsDisplayText === undefined
               ? [""]
               : [cabinets[j][i].DayStudyEvents[m].LocationsDisplayText],
+          groups:
+            cabinets[j][i].DayStudyEvents[m].ContingentUnitName === undefined
+              ? [""]
+              : [cabinets[j][i].DayStudyEvents[m].ContingentUnitName],
           interval: cabinets[j][i].DayStudyEvents[m].TimeIntervalString,
         });
       }

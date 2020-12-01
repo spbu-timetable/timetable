@@ -2,15 +2,16 @@ import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import Action from "../../types/Action";
 import ACTION from "../actionCreators/ACTION";
-import formatDateToRequest from "../../helpers/formatDateToRequest";
 import timetableAC from "../actionCreators/timetable";
-import getObjectId from "../../helpers/getObjectId";
 import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
 import api_address from "./apiAddress";
+import formatDateToGroupsRequest from "../../helpers/formatDateToGroupsRequest";
+import checkDays from "../../helpers/checkDays";
 
-async function getEducatorEventsDays(oid: string) {
-  return await Axios.get(api_address + `/educators/${1426}/events`)
+async function getEducatorEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
+  console.log(api_address + `/educators/${oid}/events/${fromDateStr}/${toDateDtr}`);
+  return await Axios.get(api_address + `/educators/${oid}/events/${fromDateStr}/${toDateDtr}`)
     .then((response) => {
       if (response.status === 200) {
         return response.data.EducatorEventsDays;
@@ -25,24 +26,27 @@ async function getEducatorEventsDays(oid: string) {
 
 function* workerGetEducatorEventsDays(action: Action) {
   yield put(timetableAC.cleanTimetable());
+  console.log("hello");
+  const startDateStr: string = formatDateToGroupsRequest(action.payload.fromDate);
+  const endDateStr: string = formatDateToGroupsRequest(action.payload.toDate);
 
-  const educatorEventDays = [];
-  const cabinet_names: string[] = [];
-  action.payload.selected_cabinets.forEach((element: any) => {
-    cabinet_names.push(getObjectName(element));
+  const educator_names: string[] = [];
+  action.payload.selected_educators.forEach((element: any) => {
+    educator_names.push(getObjectName(element));
   });
 
-  yield put(timetableAC.setTimetableItems(cabinet_names, ["Кабинет", "Кабинеты"]));
+  yield put(timetableAC.setTimetableItems(educator_names, ["Преподаватель", "Преподаватели"]));
 
-  let data: any;
-  for (let i = 0; i < cabinet_names.length; i++) {
-    data = yield call(getEducatorEventsDays, getObjectId(action.payload.selected_cabinets[i]));
+  const educatorEventDays = [];
+  for (let i = 0; i < action.payload.selected_educators.length; i++) {
+    const data = yield call(getEducatorEventsDays, action.payload.selected_educators[i].Id, startDateStr, endDateStr);
 
     if (data !== undefined) educatorEventDays.push(data);
   }
 
-  // const week = sortTimetableDays(educatorEventDays);
-  // yield put(timetableAC.setTimetable(week));
+  const checkedEducatorEventDays = checkDays(educatorEventDays);
+  const week = sortTimetableDays(checkedEducatorEventDays, "group");
+  yield put(timetableAC.setTimetable(week));
 
   yield put(timetableAC.finisFetchingData());
 }
