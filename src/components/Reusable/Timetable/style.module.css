@@ -22,9 +22,10 @@
 }
 
 .table {
-  width: 95vw;
+  min-width: 95vw;
   border-collapse: collapse;
   border: 1px solid var(--level3) !important;
+  overflow-y: auto;
 }
 
 .td {
