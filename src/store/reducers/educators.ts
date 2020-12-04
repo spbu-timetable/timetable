@@ -13,9 +13,7 @@ function educators(state: EducatorsPage = initialState, action: Action): Educato
       };
     case ACTION.SELECT_EDUCATOR:
       if (
-        !state.selected_educators.includes(action.payload) &&
-        state.selected_educators.length < 4
-      ) {
+        !state.selected_educators.includes(action.payload) /* && state.selected_educators.length < 4*/) {
         return {
           ...state,
           selected_educators: [...state.selected_educators, action.payload],

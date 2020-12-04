@@ -26,7 +26,7 @@ function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsP
       };
 
     case ACTION.SELECT_CABINET:
-      if (!state.selected_cabinets.includes(action.payload) && state.selected_cabinets.length < 4) {
+      if (!state.selected_cabinets.includes(action.payload) /*&& state.selected_cabinets.length < 4*/) {
         return {
           ...state,
           selected_cabinets: [

@@ -7,9 +7,9 @@ import React from "react";
 import getObjectName from "../../../helpers/getObjectName";
 
 function checkSelection(item: any, selected_items: any): boolean {
-  if (selected_items.length === 4) {
-    return true;
-  }
+  // if (selected_items.length === 4) {
+  //   return true;
+  // }
 
   for (let i = 0; i < selected_items.length; i++) {
     if (selected_items.includes(item)) {

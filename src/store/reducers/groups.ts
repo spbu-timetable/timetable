@@ -24,7 +24,7 @@ function groups(state: GroupsPage = initialState, action: Action): GroupsPage {
       };
 
     case ACTION.SELECT_GROUP:
-      if (!state.selected_groups.includes(action.payload) && state.selected_groups.length < 4) {
+      if (!state.selected_groups.includes(action.payload) /*&& state.selected_groups.length < 4*/) {
         return {
           ...state,
           selected_groups: [...state.selected_groups, action.payload].sort((a: Group, b: Group) =>
