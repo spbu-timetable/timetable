@@ -2,13 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 95vw;
 }
 
 .tools {
   display: flex;
   flex-direction: row;
-  width: inherit;
+  width: 95vw;
 
   margin-bottom: var(--inset4);
 }
@@ -25,7 +24,7 @@
   min-width: 95vw;
   border-collapse: collapse;
   border: 1px solid var(--level3) !important;
-  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .td {

@@ -5,12 +5,12 @@ import React from "react";
 import style from "./style.module.css";
 import styled from "@material-ui/core/styles/styled";
 
-type Props = {};
-
 const MyButton = styled(Button)({
   color: "black !important",
   backgroundColor: "white !important",
   marginTop: 16,
+
+  border: "1px solid var(--level2)",
 
   width: 500,
   maxWidth: "90vw",
@@ -20,7 +20,7 @@ const MyButton = styled(Button)({
   fontSize: "1.2em",
 });
 
-const Main = (props: Props) => {
+const Main = () => {
   return (
     <div className={style.main}>
       <h1 className={style.title}>Расписание СПбГУ</h1>
