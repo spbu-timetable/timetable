@@ -26,7 +26,7 @@ async function getEducatorEventsDays(oid: string, fromDateStr: string, toDateDtr
 
 function* workerGetEducatorEventsDays(action: Action) {
   yield put(timetableAC.cleanTimetable());
-  console.log("hello");
+
   const startDateStr: string = formatDateToGroupsRequest(action.payload.fromDate);
   const endDateStr: string = formatDateToGroupsRequest(action.payload.toDate);
 
@@ -45,7 +45,7 @@ function* workerGetEducatorEventsDays(action: Action) {
   }
 
   const checkedEducatorEventDays = checkDays(educatorEventDays);
-  const week = sortTimetableDays(checkedEducatorEventDays, "group");
+  const week = sortTimetableDays(checkedEducatorEventDays, "cabinet");
   yield put(timetableAC.setTimetable(week));
 
   yield put(timetableAC.finisFetchingData());

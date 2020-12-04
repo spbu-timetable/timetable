@@ -1,7 +1,7 @@
 /**
  * Reduces a sequence of names to initials.
  * @param  {Date} date  date to be formatted.
- * @param  {String} index   1 if monday, 2 if suday.
+ * @param  {String} index   1 if monday, 2 if sunday.
  * @return {String}       Properly formatted date string.
  */
 function formatHeaderDateToStr(date: Date, index: number): string {
