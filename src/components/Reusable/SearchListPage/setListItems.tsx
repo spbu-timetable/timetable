@@ -11,8 +11,12 @@ function checkSelection(item: any, selected_items: any): boolean {
   //   return true;
   // }
 
+  function didFind(element: any, _index: any, _array: any): boolean {
+    return getObjectName(element) === getObjectName(item) ? true : false;
+  }
+
   for (let i = 0; i < selected_items.length; i++) {
-    if (selected_items.includes(item)) {
+    if (selected_items.find(didFind, item)) {
       return true;
     }
   }
