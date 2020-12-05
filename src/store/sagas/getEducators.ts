@@ -30,6 +30,8 @@ function* workerGetEducators(action: Action) {
 }
 
 function* watchGetEducators() {
+  setTimeout(() => {}, 1000);
+
   yield takeLatest(ACTION.FILTER_EDUCATORS, workerGetEducators);
 }
 
