@@ -1,6 +1,6 @@
 /**
  * @param object object of type Address | Cabinet | Faculty
- * @returns DisplayName1 or Name of the object
+ * @returns id of the object
  * */
 
 function getObjectId(object: any): string {
