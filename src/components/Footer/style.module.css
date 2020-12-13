@@ -26,8 +26,8 @@
 
 .modal {
   position: absolute;
-  top: calc(100vh - var(--inset1) - 270px) !important;
-  left: calc(100vw - 224px) !important;
+  top: calc(100vh - var(--inset1) - 220px) !important;
+  left: calc(100vw - 274px) !important;
 }
 
 .paper {
@@ -35,7 +35,7 @@
   border: 1px solid var(--level2) !important;
   padding: var(--inset1);
 
-  width: 200px;
+  width: 250px;
 }
 
 .link {
@@ -53,9 +53,16 @@
     width: 95vw;
   }
   .modal {
-    left: calc(97.5vw - 216px) !important;
+    left: calc(97.5vw - 266px) !important;
   }
   .help_btn {
     margin-right: 0 !important;
   }
 }
+
+@media screen and (max-width: 380px) {
+  .wrapper {
+    position: relative;
+  }
+}
+

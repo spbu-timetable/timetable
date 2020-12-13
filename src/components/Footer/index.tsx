@@ -49,7 +49,7 @@ const Footer = () => {
             <Typography>
               Разработано в рамках учебной практики студентами факультета ПМ-ПУ. Краткую инструкцию и наши контакты вы
               можете найти в репозитории на{" "}
-              <MuiLink color="primary" href="https://github.com/inctnce/timetable-generator">
+              <MuiLink color="primary" href="https://github.com/inctnce/timetable-generator" target="_blank">
                 Github
               </MuiLink>
             </Typography>
