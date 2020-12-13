@@ -15,7 +15,7 @@ type Props = {};
 const Login = () => {
   const body = (
     <>
-      <Typography className={style.item} align="center" variant="h5">
+      <Typography className={style.header} align="center" variant="h5">
         Вход
       </Typography>
 
@@ -37,16 +37,9 @@ const Login = () => {
         Войти
       </Button>
 
-      <div className={style.link_wrapper}>
-        <Typography color="textSecondary" align="center">
-          Еще не зарегистрированы? перейдите по этой
-        </Typography>
-        <MuiLink color="primary">
-          <Link className={style.link} to="#">
-            ссылочке
-          </Link>
-        </MuiLink>
-      </div>
+      <Button className={style.item + " " + style.registration_btn} disableElevation variant="outlined" color="primary">
+        Зарегистрироваться
+      </Button>
     </>
   );
 
