@@ -4,6 +4,7 @@ import style from "./style.module.css";
 import Content from "../Content";
 import Header from "../Header/container";
 import Login from "../Login";
+import Footer from "../Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       {/* <Header />
       <Content /> */}
       <Login />
+      <Footer />
     </div>
   );
 }
