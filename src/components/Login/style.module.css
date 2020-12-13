@@ -5,7 +5,15 @@
 
   width: 400px;
 
-  margin-top: 10%;
+  margin-top: 30%;
+
+  padding: var(--inset1);
+
+  border: 1px solid var(--level2);
+}
+
+.header {
+  margin-bottom: var(--inset3) !important;
 }
 
 .item {
@@ -14,6 +22,10 @@
 
 .google_btn {
   color: black !important;
+}
+
+.registration_btn {
+  color: var(--primary) !important;
 }
 
 .divider {
@@ -46,30 +58,12 @@
   text-align: center;
 }
 
-.link_wrapper {
-  position: absolute;
-  bottom: 32px;
-
-  width: inherit;
-
-  text-align: center;
-}
-
-.link {
-  color: inherit;
-  text-decoration: none;
-}
-
-.link:active {
-  color: inherit;
-  text-decoration: none;
-}
-
 @media screen and (max-width: 400px) {
   .form {
-    width: 300px;
+    margin-top: 10%;
+    width: 320px;
   }
   .divider_line {
-    width: 127px;
+    width: 137px;
   }
 }
