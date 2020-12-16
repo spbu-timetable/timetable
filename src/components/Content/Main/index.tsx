@@ -39,6 +39,11 @@ const Main = () => {
           Группы
         </Link>
       </MyButton>
+      <MyButton variant="contained">
+        <Link className={style.link} to="/bookmarks">
+          Закладки
+        </Link>
+      </MyButton>
     </div>
   );
 };

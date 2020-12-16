@@ -59,3 +59,9 @@
     margin-right: 0 !important;
   }
 }
+
+@media screen and (max-width: 380px) {
+  .wrapper {
+    position: relative;
+  }
+}

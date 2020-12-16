@@ -4,6 +4,9 @@ import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
 import Action from "../types/Action";
+import LoginPage from "../types/pages/LoginPage";
+import RegistrationPage from "../types/pages/RegisterPage";
+import AccountPage from "../types/pages/AccountPage";
 import Header from "../types/Header";
 import AddressesPage from "../types/pages/AddressesPage";
 import CabinetsPage from "../types/pages/CabinetsPage";
@@ -13,6 +16,9 @@ import StudyLevelPage from "../types/pages/StudyLevelPage";
 import EducationalProgramPage from "../types/pages/EducationalProgramPage";
 import EducationYearsPage from "../types/pages/EducationYearsPage";
 
+import login from "./reducers/login";
+import register from "./reducers/register";
+import account from "./reducers/account";
 import header from "./reducers/header";
 import addresses from "./reducers/addresses";
 import cabinets from "./reducers/cabinets";
@@ -23,7 +29,7 @@ import studyLevels from "./reducers/studyLevels";
 import educationalPrograms from "./reducers/educationalPrograms";
 import groups from "./reducers/groups";
 
-import watchGetAddresses from "./sagas/getAdresses";
+import watchGetAddresses from "./sagas/getAddresses";
 import watchGetCabinets from "./sagas/getCabinets";
 import watchGetCabinetsTimetable from "./sagas/getCabinetTimetable";
 import watchGetFaculties from "./sagas/getFaculties";
@@ -36,7 +42,13 @@ import TimetablePage from "../types/pages/TimetablePage";
 import watchGetGroupsTimetable from "./sagas/getGroupsTimetable";
 import watchGetEducatorsTimetable from "./sagas/getEducatorTimetable";
 
+import watchLogin from "./sagas/auth/login";
+import watchLoginViaGoogle from "./sagas/auth/loginViaGoogle";
+
 const reducers = combineReducers({
+  login: login,
+  register: register,
+  account: account,
   header: header,
   addresses: addresses,
   cabinets: cabinets,
@@ -53,6 +65,9 @@ const saga = createSagaMiddleware();
 
 let store: Store<
   CombinedState<{
+    login: LoginPage;
+    register: RegistrationPage;
+    account: AccountPage;
     header: Header;
     addresses: AddressesPage;
     cabinets: CabinetsPage;
@@ -76,4 +91,7 @@ saga.run(watchGetStudyLevels);
 saga.run(watchGetGroups);
 saga.run(watchGetGroupsTimetable);
 saga.run(watchGetEducatorsTimetable);
+
+saga.run(watchLogin);
+saga.run(watchLoginViaGoogle);
 export default store;
