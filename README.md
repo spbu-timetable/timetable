@@ -28,7 +28,7 @@
 - [Величко Кирилл](https://github.com/veliKerril) - работа с документами
 
 ### Материалы
-* master-ветка на [heroku](https://timetable--generator.herokuapp.com)
+* master-ветка на [heroku](https://spbu-timetable.herokuapp.com)
 * макет в [figma](https://www.figma.com/file/UgR6tjDqQkIDdLAMwZjquv/Timetable-Generator?node-id=0%3A1)
 * писать можно на почту timetable.generator.spbu@gmail.com
 
