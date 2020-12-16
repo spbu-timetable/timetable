@@ -3,16 +3,20 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import ACTION from "../../actionCreators/ACTION";
 
 async function loginViaGoogle() {
-  return await Axios.get(`http://localhost:8000/google`)
+  return await Axios.get(`http://localhost:8000/google`, {
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:8000",
+    },
+  })
     .then((response) => {
-      if (response.status === 200) {
+      if (response.status === 304) {
         return response.data;
       } else {
         return "error";
       }
     })
     .catch((err) => {
-      alert(err.response.data);
+      alert(err);
     });
 }
 

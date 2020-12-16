@@ -6,6 +6,8 @@ import { Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import "gapi";
+
 import Google from "../../assets/icons/google";
 
 import { useHistory } from "react-router-dom";
@@ -16,10 +18,24 @@ type Props = {
 
   updForm: (key: string, value: string) => void;
   login: (email: string, password: string) => void;
+
   loginViaGoogle: () => void;
 };
 
 const Login = (props: Props) => {
+  React.useEffect(() => {
+    gapi.load("auth2", function () {
+      gapi.auth2
+        .init({
+          client_id: "38199711621-go08p6i21jnoekoappboa0r2at93mjmt.apps.googleusercontent.com",
+        })
+        .then(
+          () => console.log("OK"),
+          () => console.log("Error")
+        );
+    });
+  }, []);
+
   const history = useHistory();
 
   const emailRef: React.RefObject<HTMLInputElement> = React.createRef();
@@ -34,7 +50,10 @@ const Login = (props: Props) => {
         className={style.item + " " + style.google_btn}
         variant="outlined"
         startIcon={<Google />}
-        onClick={() => props.loginViaGoogle()}
+        onClick={() => {
+          const googleAuth = (window as any).gapi.auth2.getAuthInstance();
+          googleAuth.signIn({ scope: "profile email" }).then((user: any) => console.log("User ", user));
+        }}
       >
         Войти через Google
       </Button>
