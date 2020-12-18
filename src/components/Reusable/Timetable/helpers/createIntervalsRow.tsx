@@ -5,13 +5,13 @@ export default function createIntervalsRow(intervalStrings: string[]): JSX.Eleme
   const intervals: JSX.Element[] = [];
 
   intervals.push(
-    <td className={style.td + " " + style.interval} key={0}>
+    <td key={0} className={style.td + " " + style.interval}>
       {""}
     </td>
   );
   intervalStrings.forEach((intervalString, index: number) => {
     intervals.push(
-      <td className={style.td + " " + style.interval} key={index}>
+      <td key={index + 1} className={style.td + " " + style.interval}>
         {intervalString}
       </td>
     );

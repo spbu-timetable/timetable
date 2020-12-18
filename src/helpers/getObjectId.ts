@@ -4,11 +4,13 @@
  * */
 
 function getObjectId(object: any): string {
-  if (object.Oid !== undefined) {
+  if (object.id) {
+    return object.id;
+  } else if (object.Oid) {
     return object.Oid;
-  } else if (object.Id !== undefined) {
+  } else if (object.Id) {
     return object.Id;
-  } else if (object.StudentGroupId !== undefined) {
+  } else if (object.StudentGroupId) {
     return object.StudentGroupId;
   } else {
     return object.oid;

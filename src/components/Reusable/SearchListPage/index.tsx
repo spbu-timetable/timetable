@@ -10,6 +10,7 @@ import getObjectId from "../../../helpers/getObjectId";
 
 import Chip from "@material-ui/core/Chip";
 import setListItems from "./ListItems/setListItems";
+import { SavedItem } from "../../../types/User";
 
 type Props = {
   items?: any;
@@ -25,7 +26,7 @@ type Props = {
 
   isDialog?: boolean;
   dialogTitle?: string;
-  saveItem?: (id: string) => void;
+  saveItem?: (item: SavedItem) => void;
 
   url_to_push?: string;
 
@@ -46,6 +47,7 @@ type Props = {
 };
 
 /**
+ * @param didGet флаг, который показывает, нужно ли подгружать список объектов или нет
  * @param items объекты, формирующие список
  * @param filtered_items объекты items, полученные с помощью фильтрации полем для поиска
  * @param
@@ -71,8 +73,8 @@ function SearchListPage(props: Props) {
 
   let selected_items_component;
   if (props.selected_items !== undefined) {
-    selected_items_component = props.selected_items.map((item: any) => (
-      <Chip key={getObjectId(item)} label={getObjectName(item)} className={style.chip} onDelete={handleDelete(item)} />
+    selected_items_component = props.selected_items.map((item: any, index: number) => (
+      <Chip key={index} label={getObjectName(item)} className={style.chip} onDelete={handleDelete(item)} />
     ));
   }
 

@@ -6,7 +6,7 @@ import ACTION from "../actionCreators/ACTION";
 
 async function saveEducator(educator_id: string) {
   return await Axios.post(
-    `http://localhost:8000/educator/save`,
+    `https://spbu-timetable-api.herokuapp.com/educator/save`,
     { id: educator_id },
     {
       headers: {

@@ -1,5 +1,6 @@
 import Action from "../../types/Action";
 import Cabinet from "../../types/Cabinet";
+import { SavedItem } from "../../types/User";
 import ACTION from "./ACTION";
 
 function getCabinets(oid: string): Action {
@@ -30,7 +31,7 @@ function deselectCabinet(cabinet: Cabinet): Action {
   };
 }
 
-function getCabinetTimetable(selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date): Action {
+function getCabinetTimetable(selected_cabinets: Cabinet[] | SavedItem[], fromDate?: Date, toDate?: Date): Action {
   return {
     type: ACTION.GET_CABINETS_TIMETABLE,
     payload: {

@@ -1,10 +1,15 @@
+export type SavedItem = {
+  id: string;
+  name: string;
+};
+
 type User = {
   name: string;
   email: string;
-  savedEducators: string[];
-  savedGroups: string[];
-  savedCabinets: string[];
-  savedTables: string[];
+  savedEducators: SavedItem[];
+  savedGroups: SavedItem[];
+  savedCabinets: SavedItem[];
+  savedTables: SavedItem[];
 };
 
 export default User;

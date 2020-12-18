@@ -15,8 +15,8 @@ export default function createTimetableComponent(timetable: any, items: string[]
     const day_timetable = createDayTimetable(timetable[i][1], timetable[i][0]);
 
     tables.push(
-      <>
-        <tr key={i} className={style.head}>
+      <React.Fragment key={i}>
+        <tr className={style.head}>
           <td className={style.td} colSpan={fullRow}>
             <Typography variant="h5" component="h5">
               {weekdays[i]}
@@ -26,7 +26,7 @@ export default function createTimetableComponent(timetable: any, items: string[]
 
         <>
           {timetable[i][0].length === 0 ? (
-            <tr key={i + 100} className={style.free_day}>
+            <tr className={style.free_day}>
               <td className={style.td} colSpan={fullRow}>
                 <Typography variant="h6" component="h6">
                   День свободен
@@ -34,11 +34,11 @@ export default function createTimetableComponent(timetable: any, items: string[]
               </td>
             </tr>
           ) : (
-            <tr key={Math.random()}>{intervals}</tr>
+            <tr>{intervals}</tr>
           )}
         </>
         {timetable[i][0].length === 0 ? <></> : <>{day_timetable}</>}
-      </>
+      </React.Fragment>
     );
   }
   return (

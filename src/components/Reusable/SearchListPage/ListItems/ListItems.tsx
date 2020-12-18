@@ -10,6 +10,7 @@ import Add from "@material-ui/icons/Add";
 import React from "react";
 import getObjectId from "../../../../helpers/getObjectId";
 import getObjectName from "../../../../helpers/getObjectName";
+import { SavedItem } from "../../../../types/User";
 import useLongPress from "../../useLongPress";
 import style from "../style.module.css";
 import checkSelection from "./checkSelection";
@@ -24,7 +25,7 @@ type Props = {
   setItem: (item: any) => void;
   setAddress: (url: string) => void;
 
-  saveItem?: (id: string) => void;
+  saveItem?: (item: SavedItem) => void;
 };
 
 const ListItems: React.FC<Props> = (props: Props) => {
@@ -42,8 +43,8 @@ const ListItems: React.FC<Props> = (props: Props) => {
   };
 
   const saveItem = () => {
-    props.saveItem!(String(getObjectId(props.items[item])));
-    console.log(String(getObjectId(props.items[item])));
+    props.saveItem!({ id: getObjectId(props.items[item]), name: getObjectName(props.items[item]) });
+    console.log(props.items[item]);
     setOpen(false);
   };
 

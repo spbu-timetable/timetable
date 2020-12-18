@@ -31,7 +31,7 @@ export default function createDayTimetable(matrix: any, intervals: string[]): JS
     const row = [];
 
     row.push(
-      <td key={i} className={style.td}>
+      <td key={Math.random()} className={style.td}>
         {intervals[i]}
       </td>
     );
@@ -46,7 +46,7 @@ export default function createDayTimetable(matrix: any, intervals: string[]): JS
         );
       }
     }
-    timetable.push(<tr key={i}>{row}</tr>);
+    timetable.push(<tr key={Math.random()}>{row}</tr>);
   }
 
   return timetable;

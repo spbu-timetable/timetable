@@ -1,8 +1,9 @@
 import React from "react";
-import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
+import refreshTokenLocalStorage from "../../../../localStorage/refreshToken";
 
-import Cabinet from "../../../types/Cabinet";
-import SearchListPage from "../../Reusable/SearchListPage";
+import Cabinet from "../../../../types/Cabinet";
+import { SavedItem } from "../../../../types/User";
+import SearchListPage from "../../../Reusable/SearchListPage";
 
 type Props = {
   oid: string;
@@ -24,7 +25,7 @@ type Props = {
   toDate: Date;
   getCabinetsTimetable?: (selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date) => void;
 
-  saveCabinet: (id: string) => void;
+  saveCabinet: (item: SavedItem) => void;
 };
 
 const Cabinets = (props: Props) => {

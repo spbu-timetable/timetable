@@ -21,13 +21,33 @@ function account(state: AccountPage = initialState, action: Action): AccountPage
         ...state,
         accessToken: action.payload,
       };
-    case ACTION.SET_CABINET:
+    case ACTION.SELECT_SAVED_CABINET:
       return {
         ...state,
-        user: {
-          ...state.user!,
-          savedCabinets: [...state.user!.savedCabinets, action.payload],
-        },
+        selectedCabinets: [...state.selectedCabinets, action.payload],
+      };
+    case ACTION.DESELECT_SAVED_CABINET:
+      for (let i = 0; i < state.selectedCabinets.length; i++) {
+        if (action.payload === state.selectedCabinets[i]) {
+          state.selectedCabinets.splice(i, 1);
+        }
+      }
+      return {
+        ...state,
+      };
+    case ACTION.SELECT_SAVED_EDUCATOR:
+      return {
+        ...state,
+        selectedCabinets: [...state.selectedCabinets, action.payload],
+      };
+    case ACTION.DESELECT_SAVED_EDUCATOR:
+      for (let i = 0; i < state.selectedCabinets.length; i++) {
+        if (action.payload === state.selectedCabinets[i]) {
+          state.selectedCabinets.splice(i, 1);
+        }
+      }
+      return {
+        ...state,
       };
   }
 

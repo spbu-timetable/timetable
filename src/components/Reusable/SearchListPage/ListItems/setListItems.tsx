@@ -1,4 +1,5 @@
 import React from "react";
+import { SavedItem } from "../../../../types/User";
 import ListItems from "./ListItems";
 
 function setListItems(
@@ -20,7 +21,7 @@ function setListItems(
 
   dialogTitle?: string,
   isDialog?: boolean,
-  saveItem?: (id: string) => void
+  saveItem?: (item: SavedItem) => void
 ) {
   if (didGet) {
     if (filter_value !== "") {

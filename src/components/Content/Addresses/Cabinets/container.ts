@@ -1,16 +1,17 @@
 import { CombinedState } from "redux";
 import Cabinets from ".";
 
-import Action from "../../../types/Action";
-import AddressesPage from "../../../types/pages/AddressesPage";
+import Action from "../../../../types/Action";
+import AddressesPage from "../../../../types/pages/AddressesPage";
 
 import { connect } from "react-redux";
-import cabinetAC from "../../../store/actionCreators/cabinetAC";
-import Cabinet from "../../../types/Cabinet";
-import CabinetsPage from "../../../types/pages/CabinetsPage";
-import Header from "../../../types/Header";
-import authAC from "../../../store/actionCreators/authAC";
-import userAC from "../../../store/actionCreators/userAC";
+import cabinetAC from "../../../../store/actionCreators/cabinetAC";
+import Cabinet from "../../../../types/Cabinet";
+import CabinetsPage from "../../../../types/pages/CabinetsPage";
+import Header from "../../../../types/Header";
+import authAC from "../../../../store/actionCreators/authAC";
+import userAC from "../../../../store/actionCreators/userAC";
+import { SavedItem } from "../../../../types/User";
 
 function mapStateToProps(
   state: CombinedState<{
@@ -53,8 +54,8 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     getCabinetsTimetable: (selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date) => {
       dispatch(cabinetAC.getCabinetTimetable(selected_cabinets, fromDate, toDate));
     },
-    saveCabinet: (id: string) => {
-      dispatch(userAC.saveCabinet(id));
+    saveCabinet: (item: SavedItem) => {
+      dispatch(userAC.saveCabinet(item));
     },
   };
 }

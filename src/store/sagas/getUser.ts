@@ -27,7 +27,7 @@ function* workerGetUser(action: Action) {
   for (let i = 0; i < 2; i++) {
     const data = yield call(getUser, action.payload);
     if (data !== "error") {
-      yield put(authAC.setUser(data.user));
+      yield put(authAC.setUser(data));
       break;
     } else {
       yield put(authAC.refreshToken());

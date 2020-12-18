@@ -30,7 +30,6 @@ const Bookmarks = (props: Props) => {
           <HugeButton title="Кабинеты" link="/bookmarks/cabinets" />
           <HugeButton title="Преподаватели" link="/bookmarks/educators" />
           <HugeButton title="Группы" link="/bookmarks/groups" />
-          <HugeButton title="Таблицы" link="/bookmarks/tables" />
         </div>
       ) : (
         <Redirect to="login" />

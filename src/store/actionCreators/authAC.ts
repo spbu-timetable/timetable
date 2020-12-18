@@ -1,5 +1,5 @@
 import Action from "../../types/Action";
-import User from "../../types/User";
+import User, { SavedItem } from "../../types/User";
 import ACTION from "./ACTION";
 
 function login(email: string, password: string): Action {

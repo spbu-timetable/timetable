@@ -5,6 +5,18 @@ import AccountPage from "../../types/pages/AccountPage";
 const account: AccountPage = {
   accessToken: accessTokenLocalStorage.set(),
   refreshToken: refreshTokenLocalStorage.set(),
+
+  selectedCabinets: [],
+  filteredCabinets: [],
+  cabinetsFilterValue: "",
+
+  selectedEducators: [],
+  filteredEducators: [],
+  educatorsFilterValue: "",
+
+  selectedGroups: [],
+  filteredGroups: [],
+  groupsFilterValue: "",
 };
 
 export default account;

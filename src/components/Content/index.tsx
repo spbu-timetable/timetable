@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Addresses from "./Addresses/container";
-import Cabinets from "./Cabinets/container";
+import Cabinets from "./Addresses/Cabinets/container";
 import Faculties from "./Faculties/container";
 import Groups from "./Faculties/StudyLevels/EducationProgram/EducationYears/Groups/container";
 import Main from "./Main";
@@ -13,6 +13,8 @@ import EducationalProgram from "./Faculties/StudyLevels/EducationProgram/contain
 import EducationYears from "./Faculties/StudyLevels/EducationProgram/EducationYears/container";
 import Header from "../Header/container";
 import Bookmarks from "./Bookmarks/container";
+import SavedCabinets from "./Bookmarks/SavedCabinets/container";
+import SavedEducators from "./Bookmarks/SavedEducators";
 
 const Content = () => {
   return (
@@ -30,6 +32,8 @@ const Content = () => {
         <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
         <Route path="/faculties" component={() => <Faculties />} />
 
+        <Route path="/bookmarks/cabinets" component={() => <SavedCabinets />} />
+        <Route path="/bookmarks/educators" component={() => <SavedEducators />} />
         <Route path="/bookmarks" component={() => <Bookmarks />} />
 
         <Route path="/timetable" component={() => <Timetable />} />

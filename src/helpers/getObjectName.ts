@@ -4,7 +4,9 @@
  * */
 
 function getObjectName(object: any): string {
-  if (object.DisplayName !== undefined) {
+  if (object.name !== undefined) {
+    return object.name;
+  } else if (object.DisplayName !== undefined) {
     return object.DisplayName;
   } else if (object.DisplayName1 !== undefined) {
     return object.DisplayName1;
