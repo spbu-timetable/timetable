@@ -1,12 +1,12 @@
 import IconButton from "@material-ui/core/IconButton";
 import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import Modal from "@material-ui/core/Modal";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import style from "./style.module.css";
+import Grow from "@material-ui/core/Grow";
 
 const Footer = () => {
   const [open, setOpen] = React.useState(false);
@@ -20,7 +20,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className={style.wrapper}>
+    <div className={style.wrapper}>
       <div className={style.filler}></div>
 
       <div>
@@ -44,7 +44,7 @@ const Footer = () => {
           },
         }}
       >
-        <Fade in={open}>
+        <Grow in={open} style={{ transformOrigin: "right bottom 0" }}>
           <Paper className={style.paper}>
             <Typography>
               Разработано в рамках учебной практики студентами факультета ПМ-ПУ. Краткую инструкцию и наши контакты вы
@@ -54,9 +54,9 @@ const Footer = () => {
               </MuiLink>
             </Typography>
           </Paper>
-        </Fade>
+        </Grow>
       </Modal>
-    </footer>
+    </div>
   );
 };
 
