@@ -11,7 +11,6 @@ import React from "react";
 import getObjectId from "../../../../helpers/getObjectId";
 import getObjectName from "../../../../helpers/getObjectName";
 import { SavedItem } from "../../../../types/User";
-import useLongPress from "../../useLongPress";
 import style from "../style.module.css";
 import checkSelection from "./checkSelection";
 
@@ -30,45 +29,22 @@ type Props = {
 
 const ListItems: React.FC<Props> = (props: Props) => {
   const [open, setOpen] = React.useState(false);
-  const [item, setItem] = React.useState<number>(0);
+  const [index, setIndex] = React.useState<number>(0);
 
-  /*********************************************************************************************************************
-                                                    Dialog Handlers                                        
-  **********************************************************************************************************************/
-  const handleOpen = () => {
-    setOpen(props.isDialog!);
-  };
   const handleClose = () => {
     setOpen(false);
   };
 
   const saveItem = () => {
-    props.longPressAction!({ id: getObjectId(props.items[item]), name: getObjectName(props.items[item]) });
-    console.log(props.items[item]);
+    props.longPressAction!({ id: getObjectId(props.items[index]), name: getObjectName(props.items[index]) });
+    console.log(props.items[index]);
     setOpen(false);
   };
-
-  /*********************************************************************************************************************
-                                                    Long Press Hook
-  **********************************************************************************************************************/
-  const onLongPress = () => {
-    console.log("long is triggered");
-    handleOpen();
-  };
-  const onClick = () => {
-    console.log("click is triggered");
-  };
-  const defaultOptions = {
-    shouldPreventDefault: true,
-    delay: 1000,
-  };
-  let longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
 
   const list_items = [];
   for (let i = 0; i < props.items.length; i++) {
     list_items.push(
       <ListItem
-        {...longPressEvent}
         key={i}
         button
         disabled={props.selected_items === undefined ? false : checkSelection(props.items[i], props.selected_items)}
@@ -81,18 +57,16 @@ const ListItems: React.FC<Props> = (props: Props) => {
             props.setItem(props.items[i]);
           }
         }}
-        onMouseOver={() => {
-          setItem(i);
-        }}
       >
         <ListItemText primary={getObjectName(props.items[i])} />
         {props.selected_items !== undefined ? (
           <ListItemSecondaryAction>
             <IconButton
-              {...longPressEvent}
               edge="end"
-              disabled={checkSelection(props.items[i], props.selected_items)}
-              onClick={() => props.setItem!(props.items[i])}
+              onClick={() => {
+                setIndex(i);
+                setOpen(props.isDialog!);
+              }}
             >
               <Add />
             </IconButton>
@@ -114,7 +88,7 @@ const ListItems: React.FC<Props> = (props: Props) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {props.dialogTitle} {getObjectName(props.items[item!])} в закладки?
+          {props.dialogTitle} {getObjectName(props.items[index!])} в закладки?
         </DialogTitle>
         <DialogActions>
           <Button onClick={handleClose} color="primary" className={style.dialog_btn}>
