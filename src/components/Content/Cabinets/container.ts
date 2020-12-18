@@ -9,6 +9,8 @@ import cabinetAC from "../../../store/actionCreators/cabinetAC";
 import Cabinet from "../../../types/Cabinet";
 import CabinetsPage from "../../../types/pages/CabinetsPage";
 import Header from "../../../types/Header";
+import authAC from "../../../store/actionCreators/authAC";
+import userAC from "../../../store/actionCreators/userAC";
 
 function mapStateToProps(
   state: CombinedState<{
@@ -50,6 +52,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     },
     getCabinetsTimetable: (selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date) => {
       dispatch(cabinetAC.getCabinetTimetable(selected_cabinets, fromDate, toDate));
+    },
+    saveCabinet: (id: string) => {
+      dispatch(userAC.saveCabinet(id));
     },
   };
 }

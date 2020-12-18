@@ -58,3 +58,7 @@
   margin-top: var(--inset5);
   margin-bottom: var(--inset1);
 }
+
+.dialog_btn {
+  color: var(--icon-fill) !important;
+}

@@ -1,0 +1,15 @@
+.header {
+  text-align: center;
+}
+
+.categories_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.category_item {
+  margin: var(--inset2);
+
+  
+  border: 1px solid var(--level2);
+}

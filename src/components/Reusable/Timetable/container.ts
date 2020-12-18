@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { CombinedState } from "redux";
 import Timetable from ".";
-import timetableAC from "../../../store/actionCreators/timetable";
 import Action from "../../../types/Action";
 import TimetablePage from "../../../types/pages/TimetablePage";
 

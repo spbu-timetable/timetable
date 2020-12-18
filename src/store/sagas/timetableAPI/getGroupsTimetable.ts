@@ -1,12 +1,12 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import formatDateToGroupsRequest from "../../helpers/formatDateToGroupsRequest";
-import timetableAC from "../actionCreators/timetable";
-import getObjectName from "../../helpers/getObjectName";
-import sortTimetableDays from "../../helpers/sortTimetableDays";
-import checkDays from "../../helpers/checkDays";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import formatDateToGroupsRequest from "../../../helpers/formatDateToGroupsRequest";
+import timetableAC from "../../actionCreators/timetable";
+import getObjectName from "../../../helpers/getObjectName";
+import sortTimetableDays from "../../../helpers/sortTimetableDays";
+import checkDays from "../../../helpers/checkDays";
 import api_address from "./apiAddress";
 
 async function getGroupEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {

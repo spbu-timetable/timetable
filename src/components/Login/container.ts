@@ -1,19 +1,24 @@
 import { CombinedState } from "redux";
 
-import Address from ".";
+import Login from ".";
 import { connect } from "react-redux";
 import Action from "../../types/Action";
 import authAC from "../../store/actionCreators/authAC";
 import LoginPage from "../../types/pages/LoginPage";
+import AccountPage from "../../types/pages/AccountPage";
 
 function mapStateToProps(
   state: CombinedState<{
     login: LoginPage;
+    account: AccountPage;
   }>
 ) {
   return {
     email: state.login.email,
     password: state.login.password,
+
+    accessToken: state.account.accessToken,
+    refreshToken: state.account.refreshToken,
   };
 }
 
@@ -27,12 +32,20 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
       dispatch(authAC.loginViaGoogle());
     },
 
+    gapiInit: () => {
+      dispatch(authAC.gapiInit());
+    },
+
     updForm: (key: string, value: string) => {
       dispatch(authAC.updLoginForm(key, value));
+    },
+
+    refreshAccessToken: () => {
+      dispatch(authAC.refreshToken());
     },
   };
 }
 
-const AddressContainer = connect(mapStateToProps, mapDispatchToProps)(Address);
+const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
 
-export default AddressContainer;
+export default LoginContainer;

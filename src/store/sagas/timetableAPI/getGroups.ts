@@ -1,8 +1,8 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import groupAC from "../actionCreators/groupAC";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import groupAC from "../../actionCreators/groupAC";
 import api_address from "./apiAddress";
 
 async function getGroups(oid: string) {

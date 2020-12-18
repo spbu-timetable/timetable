@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import ACTION from "../actionCreators/ACTION";
-import facultyAC from "../actionCreators/facultyAC";
+import ACTION from "../../actionCreators/ACTION";
+import facultyAC from "../../actionCreators/facultyAC";
 import api_address from "./apiAddress";
 
 async function getFaculties() {

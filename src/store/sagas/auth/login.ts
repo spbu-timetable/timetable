@@ -1,7 +1,11 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
+import accessTokenLocalStorage from "../../../localStorage/accessToken";
+import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
 import Action from "../../../types/Action";
 import ACTION from "../../actionCreators/ACTION";
+import appAC from "../../actionCreators/appAC";
+import authAC from "../../actionCreators/authAC";
 
 async function login(email: string, password: string) {
   const data = {
@@ -9,24 +13,28 @@ async function login(email: string, password: string) {
     password: password,
   };
 
-  return await Axios.post(`https://timetable--generator-api.herokuapp.com/auth/login`, data)
+  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/auth/login`, data)
     .then((response) => {
       if (response.status === 200) {
         return response.data;
-      } else {
-        return "error";
       }
     })
     .catch((err) => {
-      alert(err.response.data);
+      console.log(err);
     });
 }
 
 function* workerLogin(action: Action) {
   const data = yield call(login, action.payload.email, action.payload.password);
-  console.log(data);
+
   if (data !== undefined) {
-    // yield put(studyLevelAC.setStudyLevels(data));
+    accessTokenLocalStorage.save(data.accessToken);
+    refreshTokenLocalStorage.save(data.refreshToken);
+
+    yield put(authAC.setUser(data.user));
+    yield put(authAC.setAccessToken(data.accessToken));
+  } else {
+    yield put(appAC.setAlert({ message: "Ошибка входа в приложение", severity: "error" }));
   }
 }
 

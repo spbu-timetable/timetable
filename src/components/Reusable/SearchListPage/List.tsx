@@ -20,7 +20,7 @@ type Props = {
   getSelectedItems: (selected_item: any) => void;
 
   setAddress: () => void;
-  items_component: JSX.Element[] | undefined;
+  items_component: JSX.Element | undefined;
   selected_items_component: JSX.Element[] | undefined;
 
   fromDate?: Date;
@@ -46,7 +46,6 @@ const ItemsList = (props: Props) => {
                 } else {
                   props.getTimetable!(props.selected_items);
                 }
-
                 props.setAddress();
               }}
             >

@@ -3,13 +3,13 @@ import style from "./style.module.css";
 import { useHistory } from "react-router-dom";
 
 import Search from "../Search";
-import ItemsList from "./ItemsList";
+import ItemsList from "./List";
 
 import getObjectName from "../../../helpers/getObjectName";
 import getObjectId from "../../../helpers/getObjectId";
 
 import Chip from "@material-ui/core/Chip";
-import setListItems from "./setListItems";
+import setListItems from "./ListItems/setListItems";
 
 type Props = {
   items?: any;
@@ -22,6 +22,10 @@ type Props = {
   header_text?: string;
   banner_main_text?: string;
   banner_secondary_text?: string;
+
+  isDialog?: boolean;
+  dialogTitle?: string;
+  saveItem?: (id: string) => void;
 
   url_to_push?: string;
 
@@ -77,7 +81,7 @@ function SearchListPage(props: Props) {
     history.push(props.url_to_push!);
   }
 
-  let items_component: JSX.Element[] | undefined = setListItems(
+  let items_component: JSX.Element | undefined = setListItems(
     props.oid!,
     props.didGet!,
     props.filter_value,
@@ -89,7 +93,10 @@ function SearchListPage(props: Props) {
     props.setItem!,
     setAddress,
     props.getItems!,
-    props.getSelectedItems!
+    props.getSelectedItems!,
+    props.dialogTitle,
+    props.isDialog,
+    props.saveItem
   );
 
   return (

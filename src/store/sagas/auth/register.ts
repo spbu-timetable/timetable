@@ -10,7 +10,7 @@ async function register(name: string, email: string, password: string) {
     password: password,
   };
 
-  return await Axios.post(`https://timetable--generator-api.herokuapp.com/auth/register`, data)
+  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/auth/register`, data)
     .then((response) => {
       if (response.status === 200) {
         return response.data;

@@ -1,4 +1,5 @@
 import Action from "../../types/Action";
+import User from "../../types/User";
 import ACTION from "./ACTION";
 
 function login(email: string, password: string): Action {
@@ -14,6 +15,12 @@ function login(email: string, password: string): Action {
 function loginViaGoogle(): Action {
   return {
     type: ACTION.LOGIN_VIA_GOOGLE,
+  };
+}
+
+function gapiInit(): Action {
+  return {
+    type: ACTION.GAPI_INIT,
   };
 }
 
@@ -48,13 +55,47 @@ function updRegisterForm(key: string, value: string): Action {
   };
 }
 
+function setUser(user: User): Action {
+  return {
+    type: ACTION.SET_USER,
+    payload: user,
+  };
+}
+
+function getUser(): Action {
+  return {
+    type: ACTION.GET_USER,
+  };
+}
+
+function setAccessToken(accessToken: string): Action {
+  return {
+    type: ACTION.SET_ACCESS_TOKEN,
+    payload: accessToken,
+  };
+}
+
+function refreshToken(): Action {
+  return {
+    type: ACTION.REFRESH_TOKEN,
+  };
+}
+
 const authAC = {
   login: login,
+  gapiInit: gapiInit,
   loginViaGoogle: loginViaGoogle,
+
   updLoginForm: updLoginForm,
 
   register: register,
   updRegisterForm: updRegisterForm,
+
+  setUser: setUser,
+  setAccessToken: setAccessToken,
+  refreshToken: refreshToken,
+
+  getUser: getUser,
 };
 
 export default authAC;

@@ -1,8 +1,8 @@
 import Axios from "axios";
 import { call, put, takeLatest } from "redux-saga/effects";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import educatorAC from "../actionCreators/educatorAC";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import educatorAC from "../../actionCreators/educatorAC";
 import api_address from "./apiAddress";
 
 async function getEducators(filter: string) {

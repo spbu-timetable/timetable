@@ -1,4 +1,5 @@
 import React from "react";
+import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
 
 import Cabinet from "../../../types/Cabinet";
 import SearchListPage from "../../Reusable/SearchListPage";
@@ -22,9 +23,13 @@ type Props = {
   fromDate: Date;
   toDate: Date;
   getCabinetsTimetable?: (selected_cabinets: Cabinet[], fromDate?: Date, toDate?: Date) => void;
+
+  saveCabinet: (id: string) => void;
 };
 
 const Cabinets = (props: Props) => {
+  const refreshToken = refreshTokenLocalStorage.set();
+
   return (
     <SearchListPage
       url_to_push="/timetable"
@@ -43,6 +48,9 @@ const Cabinets = (props: Props) => {
       fromDate={props.fromDate}
       toDate={props.toDate}
       getTimetable={props.getCabinetsTimetable}
+      isDialog={refreshToken ? true : false}
+      dialogTitle="Добавить кабинет"
+      saveItem={props.saveCabinet}
     />
   );
 };

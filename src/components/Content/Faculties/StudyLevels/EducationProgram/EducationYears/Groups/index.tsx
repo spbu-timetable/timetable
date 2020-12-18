@@ -2,6 +2,7 @@ import React from "react";
 
 import SearchListPage from "../../../../../../Reusable/SearchListPage";
 import Group from "../../../../../../../types/Group";
+import refreshTokenLocalStorage from "../../../../../../../localStorage/refreshToken";
 
 type Props = {
   oid: string;
@@ -43,6 +44,8 @@ const Groups = (props: Props) => {
       fromDate={props.fromDate}
       toDate={props.toDate}
       getTimetable={props.getGroupsTimetable}
+      isDialog={refreshTokenLocalStorage.set() ? true : false}
+      dialogTitle="Добавить группу"
     />
   );
 };

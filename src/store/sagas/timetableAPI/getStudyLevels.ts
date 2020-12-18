@@ -1,8 +1,8 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import studyLevelAC from "../actionCreators/studyLevelAC";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import studyLevelAC from "../../actionCreators/studyLevelAC";
 import api_address from "./apiAddress";
 
 async function getStudyLevels(Alias: string) {

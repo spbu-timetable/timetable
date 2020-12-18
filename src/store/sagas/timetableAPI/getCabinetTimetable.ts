@@ -1,12 +1,12 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import formatDateToRequest from "../../helpers/formatDateToRequest";
-import timetableAC from "../actionCreators/timetable";
-import getObjectId from "../../helpers/getObjectId";
-import getObjectName from "../../helpers/getObjectName";
-import sortTimetableDays from "../../helpers/sortTimetableDays";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import formatDateToRequest from "../../../helpers/formatDateToRequest";
+import timetableAC from "../../actionCreators/timetable";
+import getObjectId from "../../../helpers/getObjectId";
+import getObjectName from "../../../helpers/getObjectName";
+import sortTimetableDays from "../../../helpers/sortTimetableDays";
 import api_address from "./apiAddress";
 
 async function getClassroomEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {

@@ -31,7 +31,7 @@ code {
   --inset4: 32px;
   --inset5: 56px;
   --inset6: 64px;
-  --inset7: 128px;
+  --inset7: 96px;
 }
 
 @media screen and (max-width: 500px) {

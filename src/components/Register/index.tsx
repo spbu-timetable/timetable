@@ -45,6 +45,8 @@ const Register = (props: Props) => {
 
       <TextField
         className={style.item}
+        type="text"
+        name="fname"
         variant="outlined"
         label="Имя"
         inputRef={nameRef}
@@ -53,6 +55,7 @@ const Register = (props: Props) => {
       />
 
       <TextField
+        autoComplete="email"
         className={style.item}
         variant="outlined"
         label="Почта"
@@ -63,6 +66,7 @@ const Register = (props: Props) => {
 
       <TextField
         className={style.item}
+        type="password"
         variant="outlined"
         label="Пароль"
         inputRef={passwordRef}
@@ -72,6 +76,7 @@ const Register = (props: Props) => {
 
       <TextField
         className={style.item}
+        type="password"
         variant="outlined"
         label="Повторите пароль"
         inputRef={password2Ref}

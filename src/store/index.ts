@@ -4,6 +4,7 @@ import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
 import Action from "../types/Action";
+import AppPage from "../types/pages/AppPage";
 import LoginPage from "../types/pages/LoginPage";
 import RegistrationPage from "../types/pages/RegisterPage";
 import AccountPage from "../types/pages/AccountPage";
@@ -16,6 +17,7 @@ import StudyLevelPage from "../types/pages/StudyLevelPage";
 import EducationalProgramPage from "../types/pages/EducationalProgramPage";
 import EducationYearsPage from "../types/pages/EducationYearsPage";
 
+import app from "./reducers/app";
 import login from "./reducers/login";
 import register from "./reducers/register";
 import account from "./reducers/account";
@@ -29,23 +31,29 @@ import studyLevels from "./reducers/studyLevels";
 import educationalPrograms from "./reducers/educationalPrograms";
 import groups from "./reducers/groups";
 
-import watchGetAddresses from "./sagas/getAddresses";
-import watchGetCabinets from "./sagas/getCabinets";
-import watchGetCabinetsTimetable from "./sagas/getCabinetTimetable";
-import watchGetFaculties from "./sagas/getFaculties";
-import watchGetEducators from "./sagas/getEducators";
-import watchGetStudyLevels from "./sagas/getStudyLevels";
+import watchGetAddresses from "./sagas/timetableAPI/getAddresses";
+import watchGetCabinets from "./sagas/timetableAPI/getCabinets";
+import watchGetCabinetsTimetable from "./sagas/timetableAPI/getCabinetTimetable";
+import watchGetFaculties from "./sagas/timetableAPI/getFaculties";
+import watchGetEducators from "./sagas/timetableAPI/getEducators";
+import watchGetStudyLevels from "./sagas/timetableAPI/getStudyLevels";
 import GroupsPage from "../types/pages/GroupsPage";
-import watchGetGroups from "./sagas/getGroups";
+import watchGetGroups from "./sagas/timetableAPI/getGroups";
 import timetable from "./reducers/timetable";
 import TimetablePage from "../types/pages/TimetablePage";
-import watchGetGroupsTimetable from "./sagas/getGroupsTimetable";
-import watchGetEducatorsTimetable from "./sagas/getEducatorTimetable";
+import watchGetGroupsTimetable from "./sagas/timetableAPI/getGroupsTimetable";
+import watchGetEducatorsTimetable from "./sagas/timetableAPI/getEducatorTimetable";
 
 import watchLogin from "./sagas/auth/login";
 import watchLoginViaGoogle from "./sagas/auth/loginViaGoogle";
+import watchGapiInit from "./sagas/auth/gapiInit";
+import watchRefreshToken from "./sagas/auth/refreshToken";
+import watchGetUser from "./sagas/getUser";
+import watchSaveEducator from "./sagas/saveEducator";
+import watchSaveCabinet from "./sagas/cabinet/saveCabinet";
 
 const reducers = combineReducers({
+  app: app,
   login: login,
   register: register,
   account: account,
@@ -65,6 +73,7 @@ const saga = createSagaMiddleware();
 
 let store: Store<
   CombinedState<{
+    app: AppPage;
     login: LoginPage;
     register: RegistrationPage;
     account: AccountPage;
@@ -93,5 +102,11 @@ saga.run(watchGetGroupsTimetable);
 saga.run(watchGetEducatorsTimetable);
 
 saga.run(watchLogin);
+saga.run(watchGapiInit);
 saga.run(watchLoginViaGoogle);
+saga.run(watchRefreshToken);
+saga.run(watchGetUser);
+
+saga.run(watchSaveCabinet);
+saga.run(watchSaveEducator);
 export default store;

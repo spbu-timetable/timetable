@@ -1,6 +1,7 @@
 import React from "react";
 import SearchListPage from "../../Reusable/SearchListPage";
 import Educator from "../../../types/Educator";
+import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
 
 type Props = {
   didGet: boolean;
@@ -13,6 +14,8 @@ type Props = {
   deselectEducator: (educator: Educator) => void;
   updFilter: (filter_value: string) => void;
   updFilterValue: (filter_value: string) => void;
+
+  dialogTitle?: string;
 
   fromDate: Date;
   toDate: Date;
@@ -35,6 +38,8 @@ const Educators = (props: Props) => {
       toDate={props.toDate}
       updFilterValue={props.updFilterValue}
       getTimetable={props.getEducatorsTimetable}
+      isDialog={refreshTokenLocalStorage.set() ? true : false}
+      dialogTitle="Добавить преподавателя"
     />
   );
 };

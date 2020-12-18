@@ -1,8 +1,8 @@
 import Axios from "axios";
-import { call, put, takeEvery } from "redux-saga/effects";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import cabinetAC from "../actionCreators/cabinetAC";
+import { call, put, takeLatest } from "redux-saga/effects";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import cabinetAC from "../../actionCreators/cabinetAC";
 import api_address from "./apiAddress";
 
 async function getCabinets(oid: string) {
@@ -28,7 +28,7 @@ function* workerGetCabinets(action: Action) {
 }
 
 function* watchGetCabinets() {
-  yield takeEvery(ACTION.GET_CABINETS, workerGetCabinets);
+  yield takeLatest(ACTION.GET_CABINETS, workerGetCabinets);
 }
 
 export default watchGetCabinets;

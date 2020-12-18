@@ -10,33 +10,38 @@ import "gapi";
 
 import Google from "../../assets/icons/google";
 
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 type Props = {
+  accessToken?: string;
+  refreshToken?: string;
+
   email: string;
   password: string;
 
   updForm: (key: string, value: string) => void;
   login: (email: string, password: string) => void;
 
+  gapiInit: () => void;
   loginViaGoogle: () => void;
+
+  refreshAccessToken: () => void;
 };
 
 const Login = (props: Props) => {
+  const history = useHistory();
+
   React.useEffect(() => {
-    gapi.load("auth2", function () {
-      gapi.auth2
-        .init({
-          client_id: "38199711621-go08p6i21jnoekoappboa0r2at93mjmt.apps.googleusercontent.com",
-        })
-        .then(
-          () => console.log("OK"),
-          () => console.log("Error")
-        );
-    });
+    props.gapiInit();
   }, []);
 
-  const history = useHistory();
+  if (!props.accessToken) {
+    props.refreshAccessToken();
+  }
+
+  if (props.refreshToken) {
+    return <Redirect to="/" />;
+  }
 
   const emailRef: React.RefObject<HTMLInputElement> = React.createRef();
   const passwordRef: React.RefObject<HTMLInputElement> = React.createRef();
@@ -51,8 +56,7 @@ const Login = (props: Props) => {
         variant="outlined"
         startIcon={<Google />}
         onClick={() => {
-          const googleAuth = (window as any).gapi.auth2.getAuthInstance();
-          googleAuth.signIn({ scope: "profile email" }).then((user: any) => console.log("User ", user));
+          props.loginViaGoogle();
         }}
       >
         Войти через Google
@@ -66,6 +70,7 @@ const Login = (props: Props) => {
 
       <TextField
         className={style.item}
+        type="email"
         variant="outlined"
         label="Почта"
         inputRef={emailRef}
@@ -75,6 +80,7 @@ const Login = (props: Props) => {
 
       <TextField
         className={style.item}
+        type="password"
         variant="outlined"
         label="Пароль"
         inputRef={passwordRef}
