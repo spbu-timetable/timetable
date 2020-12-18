@@ -16,7 +16,7 @@
 }
 
 .help_btn {
-  margin-right: var(--inset1) !important;
+  margin-right: var(--inset2) !important;
   background-color: var(--level1) !important;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
 
@@ -25,9 +25,13 @@
 }
 
 .modal {
-  position: relative;
-  top: calc(100vh - var(--inset1) - 220px) !important;
-  left: calc(100vw - 274px) !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: flex-end;
 }
 
 .paper {
@@ -36,6 +40,11 @@
   padding: var(--inset1);
 
   width: 250px;
+
+  align-self: flex-end;
+
+  margin-bottom: var(--inset1);
+  margin-right: var(--inset1);
 }
 
 .link {
@@ -52,17 +61,8 @@
   .wrapper {
     width: 95vw;
   }
-  .modal {
-    top: calc(100vh - 2 * var(--inset1) - 330px) !important;
-    left: calc(97.5vw - 266px) !important;
-  }
+
   .help_btn {
     margin-right: 0 !important;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .wrapper {
-    position: relative;
   }
 }
