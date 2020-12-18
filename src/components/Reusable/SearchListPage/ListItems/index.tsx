@@ -25,7 +25,7 @@ type Props = {
   setItem: (item: any) => void;
   setAddress: (url: string) => void;
 
-  saveItem?: (item: SavedItem) => void;
+  longPressAction?: (item: SavedItem) => void;
 };
 
 const ListItems: React.FC<Props> = (props: Props) => {
@@ -43,7 +43,7 @@ const ListItems: React.FC<Props> = (props: Props) => {
   };
 
   const saveItem = () => {
-    props.saveItem!({ id: getObjectId(props.items[item]), name: getObjectName(props.items[item]) });
+    props.longPressAction!({ id: getObjectId(props.items[item]), name: getObjectName(props.items[item]) });
     console.log(props.items[item]);
     setOpen(false);
   };
@@ -52,6 +52,7 @@ const ListItems: React.FC<Props> = (props: Props) => {
                                                     Long Press Hook
   **********************************************************************************************************************/
   const onLongPress = () => {
+    console.log("long is triggered");
     handleOpen();
   };
   const onClick = () => {

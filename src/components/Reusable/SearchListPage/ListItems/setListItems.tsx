@@ -1,6 +1,6 @@
 import React from "react";
 import { SavedItem } from "../../../../types/User";
-import ListItems from "./ListItems";
+import ListItems from ".";
 
 function setListItems(
   oid: string,
@@ -34,7 +34,7 @@ function setListItems(
           url={url_to_push!}
           setItem={setItem!}
           setAddress={setAddress}
-          saveItem={saveItem}
+          longPressAction={saveItem}
         />
       );
     } else if (items !== undefined) {
@@ -47,7 +47,7 @@ function setListItems(
           url={url_to_push!}
           setItem={setItem!}
           setAddress={setAddress}
-          saveItem={saveItem}
+          longPressAction={saveItem}
         />
       );
     }

@@ -17,6 +17,7 @@ async function loginViaGoogle() {
   if (user) {
     return Axios.get("https://spbu-timetable-api.herokuapp.com/token/signin", {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         authorization: user.getAuthResponse().id_token,
       },
     })
