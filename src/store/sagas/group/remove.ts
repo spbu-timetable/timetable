@@ -8,7 +8,7 @@ import appAC from "../../actionCreators/appAC";
 import authAC from "../../actionCreators/authAC";
 
 async function removeGroup(educator: SavedItem) {
-  return await Axios.post(`http://localhost:8000/groups/remove`, educator, {
+  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/groups/remove`, educator, {
     headers: {
       authorization: accessTokenLocalStorage.set(),
     },

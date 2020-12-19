@@ -6,10 +6,9 @@ import { SavedItem } from "../../../types/User";
 import ACTION from "../../actionCreators/ACTION";
 import appAC from "../../actionCreators/appAC";
 import authAC from "../../actionCreators/authAC";
-import userAC from "../../actionCreators/userAC";
 
 async function saveCabinet(cabinet: SavedItem) {
-  return await Axios.post(`http://localhost:8000/cabinets/save`, cabinet, {
+  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/cabinets/save`, cabinet, {
     headers: {
       authorization: accessTokenLocalStorage.set(),
     },

@@ -16,7 +16,7 @@ async function loginViaGoogle() {
   refreshTokenLocalStorage.save(user.getAuthResponse().id_token);
 
   if (user) {
-    return Axios.get("http://localhost:8000/auth/google", {
+    return Axios.get("https://spbu-timetable-api.herokuapp.com/auth/google", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         authorization: user.getAuthResponse().id_token,

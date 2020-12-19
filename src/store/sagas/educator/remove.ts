@@ -8,7 +8,7 @@ import appAC from "../../actionCreators/appAC";
 import authAC from "../../actionCreators/authAC";
 
 async function removeEducator(educator: SavedItem) {
-  return await Axios.post(`http://localhost:8000/educators/remove`, educator, {
+  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/educators/remove`, educator, {
     headers: {
       authorization: accessTokenLocalStorage.set(),
     },
