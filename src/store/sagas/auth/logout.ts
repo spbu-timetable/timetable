@@ -27,6 +27,7 @@ function* workerLogout() {
   accessTokenLocalStorage.remove();
   refreshTokenLocalStorage.remove();
 
+  
   yield put(authAC.setUser(undefined));
 }
 

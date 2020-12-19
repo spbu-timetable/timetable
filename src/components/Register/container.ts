@@ -5,10 +5,12 @@ import { connect } from "react-redux";
 import Action from "../../types/Action";
 import authAC from "../../store/actionCreators/authAC";
 import RegistrationPage from "../../types/pages/RegisterPage";
+import AccountPage from "../../types/pages/AccountPage";
 
 function mapStateToProps(
   state: CombinedState<{
     register: RegistrationPage;
+    account: AccountPage;
   }>
 ) {
   return {
@@ -16,6 +18,8 @@ function mapStateToProps(
     email: state.register.email,
     password: state.register.password,
     password2: state.register.password2,
+
+    refreshToken: state.account.refreshToken!,
   };
 }
 

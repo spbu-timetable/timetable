@@ -16,6 +16,8 @@ type Props = {
   email: string;
   password: string;
 
+  refreshToken: string;
+
   updForm: (key: string, value: string) => void;
   register: (name: string, email: string, password: string) => void;
 };
@@ -23,7 +25,7 @@ type Props = {
 const Register = (props: Props) => {
   const history = useHistory();
 
-  if (refreshTokenLocalStorage.set()) {
+  if (props.refreshToken) {
     return <Redirect to="/" />;
   }
 

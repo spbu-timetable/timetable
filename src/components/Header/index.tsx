@@ -20,6 +20,8 @@ type Props = {
   setLang: (isRussian: boolean) => void;
 
   logout: () => void;
+
+  refreshToken: string;
 };
 
 const Header = (props: Props) => {
@@ -61,7 +63,7 @@ const Header = (props: Props) => {
                 refreshTokenLocalStorage.set() ? props.logout() : history.replace("/login");
               }}
             >
-              {refreshTokenLocalStorage.set() ? "Выйти" : "Войти"}
+              {props.refreshToken ? "Выйти" : "Войти"}
             </Button>
           </div>
         ) : (

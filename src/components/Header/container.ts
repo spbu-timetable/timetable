@@ -6,10 +6,12 @@ import headerAC from "../../store/actionCreators/headerAC";
 
 import Action from "../../types/Action";
 import HeaderT from "../../types/Header";
+import AccountPage from "../../types/pages/AccountPage";
 
 function mapStateToProps(
   state: CombinedState<{
     header: HeaderT;
+    account: AccountPage;
   }>
 ) {
   return {
@@ -17,6 +19,8 @@ function mapStateToProps(
 
     fromDateStr: state.header.fromDateStr,
     toDateStr: state.header.toDateStr,
+
+    refreshToken: state.account.refreshToken!,
   };
 }
 
