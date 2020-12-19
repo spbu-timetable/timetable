@@ -2,13 +2,11 @@ import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import accessTokenLocalStorage from "../../../localStorage/accessToken";
 import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
-import Action from "../../../types/Action";
 import ACTION from "../../actionCreators/ACTION";
 import authAC from "../../actionCreators/authAC";
-import userAC from "../../actionCreators/userAC";
 
 async function logout() {
-  return await Axios.get(`http://localhost:8000/auth/logout`, {
+  return await Axios.get(`https://spbu-timetable-api.herokuapp.com/auth/logout`, {
     headers: {
       authorization: refreshTokenLocalStorage.set(),
     },
