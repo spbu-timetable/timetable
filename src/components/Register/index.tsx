@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import Google from "../../assets/icons/google";
 
 import { Redirect, useHistory } from "react-router-dom";
-import refreshTokenLocalStorage from "../../localStorage/refreshToken";
 
 type Props = {
   name: string;

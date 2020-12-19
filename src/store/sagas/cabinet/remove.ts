@@ -8,7 +8,7 @@ import appAC from "../../actionCreators/appAC";
 import authAC from "../../actionCreators/authAC";
 
 async function removeCabinet(cabinet: SavedItem) {
-  return await Axios.post(`https://spbu-timetable-api.herokuapp.com0/cabinets/remove`, cabinet, {
+  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/cabinets/remove`, cabinet, {
     headers: {
       authorization: accessTokenLocalStorage.set(),
     },
