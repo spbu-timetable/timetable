@@ -3,6 +3,7 @@ import React from "react";
 import SearchListPage from "../../../../../../Reusable/SearchListPage";
 import Group from "../../../../../../../types/Group";
 import refreshTokenLocalStorage from "../../../../../../../localStorage/refreshToken";
+import { SavedItem } from "../../../../../../../types/User";
 
 type Props = {
   oid: string;
@@ -23,6 +24,8 @@ type Props = {
   fromDate: Date;
   toDate: Date;
   getGroupsTimetable: (selected_groups: Group[], fromDate?: Date, toDate?: Date) => void;
+
+  saveGroup: (item: SavedItem) => void;
 };
 
 const Groups = (props: Props) => {
@@ -46,6 +49,8 @@ const Groups = (props: Props) => {
       getTimetable={props.getGroupsTimetable}
       isDialog={refreshTokenLocalStorage.set() ? true : false}
       dialogTitle="Добавить группу"
+      actionBtnAction={props.saveGroup}
+      actionBtnIcon="add"
     />
   );
 };

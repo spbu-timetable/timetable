@@ -19,6 +19,8 @@ function mapStateToProps(
 
     accessToken: state.account.accessToken,
     refreshToken: state.account.refreshToken,
+
+    needToRegister: state.account.needToRegister,
   };
 }
 

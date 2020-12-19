@@ -3,8 +3,8 @@ import style from "./style.module.css";
 
 import { Route, Switch } from "react-router-dom";
 
-import Content from "../Content";
-import Register from "../Register/container";
+import Content from "../Content/container";
+import Registration from "../Register/container";
 import Login from "../Login/container";
 import Footer from "../Footer";
 import Collapse from "@material-ui/core/Collapse";
@@ -42,7 +42,7 @@ const App = (props: Props) => {
       </Collapse>
 
       <Switch>
-        <Route path="/register" render={() => <Register />} />
+        <Route path="/registration" render={() => <Registration />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/" render={() => <Content />} />
       </Switch>

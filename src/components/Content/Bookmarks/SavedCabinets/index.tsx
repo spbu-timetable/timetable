@@ -16,8 +16,9 @@ type Props = {
   getUser: () => void;
   selectCabinet: (cabinet: SavedItem) => void;
   deselectCabinet: (cabinet: SavedItem) => void;
-  getCabinetsTimetable: (cabinets: SavedItem[]) => void;
+  getCabinetsTimetable: (cabinets: SavedItem[], fromDate: Date, toDate: Date) => void;
   updFilter: (value: string) => void;
+  removeCabinet: (cabinet: SavedItem) => void;
 };
 
 const SavedCabinets = (props: Props) => {
@@ -37,6 +38,10 @@ const SavedCabinets = (props: Props) => {
       toDate={props.toDate}
       url_to_push="/timetable"
       header_text="Сохраненные кабинеты"
+      actionBtnIcon="remove"
+      actionBtnAction={props.removeCabinet}
+      isDialog={true}
+      dialogTitle="Удалить"
     />
   );
 };

@@ -1,5 +1,6 @@
 import Action from "../../types/Action";
 import Educator from "../../types/Educator";
+import { SavedItem } from "../../types/User";
 import ACTION from "./ACTION";
 
 function selectEducator(educator: Educator): Action {
@@ -37,7 +38,7 @@ function updFilterValue(filter_value: string): Action {
   };
 }
 
-function getEducatorTimetable(selected_educators: Educator[], fromDate: Date, toDate: Date): Action {
+function getEducatorTimetable(selected_educators: Educator[] | SavedItem[], fromDate: Date, toDate: Date): Action {
   return {
     type: ACTION.GET_EDUCATORS_TIMETABLE,
     payload: {

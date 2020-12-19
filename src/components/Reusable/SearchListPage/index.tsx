@@ -3,7 +3,7 @@ import style from "./style.module.css";
 import { useHistory } from "react-router-dom";
 
 import Search from "../Search";
-import ItemsList from "./List";
+import List from "./List";
 
 import getObjectName from "../../../helpers/getObjectName";
 import getObjectId from "../../../helpers/getObjectId";
@@ -19,6 +19,7 @@ type Props = {
   filter_value: string;
   selected_item?: any;
   didGet?: boolean;
+  actionBtnIcon: "add" | "remove" | "none";
 
   header_text?: string;
   banner_main_text?: string;
@@ -26,7 +27,7 @@ type Props = {
 
   isDialog?: boolean;
   dialogTitle?: string;
-  saveItem?: (item: SavedItem) => void;
+  actionBtnAction?: (item: SavedItem) => void;
 
   url_to_push?: string;
 
@@ -43,7 +44,7 @@ type Props = {
 
   fromDate?: Date;
   toDate?: Date;
-  getTimetable?: (selected_items: any, fromDate?: Date, toDate?: Date) => void;
+  getTimetable?: (selected_items: any, fromDate: Date, toDate: Date) => void;
 };
 
 /**
@@ -92,13 +93,14 @@ function SearchListPage(props: Props) {
     props.selected_items!,
     props.selected_item,
     props.url_to_push!,
+    props.actionBtnIcon,
     props.setItem!,
     setAddress,
     props.getItems!,
     props.getSelectedItems!,
     props.dialogTitle,
     props.isDialog,
-    props.saveItem
+    props.actionBtnAction
   );
 
   return (
@@ -111,7 +113,7 @@ function SearchListPage(props: Props) {
         updFilterValue={props.updFilterValue}
       />
 
-      <ItemsList
+      <List
         filtered_items={props.filtered_items}
         selected_items={props.selected_items}
         filter_value={props.filter_value}

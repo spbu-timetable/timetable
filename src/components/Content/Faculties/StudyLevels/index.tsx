@@ -33,6 +33,7 @@ const StudyLevels = (props: Props) => {
       setItem={props.setStudyLevel}
       updFilter={props.updFilter}
       cleanItems={props.cleanStudyLevels}
+      actionBtnIcon="none"
     />
   );
 };

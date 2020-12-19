@@ -8,6 +8,8 @@ import EducationYearsPage from "../../../../../../../types/pages/EducationYearsP
 import groupAC from "../../../../../../../store/actionCreators/groupAC";
 import Group from "../../../../../../../types/Group";
 import Header from "../../../../../../../types/Header";
+import { SavedItem } from "../../../../../../../types/User";
+import userAC from "../../../../../../../store/actionCreators/userAC";
 
 function mapStateToProps(
   state: CombinedState<{
@@ -49,6 +51,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     },
     getGroupsTimetable: (selected_groups: Group[], fromDate?: Date, toDate?: Date) => {
       dispatch(groupAC.getGroupsTimetable(selected_groups, fromDate!, toDate!));
+    },
+    saveGroup: (group: SavedItem) => {
+      dispatch(userAC.saveGroup(group));
     },
   };
 }

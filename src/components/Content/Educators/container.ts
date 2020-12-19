@@ -2,10 +2,12 @@ import { connect } from "react-redux";
 import { CombinedState } from "redux";
 import Educators from ".";
 import educatorAC from "../../../store/actionCreators/educatorAC";
+import userAC from "../../../store/actionCreators/userAC";
 import Action from "../../../types/Action";
 import Educator from "../../../types/Educator";
 import Header from "../../../types/Header";
 import EducatorsPage from "../../../types/pages/EducatorsPage";
+import { SavedItem } from "../../../types/User";
 
 function mapStateToProps(
   state: CombinedState<{
@@ -43,6 +45,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
 
     getEducatorsTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => {
       dispatch(educatorAC.getEducatorTimetable(selected_educators, fromDate!, toDate!));
+    },
+    saveEducator: (item: SavedItem) => {
+      dispatch(userAC.saveEducator(item));
     },
   };
 }

@@ -8,6 +8,7 @@ import sortTimetableDays from "../../../helpers/sortTimetableDays";
 import api_address from "./apiAddress";
 import formatDateToGroupsRequest from "../../../helpers/formatDateToGroupsRequest";
 import checkDays from "../../../helpers/checkDays";
+import getObjectId from "../../../helpers/getObjectId";
 
 async function getEducatorEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
   console.log(api_address + `/educators/${oid}/events/${fromDateStr}/${toDateDtr}`);
@@ -39,7 +40,12 @@ function* workerGetEducatorEventsDays(action: Action) {
 
   const educatorEventDays = [];
   for (let i = 0; i < action.payload.selected_educators.length; i++) {
-    const data = yield call(getEducatorEventsDays, action.payload.selected_educators[i].Id, startDateStr, endDateStr);
+    const data = yield call(
+      getEducatorEventsDays,
+      getObjectId(action.payload.selected_educators[i]),
+      startDateStr,
+      endDateStr
+    );
 
     if (data !== undefined) educatorEventDays.push(data);
   }

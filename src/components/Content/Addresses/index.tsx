@@ -28,6 +28,7 @@ const Addresses = (props: Props) => {
       getItems={props.getAddresses}
       setItem={props.setAddress}
       updFilter={props.updFilter}
+      actionBtnIcon="none"
     />
   );
 };

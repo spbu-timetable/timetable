@@ -6,6 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
+import Remove from "@material-ui/icons/Remove";
 import Add from "@material-ui/icons/Add";
 import React from "react";
 import getObjectId from "../../../../helpers/getObjectId";
@@ -18,16 +19,18 @@ type Props = {
   isDialog?: boolean;
   dialogTitle?: string;
 
+  actionBtnIcon: "add" | "remove" | "none";
+
   items: any;
   selected_items: any;
   url: string;
   setItem: (item: any) => void;
   setAddress: (url: string) => void;
 
-  longPressAction?: (item: SavedItem) => void;
+  actionBtnAction?: (item: SavedItem) => void;
 };
 
-const ListItems: React.FC<Props> = (props: Props) => {
+const ListItems = (props: Props) => {
   const [open, setOpen] = React.useState(false);
   const [index, setIndex] = React.useState<number>(0);
 
@@ -35,8 +38,21 @@ const ListItems: React.FC<Props> = (props: Props) => {
     setOpen(false);
   };
 
+  let actionBtnIcon;
+  switch (props.actionBtnIcon) {
+    case "add":
+      actionBtnIcon = <Add />;
+      break;
+    case "remove":
+      actionBtnIcon = <Remove />;
+      break;
+    case "none":
+      actionBtnIcon = <></>;
+      break;
+  }
+
   const saveItem = () => {
-    props.longPressAction!({ id: getObjectId(props.items[index]), name: getObjectName(props.items[index]) });
+    props.actionBtnAction!({ id: getObjectId(props.items[index]), name: getObjectName(props.items[index]) });
     console.log(props.items[index]);
     setOpen(false);
   };
@@ -65,10 +81,10 @@ const ListItems: React.FC<Props> = (props: Props) => {
               edge="end"
               onClick={() => {
                 setIndex(i);
-                setOpen(props.isDialog!);
+                setOpen(props.isDialog ? true : false);
               }}
             >
-              <Add />
+              {actionBtnIcon}
             </IconButton>
           </ListItemSecondaryAction>
         ) : (
@@ -88,7 +104,8 @@ const ListItems: React.FC<Props> = (props: Props) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {props.dialogTitle} {getObjectName(props.items[index!])} в закладки?
+          {props.dialogTitle} {props.items[index] ? getObjectName(props.items[index!]) : ""}{" "}
+          {props.actionBtnIcon === "add" ? "в закладки" : "из закладок"}?
         </DialogTitle>
         <DialogActions>
           <Button onClick={handleClose} color="primary" className={style.dialog_btn}>

@@ -1,6 +1,8 @@
 import User, { SavedItem } from "../User";
 
 type AccountPage = {
+  needToRegister: boolean;
+
   user?: User;
   accessToken: string | undefined;
   refreshToken: string | undefined;

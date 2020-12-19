@@ -13,6 +13,8 @@ import Google from "../../assets/icons/google";
 import { Redirect, useHistory } from "react-router-dom";
 
 type Props = {
+  needToRegister: boolean;
+
   accessToken?: string;
   refreshToken?: string;
 
@@ -37,6 +39,10 @@ const Login = (props: Props) => {
 
   if (!props.accessToken) {
     props.refreshAccessToken();
+  }
+
+  if (props.needToRegister) {
+    return <Redirect to="/registration" />;
   }
 
   if (props.refreshToken) {
@@ -104,7 +110,7 @@ const Login = (props: Props) => {
         variant="outlined"
         color="primary"
         onClick={() => {
-          history.replace("/register");
+          history.replace("/registration");
         }}
       >
         Зарегистрироваться

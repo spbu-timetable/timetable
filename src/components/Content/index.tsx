@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Addresses from "./Addresses/container";
 import Cabinets from "./Addresses/Cabinets/container";
 import Faculties from "./Faculties/container";
@@ -14,9 +14,18 @@ import EducationYears from "./Faculties/StudyLevels/EducationProgram/EducationYe
 import Header from "../Header/container";
 import Bookmarks from "./Bookmarks/container";
 import SavedCabinets from "./Bookmarks/SavedCabinets/container";
-import SavedEducators from "./Bookmarks/SavedEducators";
+import SavedEducators from "./Bookmarks/SavedEducators/container";
+import SavedGroups from "./Bookmarks/SavedGroups/container";
 
-const Content = () => {
+type Props = {
+  needToRegister: boolean;
+};
+
+const Content = (props: Props) => {
+  if (props.needToRegister) {
+    return <Redirect to="/register" />;
+  }
+
   return (
     <div className={style.content}>
       <Header />
@@ -34,6 +43,7 @@ const Content = () => {
 
         <Route path="/bookmarks/cabinets" component={() => <SavedCabinets />} />
         <Route path="/bookmarks/educators" component={() => <SavedEducators />} />
+        <Route path="/bookmarks/groups" component={() => <SavedGroups />} />
         <Route path="/bookmarks" component={() => <Bookmarks />} />
 
         <Route path="/timetable" component={() => <Timetable />} />

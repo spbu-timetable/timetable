@@ -6,6 +6,7 @@ import "gapi";
 import authAC from "../../actionCreators/authAC";
 import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
 import accessTokenLocalStorage from "../../../localStorage/accessToken";
+import appAC from "../../actionCreators/appAC";
 
 async function loginViaGoogle() {
   const googleAuth = gapi.auth2.getAuthInstance();
@@ -15,7 +16,7 @@ async function loginViaGoogle() {
   refreshTokenLocalStorage.save(user.getAuthResponse().id_token);
 
   if (user) {
-    return Axios.get("https://spbu-timetable-api.herokuapp.com/token/signin", {
+    return Axios.get("http://localhost:8000/auth/google", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         authorization: user.getAuthResponse().id_token,
@@ -27,7 +28,7 @@ async function loginViaGoogle() {
         }
       })
       .catch((err) => {
-        console.log(err.response);
+        return err.response.data;
       });
   }
 }
@@ -35,8 +36,16 @@ async function loginViaGoogle() {
 function* workerLoginViaGoogle() {
   const data = yield call(loginViaGoogle);
 
+  console.log(data);
+
   if (data !== undefined) {
-    yield put(authAC.setUser(data));
+    if (data === "need to register") {
+      yield put(authAC.needToRegister());
+      yield put(appAC.setAlert({ message: "Необходимо зарегистрироваться", severity: "info" }));
+      return;
+    } else {
+      yield put(authAC.setUser(data));
+    }
   }
 }
 

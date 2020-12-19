@@ -31,6 +31,7 @@ const EducationYears = (props: Props) => {
       getSelectedItems={props.getEducationYears}
       setItem={props.setEducationYear}
       updFilter={props.updFilter}
+      actionBtnIcon="none"
     />
   );
 };

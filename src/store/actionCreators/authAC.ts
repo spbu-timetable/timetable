@@ -35,6 +35,12 @@ function register(name: string, email: string, password: string): Action {
   };
 }
 
+function needToRegister(): Action {
+  return {
+    type: ACTION.NEED_TO_REGISTER,
+  };
+}
+
 function updLoginForm(key: string, value: string): Action {
   return {
     type: ACTION.UPD_LOGIN_FORM,
@@ -89,6 +95,7 @@ const authAC = {
   updLoginForm: updLoginForm,
 
   register: register,
+  needToRegister: needToRegister,
   updRegisterForm: updRegisterForm,
 
   setUser: setUser,

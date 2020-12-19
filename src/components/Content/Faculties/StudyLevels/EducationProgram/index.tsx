@@ -35,6 +35,7 @@ const EducationalPrograms = (props: Props) => {
       setItem={props.setEducationalProgram}
       updFilter={props.updFilter}
       cleanItems={props.cleanEducationalPrograms}
+      actionBtnIcon="none"
     />
   );
 };

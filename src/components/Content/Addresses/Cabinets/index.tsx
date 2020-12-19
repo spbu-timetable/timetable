@@ -29,8 +29,6 @@ type Props = {
 };
 
 const Cabinets = (props: Props) => {
-  const refreshToken = refreshTokenLocalStorage.set();
-
   return (
     <SearchListPage
       url_to_push="/timetable"
@@ -49,9 +47,10 @@ const Cabinets = (props: Props) => {
       fromDate={props.fromDate}
       toDate={props.toDate}
       getTimetable={props.getCabinetsTimetable}
-      isDialog={refreshToken ? true : false}
+      isDialog={refreshTokenLocalStorage.set() ? true : false}
       dialogTitle="Добавить кабинет"
-      saveItem={props.saveCabinet}
+      actionBtnAction={props.saveCabinet}
+      actionBtnIcon="add"
     />
   );
 };

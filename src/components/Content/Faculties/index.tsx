@@ -28,6 +28,7 @@ const Faculties = (props: Props) => {
       getItems={props.getFaculties}
       setItem={props.setFaculty}
       updFilter={props.updFilter}
+      actionBtnIcon="add"
     />
   );
 };

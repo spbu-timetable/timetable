@@ -8,13 +8,13 @@ import Button from "@material-ui/core/Button";
 
 import Google from "../../assets/icons/google";
 
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import refreshTokenLocalStorage from "../../localStorage/refreshToken";
 
 type Props = {
   name: string;
   email: string;
   password: string;
-  password2: string;
 
   updForm: (key: string, value: string) => void;
   register: (name: string, email: string, password: string) => void;
@@ -22,6 +22,10 @@ type Props = {
 
 const Register = (props: Props) => {
   const history = useHistory();
+
+  if (refreshTokenLocalStorage.set()) {
+    return <Redirect to="/" />;
+  }
 
   const nameRef: React.RefObject<HTMLInputElement> = React.createRef();
   const emailRef: React.RefObject<HTMLInputElement> = React.createRef();
@@ -33,7 +37,7 @@ const Register = (props: Props) => {
         Регистрация
       </Typography>
 
-      <Button className={style.item + " " + style.google_btn} variant="outlined" startIcon={<Google />}>
+      {/* <Button className={style.item + " " + style.google_btn} variant="outlined" startIcon={<Google />}>
         Войти через Google
       </Button>
 
@@ -41,7 +45,7 @@ const Register = (props: Props) => {
         <span className={style.divider_line}></span>
         <div className={style.divider_text}>или</div>
         <div className={style.divider_line}></div>
-      </div>
+      </div> */}
 
       <TextField
         className={style.item}
@@ -55,7 +59,7 @@ const Register = (props: Props) => {
       />
 
       <TextField
-        autoComplete="email"
+        type="email"
         className={style.item}
         variant="outlined"
         label="Почта"
@@ -72,16 +76,6 @@ const Register = (props: Props) => {
         inputRef={passwordRef}
         value={props.password}
         onChange={() => props.updForm("password", passwordRef.current!.value)}
-      />
-
-      <TextField
-        className={style.item}
-        type="password"
-        variant="outlined"
-        label="Повторите пароль"
-        inputRef={password2Ref}
-        value={props.password2}
-        onChange={() => props.updForm("password2", password2Ref.current!.value)}
       />
 
       <Button

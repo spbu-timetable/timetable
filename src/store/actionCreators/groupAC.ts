@@ -1,5 +1,6 @@
 import Action from "../../types/Action";
 import Group from "../../types/Group";
+import { SavedItem } from "../../types/User";
 import ACTION from "./ACTION";
 
 function getGroups(oid: string): Action {
@@ -43,7 +44,7 @@ function cleanGroups(): Action {
   };
 }
 
-function getGroupsTimetable(selected_groups: Group[], fromDate: Date, toDate: Date): Action {
+function getGroupsTimetable(selected_groups: Group[] | SavedItem[], fromDate: Date, toDate: Date): Action {
   return {
     type: ACTION.GET_GROUPS_TIMETABLE,
     payload: {

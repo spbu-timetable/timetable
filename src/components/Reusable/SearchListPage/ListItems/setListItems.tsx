@@ -14,6 +14,8 @@ function setListItems(
 
   url_to_push: string,
 
+  actionBtnIcon: "add" | "remove" | "none",
+
   setItem: (item: any) => void,
   setAddress: () => void,
   getItems: (oid?: string) => void,
@@ -21,7 +23,7 @@ function setListItems(
 
   dialogTitle?: string,
   isDialog?: boolean,
-  saveItem?: (item: SavedItem) => void
+  actionBtnAction?: (item: SavedItem) => void
 ) {
   if (didGet) {
     if (filter_value !== "") {
@@ -34,7 +36,8 @@ function setListItems(
           url={url_to_push!}
           setItem={setItem!}
           setAddress={setAddress}
-          longPressAction={saveItem}
+          actionBtnAction={actionBtnAction}
+          actionBtnIcon={actionBtnIcon}
         />
       );
     } else if (items !== undefined) {
@@ -47,7 +50,8 @@ function setListItems(
           url={url_to_push!}
           setItem={setItem!}
           setAddress={setAddress}
-          longPressAction={saveItem}
+          actionBtnAction={actionBtnAction}
+          actionBtnIcon={actionBtnIcon}
         />
       );
     }

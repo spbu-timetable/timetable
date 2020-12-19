@@ -8,6 +8,7 @@ import getObjectName from "../../../helpers/getObjectName";
 import sortTimetableDays from "../../../helpers/sortTimetableDays";
 import checkDays from "../../../helpers/checkDays";
 import api_address from "./apiAddress";
+import getObjectId from "../../../helpers/getObjectId";
 
 async function getGroupEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
   console.log(api_address + `/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`);
@@ -40,7 +41,7 @@ function* workerGetClassroomEventsDays(action: Action) {
   for (let i = 0; i < action.payload.selected_groups.length; i++) {
     const data = yield call(
       getGroupEventsDays,
-      action.payload.selected_groups[i].StudentGroupId,
+      getObjectId(action.payload.selected_groups[i]),
       startDateStr,
       endDateStr
     );

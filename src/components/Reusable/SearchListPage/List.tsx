@@ -25,7 +25,7 @@ type Props = {
 
   fromDate?: Date;
   toDate?: Date;
-  getTimetable?: (selected_items: any, fromDate?: Date, toDate?: Date) => void;
+  getTimetable?: (selected_items: any, fromDate: Date, toDate: Date) => void;
 };
 
 const ItemsList = (props: Props) => {
@@ -41,11 +41,7 @@ const ItemsList = (props: Props) => {
               className={style.btn}
               color="primary"
               onClick={() => {
-                if (props.fromDate && props.toDate) {
-                  props.getTimetable!(props.selected_items, props.fromDate, props.toDate);
-                } else {
-                  props.getTimetable!(props.selected_items);
-                }
+                props.getTimetable!(props.selected_items, props.fromDate!, props.toDate!);
                 props.setAddress();
               }}
             >
@@ -65,12 +61,12 @@ const ItemsList = (props: Props) => {
             <Banner mainText={props.banner_main_text} secondaryText={props.banner_secondary_text} />
           ) : (
             <>
-              {props.items_component === undefined ? (
-                <></>
-              ) : (
+              {props.items_component ? (
                 <Paper className={style.list}>
                   <List>{props.items_component}</List>
                 </Paper>
+              ) : (
+                <></>
               )}
             </>
           )}

@@ -51,6 +51,9 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     getCabinetsTimetable: (cabinets: SavedItem[], fromDate?: Date, toDate?: Date) => {
       dispatch(cabinetAC.getCabinetTimetable(cabinets, fromDate, toDate));
     },
+    removeCabinet: (cabinet: SavedItem) => {
+      dispatch(userAC.removeCabinet(cabinet));
+    },
   };
 }
 

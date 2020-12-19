@@ -45,12 +45,17 @@ import watchGetGroupsTimetable from "./sagas/timetableAPI/getGroupsTimetable";
 import watchGetEducatorsTimetable from "./sagas/timetableAPI/getEducatorTimetable";
 
 import watchLogin from "./sagas/auth/login";
-import watchLoginViaGoogle from "./sagas/auth/loginViaGoogle";
+import watchLoginViaGoogle from "./sagas/auth/googleLogin";
 import watchGapiInit from "./sagas/auth/gapiInit";
 import watchRefreshToken from "./sagas/auth/refreshToken";
 import watchGetUser from "./sagas/getUser";
-import watchSaveEducator from "./sagas/saveEducator";
-import watchSaveCabinet from "./sagas/cabinet/saveCabinet";
+import watchSaveEducator from "./sagas/educator/save";
+import watchSaveCabinet from "./sagas/cabinet/save";
+import watchRegister from "./sagas/auth/registration";
+import watchRemoveCabinet from "./sagas/cabinet/remove";
+import watchRemoveEducator from "./sagas/educator/remove";
+import watchSaveGroup from "./sagas/group/save";
+import watchRemoveGroup from "./sagas/group/remove";
 
 const reducers = combineReducers({
   app: app,
@@ -106,7 +111,15 @@ saga.run(watchGapiInit);
 saga.run(watchLoginViaGoogle);
 saga.run(watchRefreshToken);
 saga.run(watchGetUser);
+saga.run(watchRegister);
 
 saga.run(watchSaveCabinet);
+saga.run(watchRemoveCabinet);
+
 saga.run(watchSaveEducator);
+saga.run(watchRemoveEducator);
+
+saga.run(watchSaveGroup);
+saga.run(watchRemoveGroup);
+
 export default store;
