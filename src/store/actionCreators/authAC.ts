@@ -12,6 +12,12 @@ function login(email: string, password: string): Action {
   };
 }
 
+function logout(): Action {
+  return {
+    type: ACTION.LOGOUT,
+  };
+}
+
 function loginViaGoogle(): Action {
   return {
     type: ACTION.LOGIN_VIA_GOOGLE,
@@ -61,7 +67,7 @@ function updRegisterForm(key: string, value: string): Action {
   };
 }
 
-function setUser(user: User): Action {
+function setUser(user: User | undefined): Action {
   return {
     type: ACTION.SET_USER,
     payload: user,
@@ -87,8 +93,22 @@ function refreshToken(): Action {
   };
 }
 
+function hideLoginBtn(): Action {
+  return {
+    type: ACTION.HIDE_LOGIN_BUTTON,
+  };
+}
+
+function showLoginBtn(): Action {
+  return {
+    type: ACTION.SHOW_LOGIN_BUTTON,
+  };
+}
+
 const authAC = {
   login: login,
+  logout: logout,
+
   gapiInit: gapiInit,
   loginViaGoogle: loginViaGoogle,
 
@@ -103,6 +123,9 @@ const authAC = {
   refreshToken: refreshToken,
 
   getUser: getUser,
+
+  hideLoginBtn: hideLoginBtn,
+  showLoginBtn: showLoginBtn,
 };
 
 export default authAC;

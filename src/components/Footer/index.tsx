@@ -7,8 +7,18 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import style from "./style.module.css";
 import Grow from "@material-ui/core/Grow";
+import Button from "@material-ui/core/Button";
+import refreshTokenLocalStorage from "../../localStorage/refreshToken";
+import { useHistory } from "react-router-dom";
 
-const Footer = () => {
+type Props = {
+  logout: () => void;
+
+  hideLoginBtn: boolean;
+};
+
+const Footer = (props: Props) => {
+  const history = useHistory();
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -21,7 +31,27 @@ const Footer = () => {
 
   return (
     <div className={style.wrapper}>
-      <div className={style.filler}></div>
+      <div className={style.filler}>
+        {props.hideLoginBtn ? (
+          <></>
+        ) : (
+          <>
+            {window.innerWidth < 500 ? (
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={() => {
+                  refreshTokenLocalStorage.set() ? props.logout() : history.replace("/login");
+                }}
+              >
+                {refreshTokenLocalStorage.set() ? "Выйти" : "Войти"}
+              </Button>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
+      </div>
 
       <div>
         <IconButton className={style.help_btn} onClick={handleOpen}>

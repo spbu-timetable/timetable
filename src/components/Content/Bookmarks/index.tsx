@@ -3,11 +3,11 @@ import style from "./style.module.css";
 import { Redirect } from "react-router-dom";
 import User from "../../../types/User";
 import HugeButton from "../../Reusable/HugeButton";
+import accessTokenLocalStorage from "../../../localStorage/accessToken";
+import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
 
 type Props = {
   user?: User;
-  accessToken?: string;
-  refreshToken?: string;
 
   getUser: () => void;
   refreshAccessToken: () => void;
@@ -18,21 +18,21 @@ const Bookmarks = (props: Props) => {
     props.getUser();
   }
 
-  if (!props.accessToken) {
+  if (!accessTokenLocalStorage.set()) {
     props.refreshAccessToken();
   }
 
   return (
     <div>
       <h1 className={style.header}>Закладки</h1>
-      {props.refreshToken ? (
+      {refreshTokenLocalStorage.set() ? (
         <div className={style.categories_wrapper}>
           <HugeButton title="Кабинеты" link="/bookmarks/cabinets" />
           <HugeButton title="Преподаватели" link="/bookmarks/educators" />
           <HugeButton title="Группы" link="/bookmarks/groups" />
         </div>
       ) : (
-        <Redirect to="login" />
+        <Redirect to="/login" />
       )}
     </div>
   );

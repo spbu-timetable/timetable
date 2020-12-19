@@ -19,11 +19,14 @@ import SavedGroups from "./Bookmarks/SavedGroups/container";
 
 type Props = {
   needToRegister: boolean;
+  showLoginBtn: () => void;
 };
 
 const Content = (props: Props) => {
+  props.showLoginBtn();
+
   if (props.needToRegister) {
-    return <Redirect to="/register" />;
+    return <Redirect to="/registration" />;
   }
 
   return (

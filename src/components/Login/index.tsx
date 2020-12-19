@@ -28,10 +28,14 @@ type Props = {
   loginViaGoogle: () => void;
 
   refreshAccessToken: () => void;
+
+  hideLoginBtn: () => void;
 };
 
 const Login = (props: Props) => {
   const history = useHistory();
+
+  props.hideLoginBtn();
 
   React.useEffect(() => {
     props.gapiInit();

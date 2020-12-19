@@ -56,6 +56,7 @@ import watchRemoveCabinet from "./sagas/cabinet/remove";
 import watchRemoveEducator from "./sagas/educator/remove";
 import watchSaveGroup from "./sagas/group/save";
 import watchRemoveGroup from "./sagas/group/remove";
+import watchLogout from "./sagas/auth/logout";
 
 const reducers = combineReducers({
   app: app,
@@ -107,6 +108,8 @@ saga.run(watchGetGroupsTimetable);
 saga.run(watchGetEducatorsTimetable);
 
 saga.run(watchLogin);
+saga.run(watchLogout);
+
 saga.run(watchGapiInit);
 saga.run(watchLoginViaGoogle);
 saga.run(watchRefreshToken);

@@ -45,6 +45,10 @@ function mapDispatchToProps(dispatch: (action: Action) => void) {
     refreshAccessToken: () => {
       dispatch(authAC.refreshToken());
     },
+
+    hideLoginBtn: () => {
+      dispatch(authAC.hideLoginBtn());
+    },
   };
 }
 

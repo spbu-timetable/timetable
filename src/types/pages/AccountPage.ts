@@ -18,6 +18,8 @@ type AccountPage = {
   selectedGroups: SavedItem[];
   filteredGroups: SavedItem[];
   groupsFilterValue: string;
+
+  
 };
 
 export default AccountPage;

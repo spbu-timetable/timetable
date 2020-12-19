@@ -40,6 +40,8 @@ function* workerLoginViaGoogle() {
 
   if (data !== undefined) {
     if (data === "need to register") {
+      accessTokenLocalStorage.remove();
+      refreshTokenLocalStorage.remove();
       yield put(authAC.needToRegister());
       yield put(appAC.setAlert({ message: "Необходимо зарегистрироваться", severity: "info" }));
       return;

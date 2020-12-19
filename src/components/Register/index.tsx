@@ -94,6 +94,7 @@ const Register = (props: Props) => {
         variant="outlined"
         color="primary"
         onClick={() => {
+          console.log("click");
           history.replace("/login");
         }}
       >

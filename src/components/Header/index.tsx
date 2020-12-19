@@ -8,6 +8,8 @@ import style from "./style.module.css";
 
 import Picker from "./DatePicker";
 import Link from "@material-ui/core/Link";
+import refreshTokenLocalStorage from "../../localStorage/refreshToken";
+import Button from "@material-ui/core/Button";
 
 type Props = {
   week: string;
@@ -16,6 +18,8 @@ type Props = {
 
   setWeek: (date: Date) => void;
   setLang: (isRussian: boolean) => void;
+
+  logout: () => void;
 };
 
 const Header = (props: Props) => {
@@ -47,6 +51,22 @@ const Header = (props: Props) => {
           toDateStr={props.toDateStr}
           setWeek={props.setWeek}
         />
+
+        {window.innerWidth > 500 ? (
+          <div className={style.filler}>
+            <div className={style.filler}></div>
+            <Button
+              className={style.btn}
+              onClick={() => {
+                refreshTokenLocalStorage.set() ? props.logout() : history.replace("/login");
+              }}
+            >
+              {refreshTokenLocalStorage.set() ? "Выйти" : "Войти"}
+            </Button>
+          </div>
+        ) : (
+          <></>
+        )}
       </Toolbar>
     </AppBar>
   );

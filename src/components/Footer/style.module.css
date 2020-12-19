@@ -13,6 +13,7 @@
 
 .filler {
   flex-grow: 1;
+  margin-left: var(--inset2);
 }
 
 .help_btn {

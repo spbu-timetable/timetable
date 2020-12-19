@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import Content from "../Content/container";
 import Registration from "../Register/container";
 import Login from "../Login/container";
-import Footer from "../Footer";
+import Footer from "../Footer/container";
 import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";

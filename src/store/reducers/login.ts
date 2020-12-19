@@ -12,6 +12,16 @@ function login(state: LoginPage = initialState, action: Action): LoginPage {
         email: action.payload.key === "email" ? action.payload.value : state.email,
         password: action.payload.key === "password" ? action.payload.value : state.password,
       };
+    case ACTION.HIDE_LOGIN_BUTTON:
+      return {
+        ...state,
+        hideLoginBtn: true,
+      };
+    case ACTION.SHOW_LOGIN_BUTTON:
+      return {
+        ...state,
+        hideLoginBtn: false,
+      };
   }
 
   return state;
