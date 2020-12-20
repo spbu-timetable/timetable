@@ -25,7 +25,7 @@
 - [Белов Артем](https://github.com/inctnce) - разработка, организация команды
 - [Амельченкова Ксения](https://github.com/runnia) - UI/UX дизайн
 - [Петрович Юрий](https://github.com/Kordebalet232) - разработка
-- [Величко Кирилл](https://github.com/veliKerril) - работа с документами
+- [Величко Кирилл](https://github.com/veliKerril) - работа с отчетными документами, ручное тестирование
 
 ### Материалы
 * master-ветка на [heroku](https://spbu-timetable.herokuapp.com)
