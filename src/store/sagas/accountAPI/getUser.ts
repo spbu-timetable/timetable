@@ -1,7 +1,7 @@
 import accountAPI from ".";
 import { call, put, takeLatest } from "redux-saga/effects";
 import accessTokenLocalStorage from "../../../localStorage/accessToken";
-import Action from "../../../types/Action";
+
 import ACTION from "../../actionCreators/ACTION";
 import authAC from "../../actionCreators/authAC";
 
@@ -22,15 +22,12 @@ async function getUser() {
     });
 }
 
-function* workerGetUser(action: Action) {
-  for (let i = 0; i < 2; i++) {
-    const data = yield call(getUser);
-    if (data !== "error") {
-      yield put(authAC.setUser(data));
-      break;
-    } else {
-      yield put(authAC.refreshToken());
-    }
+function* workerGetUser() {
+  yield put(authAC.refreshToken());
+  const data = yield call(getUser);
+
+  if (data !== "error") {
+    yield put(authAC.setUser(data));
   }
 }
 
