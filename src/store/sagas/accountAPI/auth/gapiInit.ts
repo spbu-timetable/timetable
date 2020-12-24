@@ -1,7 +1,7 @@
 import { call, takeEvery } from "redux-saga/effects";
 
 import "gapi";
-import ACTION from "../../actionCreators/ACTION";
+import ACTION from "../../../actionCreators/ACTION";
 
 function gapiInit() {
   gapi.load("auth2", function () {

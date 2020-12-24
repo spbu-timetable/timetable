@@ -1,12 +1,12 @@
-import Axios from "axios";
+import accountAPI from "..";
 import { call, put, takeEvery } from "redux-saga/effects";
-import ACTION from "../../actionCreators/ACTION";
+import ACTION from "../../../actionCreators/ACTION";
 
 import "gapi";
-import authAC from "../../actionCreators/authAC";
-import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
-import accessTokenLocalStorage from "../../../localStorage/accessToken";
-import appAC from "../../actionCreators/appAC";
+import authAC from "../../../actionCreators/authAC";
+import refreshTokenLocalStorage from "../../../../localStorage/refreshToken";
+import accessTokenLocalStorage from "../../../../localStorage/accessToken";
+import appAC from "../../../actionCreators/appAC";
 
 async function loginViaGoogle() {
   const googleAuth = gapi.auth2.getAuthInstance();
@@ -16,12 +16,13 @@ async function loginViaGoogle() {
   refreshTokenLocalStorage.save(user.getAuthResponse().id_token);
 
   if (user) {
-    return Axios.get("https://spbu-timetable-api.herokuapp.com/auth/google", {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        authorization: user.getAuthResponse().id_token,
-      },
-    })
+    return accountAPI
+      .get("/auth/google", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          authorization: user.getAuthResponse().id_token,
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           return response.data;

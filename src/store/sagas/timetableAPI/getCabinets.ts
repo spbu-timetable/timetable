@@ -1,12 +1,12 @@
-import Axios from "axios";
+import timetableAPI from ".";
 import { call, put, takeLatest } from "redux-saga/effects";
 import Action from "../../../types/Action";
 import ACTION from "../../actionCreators/ACTION";
 import cabinetAC from "../../actionCreators/cabinetAC";
-import api_address from "./apiAddress";
 
 async function getCabinets(oid: string) {
-  return await Axios.get(api_address + `/addresses/${oid}/classrooms`)
+  return await timetableAPI
+    .get(`/addresses/${oid}/classrooms`)
     .then((response) => {
       if (response.status === 200) {
         return response.data;

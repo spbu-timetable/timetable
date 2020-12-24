@@ -1,4 +1,4 @@
-import Axios from "axios";
+import timetableAPI from ".";
 import { call, put, takeEvery } from "redux-saga/effects";
 import Action from "../../../types/Action";
 import ACTION from "../../actionCreators/ACTION";
@@ -7,12 +7,13 @@ import timetableAC from "../../actionCreators/timetable";
 import getObjectName from "../../../helpers/getObjectName";
 import sortTimetableDays from "../../../helpers/sortTimetableDays";
 import checkDays from "../../../helpers/checkDays";
-import api_address from "./apiAddress";
+
 import getObjectId from "../../../helpers/getObjectId";
 
 async function getGroupEventsDays(oid: string, fromDateStr: string, toDateDtr: string) {
-  console.log(api_address + `/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`);
-  return await Axios.get(api_address + `/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`)
+  console.log(`/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`);
+  return await timetableAPI
+    .get(`/groups/${oid}/events/${fromDateStr}/${toDateDtr}?timetable=Primary`)
     .then((response) => {
       if (response.status === 200) {
         return response.data.Days;

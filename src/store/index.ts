@@ -44,19 +44,19 @@ import TimetablePage from "../types/pages/TimetablePage";
 import watchGetGroupsTimetable from "./sagas/timetableAPI/getGroupsTimetable";
 import watchGetEducatorsTimetable from "./sagas/timetableAPI/getEducatorTimetable";
 
-import watchLogin from "./sagas/auth/login";
-import watchLoginViaGoogle from "./sagas/auth/googleLogin";
-import watchGapiInit from "./sagas/auth/gapiInit";
-import watchRefreshToken from "./sagas/auth/refreshToken";
+import watchLogin from "./sagas/accountAPI/auth/login";
+import watchLoginViaGoogle from "./sagas/accountAPI/auth/googleLogin";
+import watchGapiInit from "./sagas/accountAPI/auth/gapiInit";
+import watchRefreshToken from "./sagas/accountAPI/auth/refreshToken";
 import watchGetUser from "./sagas/getUser";
-import watchSaveEducator from "./sagas/educator/save";
-import watchSaveCabinet from "./sagas/cabinet/save";
-import watchRegister from "./sagas/auth/registration";
-import watchRemoveCabinet from "./sagas/cabinet/remove";
-import watchRemoveEducator from "./sagas/educator/remove";
-import watchSaveGroup from "./sagas/group/save";
-import watchRemoveGroup from "./sagas/group/remove";
-import watchLogout from "./sagas/auth/logout";
+import watchSaveEducator from "./sagas/accountAPI/educator/save";
+import watchSaveCabinet from "./sagas/accountAPI/cabinet/save";
+import watchRegister from "./sagas/accountAPI/auth/registration";
+import watchRemoveCabinet from "./sagas/accountAPI/cabinet/remove";
+import watchRemoveEducator from "./sagas/accountAPI/educator/remove";
+import watchSaveGroup from "./sagas/accountAPI/group/save";
+import watchRemoveGroup from "./sagas/accountAPI/group/remove";
+import watchLogout from "./sagas/accountAPI/auth/logout";
 
 const reducers = combineReducers({
   app: app,

@@ -1,12 +1,12 @@
-import Axios from "axios";
+import timetableAPI from ".";
 import { call, put, takeEvery } from "redux-saga/effects";
 import Action from "../../../types/Action";
 import ACTION from "../../actionCreators/ACTION";
 import studyLevelAC from "../../actionCreators/studyLevelAC";
-import api_address from "./apiAddress";
 
 async function getStudyLevels(Alias: string) {
-  return await Axios.get(api_address + `/study/divisions/${Alias}/programs/levels`)
+  return await timetableAPI
+    .get(`/study/divisions/${Alias}/programs/levels`)
     .then((response) => {
       if (response.status === 200) {
         return response.data;

@@ -1,12 +1,11 @@
-import { purple } from "@material-ui/core/colors";
-import Axios from "axios";
+import accountAPI from "..";
 import { call, put, takeEvery } from "redux-saga/effects";
-import accessTokenLocalStorage from "../../../localStorage/accessToken";
-import refreshTokenLocalStorage from "../../../localStorage/refreshToken";
-import Action from "../../../types/Action";
-import ACTION from "../../actionCreators/ACTION";
-import appAC from "../../actionCreators/appAC";
-import authAC from "../../actionCreators/authAC";
+import accessTokenLocalStorage from "../../../../localStorage/accessToken";
+import refreshTokenLocalStorage from "../../../../localStorage/refreshToken";
+import Action from "../../../../types/Action";
+import ACTION from "../../../actionCreators/ACTION";
+import appAC from "../../../actionCreators/appAC";
+import authAC from "../../../actionCreators/authAC";
 
 async function register(name: string, email: string, password: string) {
   const data = {
@@ -15,7 +14,8 @@ async function register(name: string, email: string, password: string) {
     password: password,
   };
 
-  return await Axios.post(`https://spbu-timetable-api.herokuapp.com/auth/registration`, data)
+  return await accountAPI
+    .post("/auth/registration", data)
     .then((response) => {
       if (response.status === 201) {
         return response.data;

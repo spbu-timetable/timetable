@@ -6,8 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import Google from "../../assets/icons/google";
-
 import { Redirect, useHistory } from "react-router-dom";
 
 type Props = {
@@ -37,16 +35,6 @@ const Register = (props: Props) => {
       <Typography className={style.header} align="center" variant="h5">
         Регистрация
       </Typography>
-
-      {/* <Button className={style.item + " " + style.google_btn} variant="outlined" startIcon={<Google />}>
-        Войти через Google
-      </Button>
-
-      <div className={style.divider}>
-        <span className={style.divider_line}></span>
-        <div className={style.divider_text}>или</div>
-        <div className={style.divider_line}></div>
-      </div> */}
 
       <TextField
         className={style.item}

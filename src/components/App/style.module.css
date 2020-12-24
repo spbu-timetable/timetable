@@ -4,8 +4,15 @@
   align-items: center;
 }
 
-.alert {
-  margin-top: var(--inset7);
+.alert_wrapper {
+  position: absolute;
+  bottom: var(--inset3);
 
-  width: auto;
+  z-index: 10;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
 }

@@ -15,7 +15,6 @@ type Props = {
   logout: () => void;
 
   hideLoginBtn: boolean;
-  refreshToken: string;
 };
 
 const Footer = (props: Props) => {
@@ -45,7 +44,7 @@ const Footer = (props: Props) => {
                   refreshTokenLocalStorage.set() ? props.logout() : history.replace("/login");
                 }}
               >
-                {props.refreshToken ? "Выйти" : "Войти"}
+                {refreshTokenLocalStorage.set() ? "Выйти" : "Войти"}
               </Button>
             ) : (
               <></>

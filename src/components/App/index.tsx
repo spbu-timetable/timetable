@@ -32,20 +32,19 @@ const App = (props: Props) => {
 
   return (
     <div className={style.app}>
-      <Collapse in={props.isAlert}>
-        <div className={style.alert_wrapper}>
-          <Alert className={style.alert} severity={props.alert.severity}>
-            {props.alert.title ? <AlertTitle>{props.alert.title}</AlertTitle> : <></>}
-            {props.alert.message}
-          </Alert>
-        </div>
-      </Collapse>
-
       <Switch>
         <Route path="/registration" render={() => <Registration />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/" render={() => <Content />} />
       </Switch>
+      <div className={style.alert_wrapper}>
+        <Collapse in={props.isAlert}>
+          <Alert severity={props.alert.severity}>
+            {props.alert.title ? <AlertTitle>{props.alert.title}</AlertTitle> : <></>}
+            {props.alert.message}
+          </Alert>
+        </Collapse>
+      </div>
       <Footer />
     </div>
   );

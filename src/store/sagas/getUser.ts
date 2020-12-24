@@ -6,7 +6,7 @@ import ACTION from "../actionCreators/ACTION";
 import authAC from "../actionCreators/authAC";
 
 async function getUser() {
-  return await Axios.get("https://spbu-timetable-api.herokuapp.com/user/get", {
+  return await Axios.get("http://localhost:8000/user/get", {
     headers: {
       authorization: accessTokenLocalStorage.set(),
     },
