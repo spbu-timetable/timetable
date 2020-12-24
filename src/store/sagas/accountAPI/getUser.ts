@@ -1,16 +1,17 @@
-import Axios from "axios";
+import accountAPI from ".";
 import { call, put, takeLatest } from "redux-saga/effects";
-import accessTokenLocalStorage from "../../localStorage/accessToken";
-import Action from "../../types/Action";
-import ACTION from "../actionCreators/ACTION";
-import authAC from "../actionCreators/authAC";
+import accessTokenLocalStorage from "../../../localStorage/accessToken";
+import Action from "../../../types/Action";
+import ACTION from "../../actionCreators/ACTION";
+import authAC from "../../actionCreators/authAC";
 
 async function getUser() {
-  return await Axios.get("http://localhost:8000/user/get", {
-    headers: {
-      authorization: accessTokenLocalStorage.set(),
-    },
-  })
+  return await accountAPI
+    .get("/user/get", {
+      headers: {
+        authorization: accessTokenLocalStorage.set(),
+      },
+    })
     .then((response) => {
       if (response.status === 200) {
         return response.data;

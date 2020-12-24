@@ -48,7 +48,7 @@ import watchLogin from "./sagas/accountAPI/auth/login";
 import watchLoginViaGoogle from "./sagas/accountAPI/auth/googleLogin";
 import watchGapiInit from "./sagas/accountAPI/auth/gapiInit";
 import watchRefreshToken from "./sagas/accountAPI/auth/refreshToken";
-import watchGetUser from "./sagas/getUser";
+import watchGetUser from "./sagas/accountAPI/getUser";
 import watchSaveEducator from "./sagas/accountAPI/educator/save";
 import watchSaveCabinet from "./sagas/accountAPI/cabinet/save";
 import watchRegister from "./sagas/accountAPI/auth/registration";
