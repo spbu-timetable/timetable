@@ -1,68 +1,26 @@
 .wrapper {
-  position: fixed;
-  bottom: var(--inset1);
-
   display: flex;
   flex-direction: row;
+
   align-items: center;
-  justify-content: center;
 
   width: 100vw;
-  height: 56px;
-}
+  height: 64px;
 
-.filler {
-  flex-grow: 1;
-}
-
-.help_btn {
-  margin-right: var(--inset2) !important;
-  background-color: var(--level1) !important;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
-
-  width: 48px;
-  height: 48px;
-}
-
-.modal {
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0;
-
-  display: flex;
-  justify-content: flex-end;
-}
-
-.paper {
-  outline: none;
-  border: 1px solid var(--level2) !important;
-  padding: var(--inset1);
-
-  width: 250px;
-
-  align-self: flex-end;
-
-  margin-bottom: var(--inset1);
-  margin-right: var(--inset1);
+  background-color: var(--level2);
 }
 
 .link {
-  color: inherit;
   text-decoration: none;
+  color: black;
 }
 
-.link:active {
-  color: inherit;
-  text-decoration: none;
-}
+.github {
+  display: flex;
+  flex-direction: row;
 
-@media screen and (max-width: 500px) {
-  .wrapper {
-    width: 95vw;
-  }
+  margin-left: var(--inset1);
 
-  .help_btn {
-    margin-right: 0 !important;
-  }
+  justify-content: center;
+  align-items: center;
 }

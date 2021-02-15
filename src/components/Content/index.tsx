@@ -14,24 +14,29 @@ import EducationYears from "./Faculties/StudyLevels/EducationProgram/EducationYe
 
 const Content = () => {
   return (
-    <div className={style.content}>
-      <Switch>
-        <Route path="/timetable" component={() => <Timetable />} />
+    <div className={style.wrapper}>
+      <div className={style.content}>
+        <Switch>
+          <Route path="/timetable" component={() => <Timetable />} />
 
-        <Route path="/addresses/cabinets" component={() => <Cabinets />} />
+          <Route path="/addresses/cabinets" component={() => <Cabinets />} />
 
-        <Route path="/teachers" component={() => <Educators />} />
+          <Route path="/teachers" component={() => <Educators />} />
 
-        <Route path="/addresses" component={() => <Addresses />} />
+          <Route path="/addresses" component={() => <Addresses />} />
 
-        <Route path="/faculties/studyLevels/educationalPrograms/educationYears/Groups" component={() => <Groups />} />
-        <Route path="/faculties/studyLevels/educationalPrograms/educationYears" component={() => <EducationYears />} />
-        <Route path="/faculties/studyLevels/educationalPrograms" component={() => <EducationalProgram />} />
-        <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
-        <Route path="/faculties" component={() => <Faculties />} />
+          <Route path="/faculties/studyLevels/educationalPrograms/educationYears/Groups" component={() => <Groups />} />
+          <Route
+            path="/faculties/studyLevels/educationalPrograms/educationYears"
+            component={() => <EducationYears />}
+          />
+          <Route path="/faculties/studyLevels/educationalPrograms" component={() => <EducationalProgram />} />
+          <Route path="/faculties/studyLevels" component={() => <StudyLevel />} />
+          <Route path="/faculties" component={() => <Faculties />} />
 
-        <Route path="/" component={() => <Main />} />
-      </Switch>
+          <Route path="/" component={() => <Main />} />
+        </Switch>
+      </div>
     </div>
   );
 };

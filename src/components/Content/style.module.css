@@ -1,4 +1,10 @@
+.wrapper {
+  height: 100%;
+}
+
 .content {
   margin: var(--inset3);
   margin-top: var(--inset7);
+
+  min-height: calc(100vh - 152px - 64px);
 }
