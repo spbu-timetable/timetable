@@ -1,0 +1,8 @@
+enum PATH {
+	ADDRESSES = "ADDRESSES",
+	EDUCATORS = "EDUCATORS",
+	TIMETABLE = "TIMETABLE",
+    
+}
+
+export default PATH;
