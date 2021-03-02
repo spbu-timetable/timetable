@@ -1,17 +1,18 @@
 .icon {
-  color: var(--icon-fill);
-  margin-left: var(--inset1);
+	color: var(--icon-fill);
+	margin-left: var(--inset1);
 
-  background-color: rgba(0, 0, 0, 0) !important;
+	background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .search {
-  padding-left: var(--inset1);
-  width: inherit;
+	padding-left: var(--inset1);
+	width: inherit;
 
-  font-size: 1em;
+	font-size: 1em;
 }
 
 .wrapper {
-  border: 1px solid var(--level2);
+	border: 1px solid var(--level3);
+	border-radius: var(--inset0);
 }

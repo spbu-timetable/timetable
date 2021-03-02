@@ -35,6 +35,37 @@ code {
   --inset7: 128px;
 }
 
+@media (prefers-color-scheme: light) {
+	:root {
+		--level1: #ffffff;
+		--level2: #f5f5f5;
+		--level3: #dddddd;
+		--level4: #8e8e93;
+
+		--selected: #ff793a;
+
+		--icon-fill: rgba(0, 0, 0, 0.6);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary: #f94400;
+		--primary-dark: #bd0000;
+		--primary-light: #ff793a;
+
+		--level1: #ffffff;
+		--level2: #f5f5f5;
+		--level3: #dddddd;
+		--level4: #8e8e93;
+
+		--selected: #ff793a;
+
+		--icon-fill: rgba(0, 0, 0, 0.6);
+	}
+}
+
+
 @media screen and (max-width: 500px) {
   h1 {
     font-size: 1.5em;
