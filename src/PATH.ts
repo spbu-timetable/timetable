@@ -2,7 +2,7 @@ enum PATH {
 	ADDRESSES = "ADDRESSES",
 	EDUCATORS = "EDUCATORS",
 	TIMETABLE = "TIMETABLE",
-    
+	FACULTIES = "FACULTIES"
 }
 
 export default PATH;
