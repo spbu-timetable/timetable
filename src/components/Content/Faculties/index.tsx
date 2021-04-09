@@ -22,7 +22,7 @@ const Faculties = (props: Props) => {
       items={props.faculties}
       filtered_items={props.filtered_faculties}
       filter_value={props.filter_value}
-      header_text={"Выберите Факультет"}
+      header_text={"Факультет"}
       banner_main_text={"Факультет не найден"}
       banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
       getItems={props.getFaculties}

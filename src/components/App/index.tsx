@@ -6,13 +6,13 @@ import Header from "../Header/container";
 import Footer from "../Footer";
 
 function App() {
-  return (
-    <div className={style.app}>
-      <Header />
-      <Content />
-      <Footer />
-    </div>
-  );
+	return (
+		<div className={style.app}>
+			<Header />
+			<Content />
+			<Footer />
+		</div>
+	);
 }
 
 export default App;

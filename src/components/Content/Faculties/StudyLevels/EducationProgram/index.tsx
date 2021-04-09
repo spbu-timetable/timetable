@@ -28,7 +28,7 @@ const EducationalPrograms = (props: Props) => {
       items={props.educational_programs}
       filtered_items={props.filtered_educational_programs}
       filter_value={props.filter_value}
-      header_text={"Выберите образовательную программу"}
+      header_text={"Образовательная программа"}
       banner_main_text={"образовательная программа не найдена"}
       banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
       getSelectedItems={props.getEducationalPrograms}

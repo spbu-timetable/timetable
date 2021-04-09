@@ -10,46 +10,45 @@ import Picker from "./DatePicker";
 import Link from "@material-ui/core/Link";
 
 type Props = {
-  week: string;
-  fromDateStr: string;
-  toDateStr: string;
+	week: string;
+	fromDateStr: string;
+	toDateStr: string;
 
-  setWeek: (date: Date) => void;
-  setLang: (isRussian: boolean) => void;
+	setWeek: (date: Date) => void;
+	setLang: (isRussian: boolean) => void;
 };
 
 const Header = (props: Props) => {
-  const history = useHistory();
-  let location = useLocation();
+	const history = useHistory();
+	let location = useLocation();
 
-  React.useEffect(() => {
-    if (location.pathname === "/timetable") {
-    }
-  });
+	React.useEffect(() => {
+		if (location.pathname === "/timetable") {
+		}
+	});
 
-  return (
-    <AppBar position="fixed" elevation={0}>
-      <Toolbar>
-        <Link
-          color="initial"
-          underline="none"
-          className={style.title}
-          onClick={() => {
-            history.push("/");
-          }}
-        >
-          Расписание СПбГУ
-        </Link>
-        <Picker
-          isDisabled={location.pathname === "/timetable" ? true : false}
-          className={style.date_picker}
-          fromDateStr={props.fromDateStr}
-          toDateStr={props.toDateStr}
-          setWeek={props.setWeek}
-        />
-      </Toolbar>
-    </AppBar>
-  );
+	return (
+		<AppBar position={"fixed"} elevation={0} color="primary">
+			<Toolbar>
+				<Link
+					underline="none"
+					className={style.title}
+					onClick={() => {
+						history.push("/");
+					}}
+				>
+					Расписание СПбГУ
+				</Link>
+				<Picker
+					isDisabled={location.pathname === "/timetable" ? true : false}
+					className={style.date_picker}
+					fromDateStr={props.fromDateStr}
+					toDateStr={props.toDateStr}
+					setWeek={props.setWeek}
+				/>
+			</Toolbar>
+		</AppBar>
+	);
 };
 
 export default Header;

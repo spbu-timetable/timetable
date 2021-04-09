@@ -23,7 +23,7 @@ const Educators = (props: Props) => {
   return (
     <SearchListPage
       url_to_push="/timetable"
-      header_text="Выберите преподавателей"
+      header_text="Преподаватели"
       didGet={props.didGet}
       filter_value={props.filter_value}
       filtered_items={props.filtered_educators}

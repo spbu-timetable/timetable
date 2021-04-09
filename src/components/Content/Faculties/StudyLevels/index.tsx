@@ -4,36 +4,36 @@ import SearchListPage from "../../../Reusable/SearchListPage";
 import StudyLevel from "../../../../types/StudyLevel";
 
 type Props = {
-  oid: string | undefined;
-  didGet: boolean;
-  filter_value: string;
-  studyLevels: StudyLevel[];
-  filtered_studyLevels: StudyLevel[];
+	oid: string | undefined;
+	didGet: boolean;
+	filter_value: string;
+	studyLevels: StudyLevel[];
+	filtered_studyLevels: StudyLevel[];
 
-  getStudyLevels: (oid: string | undefined) => void;
-  setStudyLevel: (studyLevel: StudyLevel) => void;
-  updFilter: (filterStr: string) => void;
+	getStudyLevels: (oid: string | undefined) => void;
+	setStudyLevel: (studyLevel: StudyLevel) => void;
+	updFilter: (filterStr: string) => void;
 
-  cleanStudyLevels: () => void;
+	cleanStudyLevels: () => void;
 };
 
 const StudyLevels = (props: Props) => {
-  return (
-    <SearchListPage
-      didGet={props.didGet}
-      oid={props.oid}
-      url_to_push={"/faculties/studyLevels/educationalPrograms"}
-      items={props.studyLevels}
-      filtered_items={props.filtered_studyLevels}
-      filter_value={props.filter_value}
-      header_text={"Выберите степень образования"}
-      banner_main_text={"Степень не найдена"}
-      banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
-      getItems={props.getStudyLevels}
-      setItem={props.setStudyLevel}
-      updFilter={props.updFilter}
-      cleanItems={props.cleanStudyLevels}
-    />
-  );
+	return (
+		<SearchListPage
+			didGet={props.didGet}
+			oid={props.oid}
+			url_to_push={"/faculties/studyLevels/educationalPrograms"}
+			items={props.studyLevels}
+			filtered_items={props.filtered_studyLevels}
+			filter_value={props.filter_value}
+			header_text={"Степень образования"}
+			banner_main_text={"Степень не найдена"}
+			banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
+			getItems={props.getStudyLevels}
+			setItem={props.setStudyLevel}
+			updFilter={props.updFilter}
+			cleanItems={props.cleanStudyLevels}
+		/>
+	);
 };
 export default StudyLevels;

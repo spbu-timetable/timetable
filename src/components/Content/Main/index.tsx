@@ -5,10 +5,9 @@ import HugeButton from "../../Reusable/HugeButton";
 const Main = () => {
 	return (
 		<div className={style.main}>
-			<h1 className={style.title}>Расписание СПбГУ</h1>
-			<HugeButton title="Кабинеты" link="/addresses" />
-			<HugeButton title="Преподаватели" link="/teachers" />
-			<HugeButton title="Группы" link="/faculties" />
+			<HugeButton className={style.item} title="Кабинеты" link="/addresses" />
+			<HugeButton className={style.item} title="Преподаватели" link="/teachers" />
+			<HugeButton className={style.item} title="Группы" link="/faculties" />
 		</div>
 	);
 };
