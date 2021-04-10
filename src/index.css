@@ -7,6 +7,8 @@ body {
 
 	height: 100%;
 	max-width: 100vw;
+
+	margin-bottom: env(safe-area-inset-bottom);
 }
 
 code {
