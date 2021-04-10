@@ -1,9 +1,14 @@
-.header {
-	border-bottom: 1px solid var(--level3);
-}
-
 .title {
 	flex-grow: 1;
 	cursor: pointer;
-	color: white !important;
+}
+
+.item {
+	height: 36px !important;
+}
+
+@media (prefers-color-scheme: light) {
+	.header {
+		border-bottom: 1px solid var(--level3) !important;
+	}
 }

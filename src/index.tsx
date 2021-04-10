@@ -4,26 +4,24 @@ import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./utils/serviceWorker";
 
-import { ThemeProvider } from "@material-ui/core/styles";
-
 import { BrowserRouter as Router } from "react-router-dom";
-import LightTheme from "./assets/Themes/LightTheme";
 import GlobalCss from "./assets/styles/GlobalCss";
 import { Provider } from "react-redux";
 import store from "./store";
+import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
+import DateFnsUtils from "@date-io/date-fns";
+import ruLocale from "date-fns/locale/ru";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ThemeProvider theme={LightTheme}>
-        <Provider store={store}>
-          <GlobalCss />
-          <App />
-        </Provider>
-      </ThemeProvider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<Router>
+			<Provider store={store}>
+				<GlobalCss />
+				<App />
+			</Provider>
+		</Router>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

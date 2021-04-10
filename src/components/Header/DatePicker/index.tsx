@@ -8,7 +8,7 @@ import React from "react";
 import style from "./style.module.css";
 
 import withStyles from "@material-ui/core/styles/withStyles";
-import IconButton from "@material-ui/core/IconButton";
+import { IconButton, Typography } from "@material-ui/core";
 import { CalendarToday } from "@material-ui/icons";
 
 type Props = {
@@ -52,28 +52,44 @@ const Picker = (props: Props) => {
 
 	return (
 		<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
-			<Button
-				onClick={() => {
-					if (!props.isDisabled) {
-						setOpen(!open);
-					}
-				}}
-			>
-				{props.fromDateStr + " - " + props.toDateStr}
-			</Button>
+			<>
+				<div className={style.picker}>
+					{window.innerWidth > 600 ? (
+						<Button
+							onClick={() => {
+								if (!props.isDisabled) {
+									setOpen(!open);
+								}
+							}}
+						>
+							{props.fromDateStr + " - " + props.toDateStr}
+						</Button>
+					) : (
+						<IconButton
+							onClick={() => {
+								if (!props.isDisabled) {
+									setOpen(!open);
+								}
+							}}
+						>
+							<CalendarToday />
+						</IconButton>
+					)}
+				</div>
 
-			<DatePicker
-				autoOk={true}
-				open={open}
-				variant="dialog"
-				value={selectedDate}
-				onChange={handleDateChange}
-				animateYearScrolling={false}
-				onClose={() => {
-					setOpen(false);
-				}}
-				TextFieldComponent={() => <StyledTextField className={style.date_picker} variant="outlined" value="" />}
-			/>
+				<DatePicker
+					autoOk={true}
+					open={open}
+					variant="dialog"
+					value={selectedDate}
+					onChange={handleDateChange}
+					animateYearScrolling={false}
+					onClose={() => {
+						setOpen(false);
+					}}
+					TextFieldComponent={() => <StyledTextField className={style.date_picker} variant="outlined" value="" />}
+				/>
+			</>
 		</MuiPickersUtilsProvider>
 	);
 };

@@ -1,7 +1,6 @@
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
-import Paper from "@material-ui/core/Paper";
 import React from "react";
 import Banner from "../Banner";
 import style from "./style.module.css";
@@ -39,7 +38,7 @@ const ItemsList = (props: Props) => {
 							disableElevation
 							variant="contained"
 							className={style.btn}
-							color="primary"
+							color="secondary"
 							onClick={() => {
 								if (props.fromDate && props.toDate) {
 									props.getTimetable!(props.selected_items, props.fromDate, props.toDate);
@@ -79,7 +78,7 @@ const ItemsList = (props: Props) => {
 			) : (
 				<>
 					{props.getItems !== undefined || props.getSelectedItems !== undefined ? (
-						<CircularProgress className={style.progress} />
+						<CircularProgress className={style.progress} color="secondary" />
 					) : (
 						<></>
 					)}

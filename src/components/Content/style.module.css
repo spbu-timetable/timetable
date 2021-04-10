@@ -1,6 +1,11 @@
 .wrapper {
-	margin-bottom: var(--inset3);
-	margin-top: var(--inset7);
+	margin-top: 64px;
+	min-height: calc(100vh - 120px);
+}
 
-	min-height: calc(100vh - 120px - 56px);
+@media screen and (max-width: 600) {
+	.wrapper {
+		margin-top: 56px;
+		min-height: calc(100vh - 112px);
+	}
 }

@@ -1,26 +1,29 @@
 .wrapper {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 
-  align-items: center;
+	align-items: center;
 
-  width: 100vw;
-  height: 64px;
-
-  background-color: var(--level2);
+	width: 100vw;
+	height: 64px;
 }
 
 .link {
-  text-decoration: none;
-  color: black;
+	text-decoration: none;
 }
 
 .github {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 
-  margin-left: var(--inset1);
+	margin-left: var(--inset1);
 
-  justify-content: center;
-  align-items: center;
+	justify-content: center;
+	align-items: center;
+}
+
+@media (prefers-color-scheme: light) {
+	.wrapper {
+		border-top: 1px solid var(--level3) !important;
+	}
 }

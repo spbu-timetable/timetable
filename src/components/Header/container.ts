@@ -7,27 +7,27 @@ import Action from "../../types/Action";
 import HeaderT from "../../types/Header";
 
 function mapStateToProps(
-  state: CombinedState<{
-    header: HeaderT;
-  }>
+	state: CombinedState<{
+		header: HeaderT;
+	}>
 ) {
-  return {
-    week: state.header.week.toDateString(),
+	return {
+		week: state.header.week.toDateString(),
 
-    fromDateStr: state.header.fromDateStr,
-    toDateStr: state.header.toDateStr,
-  };
+		fromDateStr: state.header.fromDateStr,
+		toDateStr: state.header.toDateStr,
+	};
 }
 
 function mapDispatchToProps(dispatch: (action: Action) => void) {
-  return {
-    setWeek: (date: Date) => {
-      dispatch(headerAC.setWeek(date));
-    },
-    setLang: (isRussian: boolean) => {
-      dispatch(headerAC.setLang(isRussian));
-    },
-  };
+	return {
+		setWeek: (date: Date) => {
+			dispatch(headerAC.setWeek(date));
+		},
+		setLang: (isRussian: boolean) => {
+			dispatch(headerAC.setLang(isRussian));
+		},
+	};
 }
 
 const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);

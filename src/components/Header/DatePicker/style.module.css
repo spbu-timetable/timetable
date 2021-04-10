@@ -5,3 +5,9 @@
 .btn {
 	color: var(--primary) !important;
 }
+
+.picker {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
