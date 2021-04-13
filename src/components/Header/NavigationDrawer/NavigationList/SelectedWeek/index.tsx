@@ -1,6 +1,7 @@
 import Container from "@material-ui/core/Container";
 import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
+import ruLocale from "date-fns/locale/ru";
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
@@ -77,7 +78,7 @@ const SelectedWeek: React.FC<Props> = (props: Props) => {
 				</Container>
 			</ListItem>
 
-			<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
 				<MobileDatePicker
 					open={open}
 					value={selectedDate}
