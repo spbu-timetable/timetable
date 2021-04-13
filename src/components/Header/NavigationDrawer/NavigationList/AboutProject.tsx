@@ -10,7 +10,7 @@ const AboutProject = () => {
 			<ListItemIcon>
 				<Info />
 			</ListItemIcon>
-			<ListItemText primary={"О проекте"} />
+			<ListItemText primary={"О приложении"} />
 		</ListItem>
 	);
 };

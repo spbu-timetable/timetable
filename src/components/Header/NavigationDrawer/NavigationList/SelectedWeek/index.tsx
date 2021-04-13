@@ -1,4 +1,3 @@
-import Container from "@material-ui/core/Container";
 import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import ruLocale from "date-fns/locale/ru";
@@ -7,9 +6,8 @@ import React from "react";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 import MobileDatePicker from "@material-ui/lab/MobileDatePicker";
-import withStyles from "@material-ui/styles/withStyles";
-import TextField from "@material-ui/core/TextField";
 import PickersDay, { PickersDayProps } from "@material-ui/lab/PickersDay";
+import SetWeekBtn from "./SetWeekBtn";
 
 type Props = {
 	fromDateStr: string;
@@ -19,22 +17,6 @@ type Props = {
 };
 
 const useStyles = makeStyles((theme) => ({
-	button: {
-		borderRadius: 4,
-		borderStyle: "solid",
-		borderWidth: 1,
-		borderColor: theme.palette.grey[300],
-		color: theme.palette.primary.contrastText,
-		textAlign: "center",
-		padding: theme.spacing(1),
-		margin: theme.spacing(1),
-
-		"&:hover, &:focus": {
-			cursor: "pointer",
-			backgroundColor: theme.palette.grey[200],
-		},
-	},
-
 	highlight: {
 		borderRadius: "50%",
 		backgroundColor: theme.palette.secondary.main,
@@ -45,14 +27,6 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 }));
-
-const StyledTextField = withStyles({
-	root: {
-		position: "absolute",
-		width: 0,
-		height: 0,
-	},
-})(TextField);
 
 const SelectedWeek: React.FC<Props> = (props: Props) => {
 	const classes = useStyles();
@@ -73,9 +47,7 @@ const SelectedWeek: React.FC<Props> = (props: Props) => {
 	return (
 		<>
 			<ListItem component={Typography} align="center">
-				<Container className={classes.button} onClick={() => setOpen(!open)}>
-					<Typography variant="button">{props.fromDateStr + " — " + props.toDateStr}</Typography>
-				</Container>
+				<SetWeekBtn onClick={() => setOpen(!open)} fromDateStr={props.fromDateStr} toDateStr={props.toDateStr} />
 			</ListItem>
 
 			<LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
