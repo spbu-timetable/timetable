@@ -1,8 +1,8 @@
-import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
+import { Theme } from "@material-ui/core/styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
+import { makeStyles } from "@material-ui/styles";
 
 import React from "react";
 import style from "./style.module.css";
@@ -15,64 +15,73 @@ type Props = {
 	updFilterValue?: (filterStr: string) => void;
 };
 
-const MyTextField = withStyles({
-	root: {
+const useStyles = makeStyles((theme) => ({
+	textField: {
 		width: 700,
 		maxWidth: "90vw",
+		borderWidth: 1,
+		borderRadius: 4,
+		borderStyle: "solid",
+		borderColor: "var(--level3)",
+	},
 
-		borderRadius: "var(--inset0)",
-		margin: 0,
+	input: {
+		borderRadius: 4,
+		borderStyle: "solid",
+		borderColor: "var(--level3)",
+		marginLeft: "var(--inset1) !important",
+	},
 
-		"& .MuiInput-underline:after": {
-			borderBottomColor: "rgba(0, 0, 0, 0.0)",
-		},
+	icon: {
+		color: "var(--icon-fill)",
+	},
+}));
+
+const StyledTextField = withStyles(({ palette, shadows }) => ({
+	root: {
 		"& .MuiOutlinedInput-root": {
 			"& fieldset": {
-				borderColor: "rgba(0, 0, 0, 0.0)",
+				borderWidth: 1,
+				borderColor: palette.grey[300],
 			},
 			"&:hover fieldset": {
-				borderColor: "rgba(0, 0, 0, 0.0)",
+				borderWidth: 1,
+				borderColor: palette.grey[300],
 			},
 			"&.Mui-focused fieldset": {
-				borderColor: "rgba(0, 0, 0, 0.0)",
+				borderWidth: 1,
+				borderColor: palette.grey[300],
 			},
 		},
-		"&:hover": {
-			boxShadow:
-				"0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2); !important",
-		},
 	},
-})(TextField);
+}))(TextField);
 
 const Search = (props: Props) => {
+	const classes = useStyles();
 	const search_ref: React.RefObject<HTMLInputElement> = React.createRef();
 
 	return (
-		<div className={style.wrapper}>
-			<MyTextField
-				inputRef={search_ref}
-				className={style.shadow}
-				placeholder="Поиск..."
-				value={props.value}
-				margin="normal"
-				variant="outlined"
-				type="search"
-				inputProps={{
-					style: {
-						paddingLeft: "var(--inset1)",
-					},
-				}}
-				InputProps={{
-					startAdornment: <SearchIcon className={style.icon} />,
-				}}
-				onChange={() => {
-					props.updFilter(search_ref.current!.value);
-					if (props.updFilterValue !== undefined) {
-						props.updFilterValue!(search_ref.current!.value);
-					}
-				}}
-			/>
-		</div>
+		<StyledTextField
+			inputRef={search_ref}
+			className={classes.textField}
+			placeholder="Поиск..."
+			value={props.value}
+			margin="normal"
+			variant="outlined"
+			type="search"
+			inputProps={{
+				className: classes.input,
+			}}
+			InputProps={{
+				startAdornment: <SearchIcon className={classes.icon} />,
+			}}
+			onChange={() => {
+				props.updFilter(search_ref.current!.value);
+				if (props.updFilterValue !== undefined) {
+					props.updFilterValue!(search_ref.current!.value);
+				}
+			}}
+		/>
 	);
 };
 

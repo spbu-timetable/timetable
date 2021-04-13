@@ -8,9 +8,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import GlobalCss from "./assets/styles/GlobalCss";
 import { Provider } from "react-redux";
 import store from "./store";
-import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
-import DateFnsUtils from "@date-io/date-fns";
-import ruLocale from "date-fns/locale/ru";
 
 ReactDOM.render(
 	<React.StrictMode>

@@ -3,7 +3,6 @@ import style from "./style.module.css";
 
 import Content from "../Content";
 import Header from "../Header/container";
-import Footer from "../Footer";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import DarkTheme from "../../assets/Themes/DarkTheme";
@@ -19,7 +18,6 @@ function App() {
 			<div className={style.app}>
 				<Header />
 				<Content />
-				<Footer />
 			</div>
 		</ThemeProvider>
 	);

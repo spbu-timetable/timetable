@@ -1,15 +1,34 @@
-import DateFnsUtils from "@date-io/date-fns";
-import ruLocale from "date-fns/locale/ru";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { DatePicker } from "@material-ui/pickers/DatePicker/DatePicker";
-import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
 import React from "react";
-import style from "./style.module.css";
-
-import withStyles from "@material-ui/core/styles/withStyles";
-import { IconButton, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
+import LocalizaitonProvider from "@material-ui/lab/LocalizationProvider";
+import DatePicker from "@material-ui/lab/DatePicker";
+import PickersDay, { PickersDayProps } from "@material-ui/lab/PickersDay";
+import withStyles from "@material-ui/styles/withStyles";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import { CalendarToday } from "@material-ui/icons";
+
+const useStyles = makeStyles((theme) => ({
+	highlight: {
+		borderRadius: "50%",
+		backgroundColor: theme.palette.secondary.main,
+		color: theme.palette.common.white,
+		"&:hover, &:focus": {
+			borderRadius: "50%",
+			backgroundColor: theme.palette.secondary.main,
+		},
+	},
+}));
+
+const StyledTextField = withStyles({
+	root: {
+		overflow: "hidden",
+		width: 100,
+		height: 0,
+	},
+})(TextField);
 
 type Props = {
 	className?: string;
@@ -22,76 +41,58 @@ type Props = {
 	setWeek: (date: Date) => void;
 };
 
-const StyledTextField = withStyles({
-	root: {
-		"& .MuiInput-underline:after": {
-			borderBottomColor: "rgba(0, 0, 0, 0.0)",
-		},
-		"& .MuiOutlinedInput-root": {
-			"& fieldset": {
-				borderColor: "rgba(0, 0, 0, 0.0)",
-			},
-			"&:hover fieldset": {
-				borderColor: "rgba(0, 0, 0, 0.0)",
-			},
-			"&.Mui-focused fieldset": {
-				borderColor: "rgba(0, 0, 0, 0.0)",
-			},
-		},
-	},
-})(TextField);
+const CustomDay: React.FC<Props> = (props: Props) => {
+	const classes = useStyles();
 
-const Picker = (props: Props) => {
 	const [open, setOpen] = React.useState(false);
 	const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date());
 
 	const handleDateChange = (date: Date | null) => {
 		setSelectedDate(date);
 		props.setWeek(date!);
+		setOpen(false);
+	};
+
+	const renderWeekPickerDay = (date: Date, _selectedDates: Date[], pickersDayProps: PickersDayProps<Date>) => {
+		return <PickersDay {...pickersDayProps} className={classes.highlight} />;
 	};
 
 	return (
-		<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
-			<>
-				<div className={style.picker}>
-					{window.innerWidth > 600 ? (
-						<Button
-							onClick={() => {
-								if (!props.isDisabled) {
-									setOpen(!open);
-								}
-							}}
-						>
-							{props.fromDateStr + " - " + props.toDateStr}
-						</Button>
-					) : (
-						<IconButton
-							onClick={() => {
-								if (!props.isDisabled) {
-									setOpen(!open);
-								}
-							}}
-						>
-							<CalendarToday />
-						</IconButton>
-					)}
-				</div>
-
+		<>
+			<LocalizaitonProvider dateAdapter={AdapterDateFns}>
 				<DatePicker
-					autoOk={true}
 					open={open}
-					variant="dialog"
 					value={selectedDate}
 					onChange={handleDateChange}
-					animateYearScrolling={false}
-					onClose={() => {
-						setOpen(false);
-					}}
-					TextFieldComponent={() => <StyledTextField className={style.date_picker} variant="outlined" value="" />}
+					renderDay={renderWeekPickerDay as any}
+					renderInput={(params) => <StyledTextField {...params} />}
 				/>
-			</>
-		</MuiPickersUtilsProvider>
+			</LocalizaitonProvider>
+
+			{window.innerWidth > 600 ? (
+				<Button
+					color="secondary"
+					onClick={() => {
+						if (!props.isDisabled) {
+							setOpen(!open);
+						}
+					}}
+				>
+					{props.fromDateStr + " - " + props.toDateStr}
+				</Button>
+			) : (
+				<IconButton
+					onClick={() => {
+						if (!props.isDisabled) {
+							setOpen(!open);
+						}
+					}}
+				>
+					<CalendarToday />
+				</IconButton>
+			)}
+		</>
 	);
 };
 
-export default Picker;
+export default CustomDay;

@@ -19,6 +19,7 @@ code {
 	--primary: #f94400;
 	--primary-dark: #bd0000;
 	--primary-light: #ff793a;
+	--contrast: #ffffff;
 
 	--level1: #ffffff;
 	--level2: #f2f2f2;
@@ -26,8 +27,6 @@ code {
 	--level4: #bdbdbd;
 	--level5: #828282;
 	--level6: #4f4f4f;
-
-	--selected: #ff793a;
 
 	--icon-fill: rgba(0, 0, 0, 0.6);
 

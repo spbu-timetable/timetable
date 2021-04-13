@@ -7,7 +7,7 @@ import React from "react";
 import style from "./style.module.css";
 
 import Picker from "./DatePicker";
-import MoreMenu from "./MoreMenu";
+import NavigationDrawer from "./NavigationDrawer";
 import Typography from "@material-ui/core/Typography";
 
 type Props = {
@@ -33,6 +33,8 @@ const Header = (props: Props) => {
 	return (
 		<AppBar className={style.header} component="header" position={"fixed"} elevation={0} color="primary">
 			<Toolbar>
+				<NavigationDrawer fromDateStr={props.fromDateStr} toDateStr={props.toDateStr} />
+
 				<Typography
 					className={style.title}
 					onClick={() => {
@@ -41,21 +43,6 @@ const Header = (props: Props) => {
 				>
 					Расписание СПбГУ
 				</Typography>
-
-				<Picker
-					isDisabled={location.pathname === "/timetable" ? true : false}
-					className={style.date_picker}
-					fromDateStr={props.fromDateStr}
-					toDateStr={props.toDateStr}
-					setWeek={props.setWeek}
-				/>
-
-				<MoreMenu
-					setWeek={props.setWeek}
-					fromDateStr={props.fromDateStr}
-					toDateStr={props.toDateStr}
-					isDisabled={isDisabled}
-				/>
 			</Toolbar>
 		</AppBar>
 	);

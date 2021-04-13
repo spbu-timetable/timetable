@@ -1,4 +1,5 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import "@material-ui/lab/themeAugmentation";
 
 const LightTheme = createMuiTheme({
 	palette: {
@@ -8,8 +9,7 @@ const LightTheme = createMuiTheme({
 
 		secondary: {
 			main: "#F94400",
-			dark: "#BD0000",
-			light: "#FF793A",
+			contrastText: "#FFFFFF",
 		},
 	},
 });

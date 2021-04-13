@@ -1,19 +1,16 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import "@material-ui/lab/themeAugmentation";
 
 const DarkTheme = createMuiTheme({
 	palette: {
-		type: "dark",
+		mode: "dark",
 
 		primary: {
-			dark: "#121212",
 			main: "#222222",
-			light: "#272727",
 		},
 
 		secondary: {
 			main: "#F94400",
-			dark: "#BD0000",
-			light: "#FF793A",
 		},
 
 		background: {
@@ -21,11 +18,17 @@ const DarkTheme = createMuiTheme({
 			default: "#121212",
 		},
 
-		text: {
-			primary: "#fff",
-			secondary: "rgba(255, 255, 255, 0.7)",
-			disabled: "rgba(255, 255, 255, 0.5)",
-			hint: "rgba(255, 255, 255, 0.5)",
+		grey: {
+			"50": "#212121",
+			"100": "#424242",
+			"200": "#616161",
+			"300": "#757575",
+			"400": "#9e9e9e",
+			"500": "#bdbdbd",
+			"600": "#e0e0e0",
+			"700": "#eeeeee",
+			"800": "#f5f5f5",
+			"900": "#fafafa",
 		},
 	},
 });
