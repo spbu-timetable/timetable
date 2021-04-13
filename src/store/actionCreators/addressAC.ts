@@ -1,37 +1,37 @@
-import Action from "../../types/Action";
+import { AnyAction } from "redux";
 import Address from "../../types/Address";
 import ACTION from "./ACTION";
 
-function getAddresses(): Action {
-  return { type: ACTION.GET_ADDRESSES };
+function getAddresses(): AnyAction {
+	return { type: ACTION.GET_ADDRESSES };
 }
 
-function setAddresses(addresses: Address[]): Action {
-  return {
-    type: ACTION.SET_ADDRESSES,
-    payload: addresses,
-  };
+function setAddresses(addresses: Address[]): AnyAction {
+	return {
+		type: ACTION.SET_ADDRESSES,
+		payload: addresses,
+	};
 }
 
-function setAddress(address: Address): Action {
-  return {
-    type: ACTION.SET_ADDRESS,
-    payload: address,
-  };
+function setAddress(address: Address): AnyAction {
+	return {
+		type: ACTION.SET_ADDRESS,
+		payload: address,
+	};
 }
 
-function updFilter(filterStr: string): Action {
-  return {
-    type: ACTION.FILTER_ADDRESSES,
-    payload: filterStr,
-  };
+function updFilter(filterStr: string): AnyAction {
+	return {
+		type: ACTION.FILTER_ADDRESSES,
+		payload: filterStr,
+	};
 }
 
-const addressAC = {
-  getAddresses: getAddresses,
-  setAddresses: setAddresses,
-  setAddress: setAddress,
-  updFilter: updFilter,
+const addresses = {
+	getAddresses: getAddresses,
+	setAddresses: setAddresses,
+	setAddress: setAddress,
+	updFilter: updFilter,
 };
 
-export default addressAC;
+export default addresses;

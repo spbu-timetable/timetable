@@ -1,13 +1,13 @@
+import { AnyAction } from "redux";
 import filterSearch from "../../helpers/searchFilter";
 import sortList from "../../helpers/sortList";
-import Action from "../../types/Action";
 import Cabinet from "../../types/Cabinet";
 import CabinetsPage from "../../types/pages/CabinetsPage";
 
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/cabinets";
 
-function cabinets(state: CabinetsPage = initialState, action: Action): CabinetsPage {
+function cabinets(state: CabinetsPage = initialState, action: AnyAction): CabinetsPage {
   switch (action.type) {
     case ACTION.SET_CABINETS:
       return {

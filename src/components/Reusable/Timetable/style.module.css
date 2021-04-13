@@ -9,6 +9,7 @@
 .tools {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	width: 95vw;
 
 	margin: var(--inset4) 0;

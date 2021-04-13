@@ -37,11 +37,11 @@ const Timetable = (props: Props) => {
 				<>
 					<div className={style.tools}>
 						{props.items.length > 1 ? (
-							<Typography variant="h3" color="textPrimary" className={style.header}>
+							<Typography variant="h5" color="textPrimary" className={style.header}>
 								{props.headers[1]}
 							</Typography>
 						) : (
-							<Typography variant="h3" color="textPrimary" className={style.header}>
+							<Typography variant="h5" color="textPrimary" className={style.header}>
 								{props.headers[0] + " " + props.items[0]}
 							</Typography>
 						)}

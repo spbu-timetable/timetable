@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import ACTION from "../actionCreators/ACTION";
-import addressAC from "../actionCreators/addressAC";
+import addresses from "../actionCreators/addressAC";
 import api_address from "./apiAddress";
 
 async function getAddresses() {
@@ -22,7 +22,7 @@ function* workerGetAddresses() {
   const data = yield call(getAddresses);
 
   if (data !== undefined) {
-    yield put(addressAC.setAddresses(data));
+    yield put(addresses.setAddresses(data));
   }
 }
 

@@ -1,9 +1,9 @@
-import { applyMiddleware, CombinedState, combineReducers, createStore, Store } from "redux";
+import { AnyAction, applyMiddleware, CombinedState, combineReducers, createStore, Store } from "redux";
 
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
-import Action from "../types/Action";
+import App from "../types/pages/App";
 import Header from "../types/Header";
 import AddressesPage from "../types/pages/AddressesPage";
 import CabinetsPage from "../types/pages/CabinetsPage";
@@ -13,6 +13,7 @@ import StudyLevelPage from "../types/pages/StudyLevelPage";
 import EducationalProgramPage from "../types/pages/EducationalProgramPage";
 import EducationYearsPage from "../types/pages/EducationYearsPage";
 
+import app from "./reducers/app";
 import header from "./reducers/header";
 import addresses from "./reducers/addresses";
 import cabinets from "./reducers/cabinets";
@@ -37,34 +38,36 @@ import watchGetGroupsTimetable from "./sagas/getGroupsTimetable";
 import watchGetEducatorsTimetable from "./sagas/getEducatorTimetable";
 
 const reducers = combineReducers({
-  header: header,
-  addresses: addresses,
-  cabinets: cabinets,
-  educators: educators,
-  faculties: faculties,
-  studyLevels: studyLevels,
-  educationalPrograms: educationalPrograms,
-  educationYears: educationYears,
-  groups: groups,
-  timetable: timetable,
+	app: app,
+	header: header,
+	addresses: addresses,
+	cabinets: cabinets,
+	educators: educators,
+	faculties: faculties,
+	studyLevels: studyLevels,
+	educationalPrograms: educationalPrograms,
+	educationYears: educationYears,
+	groups: groups,
+	timetable: timetable,
 });
 
 const saga = createSagaMiddleware();
 
 let store: Store<
-  CombinedState<{
-    header: Header;
-    addresses: AddressesPage;
-    cabinets: CabinetsPage;
-    educators: EducatorsPage;
-    faculties: FacultiesPage;
-    studyLevels: StudyLevelPage;
-    educationalPrograms: EducationalProgramPage;
-    educationYears: EducationYearsPage;
-    groups: GroupsPage;
-    timetable: TimetablePage;
-  }>,
-  Action
+	CombinedState<{
+		app: App;
+		header: Header;
+		addresses: AddressesPage;
+		cabinets: CabinetsPage;
+		educators: EducatorsPage;
+		faculties: FacultiesPage;
+		studyLevels: StudyLevelPage;
+		educationalPrograms: EducationalProgramPage;
+		educationYears: EducationYearsPage;
+		groups: GroupsPage;
+		timetable: TimetablePage;
+	}>,
+	AnyAction
 > = createStore(reducers, applyMiddleware(logger, saga));
 
 saga.run(watchGetAddresses);

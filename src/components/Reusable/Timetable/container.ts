@@ -1,25 +1,23 @@
 import { connect } from "react-redux";
-import { CombinedState } from "redux";
+import { AnyAction, CombinedState } from "redux";
 import Timetable from ".";
-import timetableAC from "../../../store/actionCreators/timetable";
-import Action from "../../../types/Action";
 import TimetablePage from "../../../types/pages/TimetablePage";
 
 function mapStateToProps(
-  state: CombinedState<{
-    timetable: TimetablePage;
-  }>
+	state: CombinedState<{
+		timetable: TimetablePage;
+	}>
 ) {
-  return {
-    didGet: state.timetable.didGet,
-    items: state.timetable.items,
-    timetable: state.timetable.timetable,
-    headers: state.timetable.headers,
-  };
+	return {
+		didGet: state.timetable.didGet,
+		items: state.timetable.items,
+		timetable: state.timetable.timetable,
+		headers: state.timetable.headers,
+	};
 }
 
-function mapDispatchToProps(dispatch: (action: Action) => void) {
-  return {};
+function mapDispatchToProps(dispatch: (action: AnyAction) => void) {
+	return {};
 }
 
 const CabinetsContainer = connect(mapStateToProps, mapDispatchToProps)(Timetable);

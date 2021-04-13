@@ -1,31 +1,31 @@
-import Action from "../../types/Action";
+import { AnyAction } from "redux";
 import ACTION from "./ACTION";
 
-function setButtonTitle(title: string): Action {
-  return {
-    type: ACTION.SET_HEADER_BUTTON_TITLE,
-    payload: title,
-  };
+function setButtonTitle(title: string): AnyAction {
+	return {
+		type: ACTION.SET_HEADER_BUTTON_TITLE,
+		payload: title,
+	};
 }
 
-function setWeek(date: Date): Action {
-  return {
-    type: ACTION.SET_WEEK,
-    payload: date,
-  };
+function setWeek(date: Date): AnyAction {
+	return {
+		type: ACTION.SET_WEEK,
+		payload: date,
+	};
 }
 
-function setLang(isRussian: boolean): Action {
-  return {
-    type: ACTION.SET_LANG,
-    payloaf: isRussian,
-  };
+function setLang(isRussian: boolean): AnyAction {
+	return {
+		type: ACTION.SET_LANG,
+		payloaf: isRussian,
+	};
 }
 
 const headerAC = {
-  setButtonTitle: setButtonTitle,
-  setWeek: setWeek,
-  setLang: setLang,
+	setButtonTitle: setButtonTitle,
+	setWeek: setWeek,
+	setLang: setLang,
 };
 
 export default headerAC;

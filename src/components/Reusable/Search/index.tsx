@@ -42,15 +42,15 @@ const StyledTextField = withStyles(({ palette, shadows }) => ({
 		"& .MuiOutlinedInput-root": {
 			"& fieldset": {
 				borderWidth: 1,
-				borderColor: palette.grey[300],
+				borderColor: palette.grey[100],
 			},
 			"&:hover fieldset": {
 				borderWidth: 1,
-				borderColor: palette.grey[300],
+				borderColor: palette.grey[100],
 			},
 			"&.Mui-focused fieldset": {
 				borderWidth: 1,
-				borderColor: palette.grey[300],
+				borderColor: palette.grey[100],
 			},
 		},
 	},

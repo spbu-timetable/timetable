@@ -1,29 +1,27 @@
 import { connect } from "react-redux";
 import { AnyAction, CombinedState } from "redux";
 import Component from ".";
-import header from "../../store/actionCreators/headerAC";
-import Header from "../../types/Header";
+import AddressesPage from "../../../types/pages/AddressesPage";
+import addresses from "../../../store/actionCreators/addressAC";
+import app from "../../../store/actionCreators/app";
 
 function mapStateToProps(
 	state: CombinedState<{
-		header: Header;
+		addresses: AddressesPage;
 	}>
 ) {
 	return {
-		week: state.header.week.toDateString(),
-
-		fromDateStr: state.header.fromDateStr,
-		toDateStr: state.header.toDateStr,
+		didGetAddresses: state.addresses.didGet,
 	};
 }
 
 function mapDispatchToProps(dispatch: (action: AnyAction) => void) {
 	return {
-		setWeek: (date: Date) => {
-			dispatch(header.setWeek(date));
+		getAddresses: () => {
+			dispatch(addresses.getAddresses());
 		},
-		setLang: (isRussian: boolean) => {
-			dispatch(header.setLang(isRussian));
+		startLoader: () => {
+			dispatch(app.setLoader());
 		},
 	};
 }

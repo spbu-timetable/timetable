@@ -6,14 +6,14 @@ import Typography from "@material-ui/core/Typography";
 type Props = {
 	className?: string;
 	title: string;
-	link: string;
+	onClick?: (...args: any[]) => void;
 };
 
 const HugeButton = (props: Props) => {
 	const history = useHistory();
 
 	return (
-		<div className={style.wrapper + " " + props.className} onClick={() => history.push(props.link)}>
+		<div className={style.wrapper + " " + props.className} onClick={props.onClick}>
 			<Typography className={style.title} color="textPrimary">
 				{props.title}
 			</Typography>

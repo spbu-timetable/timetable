@@ -4,7 +4,7 @@ import Addresses from "./Addresses/container";
 import Cabinets from "./Cabinets/container";
 import Faculties from "./Faculties/container";
 import Groups from "./Faculties/StudyLevels/EducationProgram/EducationYears/Groups/container";
-import Main from "./Main";
+import Main from "./Main/container";
 import style from "./style.module.css";
 import Educators from "./Educators/container";
 import Timetable from "../Reusable/Timetable/container";
