@@ -13,11 +13,11 @@ function mapStateToProps(
 	}>
 ) {
 	return {
-		oid: state.faculties.selected_faculty!.Alias,
+		oid: state.faculties.selected!.Alias,
 		didGet: state.studyLevels.didGet,
 		filter_value: state.studyLevels.filter_value,
-		studyLevels: state.studyLevels.studyLevels,
-		filtered_studyLevels: state.studyLevels.filtered_studyLevels,
+		studyLevels: state.studyLevels.levels,
+		filtered_studyLevels: state.studyLevels.filtered,
 	};
 }
 

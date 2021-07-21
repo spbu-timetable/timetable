@@ -4,9 +4,9 @@ type StudyLevelPage = {
   didGet: boolean;
   filter_value: string;
 
-  studyLevels: StudyLevel[];
-  filtered_studyLevels: StudyLevel[];
-  selected_studyLevel?: StudyLevel;
+  levels: StudyLevel[];
+  filtered: StudyLevel[];
+  selected?: StudyLevel;
 };
 
 export default StudyLevelPage;

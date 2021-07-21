@@ -4,9 +4,9 @@ type EducationYearsPage = {
   didGet: boolean;
   filter_value: string;
 
-  ed_years: EducationYear[];
-  filtered_ed_years: EducationYear[];
-  selected_ed_year?: EducationYear;
+  years: EducationYear[];
+  filtered: EducationYear[];
+  selected?: EducationYear;
 };
 
 export default EducationYearsPage;

@@ -5,10 +5,10 @@ const EducationalPrograms: EducationalProgramPage = {
   didGet: false,
   filter_value: "",
 
-  ed_programs: [],
-  filtered_ed_programs: [],
+  programs: [],
+  filtered: [],
 
-  selected_ed_program: EducationalProgramLocalStorage.set(),
+  selected: EducationalProgramLocalStorage.set(),
 };
 
 export default EducationalPrograms;

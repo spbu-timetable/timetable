@@ -1,11 +1,9 @@
 .wrapper {
-	margin-top: 64px;
 	min-height: calc(100vh - 120px);
 }
 
 @media screen and (max-width: 600) {
 	.wrapper {
-		margin-top: 56px;
 		min-height: calc(100vh - 112px);
 	}
 }

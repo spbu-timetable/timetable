@@ -8,12 +8,17 @@ function cabinets(state: App = initialState, action: AnyAction): App {
 		case ACTION.SET_LOADER:
 			return {
 				...state,
-				isLoader: true,
+				isLoading: true,
 			};
 		case ACTION.STOP_LOADER:
 			return {
 				...state,
-				isLoader: false,
+				isLoading: false,
+			};
+		case ACTION.SET_LAYOUT:
+			return {
+				...state,
+				isMobile: action.payload,
 			};
 	}
 

@@ -13,7 +13,7 @@ function educationalPrograms(state: EducationalProgramPage = initialState, actio
 			return {
 				...state,
 				didGet: true,
-				ed_programs: action.payload.StudyProgramCombinations.sort((a: EducationalProgram, b: EducationalProgram) =>
+				programs: action.payload.StudyProgramCombinations.sort((a: EducationalProgram, b: EducationalProgram) =>
 					sortList(a.Name, b.Name)
 				),
 			};
@@ -21,7 +21,7 @@ function educationalPrograms(state: EducationalProgramPage = initialState, actio
 			return {
 				...state,
 				didGet: true,
-				ed_programs: [...action.payload].sort((a: EducationalProgram, b: EducationalProgram) =>
+				programs: [...action.payload].sort((a: EducationalProgram, b: EducationalProgram) =>
 					sortList(a.Name, b.Name)
 				),
 			};
@@ -29,21 +29,21 @@ function educationalPrograms(state: EducationalProgramPage = initialState, actio
 			return {
 				...state,
 				didGet: false,
-				ed_programs: [],
-				selected_ed_program: undefined,
+				programs: [],
+				selected: undefined,
 			};
 		case ACTION.SET_EDUCTIONALPROGRAM:
 			EducationalProgramLocalStorage.save(action.payload);
 			return {
 				...state,
-				selected_ed_program: action.payload,
+				selected: action.payload,
 			};
 
 		case ACTION.FILTER_EDUCATIONALPROGRAMS:
 			return {
 				...state,
 				filter_value: action.payload,
-				filtered_ed_programs: filterSearch(state.ed_programs, action.payload),
+				filtered: filterSearch(state.programs, action.payload),
 			};
 	}
 

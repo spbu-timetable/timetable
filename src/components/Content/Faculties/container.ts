@@ -15,7 +15,7 @@ function mapStateToProps(
 		filter_value: state.faculties.filter_value,
 
 		faculties: state.faculties.faculties,
-		filtered_faculties: state.faculties.filtered_faculties,
+		filtered_faculties: state.faculties.filtered,
 	};
 }
 

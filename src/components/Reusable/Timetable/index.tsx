@@ -8,11 +8,11 @@ import Button from "@material-ui/core/Button/Button";
 import Print from "@material-ui/icons/Print";
 import printStyle from "./pagePrintStyle";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 
 type Props = {
-	didGet: boolean;
+	received: boolean;
 	items: string[];
 	timetable: any;
 	headers: string[];
@@ -20,20 +20,32 @@ type Props = {
 
 const Timetable = (props: Props) => {
 	const history = useHistory();
+	const location = useLocation();
+	const params = useParams<any>();
+	const section = location.pathname.split("/")[1];
+	console.log(`SECTION:${section}`);
 
-	React.useEffect(() => {
-		if (props.items.length === 0) {
-			history.goBack();
-		}
-	}, [props.items, history]);
+	switch (section) {
+		case "addresses":
+			const { addressID, cabinets } = params;
+			console.log(`ADDRESS_ID:${addressID}`);
+			console.log(`CABINETS:${cabinets}`);
+			break;
+		case "teachers":
+			break;
+		case "faculties":
+			break;
+	}
+
+	console.log("timetable");
 
 	const componentRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
 
-	const timetable = props.didGet ? createTimetable(props.timetable, props.items) : [];
+	const timetable = props.received ? createTimetable(props.timetable, props.items) : [];
 
 	return (
 		<div className={style.wrapper}>
-			{props.didGet ? (
+			{props.received ? (
 				<>
 					<div className={style.tools}>
 						{props.items.length > 1 ? (
@@ -71,7 +83,7 @@ const Timetable = (props: Props) => {
 					<div ref={componentRef}>{timetable}</div>
 				</>
 			) : (
-				<CircularProgress color="secondary" />
+				<></>
 			)}
 		</div>
 	);

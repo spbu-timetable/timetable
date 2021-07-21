@@ -13,7 +13,7 @@ function educationYears(state: EducationYearsPage = initialState, action: AnyAct
 			return {
 				...state,
 				didGet: true,
-				ed_years: action.payload.AdmissionYears.sort((a: EducationYear, b: EducationYear) =>
+				years: action.payload.AdmissionYears.sort((a: EducationYear, b: EducationYear) =>
 					sortList(a.YearName, b.YearName)
 				),
 			};
@@ -21,20 +21,20 @@ function educationYears(state: EducationYearsPage = initialState, action: AnyAct
 			return {
 				...state,
 				didGet: true,
-				ed_years: [...action.payload].sort((a: EducationYear, b: EducationYear) => sortList(a.YearName, b.YearName)),
+				years: [...action.payload].sort((a: EducationYear, b: EducationYear) => sortList(a.YearName, b.YearName)),
 			};
 		case ACTION.SET_EDUCATIONYEAR:
 			EducationYearLocalStorage.save(action.payload);
 			return {
 				...state,
-				selected_ed_year: action.payload,
+				selected: action.payload,
 			};
 
 		case ACTION.FILTER_EDUCATIONYEARS:
 			return {
 				...state,
 				filter_value: action.payload,
-				filtered_ed_years: filterSearch(state.ed_years, action.payload),
+				filtered: filterSearch(state.years, action.payload),
 			};
 	}
 

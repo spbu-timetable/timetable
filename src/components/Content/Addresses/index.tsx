@@ -1,33 +1,43 @@
 import React from "react";
-import SearchListPage from "../../Reusable/SearchListPage";
 
 import Address from "../../../types/Address";
+import getObjectID from "../../../helpers/getObjectID";
+import SearchList from "../../Reusable/SearchList";
+import { useHistory } from "react-router-dom";
 
 type Props = {
-	didGet: boolean;
-	addresses: Address[];
-	filtered_addresses: Address[];
-	filter_value: string;
+	received: boolean;
+	filtered: Address[];
+	filterValue: string;
 
-	getAddresses: () => void;
-	setAddress: (address: Address) => void;
+	startLoading: () => void;
+	stopLoading: () => void;
+
+	get: () => void;
+	set: (address: Address) => void;
+	setAddressID: (id: string) => void;
 	updFilter: (filterStr: string) => void;
 };
 
 const Addresses = (props: Props) => {
+	const history = useHistory();
+
+	const goNext = (address: Address) => {
+		props.setAddressID(getObjectID(address));
+		props.set(address);
+		history.push(`/addresses/${address.Oid}`);
+	};
+
 	return (
-		<SearchListPage
-			didGet={props.didGet}
-			url_to_push={"/addresses/cabinets"}
-			items={props.addresses}
-			filtered_items={props.filtered_addresses}
-			filter_value={props.filter_value}
-			header_text={"Адрес"}
-			banner_main_text={"Адрес не найден"}
-			banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
-			getItems={props.getAddresses}
-			setItem={props.setAddress}
+		<SearchList
+			received={props.received}
+			items={props.filtered}
+			get={props.get}
+			goNext={goNext}
+			filterValue={props.filterValue}
 			updFilter={props.updFilter}
+			startLoading={props.startLoading}
+			stopLoading={props.stopLoading}
 		/>
 	);
 };

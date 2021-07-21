@@ -21,13 +21,13 @@ function timetable(state: TimetablePage = initialState, action: AnyAction): Time
 		case ACTION.FINISH_FETCHING_TIMETABLE:
 			return {
 				...state,
-				didGet: true,
+				received: true,
 			};
 
 		case ACTION.CLEAN_TIMETABLE:
 			return {
 				...state,
-				didGet: false,
+				received: false,
 			};
 	}
 

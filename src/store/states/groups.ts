@@ -5,8 +5,8 @@ const groups: GroupsPage = {
   filter_value: "",
 
   groups: [],
-  filtered_groups: [],
-  selected_groups: [],
+  filtered: [],
+  selected: [],
 };
 
 export default groups;

@@ -9,7 +9,7 @@ function mapStateToProps(
 	}>
 ) {
 	return {
-		didGet: state.timetable.didGet,
+		received: state.timetable.received,
 		items: state.timetable.items,
 		timetable: state.timetable.timetable,
 		headers: state.timetable.headers,

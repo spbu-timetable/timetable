@@ -4,9 +4,9 @@ type EducationalProgramPage = {
   didGet: boolean;
   filter_value: string;
 
-  ed_programs: EducationalProgram[];
-  filtered_ed_programs: EducationalProgram[];
-  selected_ed_program?: EducationalProgram;
+  programs: EducationalProgram[];
+  filtered: EducationalProgram[];
+  selected?: EducationalProgram;
 };
 
 export default EducationalProgramPage;

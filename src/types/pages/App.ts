@@ -1,5 +1,6 @@
 type App = {
-	isLoader: boolean;
+	isLoading: boolean;
+	isMobile: boolean;
 };
 
 export default App;

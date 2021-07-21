@@ -3,7 +3,7 @@
  * @returns id of the object
  * */
 
-function getObjectId(object: any): string {
+function getObjectID(object: any): string {
   if (object.Oid !== undefined) {
     return object.Oid;
   } else if (object.Id !== undefined) {
@@ -15,4 +15,4 @@ function getObjectId(object: any): string {
   }
 }
 
-export default getObjectId;
+export default getObjectID;

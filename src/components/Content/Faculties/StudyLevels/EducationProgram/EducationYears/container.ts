@@ -16,10 +16,10 @@ function mapStateToProps(
 	return {
 		didGet: state.educationYears.didGet,
 
-		selected_ed_program: state.educationalPrograms.selected_ed_program!,
+		selected_ed_program: state.educationalPrograms.selected!,
 		filter_value: state.educationYears.filter_value,
-		ed_years: state.educationYears.ed_years,
-		filtered_ed_years: state.educationYears.filtered_ed_years,
+		ed_years: state.educationYears.years,
+		filtered_ed_years: state.educationYears.filtered,
 	};
 }
 

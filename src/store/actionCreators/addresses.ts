@@ -28,9 +28,9 @@ function updFilter(filterStr: string): AnyAction {
 }
 
 const addresses = {
-	getAddresses: getAddresses,
+	get: getAddresses,
 	setAddresses: setAddresses,
-	setAddress: setAddress,
+	set: setAddress,
 	updFilter: updFilter,
 };
 

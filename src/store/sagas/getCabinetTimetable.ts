@@ -3,7 +3,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import ACTION from "../actionCreators/ACTION";
 import formatDateToRequest from "../../helpers/formatDateToRequest";
 import timetableAC from "../actionCreators/timetable";
-import getObjectId from "../../helpers/getObjectId";
+import getObjectID from "../../helpers/getObjectID";
 import getObjectName from "../../helpers/getObjectName";
 import sortTimetableDays from "../../helpers/sortTimetableDays";
 import api_address from "./apiAddress";
@@ -41,7 +41,7 @@ function* workerGetClassroomEventsDays(action: AnyAction) {
 	for (let i = 0; i < cabinet_names.length; i++) {
 		const data = yield call(
 			getClassroomEventsDays,
-			getObjectId(action.payload.selected_cabinets[i]),
+			getObjectID(action.payload.selected_cabinets[i]),
 			startDateStr,
 			endDateStr
 		);

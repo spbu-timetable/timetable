@@ -20,14 +20,14 @@ function groups(state: GroupsPage = initialState, action: AnyAction): GroupsPage
 				...state,
 				didGet: false,
 				groups: [],
-				selected_groups: [],
+				selected: [],
 			};
 
 		case ACTION.SELECT_GROUP:
-			if (!state.selected_groups.includes(action.payload) /*&& state.selected_groups.length < 4*/) {
+			if (!state.selected.includes(action.payload) /*&& state.selected_groups.length < 4*/) {
 				return {
 					...state,
-					selected_groups: [...state.selected_groups, action.payload].sort((a: Group, b: Group) =>
+					selected: [...state.selected, action.payload].sort((a: Group, b: Group) =>
 						sortList(a.StudentGroupName, b.StudentGroupName)
 					),
 				};
@@ -35,9 +35,9 @@ function groups(state: GroupsPage = initialState, action: AnyAction): GroupsPage
 			break;
 
 		case ACTION.DESELECT_GROUP:
-			for (let i = 0; i < state.selected_groups.length; i++) {
-				if (action.payload === state.selected_groups[i]) {
-					state.selected_groups.splice(i, 1);
+			for (let i = 0; i < state.selected.length; i++) {
+				if (action.payload === state.selected[i]) {
+					state.selected.splice(i, 1);
 				}
 			}
 			return {
@@ -48,7 +48,7 @@ function groups(state: GroupsPage = initialState, action: AnyAction): GroupsPage
 			return {
 				...state,
 				filter_value: action.payload,
-				filtered_groups: filterSearch(state.groups, action.payload),
+				filtered: filterSearch(state.groups, action.payload),
 			};
 	}
 

@@ -3,13 +3,17 @@ import { AnyAction, CombinedState } from "redux";
 import Component from ".";
 import header from "../../store/actionCreators/headerAC";
 import Header from "../../types/Header";
+import App from "../../types/pages/App";
 
 function mapStateToProps(
 	state: CombinedState<{
 		header: Header;
+		app: App;
 	}>
 ) {
 	return {
+		isLoading: state.app.isLoading,
+
 		week: state.header.week.toDateString(),
 
 		fromDateStr: state.header.fromDateStr,

@@ -6,7 +6,7 @@ import Search from "../Search";
 import ItemsList from "./ItemsList";
 
 import getObjectName from "../../../helpers/getObjectName";
-import getObjectId from "../../../helpers/getObjectId";
+import getObjectID from "../../../helpers/getObjectID";
 
 import Chip from "@material-ui/core/Chip";
 import setListItems from "./setListItems";
@@ -68,7 +68,7 @@ function SearchListPage(props: Props) {
   let selected_items_component;
   if (props.selected_items !== undefined) {
     selected_items_component = props.selected_items.map((item: any) => (
-      <Chip key={getObjectId(item)} label={getObjectName(item)} className={style.chip} onDelete={handleDelete(item)} />
+      <Chip key={getObjectID(item)} label={getObjectName(item)} className={style.chip} onDelete={handleDelete(item)} />
     ));
   }
 

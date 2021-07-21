@@ -5,7 +5,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/styles";
 
 import React from "react";
-import style from "./style.module.css";
 
 type Props = {
 	className?: string;
@@ -18,7 +17,7 @@ type Props = {
 const useStyles = makeStyles((theme) => ({
 	textField: {
 		width: 700,
-		maxWidth: "90vw",
+		maxWidth: "calc(100vw - 32px)",
 		borderWidth: 1,
 		borderRadius: 4,
 		borderStyle: "solid",
@@ -42,15 +41,15 @@ const StyledTextField = withStyles(({ palette, shadows }) => ({
 		"& .MuiOutlinedInput-root": {
 			"& fieldset": {
 				borderWidth: 1,
-				borderColor: palette.grey[100],
+				borderColor: palette.grey[300],
 			},
 			"&:hover fieldset": {
 				borderWidth: 1,
-				borderColor: palette.grey[100],
+				borderColor: palette.grey[300],
 			},
 			"&.Mui-focused fieldset": {
 				borderWidth: 1,
-				borderColor: palette.grey[100],
+				borderColor: palette.grey[300],
 			},
 		},
 	},

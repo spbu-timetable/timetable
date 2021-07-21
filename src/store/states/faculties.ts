@@ -6,9 +6,9 @@ const faculties: FacultiesPage = {
   filter_value: "",
 
   faculties: [],
-  filtered_faculties: [],
+  filtered: [],
 
-  selected_faculty: FacultyLocalStorage.set(),
+  selected: FacultyLocalStorage.set(),
 };
 
 export default faculties;

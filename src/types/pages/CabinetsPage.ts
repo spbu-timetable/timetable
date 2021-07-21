@@ -1,12 +1,14 @@
 import Cabinet from "../Cabinet";
 
 type CabinetsPage = {
-  didGet: boolean;
-  filter_value: string;
+	addressID: string;
 
-  cabinets: Cabinet[];
-  filtered_cabinets: Cabinet[];
-  selected_cabinets: Cabinet[];
+	received: Map<string, boolean>;
+	filterValue: string;
+
+	cabinets: Map<string, Cabinet[]>;
+	filtered: Cabinet[];
+	selected: Cabinet[];
 };
 
 export default CabinetsPage;

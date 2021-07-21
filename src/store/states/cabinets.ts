@@ -1,12 +1,14 @@
 import CabinetsPage from "../../types/pages/CabinetsPage";
 
 const cabinets: CabinetsPage = {
-  didGet: false,
-  filter_value: "",
+	addressID: "",
 
-  cabinets: [],
-  filtered_cabinets: [],
-  selected_cabinets: [],
+	received: new Map(),
+	filterValue: "",
+
+	cabinets: new Map(),
+	filtered: [],
+	selected: [],
 };
 
 export default cabinets;

@@ -5,8 +5,8 @@ type FacultiesPage = {
   filter_value: string;
 
   faculties: Faculty[];
-  filtered_faculties: Faculty[];
-  selected_faculty?: Faculty;
+  filtered: Faculty[];
+  selected?: Faculty;
 };
 
 export default FacultiesPage;

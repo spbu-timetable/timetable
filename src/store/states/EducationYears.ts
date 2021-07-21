@@ -5,10 +5,10 @@ const EducationalPrograms: EducationalYearsPage = {
   didGet: false,
   filter_value: "",
 
-  ed_years: [],
-  filtered_ed_years: [],
+  years: [],
+  filtered: [],
 
-  selected_ed_year: EducationYearLocalStorage.set(),
+  selected: EducationYearLocalStorage.set(),
 };
 
 export default EducationalPrograms;

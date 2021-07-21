@@ -1,9 +1,10 @@
 import Axios from "axios";
 import { AnyAction } from "redux";
 import { call, put, takeEvery } from "redux-saga/effects";
+import Cabinet from "../../types/Cabinet";
 
 import ACTION from "../actionCreators/ACTION";
-import cabinetAC from "../actionCreators/cabinetAC";
+import cabinets from "../actionCreators/cabinets";
 import api_address from "./apiAddress";
 
 async function getCabinets(oid: string) {
@@ -24,7 +25,7 @@ function* workerGetCabinets(action: AnyAction) {
 	const data = yield call(getCabinets, action.payload);
 
 	if (data !== undefined) {
-		yield put(cabinetAC.setCabinets(data));
+		yield put(cabinets.set(action.payload, data));
 	}
 }
 

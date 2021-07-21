@@ -1,14 +1,11 @@
-import AddressLocalStorage from "../../localStorage/address";
 import AddressesPage from "../../types/pages/AddressesPage";
 
 const addresses: AddressesPage = {
-  didGet: false,
-  filter_value: "",
+	received: false,
+	filterValue: "",
 
-  addresses: [],
-  filtered_addresses: [],
-
-  selected_address: AddressLocalStorage.set(),
+	addresses: [],
+	filtered: [],
 };
 
 export default addresses;

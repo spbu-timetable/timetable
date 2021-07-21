@@ -8,54 +8,53 @@ import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/cabinets";
 
 function cabinets(state: CabinetsPage = initialState, action: AnyAction): CabinetsPage {
-  switch (action.type) {
-    case ACTION.SET_CABINETS:
-      return {
-        ...state,
-        didGet: true,
-        cabinets: [...action.payload].sort((a: Cabinet, b: Cabinet) =>
-          sortList(a.DisplayName1, b.DisplayName1)
-        ),
-      };
-    case ACTION.CLEAN_CABINETS:
-      return {
-        ...state,
-        didGet: false,
-        cabinets: [],
-        selected_cabinets: [],
-      };
+	switch (action.type) {
+		case ACTION.SET_CABINETS:
+			const sortedCabinets = [...action.payload.cabinets].sort((a: Cabinet, b: Cabinet) =>
+				sortList(a.DisplayName1, b.DisplayName1)
+			);
+			return {
+				...state,
+				received: state.received.set(action.payload.addressID, true),
+				cabinets: state.cabinets.set(action.payload.addressID, [...sortedCabinets]),
+				filtered: [...sortedCabinets],
+			};
 
-    case ACTION.SELECT_CABINET:
-      if (!state.selected_cabinets.includes(action.payload) /*&& state.selected_cabinets.length < 4*/) {
-        return {
-          ...state,
-          selected_cabinets: [
-            ...state.selected_cabinets,
-            action.payload,
-          ].sort((a: Cabinet, b: Cabinet) => sortList(a.DisplayName1, b.DisplayName1)),
-        };
-      }
-      break;
+		case ACTION.SET_ADDRESS_ID:
+			return {
+				...state,
+				addressID: action.payload,
+			};
 
-    case ACTION.DESELECT_CABINET:
-      for (let i = 0; i < state.selected_cabinets.length; i++) {
-        if (action.payload === state.selected_cabinets[i]) {
-          state.selected_cabinets.splice(i, 1);
-        }
-      }
-      return {
-        ...state,
-      };
+		case ACTION.SELECT_CABINET:
+			if (!state.selected.includes(action.payload)) {
+				return {
+					...state,
+					selected: [...state.selected, action.payload].sort((a: Cabinet, b: Cabinet) =>
+						sortList(a.DisplayName1, b.DisplayName1)
+					),
+				};
+			}
+			break;
 
-    case ACTION.FILTER_CABINETS:
-      return {
-        ...state,
-        filter_value: action.payload,
-        filtered_cabinets: filterSearch(state.cabinets, action.payload),
-      };
-  }
+		case ACTION.DESELECT_CABINET:
+			const selected = [...state.selected];
+			for (let i = 0; i < selected.length; i++) if (action.payload === selected[i]) selected.splice(i, 1);
 
-  return state;
+			return {
+				...state,
+				selected: [...selected],
+			};
+
+		case ACTION.FILTER_CABINETS:
+			return {
+				...state,
+				filterValue: action.payload.filter,
+				filtered: filterSearch(state.cabinets.get(action.payload.address), action.payload.filter),
+			};
+	}
+
+	return state;
 }
 
 export default cabinets;

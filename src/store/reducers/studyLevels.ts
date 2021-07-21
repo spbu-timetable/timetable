@@ -14,7 +14,7 @@ function studyLevels(state: StudyLevelPage = initialState, action: AnyAction): S
 			return {
 				...state,
 				didGet: true,
-				studyLevels: [...action.payload].sort((a: StudyLevel, b: StudyLevel) =>
+				levels: [...action.payload].sort((a: StudyLevel, b: StudyLevel) =>
 					sortList(a.StudyLevelName, b.StudyLevelName)
 				),
 			};
@@ -22,20 +22,20 @@ function studyLevels(state: StudyLevelPage = initialState, action: AnyAction): S
 			StudyLevelLocalStorage.save(action.payload);
 			return {
 				...state,
-				selected_studyLevel: action.payload,
+				selected: action.payload,
 			};
 		case ACTION.CLEAN_STUDYLEVELS:
 			return {
 				...state,
 				didGet: false,
-				studyLevels: [],
-				selected_studyLevel: undefined,
+				levels: [],
+				selected: undefined,
 			};
 		case ACTION.FILTER_STUDYLEVELS:
 			return {
 				...state,
 				filter_value: action.payload,
-				filtered_studyLevels: filterSearch(state.studyLevels, action.payload),
+				filtered: filterSearch(state.levels, action.payload),
 			};
 	}
 

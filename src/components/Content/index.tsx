@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Addresses from "./Addresses/container";
-import Cabinets from "./Cabinets/container";
+import Cabinets from "./Addresses/Cabinets/container";
 import Faculties from "./Faculties/container";
 import Groups from "./Faculties/StudyLevels/EducationProgram/EducationYears/Groups/container";
 import Main from "./Main/container";
@@ -16,9 +16,10 @@ const Content = () => {
 	return (
 		<div className={style.wrapper}>
 			<Switch>
-				<Route path="/timetable" component={() => <Timetable />} />
+				{/* <Route path="/timetable" component={() => <Timetable />} /> */}
 
-				<Route path="/addresses/cabinets" component={() => <Cabinets />} />
+				<Route path="/addresses/:addressID/:cabinets" component={() => <Timetable />} />
+				<Route path="/addresses/:addressID" component={() => <Cabinets />} />
 
 				<Route path="/teachers" component={() => <Educators />} />
 

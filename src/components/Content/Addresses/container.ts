@@ -3,36 +3,51 @@ import { AnyAction, CombinedState } from "redux";
 import Component from ".";
 import Address from "../../../types/Address";
 import AddressesPage from "../../../types/pages/AddressesPage";
-import addresses from "../../../store/actionCreators/addressAC";
+import addresses from "../../../store/actionCreators/addresses";
+import app from "../../../store/actionCreators/app";
+import App from "../../../types/pages/App";
+import cabinets from "../../../store/actionCreators/cabinets";
 
 function mapStateToProps(
 	state: CombinedState<{
 		addresses: AddressesPage;
+		app: App;
 	}>
 ) {
 	return {
-		didGet: state.addresses.didGet,
-		filter_value: state.addresses.filter_value,
+		received: state.addresses.received,
+		filterValue: state.addresses.filterValue,
 
 		addresses: state.addresses.addresses,
-		filtered_addresses: state.addresses.filtered_addresses,
+		filtered: state.addresses.filtered,
 	};
 }
 
 function mapDispatchToProps(dispatch: (action: AnyAction) => void) {
 	return {
-		getAddresses: () => {
-			dispatch(addresses.getAddresses());
+		get: () => {
+			dispatch(addresses.get());
 		},
-		setAddress: (address: Address) => {
-			dispatch(addresses.setAddress(address));
+
+		set: (address: Address) => {
+			dispatch(addresses.set(address));
 		},
+
+		setAddressID: (id: string) => {
+			dispatch(cabinets.setAddressID(id));
+		},
+
 		updFilter: (filterStr: string) => {
 			dispatch(addresses.updFilter(filterStr));
 		},
-		// cleanState: () => {
-		//   dispatch(addressAC.setAddress)
-		// }
+
+		startLoading: () => {
+			dispatch(app.setLoader());
+		},
+
+		stopLoading: () => {
+			dispatch(app.stopLoader());
+		},
 	};
 }
 

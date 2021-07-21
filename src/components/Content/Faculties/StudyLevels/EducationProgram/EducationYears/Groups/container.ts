@@ -16,13 +16,13 @@ function mapStateToProps(
 	}>
 ) {
 	return {
-		oid: String(state.educationYears.selected_ed_year!.StudyProgramId),
+		oid: String(state.educationYears.selected!.StudyProgramId),
 		filter_value: state.groups.filter_value,
 
 		didGet: state.groups.didGet,
 		groups: state.groups.groups,
-		filtered_groups: state.groups.filtered_groups,
-		selected_groups: state.groups.selected_groups,
+		filtered_groups: state.groups.filtered,
+		selected_groups: state.groups.selected,
 
 		fromDate: state.header.fromDate,
 		toDate: state.header.toDate,

@@ -5,8 +5,8 @@ type GroupsPage = {
   filter_value: string;
 
   groups: Group[];
-  filtered_groups: Group[];
-  selected_groups: Group[];
+  filtered: Group[];
+  selected: Group[];
 };
 
 export default GroupsPage;

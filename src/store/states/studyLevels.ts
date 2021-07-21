@@ -5,10 +5,10 @@ const studyLevels: StudyLevelPage = {
   didGet: false,
   filter_value: "",
 
-  studyLevels: [],
-  filtered_studyLevels: [],
+  levels: [],
+  filtered: [],
 
-  selected_studyLevel: StudyLevelLocalStorage.set(),
+  selected: StudyLevelLocalStorage.set(),
 };
 
 export default studyLevels;

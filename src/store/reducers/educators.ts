@@ -9,20 +9,20 @@ function educators(state: EducatorsPage = initialState, action: AnyAction): Educ
 			return {
 				...state,
 				didGet: true,
-				filtered_educators: action.payload,
+				filtered: action.payload,
 			};
 		case ACTION.SELECT_EDUCATOR:
-			if (!state.selected_educators.includes(action.payload) /* && state.selected_educators.length < 4*/) {
+			if (!state.selected.includes(action.payload) /* && state.selected_educators.length < 4*/) {
 				return {
 					...state,
-					selected_educators: [...state.selected_educators, action.payload],
+					selected: [...state.selected, action.payload],
 				};
 			}
 			break;
 		case ACTION.DESELECT_EDUCATOR:
-			for (let i = 0; i < state.selected_educators.length; i++) {
-				if (action.payload === state.selected_educators[i]) {
-					state.selected_educators.splice(i, 1);
+			for (let i = 0; i < state.selected.length; i++) {
+				if (action.payload === state.selected[i]) {
+					state.selected.splice(i, 1);
 				}
 			}
 			return {

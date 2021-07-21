@@ -4,8 +4,8 @@ type EducatorsPage = {
   didGet: boolean;
   filter_value: string;
 
-  filtered_educators: any;
-  selected_educators: Educator[];
+  filtered: any;
+  selected: Educator[];
 };
 
 export default EducatorsPage;

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { AnyAction, CombinedState } from "redux";
 import Component from ".";
 import AddressesPage from "../../../types/pages/AddressesPage";
-import addresses from "../../../store/actionCreators/addressAC";
+import addresses from "../../../store/actionCreators/addresses";
 import app from "../../../store/actionCreators/app";
 
 function mapStateToProps(
@@ -10,18 +10,13 @@ function mapStateToProps(
 		addresses: AddressesPage;
 	}>
 ) {
-	return {
-		didGetAddresses: state.addresses.didGet,
-	};
+	return {};
 }
 
 function mapDispatchToProps(dispatch: (action: AnyAction) => void) {
 	return {
 		getAddresses: () => {
-			dispatch(addresses.getAddresses());
-		},
-		startLoader: () => {
-			dispatch(app.setLoader());
+			dispatch(addresses.get());
 		},
 	};
 }

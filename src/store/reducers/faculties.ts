@@ -20,14 +20,14 @@ function faculties(state: FacultiesPage = initialState, action: AnyAction): Facu
 			FacultyLocalStorage.save(action.payload);
 			return {
 				...state,
-				selected_faculty: action.payload,
+				selected: action.payload,
 			};
 
 		case ACTION.FILTER_FACULTIES:
 			return {
 				...state,
 				filter_value: action.payload,
-				filtered_faculties: filterSearch(state.faculties, action.payload),
+				filtered: filterSearch(state.faculties, action.payload),
 			};
 	}
 

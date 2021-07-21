@@ -9,4 +9,9 @@ const stopLoader = (): AnyAction => ({
 	type: ACTION.STOP_LOADER,
 });
 
-export default { setLoader, stopLoader };
+const setLayout = (isMobile: boolean): AnyAction => ({
+	type: ACTION.SET_LAYOUT,
+	payload: isMobile,
+});
+
+export default { setLoader, stopLoader, setLayout };

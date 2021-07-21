@@ -15,8 +15,8 @@ function mapStateToProps(
 	return {
 		didGet: state.educators.didGet,
 		filter_value: state.educators.filter_value,
-		filtered_educators: state.educators.filtered_educators,
-		selected_educators: state.educators.selected_educators,
+		filtered_educators: state.educators.filtered,
+		selected_educators: state.educators.selected,
 
 		fromDate: state.header.fromDate,
 		toDate: state.header.toDate,

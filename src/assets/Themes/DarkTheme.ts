@@ -2,6 +2,9 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import "@material-ui/lab/themeAugmentation";
 
 const DarkTheme = createMuiTheme({
+	shape: {
+		borderRadius: 8,
+	},
 	palette: {
 		mode: "dark",
 

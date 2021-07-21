@@ -1,5 +1,5 @@
 type TimetablePage = {
-  didGet: boolean;
+  received: boolean;
 
   timetable: any;
   items: string[];
