@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { AnyAction, CombinedState } from "redux";
 import Educators from ".";
-import educatorAC from "../../../store/actionCreators/educatorAC";
+import app from "../../../store/actionCreators/app";
+import educators from "../../../store/actionCreators/educatorAC";
 import Educator from "../../../types/Educator";
 import Header from "../../../types/Header";
 import EducatorsPage from "../../../types/pages/EducatorsPage";
@@ -13,10 +14,10 @@ function mapStateToProps(
 	}>
 ) {
 	return {
-		didGet: state.educators.didGet,
-		filter_value: state.educators.filter_value,
-		filtered_educators: state.educators.filtered,
-		selected_educators: state.educators.selected,
+		received: state.educators.received,
+		filter: state.educators.filter,
+		filtered: state.educators.filtered,
+		selected: state.educators.selected,
 
 		fromDate: state.header.fromDate,
 		toDate: state.header.toDate,
@@ -25,23 +26,32 @@ function mapStateToProps(
 
 function mapDispatchToProps(dispatch: (action: AnyAction) => void) {
 	return {
-		selectEducator: (educator: Educator) => {
-			dispatch(educatorAC.selectEducator(educator));
+		select: (educator: Educator) => {
+			dispatch(educators.select(educator));
 		},
 
-		deselectEducator: (educator: Educator) => {
-			dispatch(educatorAC.deselectEducator(educator));
+		deselect: (educator: Educator) => {
+			dispatch(educators.deselect(educator));
 		},
 
-		updFilter: (filter_value: string) => {
-			dispatch(educatorAC.updFilter(filter_value));
-		},
-		updFilterValue: (filterStr: string) => {
-			dispatch(educatorAC.updFilterValue(filterStr));
+		get: (filter_value: string) => {
+			dispatch(educators.get(filter_value));
 		},
 
-		getEducatorsTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => {
-			dispatch(educatorAC.getEducatorTimetable(selected_educators, fromDate!, toDate!));
+		updFilter: (filterStr: string) => {
+			dispatch(educators.updFilter(filterStr));
+		},
+
+		getTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => {
+			dispatch(educators.getTimetable(selected_educators, fromDate!, toDate!));
+		},
+		
+		startLoading: () => {
+			dispatch(app.setLoader());
+		},
+
+		stopLoading: () => {
+			dispatch(app.stopLoader());
 		},
 	};
 }

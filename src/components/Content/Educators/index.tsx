@@ -1,42 +1,58 @@
 import React from "react";
-import SearchListPage from "../../Reusable/SearchListPage";
+import { useHistory, useLocation } from "react-router-dom";
 import Educator from "../../../types/Educator";
+import SearchList from "../../Reusable/SearchList";
 
 type Props = {
-  didGet: boolean;
+	received: boolean;
 
-  filter_value: string;
-  selected_educators: Educator[];
-  filtered_educators: Educator[];
+	filter: string;
+	selected: Educator[];
+	filtered: Educator[];
 
-  selectEducator: (educator: Educator) => void;
-  deselectEducator: (educator: Educator) => void;
-  updFilter: (filter_value: string) => void;
-  updFilterValue: (filter_value: string) => void;
+	select: (educator: Educator) => void;
+	deselect: (educator: Educator) => void;
+	get: (filter_value: string) => void;
+	updFilter: (filter_value: string) => void;
 
-  fromDate: Date;
-  toDate: Date;
-  getEducatorsTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => void;
+	fromDate: Date;
+	toDate: Date;
+	getTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => void;
+
+	startLoading: () => void;
+	stopLoading: () => void;
 };
 
 const Educators = (props: Props) => {
-  return (
-    <SearchListPage
-      url_to_push="/timetable"
-      header_text="Преподаватели"
-      didGet={props.didGet}
-      filter_value={props.filter_value}
-      filtered_items={props.filtered_educators}
-      selected_items={props.selected_educators}
-      setItem={props.selectEducator}
-      deselectItem={props.deselectEducator}
-      updFilter={props.updFilter}
-      fromDate={props.fromDate}
-      toDate={props.toDate}
-      updFilterValue={props.updFilterValue}
-      getTimetable={props.getEducatorsTimetable}
-    />
-  );
+	const history = useHistory();
+	const location = useLocation();
+
+	const updFilter = (filter: string) => {
+		props.updFilter(filter);
+		props.get(filter);
+	};
+
+	const goNext = (educators: string) => {
+		history.push(`${location.pathname}/${educators}`);
+		props.getTimetable(props.selected, props.fromDate, props.toDate);
+	};
+
+	return (
+		<SearchList
+			received={props.received}
+			items={props.filtered}
+			get={() => {}}
+			filter={props.filter}
+			updFilter={updFilter}
+			multipleSelection
+			selectedItems={props.selected}
+			select={props.select}
+			deselect={props.deselect}
+			goNext={goNext}
+			startLoading={props.startLoading}
+			stopLoading={props.stopLoading}
+		/>
+	);
 };
 
 export default Educators;

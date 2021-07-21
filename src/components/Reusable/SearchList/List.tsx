@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Paper, ListItem, ListItemText, List } from "@material-ui/core";
+import { Paper, ListItem, ListItemText, List, Fade } from "@material-ui/core";
 import useStyles from "./style";
 import getObjectName from "../../../helpers/getObjectName";
 
@@ -28,7 +28,11 @@ const MyList = (props: Props) => {
 
 	const body = <List className={style.item}>{items}</List>;
 
-	return <Paper variant="outlined">{body}</Paper>;
+	return (
+		<Fade in={props.items.length > 0}>
+			<Paper variant="outlined">{body}</Paper>
+		</Fade>
+	);
 };
 
 export default MyList;

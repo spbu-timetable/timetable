@@ -9,14 +9,14 @@ type Props = {
 	received: boolean;
 
 	items: any;
-	get: () => void;
+	get: (args?: any) => void;
 
 	multipleSelection?: boolean;
 	selectedItems?: any;
 	select?: (item: any) => void;
 	deselect?: (item: any) => void;
 
-	filterValue: string;
+	filter: string;
 	updFilter: (filter: string) => void;
 
 	startLoading: () => void;
@@ -50,7 +50,7 @@ const SearchList = (props: Props) => {
 	}
 
 	const searchProps = {
-		value: props.filterValue,
+		value: props.filter,
 		updFilter: props.updFilter,
 	};
 

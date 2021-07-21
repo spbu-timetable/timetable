@@ -1,8 +1,8 @@
 import Educator from "../Educator";
 
 type EducatorsPage = {
-  didGet: boolean;
-  filter_value: string;
+  received: boolean;
+  filter: string;
 
   filtered: any;
   selected: Educator[];

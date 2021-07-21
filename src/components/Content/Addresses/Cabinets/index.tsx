@@ -42,7 +42,7 @@ const Cabinets: React.FC<Props> = (props: Props) => {
 	return (
 		<SearchList
 			received={props.received}
-			filterValue={props.filterValue}
+			filter={props.filterValue}
 			updFilter={updFilter}
 			items={props.filtered}
 			get={getItems}

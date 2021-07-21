@@ -1,10 +1,9 @@
-import { Theme } from "@material-ui/core/styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import { makeStyles } from "@material-ui/styles";
 
 import React from "react";
+import useStyles from "./style";
 
 type Props = {
 	className?: string;
@@ -13,28 +12,6 @@ type Props = {
 	updFilter: (filterStr: string) => void;
 	updFilterValue?: (filterStr: string) => void;
 };
-
-const useStyles = makeStyles((theme) => ({
-	textField: {
-		width: 700,
-		maxWidth: "calc(100vw - 32px)",
-		borderWidth: 1,
-		borderRadius: 4,
-		borderStyle: "solid",
-		borderColor: "var(--level3)",
-	},
-
-	input: {
-		borderRadius: 4,
-		borderStyle: "solid",
-		borderColor: "var(--level3)",
-		marginLeft: "var(--inset1) !important",
-	},
-
-	icon: {
-		color: "var(--icon-fill)",
-	},
-}));
 
 const StyledTextField = withStyles(({ palette, shadows }) => ({
 	root: {
@@ -56,29 +33,26 @@ const StyledTextField = withStyles(({ palette, shadows }) => ({
 }))(TextField);
 
 const Search = (props: Props) => {
-	const classes = useStyles();
+	const style = useStyles();
 	const search_ref: React.RefObject<HTMLInputElement> = React.createRef();
 
 	return (
 		<StyledTextField
 			inputRef={search_ref}
-			className={classes.textField}
+			className={style.textField}
 			placeholder="Поиск..."
 			value={props.value}
 			margin="normal"
 			variant="outlined"
 			type="search"
 			inputProps={{
-				className: classes.input,
+				className: style.input,
 			}}
 			InputProps={{
-				startAdornment: <SearchIcon className={classes.icon} />,
+				startAdornment: <SearchIcon className={style.icon} />,
 			}}
 			onChange={() => {
 				props.updFilter(search_ref.current!.value);
-				if (props.updFilterValue !== undefined) {
-					props.updFilterValue!(search_ref.current!.value);
-				}
 			}}
 		/>
 	);

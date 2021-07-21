@@ -34,7 +34,7 @@ const Addresses = (props: Props) => {
 			items={props.filtered}
 			get={props.get}
 			goNext={goNext}
-			filterValue={props.filterValue}
+			filter={props.filterValue}
 			updFilter={props.updFilter}
 			startLoading={props.startLoading}
 			stopLoading={props.stopLoading}

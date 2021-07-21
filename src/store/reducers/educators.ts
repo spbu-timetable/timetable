@@ -1,4 +1,5 @@
 import { AnyAction } from "redux";
+import Educator from "../../types/Educator";
 import EducatorsPage from "../../types/pages/EducatorsPage";
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/educators";
@@ -8,7 +9,7 @@ function educators(state: EducatorsPage = initialState, action: AnyAction): Educ
 		case ACTION.SET_EDUCATORS:
 			return {
 				...state,
-				didGet: true,
+				received: true,
 				filtered: action.payload,
 			};
 		case ACTION.SELECT_EDUCATOR:
@@ -20,19 +21,15 @@ function educators(state: EducatorsPage = initialState, action: AnyAction): Educ
 			}
 			break;
 		case ACTION.DESELECT_EDUCATOR:
-			for (let i = 0; i < state.selected.length; i++) {
-				if (action.payload === state.selected[i]) {
-					state.selected.splice(i, 1);
-				}
-			}
 			return {
 				...state,
+				selected: [...state.selected.filter((e: Educator) => e !== action.payload)],
 			};
 
 		case ACTION.UPD_FILTER_VALUE: {
 			return {
 				...state,
-				filter_value: action.payload,
+				filter: action.payload,
 			};
 		}
 	}

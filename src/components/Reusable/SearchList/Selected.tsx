@@ -1,4 +1,4 @@
-import { Button, Chip, Fade, Grid } from "@material-ui/core";
+import { Button, Chip, Collapse, Fade, Grid } from "@material-ui/core";
 import React from "react";
 import getObjectID from "../../../helpers/getObjectID";
 import getObjectName from "../../../helpers/getObjectName";
@@ -26,7 +26,7 @@ const Selected = (props: Props) => {
 	));
 
 	return (
-		<Fade in={props.items.length > 0}>
+		<Collapse in={props.items.length > 0}>
 			<Grid container className={style.item}>
 				<Grid container className={style.chipsWrapper}>
 					{chips}
@@ -41,7 +41,7 @@ const Selected = (props: Props) => {
 					)}
 				</Grid>
 			</Grid>
-		</Fade>
+		</Collapse>
 	);
 };
 

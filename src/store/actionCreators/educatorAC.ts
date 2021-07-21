@@ -49,15 +49,15 @@ function getEducatorTimetable(selected_educators: Educator[], fromDate: Date, to
 }
 
 const educatorAC = {
-	updFilter: updFilter,
-	updFilterValue: updFilterValue,
+	get: updFilter,
+	updFilter: updFilterValue,
 
-	selectEducator: selectEducator,
-	deselectEducator: deselectEducator,
+	select: selectEducator,
+	deselect: deselectEducator,
 
 	setEducators: setEducators,
 
-	getEducatorTimetable: getEducatorTimetable,
+	getTimetable: getEducatorTimetable,
 };
 
 export default educatorAC;

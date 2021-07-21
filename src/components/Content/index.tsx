@@ -16,11 +16,10 @@ const Content = () => {
 	return (
 		<div className={style.wrapper}>
 			<Switch>
-				{/* <Route path="/timetable" component={() => <Timetable />} /> */}
-
 				<Route path="/addresses/:addressID/:cabinets" component={() => <Timetable />} />
 				<Route path="/addresses/:addressID" component={() => <Cabinets />} />
 
+				<Route path="/teachers/:teachers" component={() => <Timetable />} />
 				<Route path="/teachers" component={() => <Educators />} />
 
 				<Route path="/addresses" component={() => <Addresses />} />
