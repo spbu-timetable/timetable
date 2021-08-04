@@ -1,0 +1,9 @@
+{
+	"extends": null,
+	"appId": "com.inctnce.spbu-timetable",
+	"files": ["dist/**/*", "build/**/*", "node_modules/**/*", "package.json"],
+	"directories": {
+		"buildResources": "assets"
+	},
+	"copyright": "inctnce"
+}
