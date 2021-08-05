@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { AnyAction, CombinedState } from "redux";
 import Component from ".";
-import header from "../../../../../store/actionCreators/headerAC";
+import header from "../../../../../store/ac/header";
 import Header from "../../../../../types/Header";
 
 function mapStateToProps(

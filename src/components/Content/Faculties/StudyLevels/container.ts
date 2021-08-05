@@ -2,20 +2,20 @@ import { connect } from "react-redux";
 import { AnyAction, CombinedState } from "redux";
 import StudyLevel from ".";
 import StudyLevelT from "../../../../types/StudyLevel";
-import StudyLevelPage from "../../../../types/pages/StudyLevelPage";
-import StudyLevelAC from "../../../../store/actionCreators/studyLevelAC";
-import FacultiesPage from "../../../../types/pages/FacultiesPage";
+import StudyLevels from "../../../../types/pages/StudyLevels";
+import StudyLevelAC from "../../../../store/ac/studyLevels";
+import Faculties from "../../../../types/pages/Faculties";
 
 function mapStateToProps(
 	state: CombinedState<{
-		faculties: FacultiesPage;
-		studyLevels: StudyLevelPage;
+		faculties: Faculties;
+		studyLevels: StudyLevels;
 	}>
 ) {
 	return {
 		oid: state.faculties.selected!.Alias,
-		didGet: state.studyLevels.didGet,
-		filter_value: state.studyLevels.filter_value,
+		didGet: state.studyLevels.received,
+		filter_value: state.studyLevels.filter,
 		studyLevels: state.studyLevels.levels,
 		filtered_studyLevels: state.studyLevels.filtered,
 	};
