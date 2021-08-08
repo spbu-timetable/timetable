@@ -5,7 +5,7 @@ import StudyLevelPage from "../../types/pages/StudyLevelPage";
 import ACTION from "../actionCreators/ACTION";
 import initialState from "../states/studyLevels";
 import sortList from "../../helpers/sortList";
-import filterSearch from "../../helpers/searchFilter";
+import searchFilter from "../../helpers/searchFilter";
 import { AnyAction } from "redux";
 
 function studyLevels(state: StudyLevelPage = initialState, action: AnyAction): StudyLevelPage {
@@ -35,7 +35,7 @@ function studyLevels(state: StudyLevelPage = initialState, action: AnyAction): S
 			return {
 				...state,
 				filter_value: action.payload,
-				filtered: filterSearch(state.levels, action.payload),
+				filtered: searchFilter(state.levels, action.payload),
 			};
 	}
 

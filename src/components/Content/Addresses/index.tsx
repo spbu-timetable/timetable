@@ -1,9 +1,8 @@
 import React from "react";
 
 import Address from "../../../types/Address";
-import getObjectID from "../../../helpers/getObjectID";
 import SearchList from "../../Reusable/SearchList";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 type Props = {
 	received: boolean;
@@ -14,18 +13,15 @@ type Props = {
 	stopLoading: () => void;
 
 	get: () => void;
-	set: (address: Address) => void;
-	setAddressID: (id: string) => void;
 	updFilter: (filterStr: string) => void;
 };
 
 const Addresses = (props: Props) => {
 	const history = useHistory();
+	const location = useLocation();
 
 	const goNext = (address: Address) => {
-		props.setAddressID(getObjectID(address));
-		props.set(address);
-		history.push(`/addresses/${address.Oid}`);
+		history.push(`${location.pathname}/${address.Oid}`);
 	};
 
 	return (

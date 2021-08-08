@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
 import { AnyAction, CombinedState } from "redux";
 import Component from ".";
-import Address from "../../../types/Address";
-import AddressesPage from "../../../types/pages/AddressesPage";
-import addresses from "../../../store/actionCreators/addresses";
-import app from "../../../store/actionCreators/app";
+import AddressesPage from "../../../types/pages/Addresses";
+import addresses from "../../../store/ac/addresses";
+import app from "../../../store/ac/app";
 import App from "../../../types/pages/App";
-import cabinets from "../../../store/actionCreators/cabinets";
+
 
 function mapStateToProps(
 	state: CombinedState<{
@@ -16,9 +15,9 @@ function mapStateToProps(
 ) {
 	return {
 		received: state.addresses.received,
-		filterValue: state.addresses.filterValue,
+		filterValue: state.addresses.filter,
 
-		addresses: state.addresses.addresses,
+		addresses: state.addresses.items,
 		filtered: state.addresses.filtered,
 	};
 }
@@ -29,24 +28,16 @@ function mapDispatchToProps(dispatch: (action: AnyAction) => void) {
 			dispatch(addresses.get());
 		},
 
-		set: (address: Address) => {
-			dispatch(addresses.set(address));
-		},
-
-		setAddressID: (id: string) => {
-			dispatch(cabinets.setAddressID(id));
-		},
-
 		updFilter: (filterStr: string) => {
 			dispatch(addresses.updFilter(filterStr));
 		},
 
 		startLoading: () => {
-			dispatch(app.setLoader());
+			dispatch(app.startLoading());
 		},
 
 		stopLoading: () => {
-			dispatch(app.stopLoader());
+			dispatch(app.stopLoading());
 		},
 	};
 }

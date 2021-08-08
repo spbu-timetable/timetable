@@ -1,7 +1,7 @@
 import ACTION from "../ac/ACTION";
 import initialState from "../states/years";
 import sortList from "../../helpers/sortList";
-import filterSearch from "../../helpers/searchFilter";
+import searchFilter from "../../helpers/searchFilter";
 import EducationYears from "../../types/pages/EducationYears";
 import EducationYear from "../../types/EducationYear";
 import { AnyAction } from "redux";
@@ -30,7 +30,7 @@ function years(state: EducationYears = initialState, action: AnyAction): Educati
 			return {
 				...state,
 				filter: action.payload,
-				filtered: state.filtered.set(state.program, filterSearch(items, action.payload)),
+				filtered: state.filtered.set(state.program, searchFilter(items, action.payload)),
 			};
 	}
 

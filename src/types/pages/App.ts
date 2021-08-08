@@ -1,5 +1,4 @@
 type App = {
-	isLoading: boolean;
 	isMobile: boolean;
 };
 
