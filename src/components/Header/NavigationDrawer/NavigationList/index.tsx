@@ -6,7 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { AccountCircle, ExitToApp } from "@material-ui/icons";
 import React from "react";
 import AboutProject from "./AboutProject";
-import SelectedWeek from "./SelectedWeek/container";
+import SelectedWeek from "./SelectedWeek";
 
 const NavigationList: React.FC = () => {
 	const ListData = [

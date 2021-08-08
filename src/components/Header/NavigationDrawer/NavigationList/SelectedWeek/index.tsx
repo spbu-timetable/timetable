@@ -8,13 +8,7 @@ import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 import MobileDatePicker from "@material-ui/lab/MobileDatePicker";
 import PickersDay, { PickersDayProps } from "@material-ui/lab/PickersDay";
 import SetWeekBtn from "./SetWeekBtn";
-
-type Props = {
-	fromDateStr: string;
-	toDateStr: string;
-
-	setWeek: (date: Date) => void;
-};
+import header from "../../../../../store/header";
 
 const useStyles = makeStyles((theme) => ({
 	highlight: {
@@ -28,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const SelectedWeek: React.FC<Props> = (props: Props) => {
+const SelectedWeek = () => {
 	const classes = useStyles();
 
 	const [open, setOpen] = React.useState(false);
@@ -36,7 +30,7 @@ const SelectedWeek: React.FC<Props> = (props: Props) => {
 
 	const handleDateChange = (date: Date | null) => {
 		setSelectedDate(date);
-		props.setWeek(date!);
+		header.setWeek(date!);
 		setOpen(false);
 	};
 
@@ -47,7 +41,7 @@ const SelectedWeek: React.FC<Props> = (props: Props) => {
 	return (
 		<>
 			<ListItem component={Typography} align="center">
-				<SetWeekBtn onClick={() => setOpen(!open)} fromDateStr={props.fromDateStr} toDateStr={props.toDateStr} />
+				<SetWeekBtn onClick={() => setOpen(!open)} fromDateStr={header.fromDateStr} toDateStr={header.toDateStr} />
 			</ListItem>
 
 			<LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>

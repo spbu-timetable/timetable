@@ -1,56 +1,38 @@
 import React from "react";
+import header from "../../../store/header";
+import educators from "../../../store/educators";
+
 import { useHistory, useLocation } from "react-router-dom";
-import Educator from "../../../types/Educator";
 import SearchList from "../../Reusable/SearchList";
 
-type Props = {
-	received: boolean;
-
-	filter: string;
-	selected: Educator[];
-	filtered: Educator[];
-
-	select: (educator: Educator) => void;
-	deselect: (educator: Educator) => void;
-	get: (filter_value: string) => void;
-	updFilter: (filter_value: string) => void;
-
-	fromDate: Date;
-	toDate: Date;
-	getTimetable: (selected_educators: Educator[], fromDate?: Date, toDate?: Date) => void;
-
-	startLoading: () => void;
-	stopLoading: () => void;
-};
-
-const Educators = (props: Props) => {
+const Educators = () => {
 	const history = useHistory();
 	const location = useLocation();
 
 	const updFilter = (filter: string) => {
-		props.updFilter(filter);
-		props.get(filter);
+		educators.filter = filter;
+		educators.get();
 	};
 
-	const goNext = (educators: string) => {
-		history.push(`${location.pathname}/${educators}`);
-		props.getTimetable(props.selected, props.fromDate, props.toDate);
+	const goNext = (_educators: string) => {
+		history.push(`${location.pathname}/${_educators}`);
+		educators.getTimetable(header.fromDate, header.toDate);
 	};
 
 	return (
 		<SearchList
-			received={props.received}
-			items={props.filtered}
+			received={educators.received}
+			items={educators.filtered}
 			get={() => {}}
-			filter={props.filter}
+			filter={educators.filter}
 			updFilter={updFilter}
 			multipleSelection
-			selectedItems={props.selected}
-			select={props.select}
-			deselect={props.deselect}
-			goNext={goNext}
-			startLoading={props.startLoading}
-			stopLoading={props.stopLoading}
+			selected={educators.selected}
+			select={educators.select}
+			deselect={educators.deselect}
+			next={goNext}
+			startLoading={header.startLoading}
+			stopLoading={header.stopLoading}
 		/>
 	);
 };

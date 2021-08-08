@@ -7,19 +7,9 @@ import NavigationDrawer from "./NavigationDrawer";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./style";
+import header from "../../store/header";
 
-type Props = {
-	isLoading: boolean;
-
-	week: string;
-	fromDateStr: string;
-	toDateStr: string;
-
-	setWeek: (date: Date) => void;
-	setLang: (isRussian: boolean) => void;
-};
-
-const Header = (props: Props) => {
+const Header = () => {
 	const classes = useStyles();
 
 	const history = useHistory();
@@ -40,7 +30,7 @@ const Header = (props: Props) => {
 			</Grid>
 
 			<Grid item className={classes.progressWrapper}>
-				<Fade in={props.isLoading}>
+				<Fade in={header.loading}>
 					<LinearProgress color="secondary" />
 				</Fade>
 			</Grid>

@@ -1,10 +1,11 @@
 import React from "react";
+import app from "../../store/app";
 
 import Content from "../Content";
-import Header from "../Header/container";
+import Header from "../Header";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import DarkTheme from "../../assets/Themes/DarkTheme";
-import LightTheme from "../../assets/Themes/LightTheme";
+import Dark from "../../assets/Themes/Dark";
+import Light from "../../assets/Themes/Light";
 import { Grid, makeStyles, ThemeProvider, createMuiTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,26 +16,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-type Props = {
-	setLayout: (isMobile: boolean) => void;
-};
-
-const App: React.FC<Props> = (props: Props) => {
+const App = () => {
 	const style = useStyles();
 
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-	const theme = React.useMemo(() => createMuiTheme(prefersDarkMode ? DarkTheme : LightTheme), [prefersDarkMode]);
+	const theme = React.useMemo(() => createMuiTheme(prefersDarkMode ? Dark : Light), [prefersDarkMode]);
+
+	const isMobile = useMediaQuery("(max-width <= 700px)");
 
 	React.useEffect(() => {
-		window.addEventListener("resize", () => {
-			console.log(window.innerWidth <= 600);
-			props.setLayout(window.innerWidth <= 600);
-		});
-		return () =>
-			window.removeEventListener("resize", () => {
-				props.setLayout(window.innerWidth <= 600);
-			});
-	});
+		app.isMobile = isMobile;
+	}, [isMobile]);
 
 	return (
 		<ThemeProvider theme={theme}>

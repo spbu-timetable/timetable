@@ -1,22 +1,13 @@
 import React from "react";
 
-import Address from "../../../types/Address";
+import addresses from "../../../store/addresses";
+import header from "../../../store/header";
 import SearchList from "../../Reusable/SearchList";
 import { useHistory, useLocation } from "react-router-dom";
+import Address from "../../../types/Address";
+import { observer } from "mobx-react-lite";
 
-type Props = {
-	received: boolean;
-	filtered: Address[];
-	filterValue: string;
-
-	startLoading: () => void;
-	stopLoading: () => void;
-
-	get: () => void;
-	updFilter: (filterStr: string) => void;
-};
-
-const Addresses = (props: Props) => {
+const Addresses = observer(() => {
 	const history = useHistory();
 	const location = useLocation();
 
@@ -26,16 +17,16 @@ const Addresses = (props: Props) => {
 
 	return (
 		<SearchList
-			received={props.received}
-			items={props.filtered}
-			get={props.get}
-			goNext={goNext}
-			filter={props.filterValue}
-			updFilter={props.updFilter}
-			startLoading={props.startLoading}
-			stopLoading={props.stopLoading}
+			received={addresses.received}
+			items={addresses.filtered}
+			get={addresses.get}
+			next={goNext}
+			filter={addresses.filter}
+			updFilter={addresses.updFilter}
+			startLoading={header.startLoading}
+			stopLoading={header.stopLoading}
 		/>
 	);
-};
+});
 
 export default Addresses;

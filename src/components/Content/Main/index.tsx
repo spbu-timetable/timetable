@@ -9,8 +9,8 @@ const Main = () => {
 	return (
 		<div className={style.main}>
 			<HugeButton className={style.item} title="Кабинеты" onClick={() => history.push("/addresses")} />
-			<HugeButton className={style.item} title="Преподаватели" onClick={() => history.push("/teachers")} />
-			<HugeButton className={style.item} title="Группы" onClick={() => history.push("/faculties")} />
+			{/* <HugeButton className={style.item} title="Преподаватели" onClick={() => history.push("/teachers")} />
+			<HugeButton className={style.item} title="Группы" onClick={() => history.push("/faculties")} /> */}
 		</div>
 	);
 };

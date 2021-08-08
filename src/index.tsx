@@ -1,21 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./components/App/container";
+import App from "./components/App";
 import * as serviceWorker from "./utils/serviceWorker";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import GlobalCss from "./assets/styles/GlobalCss";
-import { Provider } from "react-redux";
-import store from "./store";
+
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Router>
-			<Provider store={store}>
-				<GlobalCss />
-				<App />
-			</Provider>
+			<GlobalCss />
+			<App />
 		</Router>
 	</React.StrictMode>,
 	document.getElementById("root")

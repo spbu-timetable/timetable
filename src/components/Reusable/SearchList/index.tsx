@@ -12,7 +12,7 @@ type Props = {
 	get: (args?: any) => void;
 
 	multipleSelection?: boolean;
-	selectedItems?: any;
+	selected?: any;
 	select?: (item: any) => void;
 	deselect?: (item: any) => void;
 
@@ -22,7 +22,7 @@ type Props = {
 	startLoading: () => void;
 	stopLoading: () => void;
 
-	goNext: (args: any) => void;
+	next: (args: any) => void;
 };
 
 /**
@@ -46,7 +46,7 @@ const SearchList = (props: Props) => {
 		const message = "must be defined if multipleSelection flag is true";
 		if (!props.select) throw new Error(`select method ${message}`);
 		if (!props.deselect) throw new Error(`deselect method ${message}`);
-		if (!props.selectedItems) throw new Error(`selectedItems ${message}`);
+		if (!props.selected) throw new Error(`selectedItems ${message}`);
 	}
 
 	const searchProps = {
@@ -55,15 +55,15 @@ const SearchList = (props: Props) => {
 	};
 
 	const selectedProps = {
-		items: props.selectedItems,
+		items: props.selected,
 		deselect: props.deselect!,
-		goNext: props.goNext,
+		goNext: props.next,
 	};
 
 	const listProps = {
 		items: props.items,
 		select: props.select,
-		goNext: props.goNext,
+		goNext: props.next,
 	};
 
 	return (

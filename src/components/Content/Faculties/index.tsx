@@ -1,35 +1,35 @@
 import React from "react";
-import SearchListPage from "../../Reusable/SearchListPage";
+import header from "../../../store/header";
+import faculties from "../../../store/faculties";
 
-import Faculty from "../../../types/Faculty";
+import SearchList from "../../Reusable/SearchList";
 
-type Props = {
-  didGet: boolean;
-  faculties: Faculty[];
-  filtered_faculties: Faculty[];
-  filter_value: string;
+import { useHistory, useLocation } from "react-router-dom";
 
-  getFaculties: () => void;
-  setFaculty: (faculty: Faculty) => void;
-  updFilter: (filterStr: string) => void;
-};
+const Faculties = () => {
+	const history = useHistory();
+	const location = useLocation();
 
-const Faculties = (props: Props) => {
-  return (
-    <SearchListPage
-      didGet={props.didGet}
-      url_to_push={"/faculties/studyLevels"}
-      items={props.faculties}
-      filtered_items={props.filtered_faculties}
-      filter_value={props.filter_value}
-      header_text={"Факультет"}
-      banner_main_text={"Факультет не найден"}
-      banner_secondary_text={"Попробуйте ввести иначе или найти в списке"}
-      getItems={props.getFaculties}
-      setItem={props.setFaculty}
-      updFilter={props.updFilter}
-    />
-  );
+	const updFilter = (filter: string) => (faculties.filter = filter);
+	const next = (faculty: string) => {
+		history.push(`${location.pathname}/${faculty}`);
+	};
+
+	const searchListProps = {
+		received: faculties.received,
+		items: faculties.filtered,
+		get: faculties.get,
+
+		filter: faculties.filter,
+		updFilter: updFilter,
+
+		startLoading: header.startLoading,
+		stopLoading: header.stopLoading,
+
+		next: next,
+	};
+
+	return <SearchList {...searchListProps} />;
 };
 
 export default Faculties;
