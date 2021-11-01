@@ -1,3 +1,8 @@
 build:
   docker:
     web: Dockerfile
+<<<<<<< HEAD
+=======
+run:
+  web: npm start
+>>>>>>> 6b46e1335928cd01738138b67626f5a70f180ef6
