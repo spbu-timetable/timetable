@@ -1,4 +1,4 @@
-FROM node:12.18.4
+FROM node:latest
 
 COPY . /app
 WORKDIR /app
@@ -6,5 +6,5 @@ WORKDIR /app
 RUN npm i
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE 5000
 CMD ["npm","start"]

@@ -1,9 +1,0 @@
-.wrapper {
-	min-height: calc(100vh - 120px);
-}
-
-@media screen and (max-width: 600) {
-	.wrapper {
-		min-height: calc(100vh - 112px);
-	}
-}
