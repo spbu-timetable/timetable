@@ -3,7 +3,7 @@
 	"short_name": "Timetable",
 	"theme_color": "#f94400",
 	"background_color": "#f94400",
-	"display": "minimal-ui",
+	"display": "standalone",
 	"orientation": "portrait",
 	"scope": "/",
 	"start_url": "/",
