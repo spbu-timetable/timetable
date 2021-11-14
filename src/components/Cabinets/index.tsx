@@ -8,7 +8,7 @@ import SelectedCabinets from "./SelectedCabinets";
 import { appSlice } from "../../store/reducers/app";
 import { useAppDispatch } from "../../store/hooks";
 import CabinetsList from "./CabinetsList/CabinetsList";
-import SearchField from "../Reusable/SearchField";
+import SearchField from "../Reusable/Search/SearchField";
 
 const Cabinets: React.FC = () => {
 

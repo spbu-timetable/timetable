@@ -1,25 +1,27 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 
-const Dark = createTheme({
-	shape: {
-		borderRadius: 8,
-	},
-	palette: {
-		mode: "dark",
-
-		primary: {
-			main: "#222222",
+const Dark = responsiveFontSizes(
+	createTheme({
+		shape: {
+			borderRadius: 8,
 		},
+		palette: {
+			mode: "dark",
 
-		secondary: {
-			main: "#F94400",
-		},
+			primary: {
+				main: "#222222",
+			},
 
-		background: {
-			paper: "#121212",
-			default: "#121212",
+			secondary: {
+				main: "#F94400",
+			},
+
+			background: {
+				paper: "#121212",
+				default: "#121212",
+			},
 		},
-	},
-});
+	})
+);
 
 export default Dark;

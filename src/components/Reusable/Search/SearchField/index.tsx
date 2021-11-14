@@ -1,4 +1,4 @@
-import { IconButton, Paper, Stack, TextField } from "@mui/material";
+import { Icon, IconButton, Paper, Stack, TextField } from "@mui/material";
 import React from "react";
 import qs from "query-string";
 import useStyles from "./style";
@@ -40,13 +40,14 @@ const SearchField: React.FC<Props> = ({ searchID, placeholder }: Props) => {
         })
     }
 
-    const startAdornment = <Search className={style.startAdornment} />;
+    const startAdornment = <IconButton><Search /></IconButton>;
     const endAdornment = <IconButton onClick={handleClear} ><Clear /></IconButton>;
 
     return (
-        <Paper>
+        <Paper variant="outlined" >
             <Stack>
                 <TextField
+                    autoFocus
                     className={style.search}
                     inputRef={ref || ""}
                     value={search.searchID}

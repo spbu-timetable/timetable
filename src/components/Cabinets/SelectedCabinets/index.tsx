@@ -16,11 +16,11 @@ const SelectedCabinets: React.FC = () => {
 
     if (data.length > 0)
         return (
-            <Grow in={data.length > 0}>
+            <Collapse in={data.length > 0}>
                 <Stack spacing={1} direction="row">
                     {data.map((cabinet) => <CabinetChip key={cabinet.Oid} {...cabinet} />)}
                 </Stack>
-            </Grow>
+            </Collapse>
         )
 
     return <></>

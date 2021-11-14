@@ -1,19 +1,23 @@
 import { Stack } from "@mui/material";
 import React from "react";
-import AppBar from "../AppBar";
-import Routes from "./Routes";
-import Sections from "./Sections";
-import useStyles from "./style";
+import AppBar from '../AppBar';
+import Addresses from "../Addresses";
+import Sections from "../Sections";
+import Stepper from "../Stepper";
 
 const Content: React.FC = () => {
-    const style = useStyles();
+    return (
+        <Stack spacing={1} overflow={"auto"}>
+            <Stack>
+                <AppBar />
+                <Sections />
+            </Stack>
 
-    return <Stack className={style.app}>
-        <AppBar />
-        <Stack m={2}>
-            <Routes />
+            <Addresses />
+
+            <Stepper />
         </Stack>
-    </Stack>
+    )
 }
 
 export default Content;

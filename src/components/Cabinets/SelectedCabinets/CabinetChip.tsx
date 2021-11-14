@@ -1,4 +1,4 @@
-import { Chip } from "@mui/material";
+import { Chip, Fade } from "@mui/material";
 import React from "react";
 import TCabinet from "../../../types/Cabinet";
 import qs from "query-string";
@@ -22,7 +22,11 @@ const CabinetChip: React.FC<TCabinet> = ({ Oid, DisplayName1 }: TCabinet) => {
         })
     }
 
-    return <Chip key={Oid} label={DisplayName1} onDelete={handleDelete} />
+    return (
+        <Fade in={!!Oid}>
+            <Chip key={Oid} label={DisplayName1} onDelete={handleDelete} />
+        </Fade>
+    )
 }
 
 export default CabinetChip;
