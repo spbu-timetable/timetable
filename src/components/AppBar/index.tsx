@@ -1,5 +1,5 @@
-import { ArrowBack, CalendarToday, Menu as MenuIcon, MoreVert } from "@mui/icons-material";
-import { Divider, IconButton, LinearProgress, Paper, Stack, Typography } from "@mui/material";
+import { CalendarToday, Menu as MenuIcon } from "@mui/icons-material";
+import { useTheme, IconButton, LinearProgress, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useAppSelector } from "../../store/hooks";
 import NavButton from "./BackButton";
@@ -7,10 +7,19 @@ import NavButton from "./BackButton";
 const AppBar: React.FC = () => {
 
     const { loading } = useAppSelector(state => state.app)
+    const theme = useTheme();
+    const height = 56, width = "100vw";
+
 
     return (
-        <Paper elevation={0} sx={{ border: "none" }} square>
-            <Stack height={56} justifyContent="center">
+        <Stack height={height} >
+            <Stack
+                bgcolor={theme.palette.primary.main}
+                height={height}
+                width={width}
+                position="fixed"
+                justifyContent="center"
+            >
                 {loading ? <LinearProgress color="secondary" /> : null}
                 <Stack direction="row" height={52} mr={2} ml={2} alignItems="center">
                     <NavButton />
@@ -20,12 +29,9 @@ const AppBar: React.FC = () => {
                     <IconButton aria-label="set week">
                         <CalendarToday />
                     </IconButton>
-                    <IconButton aria-label="set week">
-                        <MoreVert />
-                    </IconButton>
                 </Stack>
             </Stack>
-        </Paper>
+        </Stack >
     )
 }
 
